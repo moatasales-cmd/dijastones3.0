@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import ProformaStatusSelect from "@/components/ProformaStatusSelect";
 
 export const metadata = { title: "Proformas — Admin" };
 
@@ -39,7 +40,7 @@ export default async function AdminProformas() {
                   <td className={td}>{p.incoterm}</td>
                   <td className={td + " font-medium"}>{money(p.grandTotal)}</td>
                   <td className={td}>
-                    <span className="px-2 py-0.5 rounded-full bg-zinc-100 text-zinc-600 text-xs">{p.status}</span>
+                    <ProformaStatusSelect id={p.id} status={p.status} />
                   </td>
                   <td className={td + " text-zinc-400 whitespace-nowrap"}>{p.createdAt?.slice(0, 10)}</td>
                 </tr>

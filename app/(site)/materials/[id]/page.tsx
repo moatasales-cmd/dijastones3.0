@@ -3,10 +3,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { getT } from "@/lib/i18n-server";
+import { stoneImg } from "@/lib/img";
+import { SITE_URL } from "@/lib/site";
 import Gallery from "@/components/Gallery";
 import PriceSection from "@/components/PriceSection";
 import FavoriteButton from "@/components/FavoriteButton";
 import QuoteModal from "@/components/QuoteModal";
+import CompareButton from "@/components/CompareButton";
+import JsonLd from "@/components/JsonLd";
 import MaterialCard, { type CardLabels } from "@/components/MaterialCard";
 
 const CARD_FIELDS = {
@@ -33,7 +37,21 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
   const s = await getStone(id);
-  return { title: s ? s.n : "Material" };
+  if (!s) return { title: "Material" };
+  const img = stoneImg(s);
+  const description =
+    s.d || `${s.n} — ${s.ty} from ${s.ci ? s.ci + ", " : ""}${s.c}. Natural stone from DIJA.`;
+  return {
+    title: s.n,
+    description,
+    alternates: { canonical: `${SITE_URL}/materials/${s.id}` },
+    openGraph: {
+      title: s.n,
+      description,
+      images: img ? [{ url: img }] : undefined,
+      type: "website",
+    },
+  };
 }
 
 export default async function MaterialPage({
@@ -89,8 +107,33 @@ export default async function MaterialPage({
     [t("material.geological_age"), s.age],
   ];
 
+  const img = stoneImg(s);
+  const productLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: s.n,
+    description: s.d || undefined,
+    image: img ? `${SITE_URL}${img}` : undefined,
+    category: s.ty || undefined,
+    brand: { "@type": "Brand", name: "DIJA" },
+    countryOfOrigin: s.c || undefined,
+    url: `${SITE_URL}/materials/${s.id}`,
+    ...(s.p != null
+      ? {
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "USD",
+            price: s.p,
+            availability: "https://schema.org/InStock",
+            url: `${SITE_URL}/materials/${s.id}`,
+          },
+        }
+      : {}),
+  };
+
   return (
     <>
+      <JsonLd data={productLd} />
       <section className="page-hero">
         <div className="container">
           <nav className="breadcrumbs">
@@ -103,6 +146,7 @@ export default async function MaterialPage({
           <div className="hero-title-wrap">
             <h1 className="hero-title">{s.n}</h1>
             <FavoriteButton stoneId={s.id} title={t("materials.add_favorite")} large />
+            <CompareButton stoneId={s.id} stoneName={s.n} />
           </div>
           <p>
             {s.ty} · {s.c} · {s.ci}
@@ -215,7 +259,7 @@ export default async function MaterialPage({
                   }}
                 />
                 <a
-                  href={`/api/datasheet?id=${encodeURIComponent(s.id)}`}
+                  href={`/materials/${encodeURIComponent(s.id)}/datasheet`}
                   className="detail-btn"
                   target="_blank"
                 >

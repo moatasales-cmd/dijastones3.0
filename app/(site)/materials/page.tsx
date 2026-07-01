@@ -76,14 +76,11 @@ export default async function MaterialsPage() {
               <div>
                 <h3>{t("materials.catalogue_title")}</h3>
                 <p className="mat-download-stats">
-                  {t(
-                    "materials.catalogue_stats",
-                    `${stones.length} Natural Stones · 6 Types · 10 Countries · 170+ Pages`
-                  )}
+                  {t("materials.catalogue_stats", stones.length)}
                 </p>
               </div>
               <a
-                href="/api/catalogue"
+                href="/catalogue"
                 target="_blank"
                 className="mat-download-btn"
               >

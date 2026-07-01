@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
+import CompareBar from "@/components/CompareBar";
 import { getT } from "@/lib/i18n-server";
 import { resolveNav } from "@/lib/nav";
 import { getCurrentClient } from "@/lib/auth";
@@ -33,6 +34,7 @@ export default async function SiteLayout({
       <Header locale={locale} nav={nav} ui={ui} />
       <main>{children}</main>
       <Footer />
+      <CompareBar />
     </>
   );
 }

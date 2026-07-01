@@ -51,7 +51,7 @@ export default async function Home() {
                 <i className="fa-solid fa-arrow-right" />
               </span>
             </Link>
-            <a href="/api/catalogue" target="_blank" className="btn btn-ghost">
+            <a href="/catalogue" target="_blank" className="btn btn-ghost">
               {t("home.hero.download")}{" "}
               <span className="btn-icon-wrap">
                 <i className="fa-solid fa-arrow-down" />

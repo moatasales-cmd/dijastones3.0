@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { stoneImg } from "@/lib/img";
 import FavoriteButton from "./FavoriteButton";
+import CompareToggle from "./CompareToggle";
 
 export const SQM_TO_SQF = 10.7639;
 
@@ -65,6 +66,7 @@ export default function MaterialCard({
         )}
         <span className="card-country">{s.c}</span>
         <FavoriteButton stoneId={s.id} title={labels.addFavorite} />
+        <CompareToggle stoneId={s.id} stoneName={s.n} />
       </div>
       <div className="card-body">
         <h3>{s.n}</h3>

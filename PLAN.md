@@ -59,8 +59,22 @@ Rebuild of the original PHP site (`D:\dija-2.2`) as a modern Next.js app,
       dashboard (counts + recent leads), stones list + editor (create/edit,
       verified live-reflect on site), clients, leads (contacts/quotes/trade),
       proformas, journal posts list + editor. tsc clean, verified e2e.
-- [ ] **Phase 6 — Upgrades.** Faceted search, image uploads+optimization,
-      proforma status tracking, comparison tool, SEO/structured data, security.
+- [x] **Phase 6 — Upgrades.** ✅ SEO: `/sitemap.xml` (193 URLs, DB-driven),
+      `/robots.txt` (blocks /admin,/api,/account,/proforma), per-material
+      canonical + OpenGraph metadata, JSON-LD `Product` schema (price, brand,
+      country) on every material page — verified valid JSON + correct fields.
+      Comparison tool: `lib/compare.ts` (localStorage, max 3), compare toggle on
+      grid cards + detail page, floating `CompareBar`, `/compare?ids=a,b,c` page
+      with a side-by-side spec table — verified e2e including empty/invalid-id
+      states. Proforma status tracking: admin dropdown (draft/sent/accepted/
+      declined/expired) → `PATCH /api/admin/proformas/[id]`, reflects instantly
+      in both admin and the client's own proforma list — verified. Fixed
+      deferred PDF buttons: per-stone `/materials/[id]/datasheet` and full
+      `/catalogue`, both print-to-PDF pages (same pattern as the proforma
+      invoice) — replaces the old dead `/api/datasheet` and `/api/catalogue`
+      links. Bug fix: `materials.catalogue_stats` was duplicating its own text
+      (passed the whole phrase as the `%s` arg instead of just the count).
+      tsc clean; all features verified in the browser.
 - [ ] **Phase 7 — Polish & deploy.**
 
 ## Notes / carried-over quirks to fix during migration

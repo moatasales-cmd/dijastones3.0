@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+/* DIJA design system — the hand-authored stylesheets are carried over 1:1.
+   They own the site's look (design tokens, light/dark themes, components).
+   Imported AFTER Tailwind so they win any conflicts with Tailwind's reset.
+   Tailwind remains available for new / upgraded UI. */
+@import "../styles/app.css";
+@import "../styles/auth.css";
+@import "../styles/proforma.css";

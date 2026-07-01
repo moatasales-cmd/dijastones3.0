@@ -6,6 +6,7 @@ import { getT } from "@/lib/i18n-server";
 import Gallery from "@/components/Gallery";
 import PriceSection from "@/components/PriceSection";
 import FavoriteButton from "@/components/FavoriteButton";
+import QuoteModal from "@/components/QuoteModal";
 import MaterialCard, { type CardLabels } from "@/components/MaterialCard";
 
 const CARD_FIELDS = {
@@ -193,9 +194,26 @@ export default async function MaterialPage({
               </div>
 
               <div className="detail-btns">
-                <Link href="/contact" className="detail-btn">
-                  <i className="fa-solid fa-calculator" /> {t("material.request_quote")}
-                </Link>
+                <QuoteModal
+                  stoneId={s.id}
+                  stoneName={s.n}
+                  labels={{
+                    requestQuote: t("material.request_quote"),
+                    name: t("material.quote_name"),
+                    namePh: t("material.quote_name_ph"),
+                    email: t("material.quote_email"),
+                    emailPh: t("material.quote_email_ph"),
+                    phone: t("material.quote_phone"),
+                    phonePh: t("material.quote_phone_ph"),
+                    area: t("material.quote_area"),
+                    areaPh: t("material.quote_area_ph"),
+                    message: t("material.quote_message"),
+                    messagePh: t("material.quote_message_ph"),
+                    submit: t("material.quote_submit"),
+                    sending: t("material.quote_sending"),
+                    close: t("lightbox.close"),
+                  }}
+                />
                 <a
                   href={`/api/datasheet?id=${encodeURIComponent(s.id)}`}
                   className="detail-btn"

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getT } from "@/lib/i18n-server";
 import { resolveNav } from "@/lib/nav";
+import NewsletterForm from "@/components/NewsletterForm";
 
 export default async function Footer() {
   const { t } = await getT();
@@ -55,16 +56,10 @@ export default async function Footer() {
             <div className="footer-newsletter">
               <span className="footer-label">{t("footer.newsletter")}</span>
               <p>{t("footer.newsletter_desc")}</p>
-              {/* Wired to the newsletter API in a later phase. */}
-              <form className="newsletter-form">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder={t("footer.email_placeholder")}
-                  required
-                />
-                <button type="submit">{t("footer.subscribe")}</button>
-              </form>
+              <NewsletterForm
+                placeholder={t("footer.email_placeholder")}
+                submitLabel={t("footer.subscribe")}
+              />
             </div>
           </div>
 

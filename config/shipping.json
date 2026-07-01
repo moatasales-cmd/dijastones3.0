@@ -1,0 +1,104 @@
+{
+  "zones": [
+    {
+      "zone": "Mediterranean",
+      "countries": ["Italy", "Greece", "Spain", "France", "Portugal", "Tunisia", "Turkey"],
+      "rate_per_container_20ft": 1800,
+      "transit_days": "5-10",
+      "note": "Direct shipping from Izmir port"
+    },
+    {
+      "zone": "Western Europe",
+      "countries": ["Germany", "United Kingdom", "Netherlands", "Belgium", "Switzerland", "Austria", "Ireland", "Denmark", "Sweden", "Norway", "Finland", "Luxembourg"],
+      "rate_per_container_20ft": 2800,
+      "transit_days": "10-18",
+      "note": "Via main European ports + overland"
+    },
+    {
+      "zone": "Eastern Europe",
+      "countries": ["Poland", "Czech Republic", "Slovakia", "Hungary", "Romania", "Croatia", "Bulgaria", "Slovenia", "Serbia", "Bosnia and Herzegovina", "Montenegro", "Albania", "North Macedonia", "Moldova", "Ukraine", "Belarus", "Lithuania", "Latvia", "Estonia", "Georgia", "Armenia", "Azerbaijan"],
+      "rate_per_container_20ft": 3500,
+      "transit_days": "14-25",
+      "note": "Via European ports + overland"
+    },
+    {
+      "zone": "Middle East",
+      "countries": ["United Arab Emirates", "Saudi Arabia", "Qatar", "Kuwait", "Oman", "Bahrain", "Jordan", "Israel", "Lebanon", "Iraq", "Iran", "Yemen", "Syria", "Cyprus"],
+      "rate_per_container_20ft": 3200,
+      "transit_days": "12-20",
+      "note": "Direct via Dubai, Dammam, or Aqaba ports"
+    },
+    {
+      "zone": "North Africa",
+      "countries": ["Egypt", "Morocco", "Algeria", "Libya", "Sudan"],
+      "rate_per_container_20ft": 3800,
+      "transit_days": "12-22",
+      "note": "Via Alexandria, Casablanca, or Tunis ports"
+    },
+    {
+      "zone": "North America — East Coast",
+      "countries": ["United States", "Canada"],
+      "rate_per_container_20ft": 4500,
+      "transit_days": "18-30",
+      "note": "Via New York, Norfolk, or Halifax ports"
+    },
+    {
+      "zone": "North America — West Coast / Gulf",
+      "countries": ["United States", "Canada"],
+      "rate_per_container_20ft": 5500,
+      "transit_days": "25-40",
+      "note": "Via Los Angeles, Long Beach, or Houston ports"
+    },
+    {
+      "zone": "Central America & Caribbean",
+      "countries": ["Mexico", "Panama", "Costa Rica", "Guatemala", "Dominican Republic", "Puerto Rico", "Jamaica", "Trinidad and Tobago", "Honduras", "El Salvador", "Nicaragua", "Cuba", "Haiti", "Bahamas", "Barbados"],
+      "rate_per_container_20ft": 5200,
+      "transit_days": "20-35",
+      "note": "Via Colon, Veracruz, or Kingston ports"
+    },
+    {
+      "zone": "South America — Atlantic",
+      "countries": ["Brazil", "Argentina", "Uruguay", "Paraguay"],
+      "rate_per_container_20ft": 6200,
+      "transit_days": "25-40",
+      "note": "Via Santos, Buenos Aires, or Montevideo ports"
+    },
+    {
+      "zone": "South America — Pacific",
+      "countries": ["Chile", "Peru", "Colombia", "Ecuador", "Venezuela", "Bolivia"],
+      "rate_per_container_20ft": 6800,
+      "transit_days": "30-45",
+      "note": "Via Callao, Buenaventura, or Valparaiso ports"
+    },
+    {
+      "zone": "Sub-Saharan Africa",
+      "countries": ["South Africa", "Nigeria", "Kenya", "Ghana", "Angola", "Tanzania", "Ethiopia", "Mozambique", "Ivory Coast", "Senegal", "Cameroon", "Uganda", "Zambia", "DRC", "Madagascar", "Mauritius"],
+      "rate_per_container_20ft": 7200,
+      "transit_days": "25-45",
+      "note": "Via Durban, Lagos, or Mombasa ports"
+    },
+    {
+      "zone": "Asia — South & Southeast",
+      "countries": ["India", "China", "Sri Lanka", "Bangladesh", "Pakistan", "Indonesia", "Vietnam", "Thailand", "Malaysia", "Philippines", "Singapore", "Taiwan", "South Korea", "Japan", "Myanmar", "Cambodia", "Laos", "Nepal", "Maldives"],
+      "rate_per_container_20ft": 5800,
+      "transit_days": "20-40",
+      "note": "Via Mumbai, Shanghai, or Singapore ports"
+    },
+    {
+      "zone": "Central Asia",
+      "countries": ["Russia", "Kazakhstan", "Uzbekistan", "Turkmenistan", "Kyrgyzstan", "Tajikistan", "Mongolia"],
+      "rate_per_container_20ft": 5200,
+      "transit_days": "20-35",
+      "note": "Via Novorossiysk or Poti ports + overland"
+    },
+    {
+      "zone": "Oceania",
+      "countries": ["Australia", "New Zealand", "Fiji", "Papua New Guinea"],
+      "rate_per_container_20ft": 7200,
+      "transit_days": "30-50",
+      "note": "Via Sydney, Melbourne, or Auckland ports"
+    }
+  ],
+  "last_updated": "2025-06-01",
+  "disclaimer": "Transportation costs are approximate estimates based on 20ft container freight rates from Izmir port. The number of containers required is calculated based on your order volume and thickness. Final shipping costs and container count will be confirmed by our logistics team once the order is confirmed. Rates are subject to change based on fuel prices, seasonal demand, and route availability."
+}

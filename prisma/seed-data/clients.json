@@ -1,0 +1,719 @@
+[
+    {
+        "id": "CLI-20260625-4B3966",
+        "email": "moatasales@gmail.com",
+        "name": "moata",
+        "password_hash": "$2y$10$8vtGBxydDtUttIdyRGEC5.EqFQ1DUKI5XItNCo1GexOCuhFmNlk0i",
+        "created_at": "2026-06-25 23:21:40",
+        "last_login": "2026-06-30 13:51:02",
+        "verified": true,
+        "activity_log": [
+            {
+                "action": "account_created",
+                "details": "",
+                "timestamp": "2026-06-25 23:21:40"
+            },
+            {
+                "action": "updated_profile",
+                "details": "Updated 1 profile field(s)",
+                "timestamp": "2026-06-25 23:21:46"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-25 23:30:39"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-25 23:36:06"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-25 23:52:29"
+            },
+            {
+                "action": "created_proforma",
+                "details": "Proforma DIJA-20260625-C954F8",
+                "timestamp": "2026-06-25 23:57:00"
+            },
+            {
+                "action": "sent_pdf",
+                "details": "Proforma DIJA-20260625-C954F8",
+                "timestamp": "2026-06-25 23:57:28"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-26 21:20:14"
+            },
+            {
+                "action": "updated_profile",
+                "details": "Updated 1 profile field(s)",
+                "timestamp": "2026-06-26 21:20:53"
+            },
+            {
+                "action": "updated_profile",
+                "details": "Updated 1 profile field(s)",
+                "timestamp": "2026-06-27 16:11:39"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 17:06:55"
+            },
+            {
+                "action": "sent_pdf",
+                "details": "Proforma DIJA-20260625-C954F8",
+                "timestamp": "2026-06-27 17:29:55"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 17:31:57"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 17:33:29"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 17:48:10"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 17:48:15"
+            },
+            {
+                "action": "email_verified",
+                "details": "",
+                "timestamp": "2026-06-27 18:10:26"
+            },
+            {
+                "action": "email_verified",
+                "details": "",
+                "timestamp": "2026-06-27 18:16:07"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 18:19:03"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 18:20:39"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 19:06:19"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 19:36:02"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 20:06:41"
+            },
+            {
+                "action": "updated_profile",
+                "details": "Updated 1 profile field(s)",
+                "timestamp": "2026-06-27 20:23:10"
+            },
+            {
+                "action": "updated_profile",
+                "details": "Updated 1 profile field(s)",
+                "timestamp": "2026-06-27 20:23:31"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 20:38:09"
+            },
+            {
+                "action": "deleted_proforma",
+                "details": "Proforma DIJA-20260625-C954F8",
+                "timestamp": "2026-06-27 20:38:17"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 20:53:46"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 20:57:27"
+            },
+            {
+                "action": "created_proforma",
+                "details": "Proforma DIJA-20260627-A01E22",
+                "timestamp": "2026-06-27 20:58:02"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 21:02:38"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 21:21:40"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 21:23:11"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 23:50:43"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-28 12:26:56"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-28 12:28:04"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-28 12:28:16"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-28 12:29:46"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-28 12:42:46"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-29 12:29:10"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-29 20:23:23"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-29 21:37:31"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-30 13:51:02"
+            },
+            {
+                "action": "updated_profile",
+                "details": "Updated 1 profile field(s)",
+                "timestamp": "2026-06-30 14:37:55"
+            },
+            {
+                "action": "updated_profile",
+                "details": "Updated 1 profile field(s)",
+                "timestamp": "2026-06-30 14:38:01"
+            }
+        ],
+        "last_activity": "2026-06-30 14:38:01",
+        "full_name": "Moatessem Billah Ayachi",
+        "job_title": "manager",
+        "city": "manager",
+        "google_id": "110112192633830668896",
+        "about": "hello",
+        "company_type": "Importer \/ Distributor",
+        "vat_id": "2285789822857898"
+    },
+    {
+        "id": "CLI-20260625-BAEF74",
+        "email": "probafix5416@test.com",
+        "name": "ProFix",
+        "password_hash": "$2y$10$.gScFwf1nG546h656L1b0OVYQn3JJFdM4Qkbh5ma5y..rC\/O8RG\/W",
+        "created_at": "2026-06-25 23:23:22",
+        "last_login": "2026-06-25 23:29:03",
+        "verified": true,
+        "activity_log": [
+            {
+                "action": "account_created",
+                "details": "",
+                "timestamp": "2026-06-25 23:23:22"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-25 23:23:22"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-25 23:28:58"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-25 23:29:03"
+            }
+        ],
+        "last_activity": "2026-06-25 23:29:03"
+    },
+    {
+        "id": "CLI-20260625-D19879",
+        "email": "navtest40050@test.com",
+        "name": "Nav Test",
+        "password_hash": "$2y$10$AdFwHJ06Yj7Nv1AOhbOsIeF3n.CJWttzZq7WSbeRouchTYkvhBLni",
+        "created_at": "2026-06-25 23:24:06",
+        "last_login": "2026-06-25 23:24:06",
+        "verified": true,
+        "activity_log": [
+            {
+                "action": "account_created",
+                "details": "",
+                "timestamp": "2026-06-25 23:24:06"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-25 23:24:06"
+            }
+        ],
+        "last_activity": "2026-06-25 23:24:06"
+    },
+    {
+        "id": "CLI-20260625-37A575",
+        "email": "finalnav24241@test.com",
+        "name": "Final Nav",
+        "password_hash": "$2y$10$WKuESeD59tqGw8DMUEW2XOT7TQMFjQmAAZ\/zJrK3uISmNdhxSUWZG",
+        "created_at": "2026-06-25 23:24:44",
+        "last_login": "2026-06-25 23:24:44",
+        "verified": true,
+        "activity_log": [
+            {
+                "action": "account_created",
+                "details": "",
+                "timestamp": "2026-06-25 23:24:44"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-25 23:24:44"
+            },
+            {
+                "action": "created_proforma",
+                "details": "Proforma DIJA-20260625-CA99D6",
+                "timestamp": "2026-06-25 23:24:44"
+            }
+        ],
+        "last_activity": "2026-06-25 23:24:44"
+    },
+    {
+        "id": "CLI-20260627-9E723D",
+        "email": "dijastones@gmail.com",
+        "name": "CACAROT007",
+        "password_hash": "$2y$10$Wyslo9Ud3welbK3G0oZbkOBMOEEOZl1hI20CaLo.Kf3GJ\/vPHA8CC",
+        "created_at": "2026-06-27 17:20:32",
+        "last_login": "2026-07-01 12:30:24",
+        "verified": true,
+        "activity_log": [
+            {
+                "action": "account_created",
+                "details": "",
+                "timestamp": "2026-06-27 17:20:32"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 17:35:15"
+            },
+            {
+                "action": "created_proforma",
+                "details": "Proforma DIJA-20260627-A0D1FB",
+                "timestamp": "2026-06-27 17:35:54"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 17:37:38"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 17:44:21"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 17:45:10"
+            },
+            {
+                "action": "sent_pdf",
+                "details": "Proforma DIJA-20260627-A0D1FB",
+                "timestamp": "2026-06-27 17:52:49"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 18:21:15"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 18:35:59"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 18:37:26"
+            },
+            {
+                "action": "created_proforma",
+                "details": "Proforma DIJA-20260627-809AF3",
+                "timestamp": "2026-06-27 18:38:16"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 19:59:47"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 20:00:55"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 20:09:25"
+            },
+            {
+                "action": "updated_profile",
+                "details": "Updated 1 profile field(s)",
+                "timestamp": "2026-06-27 20:09:41"
+            },
+            {
+                "action": "deleted_proforma",
+                "details": "Proforma DIJA-20260627-A0D1FB",
+                "timestamp": "2026-06-27 20:10:01"
+            },
+            {
+                "action": "deleted_proforma",
+                "details": "Proforma DIJA-20260627-809AF3",
+                "timestamp": "2026-06-27 20:10:05"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 20:17:47"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 20:47:22"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 20:52:39"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 21:30:34"
+            },
+            {
+                "action": "created_proforma",
+                "details": "Proforma DIJA-20260627-F94D21",
+                "timestamp": "2026-06-27 21:39:43"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 22:18:55"
+            },
+            {
+                "action": "deleted_proforma",
+                "details": "Proforma DIJA-20260627-F94D21",
+                "timestamp": "2026-06-27 22:45:33"
+            },
+            {
+                "action": "created_proforma",
+                "details": "Proforma DIJA-20260627-0E7E9F",
+                "timestamp": "2026-06-27 22:48:16"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 23:53:20"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 23:54:15"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-07-01 12:30:24"
+            },
+            {
+                "action": "updated_profile",
+                "details": "Updated 1 profile field(s)",
+                "timestamp": "2026-07-01 12:31:08"
+            },
+            {
+                "action": "created_proforma",
+                "details": "Proforma DIJA-20260701-5E0A30",
+                "timestamp": "2026-07-01 12:32:37"
+            }
+        ],
+        "last_activity": "2026-07-01 12:32:37",
+        "google_id": "114952323067561513371",
+        "full_name": "MO2",
+        "address": "QATAR"
+    },
+    {
+        "id": "CLI-20260627-DE4B4A",
+        "email": "samzmm356@gmail.com",
+        "name": "sAM ZMM",
+        "password_hash": "$2y$10$rgUFn4CjAxyS06mWaNXVOOpDRb0pdXc8v5u4IaSztSoU\/3XTmae12",
+        "created_at": "2026-06-27 19:42:22",
+        "last_login": "2026-06-27 21:24:19",
+        "verified": true,
+        "activity_log": [
+            {
+                "action": "email_verified",
+                "details": "",
+                "timestamp": "2026-06-27 19:42:22"
+            },
+            {
+                "action": "password_set",
+                "details": "",
+                "timestamp": "2026-06-27 19:42:37"
+            },
+            {
+                "action": "signed_in",
+                "details": "",
+                "timestamp": "2026-06-27 19:43:07"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 20:01:42"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 20:12:32"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 20:20:08"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 20:31:27"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 20:32:06"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 21:24:19"
+            }
+        ],
+        "last_activity": "2026-06-27 21:24:19",
+        "google_id": "115434780243064566465"
+    },
+    {
+        "id": "CLI-20260627-243D14",
+        "email": "ayachisam84@gmail.com",
+        "name": "Sam Ayachi",
+        "google_id": "106470345356678194778",
+        "verified": true,
+        "created_at": "2026-06-27 20:32:41",
+        "last_login": "2026-06-27 22:12:36",
+        "activity_log": [
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 20:32:41"
+            },
+            {
+                "action": "password_set",
+                "details": "",
+                "timestamp": "2026-06-27 20:32:49"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 20:48:08"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 22:12:36"
+            }
+        ],
+        "last_activity": "2026-06-27 22:12:36",
+        "password_hash": "$2y$10$1jFXi05zmEF2VPGi5VE5z..iYOF3XUda7dYScaj3mykJ4ZcpK96pW"
+    },
+    {
+        "id": "CLI-20260627-12A898",
+        "email": "moatassem.ayachi@gmail.com",
+        "name": "Sam Ayachi",
+        "google_id": "102039815022142197464",
+        "verified": true,
+        "created_at": "2026-06-27 20:34:52",
+        "last_login": "2026-06-30 17:38:00",
+        "activity_log": [
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 20:34:52"
+            },
+            {
+                "action": "password_set",
+                "details": "",
+                "timestamp": "2026-06-27 20:35:02"
+            },
+            {
+                "action": "created_proforma",
+                "details": "Proforma DIJA-20260627-7B6AE3",
+                "timestamp": "2026-06-27 20:35:51"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-29 21:02:57"
+            },
+            {
+                "action": "created_proforma",
+                "details": "Proforma DIJA-20260629-03BE4E",
+                "timestamp": "2026-06-29 21:04:48"
+            },
+            {
+                "action": "sent_pdf",
+                "details": "Proforma DIJA-20260629-03BE4E",
+                "timestamp": "2026-06-29 21:12:19"
+            },
+            {
+                "action": "sent_pdf",
+                "details": "Proforma DIJA-20260629-03BE4E",
+                "timestamp": "2026-06-29 21:45:30"
+            },
+            {
+                "action": "sent_pdf",
+                "details": "Proforma DIJA-20260629-03BE4E",
+                "timestamp": "2026-06-29 22:24:23"
+            },
+            {
+                "action": "sent_pdf",
+                "details": "Proforma DIJA-20260629-03BE4E",
+                "timestamp": "2026-06-29 22:24:45"
+            },
+            {
+                "action": "sent_pdf",
+                "details": "Proforma DIJA-20260629-03BE4E",
+                "timestamp": "2026-06-29 22:25:06"
+            },
+            {
+                "action": "sent_pdf",
+                "details": "Proforma DIJA-20260629-03BE4E",
+                "timestamp": "2026-06-29 22:31:49"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-30 17:38:00"
+            }
+        ],
+        "last_activity": "2026-06-30 17:38:00",
+        "password_hash": "$2y$10$s4lB1G3kAwN469wOce3o0.6MhSTpHciXI0Tp9EUC6.l6Syj96typa"
+    },
+    {
+        "id": "CLI-20260627-425536",
+        "email": "ayachimoatassembillah@gmail.com",
+        "name": "Moatassem Billah Ayachi",
+        "google_id": "103473545624307780341",
+        "verified": true,
+        "created_at": "2026-06-27 21:42:16",
+        "last_login": "2026-06-28 00:08:23",
+        "activity_log": [
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 21:42:16"
+            },
+            {
+                "action": "password_set",
+                "details": "",
+                "timestamp": "2026-06-27 21:42:24"
+            },
+            {
+                "action": "created_proforma",
+                "details": "Proforma DIJA-20260627-3118A9",
+                "timestamp": "2026-06-27 21:43:31"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-27 22:22:34"
+            },
+            {
+                "action": "created_proforma",
+                "details": "Proforma DIJA-20260627-184407",
+                "timestamp": "2026-06-27 22:24:17"
+            },
+            {
+                "action": "updated_proforma",
+                "details": "Proforma DIJA-20260627-184407",
+                "timestamp": "2026-06-27 22:26:41"
+            },
+            {
+                "action": "created_proforma",
+                "details": "Proforma DIJA-20260627-EB643E",
+                "timestamp": "2026-06-27 22:41:34"
+            },
+            {
+                "action": "updated_proforma",
+                "details": "Proforma DIJA-20260627-EB643E",
+                "timestamp": "2026-06-27 23:11:05"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-28 00:01:20"
+            },
+            {
+                "action": "signed_in_via_google",
+                "details": "",
+                "timestamp": "2026-06-28 00:08:23"
+            }
+        ],
+        "last_activity": "2026-06-28 00:08:23",
+        "password_hash": "$2y$10$QBXFlxADh7Dvsat8isJEy.KEu8hdZ55mn54qNFPvLCCFpxu8WFza2"
+    }
+]

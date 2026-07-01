@@ -1,34 +1,31 @@
 import Link from "next/link";
+import { prisma } from "@/lib/prisma";
+import { stoneImg } from "@/lib/img";
 
-/* Featured content is hard-coded for Phase 0 so the home page renders real
-   content. Phase 1 replaces this with data pulled from the database. */
-const featured = [
-  { id: "calacatta-oro", n: "Calacatta Oro", ci: "Carrara", c: "Italy", img: "/assets/uploads/6a39ac809e345-01ea37c6.png" },
-  { id: "black-aziza", n: "Black Aziza", ci: "Ain Drahem", c: "Tunisia", img: "/assets/uploads/6a44e08861714-d2fc3585.jpg" },
-  { id: "blue-bahia-granite", n: "Blue Bahia Granite", ci: "Feira de Santana", c: "Brazil", img: "" },
-  { id: "taj-mahal-quartzite", n: "Taj Mahal Quartzite", ci: "Ceará", c: "Brazil", img: "" },
+// Signature materials shown on the home page, in this order.
+const FEATURED_IDS = [
+  "calacatta-oro",
+  "black-aziza",
+  "blue-bahia-granite",
+  "taj-mahal-quartzite",
 ];
 
-const posts = [
-  {
-    id: "what-47-countries-taught-me",
-    t: "What 47 Countries Taught Me About Stone",
-    c: "Craft",
-    r: "9 min",
-    e: "The one thing every quarry in the world has in common, and why it matters more than any certificate.",
-    img: "/assets/uploads/6a3c27036ffc5-fa646658.png",
-  },
-  {
-    id: "watching-a-20-ton-block-being-cut",
-    t: "The First Time I Watched a 20-Ton Block Being Cut",
-    c: "Craft",
-    r: "8 min",
-    e: "The moment the block splits is loud, dusty, and terrifying. And then you see what has been hidden inside for 200 million years.",
-    img: "",
-  },
-];
+export default async function Home() {
+  // Data now comes from the database (migrated from the old JSON files).
+  const featuredRows = await prisma.stone.findMany({
+    where: { id: { in: FEATURED_IDS } },
+    select: { id: true, n: true, ci: true, c: true, g: true },
+  });
+  // Preserve the intended display order (findMany `in` doesn't guarantee it).
+  const featured = FEATURED_IDS.map(
+    (id) => featuredRows.find((s) => s.id === id)!
+  ).filter(Boolean);
 
-export default function Home() {
+  const posts = await prisma.post.findMany({
+    take: 2,
+    select: { id: true, t: true, c: true, r: true, e: true, img: true },
+  });
+
   return (
     <>
       <section className="hero">
@@ -135,8 +132,8 @@ export default function Home() {
                 className="card-swatch"
               >
                 <div className="card-img">
-                  {s.img ? (
-                    <img src={s.img} alt={s.n} loading="lazy" />
+                  {stoneImg(s) ? (
+                    <img src={stoneImg(s)!} alt={s.n} loading="lazy" />
                   ) : (
                     <div
                       style={{

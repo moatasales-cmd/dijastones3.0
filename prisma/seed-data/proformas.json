@@ -1,0 +1,1309 @@
+[
+    {
+        "id": "DIJA-20260625-CA99D6",
+        "created_at": "2026-06-25 23:24:44",
+        "valid_until": "2026-07-09",
+        "unit_system": "sqm",
+        "client_id": "CLI-20260625-37A575",
+        "client": {
+            "name": "Final Nav",
+            "email": "finalnav24241@test.com",
+            "company": "",
+            "phone": "",
+            "address": "",
+            "city": "",
+            "country": ""
+        },
+        "destination_country": "US",
+        "destination_port": "New York",
+        "incoterm": "FOB",
+        "payment_term": "T\/T",
+        "shipping_zone": "",
+        "shipping_rate_per_container": 0,
+        "total_containers": 1,
+        "container_detail": [
+            {
+                "thickness": "2 cm",
+                "area_m2": 0.18,
+                "capacity_m2": 450,
+                "containers": 1
+            }
+        ],
+        "per_origin_shipping": [
+            {
+                "port_id": "la-spezia",
+                "port_name": "Port of La Spezia \/ Carrara",
+                "port_country": "Italy",
+                "port_city": "La Spezia",
+                "total_m2": 0.18,
+                "containers": 1,
+                "rate_per_container": 9999,
+                "ocean_freight": 9999,
+                "thickness_detail": [
+                    {
+                        "thickness": "2 cm",
+                        "area_m2": 0.18,
+                        "capacity_m2": 450,
+                        "equiv_m2_2cm": 0.18
+                    }
+                ]
+            }
+        ],
+        "shipping_note": "",
+        "shipping_disclaimer": "Transportation costs are approximate estimates based on 20ft container freight rates from Izmir port. The number of containers required is calculated based on your order volume and thickness. Final shipping costs and container count will be confirmed by our logistics team once the order is confirmed. Rates are subject to change based on fuel prices, seasonal demand, and route availability.",
+        "total_m2": 0.18,
+        "subtotal": 26.78,
+        "shipping_cost": 0,
+        "seller_freight": false,
+        "cost_breakdown": [
+            {
+                "code": "packing",
+                "label": "Packing & Crating",
+                "amount": 0.54,
+                "included": true
+            },
+            {
+                "code": "inland",
+                "label": "Inland Freight to Port",
+                "amount": 300,
+                "included": true
+            },
+            {
+                "code": "customs",
+                "label": "Export Customs Clearance",
+                "amount": 200,
+                "included": true
+            },
+            {
+                "code": "loading",
+                "label": "Port Loading",
+                "amount": 150,
+                "included": true
+            },
+            {
+                "code": "freight",
+                "label": "Ocean Freight",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "insurance",
+                "label": "Marine Insurance",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "import",
+                "label": "Import Duties & Taxes (5% of CIF)",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "delivery",
+                "label": "Destination Delivery",
+                "amount": 0,
+                "included": false
+            }
+        ],
+        "incoterm_label": "Free on Board",
+        "total_additional": 650.54,
+        "grand_total": 677.32,
+        "items": [
+            {
+                "stone_id": "calacatta-oro",
+                "stone_name": "Calacatta Oro",
+                "stone_type": "Marble",
+                "stone_origin": "Italy",
+                "origin_port": "la-spezia",
+                "stone_image": "\/assets\/uploads\/6a39ac809e345-01ea37c6.png",
+                "grade": "Standard",
+                "finish": "Polished",
+                "category": "Custom Size",
+                "size_label": "60\\u00d730 cm (Custom)",
+                "width_cm": 60,
+                "height_cm": 30,
+                "is_custom": true,
+                "area_m2": 0.18,
+                "qty": 1,
+                "total_m2": 0.18,
+                "thickness": "2 cm",
+                "base_price": 124,
+                "thickness_multiplier": 1,
+                "size_multiplier": 1.2,
+                "finish_multiplier": 1,
+                "adjusted_unit_price": 148.8,
+                "line_total": 26.78
+            }
+        ],
+        "notes": "",
+        "status": "draft"
+    },
+    {
+        "id": "DIJA-20260627-7B6AE3",
+        "created_at": "2026-06-27 20:35:51",
+        "valid_until": "2026-07-11",
+        "unit_system": "sqm",
+        "client_id": "CLI-20260627-12A898",
+        "client": {
+            "name": "Sam Ayachi",
+            "email": "moatassem.ayachi@gmail.com",
+            "company": "Sam Ayachi",
+            "phone": "Sam Ayachi",
+            "address": "Sam Ayachi",
+            "city": "Sam Ayachi",
+            "country": "Sam Ayachi"
+        },
+        "destination_country": "Azerbaijan",
+        "destination_port": "Baku (Caspian)",
+        "incoterm": "DDP",
+        "payment_term": "TT_30_70",
+        "shipping_zone": "Eastern Europe",
+        "shipping_rate_per_container": 3500,
+        "total_containers": 1,
+        "container_detail": [
+            {
+                "origin_port": "Port of La Spezia \/ Carrara",
+                "thickness": "2 cm",
+                "area_m2": 450,
+                "capacity_m2": 450,
+                "containers": 1
+            }
+        ],
+        "per_origin_shipping": [
+            {
+                "port_id": "la-spezia",
+                "port_name": "Port of La Spezia \/ Carrara",
+                "port_country": "Italy",
+                "port_city": "La Spezia",
+                "total_m2": 450,
+                "containers": 1,
+                "rate_per_container": 3300,
+                "ocean_freight": 3300,
+                "thickness_detail": [
+                    {
+                        "thickness": "2 cm",
+                        "area_m2": 450,
+                        "capacity_m2": 450,
+                        "equiv_m2_2cm": 450
+                    }
+                ]
+            }
+        ],
+        "shipping_note": "Via European ports + overland — Transit: 14-25",
+        "shipping_disclaimer": "Transportation costs are approximate estimates based on 20ft container freight rates from Izmir port. The number of containers required is calculated based on your order volume and thickness. Final shipping costs and container count will be confirmed by our logistics team once the order is confirmed. Rates are subject to change based on fuel prices, seasonal demand, and route availability.",
+        "total_m2": 450,
+        "total_sqf": 4843.76,
+        "subtotal": 48510,
+        "shipping_cost": 3300,
+        "seller_freight": true,
+        "cost_breakdown": [
+            {
+                "code": "packing",
+                "label": "Packing & Crating",
+                "amount": 970.2,
+                "included": true
+            },
+            {
+                "code": "inland",
+                "label": "Inland Freight to Port",
+                "amount": 300,
+                "included": true
+            },
+            {
+                "code": "customs",
+                "label": "Export Customs Clearance",
+                "amount": 200,
+                "included": true
+            },
+            {
+                "code": "loading",
+                "label": "Port Loading",
+                "amount": 150,
+                "included": true
+            },
+            {
+                "code": "freight",
+                "label": "Ocean Freight",
+                "amount": 3300,
+                "included": true
+            },
+            {
+                "code": "insurance",
+                "label": "Marine Insurance",
+                "amount": 259.05,
+                "included": true
+            },
+            {
+                "code": "import",
+                "label": "Import Duties & Taxes (5% of CIF)",
+                "amount": 2603.45,
+                "included": true
+            },
+            {
+                "code": "delivery",
+                "label": "Destination Delivery",
+                "amount": 500,
+                "included": true
+            }
+        ],
+        "incoterm_label": "Delivered Duty Paid",
+        "total_additional": 8282.7,
+        "grand_total": 56792.7,
+        "items": [
+            {
+                "stone_id": "rosso-collemandina",
+                "stone_name": "Rosso Collemandina",
+                "stone_type": "Marble",
+                "stone_origin": "Italy",
+                "origin_port": "la-spezia",
+                "stone_image": "",
+                "grade": "Standard",
+                "finish": "Polished",
+                "stone_category_id": "tiles-medium",
+                "stone_size_idx": "6",
+                "category": "Medium Tiles \/ Large Format",
+                "size_label": "40×80 cm",
+                "width_cm": 40,
+                "height_cm": 80,
+                "is_custom": false,
+                "is_linear": false,
+                "entered_qty": 450,
+                "area_m2": 0.32,
+                "pieces": 1407,
+                "total_m2": 450,
+                "thickness": "2 cm",
+                "base_price": 98,
+                "thickness_multiplier": 1,
+                "size_multiplier": 1.1,
+                "finish_multiplier": 1,
+                "adjusted_unit_price": 107.8,
+                "line_total": 48510
+            }
+        ],
+        "notes": "Sam Ayachi",
+        "status": "sent"
+    },
+    {
+        "id": "DIJA-20260627-A01E22",
+        "created_at": "2026-06-27 20:58:02",
+        "valid_until": "2026-07-11",
+        "unit_system": "sqm",
+        "client_id": "CLI-20260625-4B3966",
+        "client": {
+            "name": "moata",
+            "email": "moatasales@gmail.com",
+            "company": "moata",
+            "phone": "moata",
+            "address": "moata",
+            "city": "manager",
+            "country": "moata"
+        },
+        "destination_country": "Belgium",
+        "destination_port": "Antwerp",
+        "incoterm": "EXW",
+        "payment_term": "LC_SIGHT",
+        "shipping_zone": "Western Europe",
+        "shipping_rate_per_container": 2800,
+        "total_containers": 1,
+        "container_detail": [
+            {
+                "origin_port": "Port of Marseille \/ Sete",
+                "thickness": "3 cm",
+                "area_m2": 300,
+                "capacity_m2": 300,
+                "containers": 1
+            }
+        ],
+        "per_origin_shipping": [
+            {
+                "port_id": "marseille",
+                "port_name": "Port of Marseille \/ Sete",
+                "port_country": "France",
+                "port_city": "Marseille",
+                "total_m2": 300,
+                "containers": 1,
+                "rate_per_container": 2300,
+                "ocean_freight": 2300,
+                "thickness_detail": [
+                    {
+                        "thickness": "3 cm",
+                        "area_m2": 300,
+                        "capacity_m2": 300,
+                        "equiv_m2_2cm": 450
+                    }
+                ]
+            }
+        ],
+        "shipping_note": "Via main European ports + overland — Transit: 10-18",
+        "shipping_disclaimer": "Transportation costs are approximate estimates based on 20ft container freight rates from Izmir port. The number of containers required is calculated based on your order volume and thickness. Final shipping costs and container count will be confirmed by our logistics team once the order is confirmed. Rates are subject to change based on fuel prices, seasonal demand, and route availability.",
+        "total_m2": 300,
+        "total_sqf": 3229.17,
+        "subtotal": 28689,
+        "shipping_cost": 0,
+        "seller_freight": false,
+        "cost_breakdown": [
+            {
+                "code": "packing",
+                "label": "Packing & Crating",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "inland",
+                "label": "Inland Freight to Port",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "customs",
+                "label": "Export Customs Clearance",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "loading",
+                "label": "Port Loading",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "freight",
+                "label": "Ocean Freight",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "insurance",
+                "label": "Marine Insurance",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "import",
+                "label": "Import Duties & Taxes (5% of CIF)",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "delivery",
+                "label": "Destination Delivery",
+                "amount": 0,
+                "included": false
+            }
+        ],
+        "incoterm_label": "Ex Works",
+        "total_additional": 0,
+        "grand_total": 28689,
+        "items": [
+            {
+                "stone_id": "pierre-massangis",
+                "stone_name": "Pierre de Massangis",
+                "stone_type": "Limestone",
+                "stone_origin": "France",
+                "origin_port": "marseille",
+                "stone_image": "",
+                "grade": "Premium",
+                "finish": "Honed",
+                "stone_category_id": "slabs-jumbo",
+                "stone_size_idx": "3",
+                "category": "Jumbo Slabs",
+                "size_label": "320×180 cm",
+                "width_cm": 320,
+                "height_cm": 180,
+                "is_custom": false,
+                "is_linear": false,
+                "entered_qty": 300,
+                "area_m2": 5.76,
+                "pieces": 53,
+                "total_m2": 300,
+                "thickness": "3 cm",
+                "base_price": 66,
+                "thickness_multiplier": 1.15,
+                "size_multiplier": 1.2,
+                "finish_multiplier": 1.05,
+                "adjusted_unit_price": 95.63,
+                "line_total": 28689
+            }
+        ],
+        "notes": "moata",
+        "status": "draft"
+    },
+    {
+        "id": "DIJA-20260627-3118A9",
+        "created_at": "2026-06-27 21:43:31",
+        "valid_until": "2026-07-11",
+        "unit_system": "sqf",
+        "client_id": "CLI-20260627-425536",
+        "client": {
+            "name": "Moatassem Billah Ayachi",
+            "email": "ayachimoatassembillah@gmail.com",
+            "company": "test once for all",
+            "phone": "test once for all",
+            "address": "test once for all",
+            "city": "test once for all",
+            "country": "test once for all"
+        },
+        "destination_country": "United States",
+        "destination_port": "Miami",
+        "incoterm": "FOB",
+        "payment_term": "LC_SIGHT",
+        "shipping_zone": "North America — East Coast",
+        "shipping_rate_per_container": 4500,
+        "total_containers": 1,
+        "container_detail": [
+            {
+                "origin_port": "Port of Almeria \/ Alicante",
+                "thickness": "3 cm",
+                "area_m2": 278.71,
+                "capacity_m2": 300,
+                "containers": 1
+            }
+        ],
+        "per_origin_shipping": [
+            {
+                "port_id": "almeria",
+                "port_name": "Port of Almeria \/ Alicante",
+                "port_country": "Spain",
+                "port_city": "Almeria",
+                "total_m2": 278.71,
+                "containers": 1,
+                "rate_per_container": 4700,
+                "ocean_freight": 4700,
+                "thickness_detail": [
+                    {
+                        "thickness": "3 cm",
+                        "area_m2": 278.71,
+                        "capacity_m2": 300,
+                        "equiv_m2_2cm": 418.06
+                    }
+                ]
+            }
+        ],
+        "shipping_note": "Via New York, Norfolk, or Halifax ports — Transit: 18-30",
+        "shipping_disclaimer": "Transportation costs are approximate estimates based on 20ft container freight rates from Izmir port. The number of containers required is calculated based on your order volume and thickness. Final shipping costs and container count will be confirmed by our logistics team once the order is confirmed. Rates are subject to change based on fuel prices, seasonal demand, and route availability.",
+        "total_m2": 278.70938971933964,
+        "total_sqf": 3000,
+        "subtotal": 20802.87,
+        "shipping_cost": 0,
+        "seller_freight": false,
+        "cost_breakdown": [
+            {
+                "code": "packing",
+                "label": "Packing & Crating",
+                "amount": 416.06,
+                "included": true
+            },
+            {
+                "code": "inland",
+                "label": "Inland Freight to Port",
+                "amount": 300,
+                "included": true
+            },
+            {
+                "code": "customs",
+                "label": "Export Customs Clearance",
+                "amount": 200,
+                "included": true
+            },
+            {
+                "code": "loading",
+                "label": "Port Loading",
+                "amount": 150,
+                "included": true
+            },
+            {
+                "code": "freight",
+                "label": "Ocean Freight",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "insurance",
+                "label": "Marine Insurance",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "import",
+                "label": "Import Duties & Taxes (5% of CIF)",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "delivery",
+                "label": "Destination Delivery",
+                "amount": 0,
+                "included": false
+            }
+        ],
+        "incoterm_label": "Free on Board",
+        "total_additional": 1066.06,
+        "grand_total": 21868.93,
+        "items": [
+            {
+                "stone_id": "amarillo-triana",
+                "stone_name": "Amarillo Triana",
+                "stone_type": "Marble",
+                "stone_origin": "Spain",
+                "origin_port": "almeria",
+                "stone_image": "",
+                "grade": "Standard",
+                "finish": "Polished",
+                "stone_category_id": "tiles-medium",
+                "stone_size_idx": "4",
+                "category": "Medium Tiles \/ Large Format",
+                "size_label": "90×90 cm",
+                "width_cm": 90,
+                "height_cm": 90,
+                "is_custom": false,
+                "is_linear": false,
+                "entered_qty": 3000,
+                "area_m2": 0.81,
+                "pieces": 345,
+                "total_m2": 278.7094,
+                "thickness": "3 cm",
+                "base_price": 59,
+                "thickness_multiplier": 1.15,
+                "size_multiplier": 1.1,
+                "finish_multiplier": 1,
+                "adjusted_unit_price": 74.64,
+                "line_total": 20802.87
+            }
+        ],
+        "notes": "test once for all",
+        "status": "draft"
+    },
+    {
+        "id": "DIJA-20260627-184407",
+        "created_at": "2026-06-27 22:24:17",
+        "valid_until": "2026-07-11",
+        "unit_system": "sqf",
+        "client_id": "CLI-20260627-425536",
+        "client": {
+            "name": "Moatassem Billah Ayachi",
+            "email": "ayachimoatassembillah@gmail.com",
+            "company": "can i ppc",
+            "phone": "can i ppc",
+            "address": "can i ppc",
+            "city": "can i ppc",
+            "country": "can i ppc"
+        },
+        "destination_country": "United Arab Emirates",
+        "destination_port": "Jebel Ali \/ Dubai",
+        "incoterm": "FOB",
+        "payment_term": "TT_30_70",
+        "shipping_zone": "Middle East",
+        "shipping_rate_per_container": 3200,
+        "total_containers": 1,
+        "container_detail": [
+            {
+                "origin_port": "Port of Lisbon",
+                "thickness": "2 cm",
+                "area_m2": 41.43,
+                "capacity_m2": 450,
+                "containers": 1
+            }
+        ],
+        "per_origin_shipping": [
+            {
+                "port_id": "lisbon",
+                "port_name": "Port of Lisbon",
+                "port_country": "Portugal",
+                "port_city": "Lisbon",
+                "total_m2": 41.43,
+                "containers": 1,
+                "rate_per_container": 4200,
+                "ocean_freight": 4200,
+                "thickness_detail": [
+                    {
+                        "thickness": "2 cm",
+                        "area_m2": 41.43,
+                        "capacity_m2": 450,
+                        "equiv_m2_2cm": 41.43
+                    }
+                ]
+            }
+        ],
+        "shipping_note": "Direct via Dubai, Dammam, or Aqaba ports — Transit: 12-20",
+        "shipping_disclaimer": "Transportation costs are approximate estimates based on 20ft container freight rates from Izmir port. The number of containers required is calculated based on your order volume and thickness. Final shipping costs and container count will be confirmed by our logistics team once the order is confirmed. Rates are subject to change based on fuel prices, seasonal demand, and route availability.",
+        "total_m2": 41.428757234831245,
+        "total_sqf": 445.94,
+        "subtotal": 3110.47,
+        "shipping_cost": 0,
+        "seller_freight": false,
+        "cost_breakdown": [
+            {
+                "code": "packing",
+                "label": "Packing & Crating",
+                "amount": 62.21,
+                "included": true
+            },
+            {
+                "code": "inland",
+                "label": "Inland Freight to Port",
+                "amount": 300,
+                "included": true
+            },
+            {
+                "code": "customs",
+                "label": "Export Customs Clearance",
+                "amount": 200,
+                "included": true
+            },
+            {
+                "code": "loading",
+                "label": "Port Loading",
+                "amount": 150,
+                "included": true
+            },
+            {
+                "code": "freight",
+                "label": "Ocean Freight",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "insurance",
+                "label": "Marine Insurance",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "import",
+                "label": "Import Duties & Taxes (5% of CIF)",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "delivery",
+                "label": "Destination Delivery",
+                "amount": 0,
+                "included": false
+            }
+        ],
+        "incoterm_label": "Free on Board",
+        "total_additional": 712.21,
+        "grand_total": 3822.68,
+        "items": [
+            {
+                "stone_id": "moca-creme",
+                "stone_name": "Moca Creme",
+                "stone_type": "Limestone",
+                "stone_origin": "Portugal",
+                "origin_port": "lisbon",
+                "stone_image": "",
+                "grade": "Standard",
+                "finish": "Honed",
+                "stone_category_id": "tiles-medium",
+                "stone_size_idx": "11",
+                "category": "Medium Tiles \/ Large Format",
+                "size_label": "15×120 cm (plank)",
+                "width_cm": 15,
+                "height_cm": 120,
+                "is_custom": false,
+                "is_linear": false,
+                "entered_qty": 445.935,
+                "area_m2": 0.18,
+                "pieces": 231,
+                "total_m2": 41.4288,
+                "thickness": "2 cm",
+                "base_price": 65,
+                "thickness_multiplier": 1,
+                "size_multiplier": 1.1,
+                "finish_multiplier": 1.05,
+                "adjusted_unit_price": 75.08,
+                "line_total": 3110.47
+            }
+        ],
+        "notes": "acan i ppc",
+        "status": "draft"
+    },
+    {
+        "id": "DIJA-20260627-EB643E",
+        "created_at": "2026-06-27 22:41:34",
+        "valid_until": "2026-07-11",
+        "unit_system": "sqf",
+        "client_id": "CLI-20260627-425536",
+        "client": {
+            "name": "Moatassem Billah Ayachi",
+            "email": "ayachimoatassembillah@gmail.com",
+            "company": "test once for all",
+            "phone": "",
+            "address": "",
+            "city": "",
+            "country": ""
+        },
+        "destination_country": "Angola",
+        "destination_port": "Luanda",
+        "incoterm": "FCA",
+        "payment_term": "TT_30_70",
+        "shipping_zone": "Sub-Saharan Africa",
+        "shipping_rate_per_container": 7200,
+        "total_containers": 1,
+        "container_detail": [
+            {
+                "origin_port": "Port of Piraeus",
+                "thickness": "2 cm",
+                "area_m2": 27.62,
+                "capacity_m2": 450,
+                "containers": 1
+            }
+        ],
+        "per_origin_shipping": [
+            {
+                "port_id": "piraeus",
+                "port_name": "Port of Piraeus",
+                "port_country": "Greece",
+                "port_city": "Piraeus",
+                "total_m2": 27.62,
+                "containers": 1,
+                "rate_per_container": 7100,
+                "ocean_freight": 7100,
+                "thickness_detail": [
+                    {
+                        "thickness": "2 cm",
+                        "area_m2": 27.62,
+                        "capacity_m2": 450,
+                        "equiv_m2_2cm": 27.62
+                    }
+                ]
+            }
+        ],
+        "shipping_note": "Via Durban, Lagos, or Mombasa ports — Transit: 25-45",
+        "shipping_disclaimer": "Transportation costs are approximate estimates based on 20ft container freight rates from Izmir port. The number of containers required is calculated based on your order volume and thickness. Final shipping costs and container count will be confirmed by our logistics team once the order is confirmed. Rates are subject to change based on fuel prices, seasonal demand, and route availability.",
+        "total_m2": 27.619171489887496,
+        "total_sqf": 297.29,
+        "subtotal": 2582.39,
+        "shipping_cost": 0,
+        "seller_freight": false,
+        "cost_breakdown": [
+            {
+                "code": "packing",
+                "label": "Packing & Crating",
+                "amount": 51.65,
+                "included": true
+            },
+            {
+                "code": "inland",
+                "label": "Inland Freight to Port",
+                "amount": 300,
+                "included": true
+            },
+            {
+                "code": "customs",
+                "label": "Export Customs Clearance",
+                "amount": 200,
+                "included": true
+            },
+            {
+                "code": "loading",
+                "label": "Port Loading",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "freight",
+                "label": "Ocean Freight",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "insurance",
+                "label": "Marine Insurance",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "import",
+                "label": "Import Duties & Taxes (5% of CIF)",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "delivery",
+                "label": "Destination Delivery",
+                "amount": 0,
+                "included": false
+            }
+        ],
+        "incoterm_label": "Free Carrier",
+        "total_additional": 551.65,
+        "grand_total": 3134.04,
+        "items": [
+            {
+                "stone_id": "crystallina-white",
+                "stone_name": "Crystallina White",
+                "stone_type": "Marble",
+                "stone_origin": "Greece",
+                "origin_port": "piraeus",
+                "stone_image": "",
+                "grade": "Standard",
+                "finish": "Polished",
+                "stone_category_id": "tiles-medium",
+                "stone_size_idx": "3",
+                "category": "Medium Tiles \/ Large Format",
+                "size_label": "80×80 cm",
+                "width_cm": 80,
+                "height_cm": 80,
+                "is_custom": false,
+                "is_linear": false,
+                "entered_qty": 297.29,
+                "area_m2": 0.64,
+                "pieces": 44,
+                "total_m2": 27.6192,
+                "thickness": "2 cm",
+                "base_price": 85,
+                "thickness_multiplier": 1,
+                "size_multiplier": 1.1,
+                "finish_multiplier": 1,
+                "adjusted_unit_price": 93.5,
+                "line_total": 2582.39
+            }
+        ],
+        "notes": "21",
+        "status": "draft"
+    },
+    {
+        "id": "DIJA-20260627-0E7E9F",
+        "created_at": "2026-06-27 22:48:16",
+        "valid_until": "2026-07-11",
+        "unit_system": "sqm",
+        "client_id": "CLI-20260627-9E723D",
+        "client": {
+            "name": "CACAROT007",
+            "email": "dijastones@gmail.com",
+            "company": "test 3cheya",
+            "phone": "test 3cheya",
+            "address": "",
+            "city": "test 3cheya",
+            "country": "test 3cheya"
+        },
+        "destination_country": "DRC",
+        "destination_port": "Matadi",
+        "incoterm": "FOB",
+        "payment_term": "TT_30_70",
+        "shipping_zone": "Sub-Saharan Africa",
+        "shipping_rate_per_container": 7200,
+        "total_containers": 1,
+        "container_detail": [
+            {
+                "origin_port": "Port of La Spezia \/ Carrara",
+                "thickness": "3 cm",
+                "area_m2": 90,
+                "capacity_m2": 300,
+                "containers": 1
+            }
+        ],
+        "per_origin_shipping": [
+            {
+                "port_id": "la-spezia",
+                "port_name": "Port of La Spezia \/ Carrara",
+                "port_country": "Italy",
+                "port_city": "La Spezia",
+                "total_m2": 90,
+                "containers": 1,
+                "rate_per_container": 7000,
+                "ocean_freight": 7000,
+                "thickness_detail": [
+                    {
+                        "thickness": "3 cm",
+                        "area_m2": 90,
+                        "capacity_m2": 300,
+                        "equiv_m2_2cm": 135
+                    }
+                ]
+            }
+        ],
+        "shipping_note": "Via Durban, Lagos, or Mombasa ports — Transit: 25-45",
+        "shipping_disclaimer": "Transportation costs are approximate estimates based on 20ft container freight rates from Izmir port. The number of containers required is calculated based on your order volume and thickness. Final shipping costs and container count will be confirmed by our logistics team once the order is confirmed. Rates are subject to change based on fuel prices, seasonal demand, and route availability.",
+        "total_m2": 90,
+        "total_sqf": 968.75,
+        "subtotal": 13084.2,
+        "shipping_cost": 0,
+        "seller_freight": false,
+        "cost_breakdown": [
+            {
+                "code": "packing",
+                "label": "Packing & Crating",
+                "amount": 261.68,
+                "included": true
+            },
+            {
+                "code": "inland",
+                "label": "Inland Freight to Port",
+                "amount": 300,
+                "included": true
+            },
+            {
+                "code": "customs",
+                "label": "Export Customs Clearance",
+                "amount": 200,
+                "included": true
+            },
+            {
+                "code": "loading",
+                "label": "Port Loading",
+                "amount": 150,
+                "included": true
+            },
+            {
+                "code": "freight",
+                "label": "Ocean Freight",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "insurance",
+                "label": "Marine Insurance",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "import",
+                "label": "Import Duties & Taxes (5% of CIF)",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "delivery",
+                "label": "Destination Delivery",
+                "amount": 0,
+                "included": false
+            }
+        ],
+        "incoterm_label": "Free on Board",
+        "total_additional": 911.6800000000001,
+        "grand_total": 13995.88,
+        "items": [
+            {
+                "stone_id": "pietra-grey",
+                "stone_name": "Pietra Grey",
+                "stone_type": "Marble",
+                "stone_origin": "Italy",
+                "origin_port": "la-spezia",
+                "stone_image": "",
+                "grade": "Premium",
+                "finish": "Honed",
+                "stone_category_id": "steps-metric",
+                "stone_size_idx": "4",
+                "category": "Steps \/ Treads",
+                "size_label": "30×150 cm",
+                "width_cm": 30,
+                "height_cm": 150,
+                "is_custom": false,
+                "is_linear": true,
+                "entered_qty": 300,
+                "area_m2": 0.45,
+                "pieces": 200,
+                "total_m2": 90,
+                "thickness": "3 cm",
+                "base_price": 86,
+                "thickness_multiplier": 1.15,
+                "size_multiplier": 1.4,
+                "finish_multiplier": 1.05,
+                "adjusted_unit_price": 145.38,
+                "line_total": 13084.2
+            }
+        ],
+        "notes": "124",
+        "status": "draft"
+    },
+    {
+        "id": "DIJA-20260629-03BE4E",
+        "created_at": "2026-06-29 21:04:48",
+        "valid_until": "2026-07-13",
+        "unit_system": "sqm",
+        "client_id": "CLI-20260627-12A898",
+        "client": {
+            "name": "Sam Ayachi",
+            "email": "moatassem.ayachi@gmail.com",
+            "company": "Sam Ayachi",
+            "phone": "Sam Ayachi",
+            "address": "Acıbadem Caddesi 1C",
+            "city": "Kadıköy",
+            "country": "Türkiye"
+        },
+        "destination_country": "United Arab Emirates",
+        "destination_port": "Jebel Ali \/ Dubai",
+        "incoterm": "CFR",
+        "payment_term": "TT_30_70",
+        "shipping_zone": "Middle East",
+        "shipping_rate_per_container": 3200,
+        "total_containers": 1,
+        "container_detail": [
+            {
+                "origin_port": "Port of Marseille \/ Sete",
+                "thickness": "3 cm",
+                "area_m2": 300,
+                "capacity_m2": 300,
+                "containers": 1
+            }
+        ],
+        "per_origin_shipping": [
+            {
+                "port_id": "marseille",
+                "port_name": "Port of Marseille \/ Sete",
+                "port_country": "France",
+                "port_city": "Marseille",
+                "total_m2": 300,
+                "containers": 1,
+                "rate_per_container": 4000,
+                "ocean_freight": 4000,
+                "thickness_detail": [
+                    {
+                        "thickness": "3 cm",
+                        "area_m2": 300,
+                        "capacity_m2": 300,
+                        "equiv_m2_2cm": 450
+                    }
+                ]
+            }
+        ],
+        "shipping_note": "Direct via Dubai, Dammam, or Aqaba ports — Transit: 12-20",
+        "shipping_disclaimer": "Transportation costs are approximate estimates based on 20ft container freight rates from Izmir port. The number of containers required is calculated based on your order volume and thickness. Final shipping costs and container count will be confirmed by our logistics team once the order is confirmed. Rates are subject to change based on fuel prices, seasonal demand, and route availability.",
+        "total_m2": 300,
+        "total_sqf": 3229.17,
+        "subtotal": 21915,
+        "shipping_cost": 4000,
+        "seller_freight": true,
+        "cost_breakdown": [
+            {
+                "code": "packing",
+                "label": "Packing & Crating",
+                "amount": 438.3,
+                "included": true
+            },
+            {
+                "code": "inland",
+                "label": "Inland Freight to Port",
+                "amount": 300,
+                "included": true
+            },
+            {
+                "code": "customs",
+                "label": "Export Customs Clearance",
+                "amount": 200,
+                "included": true
+            },
+            {
+                "code": "loading",
+                "label": "Port Loading",
+                "amount": 150,
+                "included": true
+            },
+            {
+                "code": "freight",
+                "label": "Ocean Freight",
+                "amount": 4000,
+                "included": true
+            },
+            {
+                "code": "insurance",
+                "label": "Marine Insurance",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "import",
+                "label": "Import Duties & Taxes (5% of CIF)",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "delivery",
+                "label": "Destination Delivery",
+                "amount": 0,
+                "included": false
+            }
+        ],
+        "incoterm_label": "Cost and Freight",
+        "total_additional": 5088.3,
+        "grand_total": 27003.3,
+        "items": [
+            {
+                "stone_id": "st-croix",
+                "stone_name": "St. Croix Limestone",
+                "stone_type": "Limestone",
+                "stone_origin": "France",
+                "origin_port": "marseille",
+                "stone_image": "",
+                "grade": "Premium",
+                "finish": "Honed",
+                "stone_category_id": "tiles-medium",
+                "stone_size_idx": "2",
+                "category": "Medium Tiles \/ Large Format",
+                "size_label": "60×120 cm",
+                "width_cm": 60,
+                "height_cm": 120,
+                "is_custom": false,
+                "is_linear": false,
+                "entered_qty": 300,
+                "area_m2": 0.72,
+                "pieces": 417,
+                "total_m2": 300,
+                "thickness": "3 cm",
+                "base_price": 55,
+                "thickness_multiplier": 1.15,
+                "size_multiplier": 1.1,
+                "finish_multiplier": 1.05,
+                "adjusted_unit_price": 73.05,
+                "line_total": 21915
+            }
+        ],
+        "notes": "Need It Now",
+        "status": "draft"
+    },
+    {
+        "id": "DIJA-20260701-5E0A30",
+        "created_at": "2026-07-01 12:32:37",
+        "valid_until": "2026-07-15",
+        "unit_system": "sqm",
+        "client_id": "CLI-20260627-9E723D",
+        "client": {
+            "name": "CACAROT007",
+            "email": "dijastones@gmail.com",
+            "company": "DIJA Stones",
+            "phone": "ASDASD",
+            "address": "QATAR",
+            "city": "Istanbul",
+            "country": "Tunisia"
+        },
+        "destination_country": "Qatar",
+        "destination_port": "Hamad \/ Doha",
+        "incoterm": "CIF",
+        "payment_term": "TT_30_70",
+        "shipping_zone": "Middle East",
+        "shipping_rate_per_container": 3200,
+        "total_containers": 1,
+        "container_detail": [
+            {
+                "origin_port": "Port of Rades \/ Tunis",
+                "thickness": "2 cm",
+                "area_m2": 450,
+                "capacity_m2": 450,
+                "containers": 1
+            }
+        ],
+        "per_origin_shipping": [
+            {
+                "port_id": "rades",
+                "port_name": "Port of Rades \/ Tunis",
+                "port_country": "Tunisia",
+                "port_city": "Rades",
+                "total_m2": 450,
+                "containers": 1,
+                "rate_per_container": 3300,
+                "ocean_freight": 3300,
+                "thickness_detail": [
+                    {
+                        "thickness": "2 cm",
+                        "area_m2": 450,
+                        "capacity_m2": 450,
+                        "equiv_m2_2cm": 450
+                    }
+                ]
+            }
+        ],
+        "shipping_note": "Direct via Dubai, Dammam, or Aqaba ports — Transit: 12-20",
+        "shipping_disclaimer": "Transportation costs are approximate estimates based on 20ft container freight rates from Izmir port. The number of containers required is calculated based on your order volume and thickness. Final shipping costs and container count will be confirmed by our logistics team once the order is confirmed. Rates are subject to change based on fuel prices, seasonal demand, and route availability.",
+        "total_m2": 450,
+        "total_sqf": 4843.76,
+        "subtotal": 29205,
+        "shipping_cost": 3300,
+        "seller_freight": true,
+        "cost_breakdown": [
+            {
+                "code": "packing",
+                "label": "Packing & Crating",
+                "label_key": "cost.packing",
+                "amount": 584.1,
+                "included": true
+            },
+            {
+                "code": "inland",
+                "label": "Inland Freight to Port",
+                "label_key": "cost.inland",
+                "amount": 300,
+                "included": true
+            },
+            {
+                "code": "customs",
+                "label": "Export Customs Clearance",
+                "label_key": "cost.customs",
+                "amount": 200,
+                "included": true
+            },
+            {
+                "code": "loading",
+                "label": "Port Loading",
+                "label_key": "cost.loading",
+                "amount": 150,
+                "included": true
+            },
+            {
+                "code": "freight",
+                "label": "Ocean Freight",
+                "label_key": "cost.freight",
+                "amount": 3300,
+                "included": true
+            },
+            {
+                "code": "insurance",
+                "label": "Marine Insurance",
+                "label_key": "cost.insurance",
+                "amount": 162.53,
+                "included": true
+            },
+            {
+                "code": "import",
+                "label": "Import Duties & Taxes (5% of CIF)",
+                "label_key": "cost.import",
+                "amount": 0,
+                "included": false
+            },
+            {
+                "code": "delivery",
+                "label": "Destination Delivery",
+                "label_key": "cost.delivery",
+                "amount": 0,
+                "included": false
+            }
+        ],
+        "incoterm_label": "Cost, Insurance & Freight",
+        "total_additional": 4696.63,
+        "grand_total": 33901.63,
+        "items": [
+            {
+                "stone_id": "black-aziza",
+                "stone_name": "Black Aziza",
+                "stone_type": "Marble",
+                "stone_origin": "Tunisia",
+                "origin_port": "rades",
+                "stone_image": "",
+                "grade": "Standard",
+                "finish": "Polished",
+                "stone_category_id": "tiles-medium",
+                "stone_size_idx": "2",
+                "category": "Medium Tiles \/ Large Format",
+                "size_label": "60×120 cm",
+                "width_cm": 60,
+                "height_cm": 120,
+                "is_custom": false,
+                "is_linear": false,
+                "entered_qty": 450,
+                "area_m2": 0.72,
+                "pieces": 625,
+                "total_m2": 450,
+                "thickness": "2 cm",
+                "base_price": 59,
+                "thickness_multiplier": 1,
+                "size_multiplier": 1.1,
+                "finish_multiplier": 1,
+                "adjusted_unit_price": 64.9,
+                "line_total": 29205
+            }
+        ],
+        "notes": "KSJDKSJDF",
+        "status": "draft"
+    }
+]

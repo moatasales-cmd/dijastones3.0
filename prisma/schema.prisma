@@ -1,0 +1,243 @@
+// DIJA Natural Stone — database schema.
+// Field names mirror the original JSON keys (short codes) so the migration
+// from data/*.json is a near-direct copy. Arrays/objects use SQLite JSON.
+// Timestamps are kept as strings to preserve the original values losslessly.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+/// Catalogue products (152 rows). Single-language (English) in source data.
+model Stone {
+  id           String  @id
+  n            String // name
+  c            String // country
+  r            String? // region
+  ci           String? // city
+  ty           String? // type: Marble / Granite / Quartzite ...
+  to           String? // tone
+  cn           String? // colour name e.g. "White / Gold"
+  d            String? // description
+  no           String? // pull-quote / note
+  p            Int? // base price
+  pPremium     Int?    @map("p_premium") // premium price
+  sizes        String?
+  thicknesses  String?
+  finishes     String?
+  applications String?
+  absorption   String?
+  density      String?
+  strength     String?
+  slip         String?
+  age          String?
+  g            Json? // gallery image paths (array)
+  col          Json? // collection ids this stone belongs to (array)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+/// Curated collections (seeded — originally hard-coded in inc/init.php).
+model Collection {
+  id  String  @id
+  n   String
+  d   String?
+  cov String? // cover image
+}
+
+/// Case-study projects (bilingual EN/FR).
+model Project {
+  id   String  @id
+  t    String
+  tFr  String? @map("t_fr")
+  y    String? // year
+  c    String? // category
+  cFr  String? @map("c_fr")
+  a    String?
+  l    String? // location
+  st   String?
+  to   String?
+  p    String?
+  d    String?
+  b    String? // short intro body
+  bFr  String? @map("b_fr")
+  bo   Json? // long body — array of paragraphs
+  boFr Json?   @map("bo_fr")
+  q    String? // quote
+  qFr  String? @map("q_fr")
+  qb   String?
+  qbFr String? @map("qb_fr")
+  g    Json? // gallery (array)
+}
+
+/// Journal / blog posts (bilingual EN/FR).
+model Post {
+  id  String  @id
+  t   String
+  tFr String? @map("t_fr")
+  c   String? // category
+  cFr String? @map("c_fr")
+  a   String? // author
+  dt  String? // date
+  r   String? // read time
+  e   String? // excerpt
+  eFr String? @map("e_fr")
+  img String?
+  b   Json? // body — array of paragraphs
+  bFr Json?   @map("b_fr")
+}
+
+/// Registered trade clients / accounts.
+model Client {
+  id            String     @id
+  email         String     @unique
+  name          String?
+  passwordHash  String?    @map("password_hash")
+  createdAt     String?    @map("created_at")
+  lastLogin     String?    @map("last_login")
+  lastActivity  String?    @map("last_activity")
+  verified      Boolean    @default(false)
+  googleId      String?    @map("google_id")
+  activityLog   Json?      @map("activity_log")
+  // profile fields (drive profile-completion scoring)
+  fullName      String?    @map("full_name")
+  phone         String?
+  jobTitle      String?    @map("job_title")
+  companyName   String?    @map("company_name")
+  companyType   String?    @map("company_type")
+  country       String?
+  city          String?
+  address       String?
+  vatId         String?    @map("vat_id")
+  website       String?
+  preferredPort String?    @map("preferred_port")
+  about         String?
+  favorites     Favorite[]
+}
+
+/// Client ↔ Stone favorites (join table; original favorites.json was a map).
+model Favorite {
+  clientId  String   @map("client_id")
+  stoneId   String   @map("stone_id")
+  createdAt DateTime @default(now())
+  client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+
+  @@id([clientId, stoneId])
+}
+
+/// Proforma invoices / quotes. Nested structures stored as JSON.
+model Proforma {
+  id                       String  @id
+  createdAt                String? @map("created_at")
+  validUntil               String? @map("valid_until")
+  unitSystem               String? @map("unit_system")
+  clientId                 String? @map("client_id")
+  client                   Json? // snapshot of client details
+  destinationCountry       String? @map("destination_country")
+  destinationPort          String? @map("destination_port")
+  incoterm                 String?
+  incotermLabel            String? @map("incoterm_label")
+  paymentTerm              String? @map("payment_term")
+  shippingZone             String? @map("shipping_zone")
+  shippingRatePerContainer Float?  @map("shipping_rate_per_container")
+  totalContainers          Int?    @map("total_containers")
+  containerDetail          Json?   @map("container_detail")
+  perOriginShipping        Json?   @map("per_origin_shipping")
+  shippingNote             String? @map("shipping_note")
+  shippingDisclaimer       String? @map("shipping_disclaimer")
+  totalM2                  Float?  @map("total_m2")
+  subtotal                 Float?
+  shippingCost             Float?   @map("shipping_cost")
+  sellerFreight            Boolean? @map("seller_freight") // flag: seller covers freight
+  costBreakdown            Json?    @map("cost_breakdown")
+  totalAdditional          Float?   @map("total_additional")
+  grandTotal               Float?   @map("grand_total")
+  totalSqf                 Float?   @map("total_sqf")
+  items                    Json?
+  notes                    String?
+  status                   String?
+}
+
+/// Contact-form submissions.
+model Contact {
+  id       String  @id
+  received String?
+  name     String?
+  email    String?
+  phone    String?
+  company  String?
+  office   String?
+  message  String?
+}
+
+/// Stone quote requests.
+model QuoteRequest {
+  id           String  @id
+  received     String?
+  name         String?
+  email        String?
+  phone        String?
+  phoneCountry String? @map("phone_country")
+  stoneId      String? @map("stone_id")
+  stoneName    String? @map("stone_name")
+  area         String?
+  areaUnit     String? @map("area_unit")
+  message      String?
+}
+
+/// Trade-program applications.
+model TradeApplication {
+  id             String  @id
+  received       String?
+  name           String?
+  email          String?
+  phone          String?
+  company        String?
+  role           String?
+  referral       String?
+  values         Json? // array of selected values
+  projectExample String? @map("project_example")
+  volume         String?
+  stoneInterest  String? @map("stone_interest")
+  notes          String?
+}
+
+/// Newsletter subscribers.
+model Subscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+/// Email sign-in / verification codes.
+model VerificationCode {
+  id        String   @id @default(cuid())
+  email     String
+  code      String
+  expiresAt String?
+  createdAt DateTime @default(now())
+}
+
+/// Company offices / locations.
+model Office {
+  id       String  @id
+  type     String?
+  role     String?
+  city     String?
+  country  String?
+  flag     String?
+  address  String?
+  address2 String?
+  phone    Json? // array of phone numbers
+  email    String?
+  hours    String?
+  lat      Float?
+  lng      Float?
+  image    String?
+  whatsapp String?
+}

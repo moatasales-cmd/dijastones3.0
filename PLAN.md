@@ -52,8 +52,13 @@ Rebuild of the original PHP site (`D:\dija-2.2`) as a modern Next.js app,
       vs original: plain phone (no dial-code picker), browser print-to-PDF instead
       of mPDF, single-page builder (not 4-step wizard), builder labels English (not
       yet i18n). Deferred: per-stone datasheet PDF + catalogue PDF (placeholder links).
-- [ ] **Phase 5 — Admin CRM.** Secure admin: stones, clients, leads, proformas,
-      posts + analytics.
+- [x] **Phase 5 — Admin CRM.** ✅ Secure admin (env credentials + signed
+      `dija_admin` JWT cookie, replacing hardcoded login). Restructured public
+      site into `app/(site)/` route group (own layout w/ header/footer); root
+      layout minimal so `/admin` has its own chrome. Admin (Tailwind UI):
+      dashboard (counts + recent leads), stones list + editor (create/edit,
+      verified live-reflect on site), clients, leads (contacts/quotes/trade),
+      proformas, journal posts list + editor. tsc clean, verified e2e.
 - [ ] **Phase 6 — Upgrades.** Faceted search, image uploads+optimization,
       proforma status tracking, comparison tool, SEO/structured data, security.
 - [ ] **Phase 7 — Polish & deploy.**

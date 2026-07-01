@@ -13,6 +13,9 @@ interface Ui {
   menu: string;
   close: string;
   toggleSub: string;
+  loggedIn: boolean;
+  accountLabel: string;
+  accountHref: string;
 }
 
 const flagSvg: Record<Locale, React.ReactNode> = {
@@ -240,8 +243,9 @@ export default function Header({
               );
             })}
             <span className="nav-auth-link">
-              <Link href="/login">
-                <i className="fa-solid fa-sign-in-alt" /> {ui.signIn}
+              <Link href={ui.accountHref}>
+                <i className={`fa-solid ${ui.loggedIn ? "fa-user" : "fa-sign-in-alt"}`} />{" "}
+                {ui.accountLabel}
               </Link>
             </span>
           </nav>
@@ -320,8 +324,9 @@ export default function Header({
             );
           })}
           <span className="nav-auth-link">
-            <Link href="/login" onClick={closeMobile}>
-              <i className="fa-solid fa-sign-in-alt" /> {ui.signIn}
+            <Link href={ui.accountHref} onClick={closeMobile}>
+              <i className={`fa-solid ${ui.loggedIn ? "fa-user" : "fa-sign-in-alt"}`} />{" "}
+              {ui.accountLabel}
             </Link>
           </span>
           <LangSwitcher />

@@ -50,6 +50,12 @@ export default function FavoriteButton({
       localStorage.setItem(KEY, JSON.stringify(ids));
     } catch {}
     window.dispatchEvent(new Event("dija-fav-change"));
+    // Sync to the account too (no-op / ignored for guests → 401).
+    fetch("/api/favorites", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ stoneId }),
+    }).catch(() => {});
   };
 
   return (

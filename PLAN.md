@@ -35,8 +35,14 @@ Rebuild of the original PHP site (`D:\dija-2.2`) as a modern Next.js app,
       (accordion), heritage, sustainability (pillars), contact (offices/partners,
       Leaflet map, working contact form → /api/contact). Bilingual throughout.
       Titles with inline markup rendered via rich() helper.
-- [ ] **Phase 3 — Accounts.** Register / verify / login (password+code+Google),
-      dashboard, profile completion, favorites.
+- [x] **Phase 3 — Accounts.** ✅ Register → email code → verify, password login
+      (+ email-code login), logout, protected routes. Session = signed JWT cookie
+      (jose); passwords bcryptjs (verifies old PHP $2y$ hashes). Dev email logs
+      the code to the server console (no SMTP needed locally). Client dashboard
+      (/account): profile-completion meter, inline profile editor, favorites,
+      activity log. Favorites sync localStorage → account on login. Header shows
+      "My Account" when signed in. Google route built (needs GOOGLE_CLIENT_ID to
+      activate). Verified end-to-end in the browser.
 - [ ] **Phase 4 — Proforma & trade.** Proforma builder (incoterms, ports,
       container calc, shipping), PDF export + email, trade applications, leads.
 - [ ] **Phase 5 — Admin CRM.** Secure admin: stones, clients, leads, proformas,

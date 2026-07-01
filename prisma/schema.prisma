@@ -214,13 +214,19 @@ model Subscriber {
   createdAt DateTime @default(now())
 }
 
-/// Email sign-in / verification codes.
+/// Email sign-in / verification codes (and pending registrations).
 model VerificationCode {
-  id        String   @id @default(cuid())
-  email     String
-  code      String
-  expiresAt String?
-  createdAt DateTime @default(now())
+  id           String   @id @default(cuid())
+  email        String
+  code         String
+  expiresAt    DateTime @map("expires_at")
+  pending      Boolean  @default(false) // pending registration (holds pw/name)
+  passwordHash String?  @map("password_hash")
+  name         String?
+  codeOnly     Boolean  @default(false) @map("code_only")
+  createdAt    DateTime @default(now())
+
+  @@index([email])
 }
 
 /// Company offices / partner locations.

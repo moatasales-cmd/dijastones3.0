@@ -75,6 +75,22 @@ Rebuild of the original PHP site (`D:\dija-2.2`) as a modern Next.js app,
       links. Bug fix: `materials.catalogue_stats` was duplicating its own text
       (passed the whole phrase as the `%s` arg instead of just the count).
       tsc clean; all features verified in the browser.
+- [x] **Phase 6b — Real catalogue + datasheet PDFs.** ✅ Replaced the placeholder
+      print pages with faithful ports of the original PHP documents.
+      `/catalogue` = full 166-page A4 catalogue (cover, why-DIJA, about, contents
+      index, per-type sections, 152 product pages, application-matrix / care /
+      sourcing reference pages, back cover); print CSS ported verbatim (4
+      colliding classes prefixed + scoped under `.catdoc`, inline `<style>`).
+      `/datasheet/[id]` = 2-page A4 spec sheet (hero, identity stripe, technical
+      specs with lbs+psi+Mohs conversions, application matrix, per-type
+      limitations, formats, gallery). Both have the image-preload progress overlay
+      + floating "Save as PDF" + EN/FR switch (`PrintLoader`). Prose from the
+      migrated `catalogue.*`/`datasheet.*` i18n keys (245+98, both languages).
+      Moved out of `(site)` so they render standalone (root layout, no
+      header/footer). Added HTML-entity decoding to the translator (source strings
+      used `&amp;`/`&mdash;`/… that React rendered literally) — fixes the whole
+      site. Data in `lib/catalogue.ts` + `lib/datasheet.ts`; `svgPlaceholder`
+      ported. Country-origin maps were dead code in the original, so omitted.
 - [ ] **Phase 7 — Polish & deploy.**
 
 ## Notes / carried-over quirks to fix during migration

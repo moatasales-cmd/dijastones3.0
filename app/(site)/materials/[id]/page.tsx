@@ -259,7 +259,7 @@ export default async function MaterialPage({
                   }}
                 />
                 <a
-                  href={`/materials/${encodeURIComponent(s.id)}/datasheet`}
+                  href={`/datasheet/${encodeURIComponent(s.id)}`}
                   className="detail-btn"
                   target="_blank"
                 >

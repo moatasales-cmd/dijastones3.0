@@ -7,3 +7,20 @@
 @import "../styles/app.css";
 @import "../styles/auth.css";
 @import "../styles/proforma.css";
+
+/* Print: show only the invoice, hide site chrome. */
+@media print {
+  header,
+  footer,
+  .mobile-nav,
+  .whatsapp-float,
+  .no-print {
+    display: none !important;
+  }
+  main {
+    padding: 0 !important;
+  }
+  .pf-invoice {
+    border: none !important;
+  }
+}

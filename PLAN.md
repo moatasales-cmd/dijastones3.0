@@ -43,8 +43,15 @@ Rebuild of the original PHP site (`D:\dija-2.2`) as a modern Next.js app,
       activity log. Favorites sync localStorage → account on login. Header shows
       "My Account" when signed in. Google route built (needs GOOGLE_CLIENT_ID to
       activate). Verified end-to-end in the browser.
-- [ ] **Phase 4 — Proforma & trade.** Proforma builder (incoterms, ports,
-      container calc, shipping), PDF export + email, trade applications, leads.
+- [x] **Phase 4 — Proforma & commerce.** ✅ Lead forms wired: newsletter, quote
+      modal (material detail), trade application (/trade). Proforma builder
+      (/proforma, login-gated): live pricing engine (thickness/finish/grade
+      multipliers), 20ft container packing, shipping zones by country, incoterms +
+      payment terms, live totals → saves to DB. Invoice view (/proforma/[id]) with
+      print-to-PDF; proformas list (/account/proformas). Verified e2e. Simplified
+      vs original: plain phone (no dial-code picker), browser print-to-PDF instead
+      of mPDF, single-page builder (not 4-step wizard), builder labels English (not
+      yet i18n). Deferred: per-stone datasheet PDF + catalogue PDF (placeholder links).
 - [ ] **Phase 5 — Admin CRM.** Secure admin: stones, clients, leads, proformas,
       posts + analytics.
 - [ ] **Phase 6 — Upgrades.** Faceted search, image uploads+optimization,

@@ -1,7 +1,11 @@
 import Link from "next/link";
-import { nav } from "@/lib/nav";
+import { getT } from "@/lib/i18n-server";
+import { resolveNav } from "@/lib/nav";
 
-export default function Footer() {
+export default async function Footer() {
+  const { t } = await getT();
+  const nav = resolveNav(t);
+
   return (
     <>
       <footer>
@@ -16,14 +20,11 @@ export default function Footer() {
                   style={{ height: 40, width: "auto" }}
                 />
               </div>
-              <p>
-                Mediterranean marble &amp; natural stone atelier. Family-owned,
-                Izmir-based.
-              </p>
+              <p>{t("footer.tagline")}</p>
             </div>
 
             <div className="footer-nav">
-              <span className="footer-label">Navigation</span>
+              <span className="footer-label">{t("footer.navigation")}</span>
               {nav.map((item) => (
                 <span key={item.label} style={{ display: "contents" }}>
                   <Link href={item.href}>{item.label}</Link>
@@ -37,7 +38,7 @@ export default function Footer() {
             </div>
 
             <div className="footer-contact">
-              <span className="footer-label">Contact</span>
+              <span className="footer-label">{t("footer.contact")}</span>
               <p>
                 10031 Sok. No: 14, AOSB
                 <br />
@@ -52,22 +53,27 @@ export default function Footer() {
             </div>
 
             <div className="footer-newsletter">
-              <span className="footer-label">Newsletter</span>
-              <p>Quarterly notes from the atelier. No promotions, ever.</p>
+              <span className="footer-label">{t("footer.newsletter")}</span>
+              <p>{t("footer.newsletter_desc")}</p>
               {/* Wired to the newsletter API in a later phase. */}
               <form className="newsletter-form">
-                <input type="email" name="email" placeholder="Email" required />
-                <button type="submit">Subscribe</button>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder={t("footer.email_placeholder")}
+                  required
+                />
+                <button type="submit">{t("footer.subscribe")}</button>
               </form>
             </div>
           </div>
 
           <div className="footer-bottom">
-            <p>© 2025 DIJA Marble. Izmir — Tunis.</p>
+            <p>{t("footer.copyright")}</p>
             <div className="footer-legal">
-              <Link href="/privacy">Privacy</Link>
-              <Link href="/terms">Terms</Link>
-              <Link href="/cookies">Cookies</Link>
+              <Link href="/privacy">{t("footer.privacy")}</Link>
+              <Link href="/terms">{t("footer.terms")}</Link>
+              <Link href="/cookies">{t("footer.cookies")}</Link>
             </div>
           </div>
         </div>
@@ -78,7 +84,7 @@ export default function Footer() {
         target="_blank"
         rel="noopener noreferrer"
         className="whatsapp-float"
-        aria-label="WhatsApp"
+        aria-label={t("footer.whatsapp_aria")}
       >
         <i className="fa-brands fa-whatsapp" />
       </a>

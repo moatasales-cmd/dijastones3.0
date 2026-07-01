@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { stoneImg } from "@/lib/img";
+import { getT } from "@/lib/i18n-server";
 
 // Signature materials shown on the home page, in this order.
 const FEATURED_IDS = [
@@ -10,13 +11,17 @@ const FEATURED_IDS = [
   "taj-mahal-quartzite",
 ];
 
+// Some titles carry inline markup (<br>, <em>) in the message data, exactly
+// as the old PHP echoed them. Render those as HTML.
+const html = (s: string) => ({ dangerouslySetInnerHTML: { __html: s } });
+
 export default async function Home() {
-  // Data now comes from the database (migrated from the old JSON files).
+  const { t } = await getT();
+
   const featuredRows = await prisma.stone.findMany({
     where: { id: { in: FEATURED_IDS } },
     select: { id: true, n: true, ci: true, c: true, g: true },
   });
-  // Preserve the intended display order (findMany `in` doesn't guarantee it).
   const featured = FEATURED_IDS.map(
     (id) => featuredRows.find((s) => s.id === id)!
   ).filter(Boolean);
@@ -37,21 +42,17 @@ export default async function Home() {
         <div className="hero-iridescent" />
         <div className="hero-noise" />
         <div className="hero-content">
-          <h1>
-            A quarry is just
-            <br />
-            <em>the earth&apos;s library,</em>
-          </h1>
-          <p className="hero-sub">and we know exactly which shelf to browse.</p>
+          <h1 {...html(t("home.hero.title"))} />
+          <p className="hero-sub">{t("home.hero.subtitle")}</p>
           <div className="hero-btns">
             <Link href="/materials" className="btn btn-ghost">
-              Explore Materials{" "}
+              {t("home.hero.explore")}{" "}
               <span className="btn-icon-wrap">
                 <i className="fa-solid fa-arrow-right" />
               </span>
             </Link>
             <a href="/api/catalogue" target="_blank" className="btn btn-ghost">
-              Download the Catalogue{" "}
+              {t("home.hero.download")}{" "}
               <span className="btn-icon-wrap">
                 <i className="fa-solid fa-arrow-down" />
               </span>
@@ -65,29 +66,16 @@ export default async function Home() {
 
       <section className="section reveal">
         <div className="container narrow">
-          <div className="section-label">Why DIJA</div>
-          <h2>
-            A house built on
-            <br />
-            <em>geology</em> and patience.
-          </h2>
-          <div className="text-large">
-            We source directly from family-owned quarries across Turkey, the
-            Mediterranean, Brazil, and India — no middlemen, no shortcuts. Just
-            traceable stone, fairly priced, personally vetted.
-          </div>
-          <p>
-            From a single slab for a private residence to multi-container orders
-            for hotel developments — we deliver 152 natural stones to 47
-            countries, with the same standard: the right stone, accurately
-            described, delivered on time.
-          </p>
+          <div className="section-label">{t("home.why_label")}</div>
+          <h2 {...html(t("home.why_title"))} />
+          <div className="text-large">{t("home.why_text")}</div>
+          <p>{t("home.why_text2")}</p>
           <Link
             href="/materials"
             className="btn btn-primary"
             style={{ marginBottom: "2rem" }}
           >
-            Explore Our Materials{" "}
+            {t("home.explore_btn")}{" "}
             <span className="btn-icon-wrap">
               <i className="fa-solid fa-arrow-right" />
             </span>
@@ -95,15 +83,15 @@ export default async function Home() {
           <div className="stats">
             <div className="stat">
               <span className="stat-num">152</span>
-              <span className="stat-label">Stones</span>
+              <span className="stat-label">{t("home.stat_stones")}</span>
             </div>
             <div className="stat">
               <span className="stat-num">10</span>
-              <span className="stat-label">Sourcing Countries</span>
+              <span className="stat-label">{t("home.stat_countries")}</span>
             </div>
             <div className="stat">
               <span className="stat-num">47</span>
-              <span className="stat-label">Countries Shipped</span>
+              <span className="stat-label">{t("home.stat_shipped")}</span>
             </div>
           </div>
         </div>
@@ -113,15 +101,11 @@ export default async function Home() {
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="section-label">Signature Materials</div>
-              <h2>
-                Stones with
-                <br />
-                <em>a sense of place.</em>
-              </h2>
+              <div className="section-label">{t("home.signature_label")}</div>
+              <h2 {...html(t("home.signature_title"))} />
             </div>
             <Link href="/materials" className="link-arrow">
-              All Materials <i className="fa-solid fa-arrow-right" />
+              {t("home.all_materials")} <i className="fa-solid fa-arrow-right" />
             </Link>
           </div>
           <div className="grid-4 reveal-stagger">
@@ -160,33 +144,25 @@ export default async function Home() {
 
       <section className="section">
         <div className="container narrow reveal">
-          <div className="section-label">Featured Project · 2024</div>
-          <h2>
-            The Cala Luna
-            <br />
-            <em>Pavilion</em>
-          </h2>
-          <p className="text-large">
-            A monolithic retreat on the Sardinian coast, sheathed entirely in
-            honed Thassos White. 84 tons of stone, every panel book-matched by
-            hand.
-          </p>
+          <div className="section-label">{t("home.featured_label")}</div>
+          <h2 {...html(t("home.featured_title"))} />
+          <p className="text-large">{t("home.featured_text")}</p>
           <div className="stats border-top">
             <div className="stat">
               <span className="stat-num">84 t</span>
-              <span className="stat-label">Tonnage</span>
+              <span className="stat-label">{t("home.stat_tonnage")}</span>
             </div>
             <div className="stat">
               <span className="stat-num">312</span>
-              <span className="stat-label">Panels</span>
+              <span className="stat-label">{t("home.stat_panels")}</span>
             </div>
             <div className="stat">
               <span className="stat-num">25 wk</span>
-              <span className="stat-label">Duration</span>
+              <span className="stat-label">{t("home.stat_duration")}</span>
             </div>
           </div>
           <Link href="/projects/cala-luna" className="btn btn-primary">
-            Read Case Study{" "}
+            {t("home.case_study_btn")}{" "}
             <span className="btn-icon-wrap">
               <i className="fa-solid fa-arrow-right" />
             </span>
@@ -197,48 +173,20 @@ export default async function Home() {
       <section className="section section-mist reveal">
         <div className="container">
           <div className="section-label text-center">
-            From Mountain to Surface
+            {t("home.process_label")}
           </div>
-          <h2 className="text-center">
-            Four movements of
-            <br />
-            <em>the craft.</em>
-          </h2>
+          <h2 className="text-center" {...html(t("home.process_title"))} />
           <div className="process-grid reveal-stagger">
-            <div className="process-card">
-              <div className="process-num">01</div>
-              <h3>Source</h3>
-              <p>
-                We partner with family-owned quarries across the Mediterranean,
-                Brazil, and India, selecting blocks that meet our standards for
-                tone, figure, and integrity.
-              </p>
-            </div>
-            <div className="process-card">
-              <div className="process-num">02</div>
-              <h3>Cut</h3>
-              <p>
-                Gang saws slice blocks into slabs along the vein&apos;s preferred
-                axis. Master cutters study each face before committing the blade.
-              </p>
-            </div>
-            <div className="process-card">
-              <div className="process-num">03</div>
-              <h3>Finish</h3>
-              <p>
-                Honed, polished, leathered, brushed, bush-hammered — the finish
-                decides how stone meets light.
-              </p>
-            </div>
-            <div className="process-card">
-              <div className="process-num">04</div>
-              <h3>Ship</h3>
-              <p>
-                Custom crates, climate-controlled containers, and a logistics
-                team that has delivered to 47 countries without a single broken
-                slab.
-              </p>
-            </div>
+            {[1, 2, 3, 4].map((i) => {
+              const n = String(i).padStart(2, "0");
+              return (
+                <div className="process-card" key={i}>
+                  <div className="process-num">{n}</div>
+                  <h3>{t(`home.process_${n}_title`)}</h3>
+                  <p>{t(`home.process_${n}_text`)}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -246,13 +194,10 @@ export default async function Home() {
       <section className="section quote-section bg-noise reveal">
         <div className="container narrow text-center text-white">
           <i className="fa-solid fa-quote-left quote-icon" />
-          <p className="quote-text">
-            &quot;DIJA doesn&apos;t sell stone. They sell the silence of a mountain
-            that has been listening to the sea for two thousand years.&quot;
-          </p>
+          <p className="quote-text">{t("home.quote_text")}</p>
           <div className="quote-attrib">
             <span />
-            <span>Studio Mareterra · Architects · Cagliari</span>
+            <span>{t("home.quote_attribution")}</span>
           </div>
         </div>
       </section>
@@ -261,15 +206,11 @@ export default async function Home() {
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="section-label">From the Journal</div>
-              <h2>
-                Field notes &amp;
-                <br />
-                <em>slow geology.</em>
-              </h2>
+              <div className="section-label">{t("home.journal_label")}</div>
+              <h2 {...html(t("home.journal_title"))} />
             </div>
             <Link href="/journal" className="link-arrow">
-              All Entries <i className="fa-solid fa-arrow-right" />
+              {t("home.all_entries")} <i className="fa-solid fa-arrow-right" />
             </Link>
           </div>
           <div className="grid-3 reveal-stagger">

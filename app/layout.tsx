@@ -3,25 +3,40 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
+import { getT } from "@/lib/i18n-server";
+import { resolveNav } from "@/lib/nav";
 
-export const metadata: Metadata = {
-  title: {
-    default: "DIJA Natural Stone — Mediterranean Marble & Natural Stone Atelier",
-    template: "%s — DIJA Natural Stone",
-  },
-  description:
-    "Mediterranean marble & natural stone atelier. Family-owned, Izmir-based since 1995.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getT();
+  return {
+    title: {
+      default: t("title.home"),
+      template: `%s — ${t("title.suffix")}`,
+    },
+    description: t("meta.description"),
+  };
+}
 
 // Blocking theme init — sets data-theme before first paint so there is
 // no flash of the wrong theme (mirrors the old inline <head> script).
 const themeInit = `(function(){try{var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`;
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const { t, locale } = await getT();
+  const nav = resolveNav(t);
+  const ui = {
+    signIn: t("nav.sign_in"),
+    light: t("theme.light"),
+    dark: t("theme.dark"),
+    menu: t("mobile.menu"),
+    close: t("mobile.close"),
+    toggleSub: t("nav.toggle_submenu"),
+  };
+
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
+    <html lang={locale} dir="ltr" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -38,7 +53,7 @@ export default function RootLayout({
       </head>
       <body>
         <Reveal />
-        <Header />
+        <Header locale={locale} nav={nav} ui={ui} />
         <main>{children}</main>
         <Footer />
       </body>

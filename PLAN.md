@@ -22,8 +22,13 @@ Rebuild of the original PHP site (`D:\dija-2.2`) as a modern Next.js app,
 - [x] **Phase 0 — Scaffold & shell.** Next.js project, design system ported,
       fonts, light/dark theming (no-flash), glass header + nav dropdowns +
       mobile drawer + theme toggle, footer, scroll-reveal, home page. ✅ verified
-- [ ] **Phase 1 — Data + i18n.** Prisma schema, migrate `data/*.json` → DB,
-      next-intl with en/fr messages migrated from `lang/*.php`.
+- [x] **Phase 1 — Data + i18n.** ✅ Prisma+SQLite schema, migrated all
+      `data/*.json` → DB (seed script), EN/FR messages converted from
+      `lang/*.php` (1365 keys each), lightweight cookie-based i18n faithful to
+      the old `__()` (flat keys, `%s` args). Home + shell fully bilingual.
+      Note: used a custom i18n helper instead of next-intl because the source
+      uses flat dotted keys where a value and a namespace share a prefix
+      (`nav.stone` vs `nav.stone.materials`), which nested-JSON libs can't hold.
 - [ ] **Phase 2 — Public catalogue.** Materials (grid+filters), material detail,
       collections, quarries, projects, journal, heritage, sustainability, contact.
 - [ ] **Phase 3 — Accounts.** Register / verify / login (password+code+Google),

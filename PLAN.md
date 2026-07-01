@@ -29,8 +29,12 @@ Rebuild of the original PHP site (`D:\dija-2.2`) as a modern Next.js app,
       Note: used a custom i18n helper instead of next-intl because the source
       uses flat dotted keys where a value and a namespace share a prefix
       (`nav.stone` vs `nav.stone.materials`), which nested-JSON libs can't hold.
-- [ ] **Phase 2 — Public catalogue.** Materials (grid+filters), material detail,
-      collections, quarries, projects, journal, heritage, sustainability, contact.
+- [x] **Phase 2 — Public catalogue.** ✅ Materials (grid+search/sort/filters/unit
+      toggle), material detail (gallery+lightbox, pricing, specs, related),
+      collections + detail, projects + detail, journal + article, quarries
+      (accordion), heritage, sustainability (pillars), contact (offices/partners,
+      Leaflet map, working contact form → /api/contact). Bilingual throughout.
+      Titles with inline markup rendered via rich() helper.
 - [ ] **Phase 3 — Accounts.** Register / verify / login (password+code+Google),
       dashboard, profile completion, favorites.
 - [ ] **Phase 4 — Proforma & trade.** Proforma builder (incoterms, ports,

@@ -223,21 +223,24 @@ model VerificationCode {
   createdAt DateTime @default(now())
 }
 
-/// Company offices / locations.
+/// Company offices / partner locations.
 model Office {
-  id       String  @id
-  type     String?
-  role     String?
-  city     String?
-  country  String?
-  flag     String?
-  address  String?
-  address2 String?
-  phone    Json? // array of phone numbers
-  email    String?
-  hours    String?
-  lat      Float?
-  lng      Float?
-  image    String?
-  whatsapp String?
+  id             String  @id
+  type           String? // "office" | "partner"
+  role           String?
+  city           String?
+  country        String?
+  flag           String?
+  partnerCompany String? @map("partner_company")
+  contactPerson  String? @map("contact_person")
+  address        String?
+  address2       String?
+  phone          Json? // array of phone numbers
+  email          String?
+  services       Json? // partner services (array)
+  hours          String?
+  lat            Float?
+  lng            Float?
+  image          String?
+  whatsapp       String?
 }

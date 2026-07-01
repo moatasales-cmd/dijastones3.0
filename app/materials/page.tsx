@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { getT } from "@/lib/i18n-server";
+import { rich } from "@/lib/lang";
 import MaterialsGrid, { type GridStrings } from "@/components/MaterialsGrid";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -63,7 +64,7 @@ export default async function MaterialsPage() {
       <section className="page-hero">
         <div className="container">
           <div className="hero-label">{t("materials.title")}</div>
-          <h1 className="hero-title">{t("materials.hero_title")}</h1>
+          <h1 className="hero-title" {...rich(t("materials.hero_title"))} />
           <p>{t("materials.hero_text")}</p>
         </div>
       </section>

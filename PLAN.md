@@ -173,6 +173,16 @@ Rebuild of the original PHP site (`D:\dija-2.2`) as a modern Next.js app,
       nav dropdowns, compare page's horizontal-scroll table, all admin list
       tables (already `overflow-x-auto`-wrapped). tsc clean, production build
       green (51 routes).
+- [x] **Fixed a real crash: viewing legacy proformas.** ✅ Caught via server
+      error logs during the mobile sweep (not visible from the UI — the invoice
+      page threw before rendering). All 9 proformas migrated from the old PHP
+      site's `data/proformas.json` use different item field names than the new
+      builder (`stone_name`/`area_m2`/`adjusted_unit_price`/`line_total` vs
+      `stoneName`/`area`/`unitPrice`/`lineTotal`) — opening any of them on
+      `/proforma/[id]` crashed with `Cannot read properties of undefined
+      (reading 'toLocaleString')`. Added `normalizeItem()` in that page to read
+      either schema. Verified against all 9 real legacy records (script-checked)
+      plus one full browser render of a genuine $21,915 customer order.
 - [ ] **Phase 7 — Polish & deploy.**
 
 ## Notes / carried-over quirks to fix during migration

@@ -23,12 +23,43 @@ export interface SizeCategory {
   sizes: SizeOption[];
 }
 
+interface RawSizeOption {
+  l: string;
+  w?: number;
+  h?: number;
+  w_in?: number;
+  h_in?: number;
+  t: string[];
+}
+interface RawSizeCategory {
+  id: string;
+  name: string;
+  multiplier: number;
+  sizes: RawSizeOption[];
+}
+
+// The imperial config stores dimensions as w_in/h_in (inches) — but every
+// downstream calculation (area, container packing, m² totals) is in cm/m².
+// Convert inches to cm here once, so the rest of the engine never has to
+// care which unit system a size came from.
+function normalizeSize(sz: RawSizeOption): SizeOption {
+  const w = sz.w ?? (sz.w_in != null ? round2(sz.w_in * 2.54) : 0);
+  const h = sz.h ?? (sz.h_in != null ? round2(sz.h_in * 2.54) : 0);
+  return { l: sz.l, w, h, t: sz.t };
+}
+
 function loadCategories(raw: unknown): SizeCategory[] {
-  return Object.values(raw as Record<string, unknown>) as SizeCategory[];
+  const cats = Object.values(raw as Record<string, unknown>) as RawSizeCategory[];
+  return cats.map((c) => ({ id: c.id, name: c.name, multiplier: c.multiplier, sizes: c.sizes.map(normalizeSize) }));
 }
 export const SIZE_CATEGORIES_METRIC: SizeCategory[] = loadCategories(sizesRaw.categories_metric);
 export const SIZE_CATEGORIES_IMPERIAL: SizeCategory[] = loadCategories(sizesRaw.categories_imperial);
-export const CATEGORY_BY_ID = new Map(SIZE_CATEGORIES_METRIC.map((c) => [c.id, c]));
+// Merge both unit systems into one lookup — imperial categories use distinct
+// ids (e.g. "tiles-medium-imperial"), so a single map covers whichever one
+// the client was using when they built the item.
+export const CATEGORY_BY_ID = new Map(
+  [...SIZE_CATEGORIES_METRIC, ...SIZE_CATEGORIES_IMPERIAL].map((c) => [c.id, c])
+);
 
 export const THICKNESS_MULTIPLIER: Record<string, number> = sizesRaw.thickness_multiplier;
 export const FINISH_MULTIPLIER: Record<string, number> = sizesRaw.finish_multiplier;
@@ -250,7 +281,7 @@ export interface ItemInput {
  * ? stone.p_premium : stone.p`, with no further grade factor applied).
  */
 export function computeItem(input: ItemInput): ProformaItem {
-  const isCustom = input.categoryId === "custom" || input.categoryId === "";
+  const isCustom = input.categoryId === "custom" || input.categoryId === "custom-imperial" || input.categoryId === "";
   const category = !isCustom ? CATEGORY_BY_ID.get(input.categoryId) : undefined;
   const size = category && input.sizeIndex != null ? category.sizes[input.sizeIndex] : undefined;
 

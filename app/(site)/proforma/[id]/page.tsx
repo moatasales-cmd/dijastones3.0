@@ -45,6 +45,11 @@ export default async function ProformaView({
             <i className="fa-solid fa-arrow-left" /> My proformas
           </Link>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+            {pf.status === "draft" && (
+              <Link href={`/proforma/${pf.id}/edit`} className="pf-btn pf-btn-ghost">
+                <i className="fa-solid fa-pen" /> Edit
+              </Link>
+            )}
             <SendProformaEmailButton proformaId={pf.id} toEmail={v.client.email || client.email} />
             <PrintButton label="Print / Save PDF" />
           </div>

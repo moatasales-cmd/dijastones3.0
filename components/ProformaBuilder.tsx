@@ -39,7 +39,7 @@ export interface ClientPrefill {
   country: string;
 }
 
-interface Row {
+export interface Row {
   stoneId: string;
   grade: string;
   finish: string;
@@ -66,27 +66,45 @@ const emptyRow = (): Row => ({
   area: "",
 });
 
+export interface EditPrefill {
+  proformaId: string;
+  unitSystem: "sqm" | "sqf";
+  rows: Row[];
+  destinationCountry: string;
+  destinationPort: string;
+  incoterm: string;
+  paymentTerm: string;
+  notes: string;
+}
+
 export default function ProformaBuilder({
   stones,
   client,
+  edit,
 }: {
   stones: Priced[];
   client: ClientPrefill;
+  edit?: EditPrefill;
 }) {
   const stoneMap = useMemo(() => new Map(stones.map((s) => [s.id, s])), [stones]);
 
   const [c, setC] = useState<ClientPrefill>(client);
-  const [unit, setUnit] = useState<"sqm" | "sqf">("sqm");
-  const [rows, setRows] = useState<Row[]>([emptyRow()]);
-  const [country, setCountry] = useState("");
-  const [destPort, setDestPort] = useState("");
-  const [incoterm, setIncoterm] = useState("FOB");
-  const [paymentTerm, setPaymentTerm] = useState("TT_30_70");
-  const [notes, setNotes] = useState("");
+  const [unit, setUnit] = useState<"sqm" | "sqf">(edit?.unitSystem ?? "sqm");
+  const [rows, setRows] = useState<Row[]>(edit?.rows.length ? edit.rows : [emptyRow()]);
+  const [country, setCountry] = useState(edit?.destinationCountry ?? "");
+  const [destPort, setDestPort] = useState(edit?.destinationPort ?? "");
+  const [incoterm, setIncoterm] = useState(edit?.incoterm ?? "FOB");
+  const [paymentTerm, setPaymentTerm] = useState(edit?.paymentTerm ?? "TT_30_70");
+  const [notes, setNotes] = useState(edit?.notes ?? "");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
 
-  const categories = unit === "sqf" ? SIZE_CATEGORIES_IMPERIAL : SIZE_CATEGORIES_METRIC;
+  // Both unit systems' config already carry their own inert "custom" entry
+  // (w/h = 0) — the real custom-size UX is the manually appended option
+  // below, so exclude the config ones to avoid a confusing duplicate.
+  const categories = (unit === "sqf" ? SIZE_CATEGORIES_IMPERIAL : SIZE_CATEGORIES_METRIC).filter(
+    (cat) => cat.id !== "custom" && cat.id !== "custom-imperial"
+  );
   const toM2 = (v: string) => {
     const n = parseFloat(v) || 0;
     return unit === "sqf" ? n / SQM_TO_SQF : n;
@@ -166,8 +184,8 @@ export default function ProformaBuilder({
             area: toM2(r.area),
           })),
       };
-      const res = await fetch("/api/proforma", {
-        method: "POST",
+      const res = await fetch(edit ? `/api/proforma/${edit.proformaId}` : "/api/proforma", {
+        method: edit ? "PATCH" : "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
@@ -470,7 +488,7 @@ export default function ProformaBuilder({
 
         {error && <div style={{ color: "#c0392b", margin: "0.75rem 0" }}>{error}</div>}
         <button type="button" className="pf-btn pf-btn-primary" disabled={busy} onClick={save} style={{ marginTop: "0.5rem" }}>
-          {busy ? "Saving…" : "Create proforma"} <i className="fa-solid fa-file-invoice" />
+          {busy ? "Saving…" : edit ? "Save changes" : "Create proforma"} <i className="fa-solid fa-file-invoice" />
         </button>
       </div>
     </div>

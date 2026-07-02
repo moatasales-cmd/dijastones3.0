@@ -231,6 +231,29 @@ Rebuild of the original PHP site (`D:\dija-2.2`) as a modern Next.js app,
       proforma (temporarily reassigned, checked, reverted) — renders with no
       crash and full bank/incoterm detail. `tsc --noEmit` clean, production
       build green (56 routes).
+- [x] **Proforma editing + fixed a real "blank size" data bug.** ✅ Added
+      client-side editing: any proforma still `draft` gets an Edit button
+      (`/proforma/[id]/edit`) that prefills `ProformaBuilder` from the saved
+      record and PATCHes `/api/proforma/[id]` instead of creating a new row.
+      Create and edit now share one pricing pipeline (`lib/proforma-save.ts`)
+      so both are priced identically server-side. While wiring this up, found
+      a live customer proforma (`DIJA-20260702-1CE82C`) saved with `size_label:
+      "—"` and `width_cm/height_cm: 0` — root cause: imperial category ids
+      (`tiles-medium-imperial` etc.) never matched `CATEGORY_BY_ID` (built from
+      the metric list only), and even once matched, imperial sizes store
+      `w_in`/`h_in` (inches) while every downstream calc expects cm — so any
+      proforma built in ft² mode silently lost its size/dimensions. Fixed by
+      merging both unit lists into one lookup and converting inches→cm at
+      config load time in `lib/proforma-engine.ts`. Also removed a latent
+      duplicate "Custom Size" dropdown entry (config's own inert custom
+      placeholder rendering next to the builder's real one). Verified live in
+      the browser: built a fresh ft² proforma (20×20 in → correctly stored as
+      50.8×50.8 cm), edited it (prefilled size/thickness/area matched exactly),
+      changed the area, saved, and confirmed the grand total updated in place
+      (same proforma id, not a new one). Pre-existing broken legacy items
+      (`width_cm: 0`) can't be recovered automatically — the original size
+      selection was already lost when they were first saved — but they can
+      now be fixed by opening them in Edit and reselecting a size.
 - [ ] **Phase 7 — Polish & deploy.**
 
 ## Notes / carried-over quirks to fix during migration

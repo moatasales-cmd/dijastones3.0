@@ -9,7 +9,26 @@ export const metadata: Metadata = { title: "Proforma Invoice" };
 
 const money = (v: number | null | undefined) =>
   "$" + (v ?? 0).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const num = (v: unknown) => (typeof v === "number" ? v : parseFloat(String(v ?? "")) || 0);
 
+// Raw line-item shape as stored in the DB. Two schemas exist: the current
+// builder (stoneName/area/unitPrice/lineTotal) and proformas migrated from
+// the old PHP site (stone_name/area_m2/adjusted_unit_price/line_total).
+// Normalize both to one shape so the invoice never crashes on legacy data.
+interface RawItem {
+  stoneName?: string;
+  stone_name?: string;
+  thickness?: string;
+  finish?: string;
+  grade?: string;
+  area?: number;
+  area_m2?: number;
+  total_m2?: number;
+  unitPrice?: number;
+  adjusted_unit_price?: number;
+  lineTotal?: number;
+  line_total?: number;
+}
 interface Item {
   stoneName: string;
   thickness: string;
@@ -18,6 +37,17 @@ interface Item {
   area: number;
   unitPrice: number;
   lineTotal: number;
+}
+function normalizeItem(it: RawItem): Item {
+  return {
+    stoneName: it.stoneName ?? it.stone_name ?? "—",
+    thickness: it.thickness ?? "—",
+    finish: it.finish ?? "—",
+    grade: it.grade ?? "—",
+    area: num(it.area ?? it.area_m2 ?? it.total_m2),
+    unitPrice: num(it.unitPrice ?? it.adjusted_unit_price),
+    lineTotal: num(it.lineTotal ?? it.line_total),
+  };
 }
 interface ClientSnap {
   name?: string;
@@ -42,7 +72,8 @@ export default async function ProformaView({
   const client = await getCurrentClient();
   if (!client || pf.clientId !== client.id) notFound();
 
-  const items = (Array.isArray(pf.items) ? pf.items : []) as unknown as Item[];
+  const rawItems = (Array.isArray(pf.items) ? pf.items : []) as unknown as RawItem[];
+  const items = rawItems.map(normalizeItem);
   const c = (pf.client ?? {}) as ClientSnap;
 
   return (

@@ -64,6 +64,10 @@ export default async function MaterialPage({
   const s = await getStone(id);
   if (!s) notFound();
 
+  // Dolomitic-marble badge. Read defensively so the page compiles before and
+  // after the `dm` column migration lands (absent column → false).
+  const isDolomitic = Boolean((s as unknown as { dm?: boolean }).dm);
+
   const images = (Array.isArray(s.g) ? (s.g as string[]) : []).filter(Boolean);
 
   // Related: up to 4, same type first then same tone.
@@ -149,7 +153,14 @@ export default async function MaterialPage({
             <CompareButton stoneId={s.id} stoneName={s.n} />
           </div>
           <p>
-            {s.ty} · {s.c} · {s.ci}
+            {s.ty}
+            {isDolomitic && (
+              <>
+                {" "}
+                <span className="mat-detail-dolomite">{t("catalogue.product.dolomite")}</span>
+              </>
+            )}{" "}
+            · {s.c} · {s.ci}
           </p>
         </div>
       </section>

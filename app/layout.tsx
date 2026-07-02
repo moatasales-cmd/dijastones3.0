@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { getT } from "@/lib/i18n-server";
+import { SITE_URL } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getT();
   return {
+    metadataBase: new URL(SITE_URL),
     title: {
       default: t("title.home"),
       template: `%s — ${t("title.suffix")}`,

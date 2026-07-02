@@ -31,6 +31,11 @@ export default async function Home() {
     select: { id: true, t: true, c: true, r: true, e: true, img: true },
   });
 
+  // Live counts — the headline stats stay honest as the catalogue grows.
+  const allOrigins = await prisma.stone.findMany({ select: { c: true } });
+  const stoneCount = allOrigins.length;
+  const countryCount = new Set(allOrigins.map((s) => s.c)).size;
+
   return (
     <>
       <section className="hero">
@@ -82,11 +87,11 @@ export default async function Home() {
           </Link>
           <div className="stats">
             <div className="stat">
-              <span className="stat-num">152</span>
+              <span className="stat-num">{stoneCount}</span>
               <span className="stat-label">{t("home.stat_stones")}</span>
             </div>
             <div className="stat">
-              <span className="stat-num">10</span>
+              <span className="stat-num">{countryCount}</span>
               <span className="stat-label">{t("home.stat_countries")}</span>
             </div>
             <div className="stat">

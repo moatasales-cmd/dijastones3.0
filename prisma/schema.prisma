@@ -35,6 +35,7 @@ model Stone {
   strength     String?
   slip         String?
   age          String?
+  dm           Boolean @default(false) // dolomitic marble (badge on site + PDFs)
   g            Json? // gallery image paths (array)
   col          Json? // collection ids this stone belongs to (array)
 

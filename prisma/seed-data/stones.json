@@ -18,7 +18,7 @@
         "absorption": "0.26%",
         "density": "2,715 kg\/m3",
         "strength": "148 MPa",
-        "slip": "SRV Dry 45, Wet 10 (honed)",
+        "slip": "SRV Dry 45, Wet 10 (polished)",
         "age": "Jurassic (Carrara Basin, ~180 Ma)",
         "g": [
             "\/assets\/uploads\/6a39ac809e345-01ea37c6.png",
@@ -75,7 +75,7 @@
         "absorption": "0.15%",
         "density": "2,700 kg\/m3",
         "strength": "95 MPa",
-        "slip": "SRV Dry 50, Wet 12 (honed)",
+        "slip": "SRV Dry 50, Wet 12 (polished)",
         "age": "Jurassic (Carrara Basin, ~180 Ma)",
         "p": 104,
         "col": [
@@ -100,7 +100,7 @@
         "absorption": "0.18%",
         "density": "2,690 kg\/m3",
         "strength": "90 MPa",
-        "slip": "SRV Dry 48, Wet 11 (honed)",
+        "slip": "SRV Dry 48, Wet 11 (polished)",
         "age": "Jurassic (Carrara Basin, ~180 Ma)",
         "p": 98,
         "col": [
@@ -229,7 +229,7 @@
         "absorption": "0.15%",
         "density": "2,710 kg\/m3",
         "strength": "100 MPa",
-        "slip": "SRV Dry 47, Wet 11 (honed)",
+        "slip": "SRV Dry 47, Wet 11 (polished)",
         "age": "Jurassic (Carrara Basin, ~180 Ma)",
         "p": 78,
         "col": [
@@ -254,7 +254,7 @@
         "absorption": "0.13%",
         "density": "2,720 kg\/m3",
         "strength": "105 MPa",
-        "slip": "SRV Dry 46, Wet 10 (honed)",
+        "slip": "SRV Dry 46, Wet 10 (polished)",
         "age": "Jurassic (Carrara Basin, ~180 Ma)",
         "p": 85,
         "col": [
@@ -354,7 +354,7 @@
         "absorption": "0.18%",
         "density": "2,710 kg\/m3",
         "strength": "110 MPa",
-        "slip": "SRV Dry 48, Wet 11 (honed)",
+        "slip": "SRV Dry 48, Wet 11 (polished)",
         "age": "Jurassic (Veneto, ~160 Ma)",
         "p": 85,
         "col": [
@@ -429,7 +429,7 @@
         "absorption": "0.16%",
         "density": "2,700 kg\/m3",
         "strength": "92 MPa",
-        "slip": "SRV Dry 49, Wet 12 (honed)",
+        "slip": "SRV Dry 49, Wet 12 (polished)",
         "age": "Jurassic (Carrara Basin, ~180 Ma)",
         "p": 91,
         "col": [
@@ -502,7 +502,7 @@
         "absorption": "0.20%",
         "density": "2,690 kg\/m3",
         "strength": "88 MPa",
-        "slip": "SRV Dry 46, Wet 11 (honed)",
+        "slip": "SRV Dry 46, Wet 11 (polished)",
         "age": "Miocene (Sicily, ~15 Ma)",
         "p": 91,
         "col": [
@@ -654,7 +654,7 @@
         "absorption": "0.12%",
         "density": "2,700 kg\/m3",
         "strength": "96 MPa",
-        "slip": "SRV Dry 48, Wet 12 (honed)",
+        "slip": "SRV Dry 48, Wet 12 (polished)",
         "age": "Jurassic (Italy, ~180 Ma)",
         "p": 85,
         "col": [
@@ -680,7 +680,7 @@
         "absorption": "0.10-0.23%",
         "density": "2,840-2,850 kg\/m3",
         "strength": "113-148 MPa",
-        "slip": "SRV Dry 50, Wet 12 (honed)",
+        "slip": "SRV Dry 50, Wet 12 (polished)",
         "age": "Triassic (Thassos Island, ~230 Ma)",
         "p": 117,
         "col": [
@@ -706,7 +706,7 @@
         "absorption": "0.18%",
         "density": "2,720 kg\/m3",
         "strength": "85 MPa",
-        "slip": "SRV Dry 47, Wet 11 (honed)",
+        "slip": "SRV Dry 47, Wet 11 (polished)",
         "age": "Triassic (Drama, ~230 Ma)",
         "p": 91,
         "col": [
@@ -732,7 +732,7 @@
         "absorption": "0.15%",
         "density": "2,730 kg\/m3",
         "strength": "88 MPa",
-        "slip": "SRV Dry 48, Wet 12 (honed)",
+        "slip": "SRV Dry 48, Wet 12 (polished)",
         "age": "Triassic (Drama, ~230 Ma)",
         "p": 104,
         "col": [
@@ -758,7 +758,7 @@
         "absorption": "0.16%",
         "density": "2,710 kg\/m3",
         "strength": "82 MPa",
-        "slip": "SRV Dry 46, Wet 11 (honed)",
+        "slip": "SRV Dry 46, Wet 11 (polished)",
         "age": "Triassic (Drama, ~230 Ma)",
         "p": 72,
         "col": [
@@ -836,7 +836,7 @@
         "absorption": "0.15%",
         "density": "2,720 kg\/m3",
         "strength": "98 MPa",
-        "slip": "SRV Dry 47, Wet 11 (honed)",
+        "slip": "SRV Dry 47, Wet 11 (polished)",
         "age": "Triassic (Evia, ~220 Ma)",
         "p": 65,
         "col": [
@@ -885,7 +885,7 @@
         "absorption": "0.18%",
         "density": "2,710 kg\/m3",
         "strength": "86 MPa",
-        "slip": "SRV Dry 46, Wet 11 (honed)",
+        "slip": "SRV Dry 46, Wet 11 (polished)",
         "age": "Triassic (Naxos, ~230 Ma)",
         "p": 72,
         "col": [
@@ -935,7 +935,7 @@
         "absorption": "0.17%",
         "density": "2,710 kg\/m3",
         "strength": "85 MPa",
-        "slip": "SRV Dry 46, Wet 11 (honed)",
+        "slip": "SRV Dry 46, Wet 11 (polished)",
         "age": "Triassic (Northern Greece, ~230 Ma)",
         "p": 72,
         "col": [
@@ -961,7 +961,7 @@
         "absorption": "0.19%",
         "density": "2,700 kg\/m3",
         "strength": "83 MPa",
-        "slip": "SRV Dry 45, Wet 11 (honed)",
+        "slip": "SRV Dry 45, Wet 11 (polished)",
         "age": "Triassic (Skyros, ~225 Ma)",
         "p": 65,
         "col": [
@@ -1012,7 +1012,7 @@
         "absorption": "0.12%",
         "density": "2,710 kg\/m3",
         "strength": "70 MPa",
-        "slip": "SRV Dry 47, Wet 11 (honed)",
+        "slip": "SRV Dry 47, Wet 11 (polished)",
         "age": "Triassic (Marmara Island, ~230 Ma)",
         "p": 65,
         "col": [
@@ -1037,7 +1037,7 @@
         "absorption": "0.10%",
         "density": "2,720 kg\/m3",
         "strength": "72 MPa",
-        "slip": "SRV Dry 48, Wet 12 (honed)",
+        "slip": "SRV Dry 48, Wet 12 (polished)",
         "age": "Triassic (Marmara Island, ~230 Ma)",
         "p": 62,
         "col": [
@@ -1062,7 +1062,7 @@
         "absorption": "0.10%",
         "density": "2,730 kg\/m3",
         "strength": "68.8 MPa",
-        "slip": "SRV Dry 47, Wet 12 (honed)",
+        "slip": "SRV Dry 47, Wet 12 (polished)",
         "age": "Triassic (Afyon, ~230 Ma)",
         "p": 59,
         "col": [
@@ -1087,7 +1087,7 @@
         "absorption": "0.12%",
         "density": "2,720 kg\/m3",
         "strength": "67 MPa",
-        "slip": "SRV Dry 46, Wet 11 (honed)",
+        "slip": "SRV Dry 46, Wet 11 (polished)",
         "age": "Triassic (Afyon, ~230 Ma)",
         "p": 65,
         "col": [
@@ -1112,7 +1112,7 @@
         "absorption": "0.10-0.20%",
         "density": "2,710-2,730 kg\/m3",
         "strength": "57-92 MPa",
-        "slip": "SRV Dry 48, Wet 12 (honed)",
+        "slip": "SRV Dry 48, Wet 12 (polished)",
         "age": "Miocene (Burdur, ~15 Ma)",
         "p": 46,
         "col": [
@@ -1137,7 +1137,7 @@
         "absorption": "0.15%",
         "density": "2,700 kg\/m3",
         "strength": "60 MPa",
-        "slip": "SRV Dry 47, Wet 12 (honed)",
+        "slip": "SRV Dry 47, Wet 12 (polished)",
         "age": "Miocene (Burdur, ~15 Ma)",
         "p": 42,
         "col": [
@@ -1162,7 +1162,7 @@
         "absorption": "0.18%",
         "density": "2,690 kg\/m3",
         "strength": "62 MPa",
-        "slip": "SRV Dry 46, Wet 11 (honed)",
+        "slip": "SRV Dry 46, Wet 11 (polished)",
         "age": "Miocene (Turkey, ~15 Ma)",
         "p": 49,
         "col": [
@@ -1513,7 +1513,7 @@
         "absorption": "0.15-0.25%",
         "density": "2,680-2,730 kg\/m3",
         "strength": "80-100 MPa",
-        "slip": "SRV Dry 45, Wet 10 (honed)",
+        "slip": "SRV Dry 45, Wet 10 (polished)",
         "age": "Jurassic (Murcia\/Valencia, ~160 Ma)",
         "p": 72,
         "col": [
@@ -1538,7 +1538,7 @@
         "absorption": "0.40%",
         "density": "2,650-2,750 kg\/m3",
         "strength": "70-159 MPa",
-        "slip": "SRV Dry 44, Wet 10 (honed)",
+        "slip": "SRV Dry 44, Wet 10 (polished)",
         "age": "Jurassic (Murcia\/Valencia, ~160 Ma)",
         "p": 85,
         "col": [
@@ -1563,7 +1563,7 @@
         "absorption": "0.15%",
         "density": "2,710 kg\/m3",
         "strength": "75 MPa",
-        "slip": "SRV Dry 47, Wet 11 (honed)",
+        "slip": "SRV Dry 47, Wet 11 (polished)",
         "age": "Triassic (Turkey, ~220 Ma)",
         "p": 59,
         "col": [
@@ -1588,7 +1588,7 @@
         "absorption": "0.10%",
         "density": "2,710-2,730 kg\/m3",
         "strength": "65-80 MPa",
-        "slip": "SRV Dry 48, Wet 12 (honed)",
+        "slip": "SRV Dry 48, Wet 12 (polished)",
         "age": "Triassic (Mugla, ~230 Ma)",
         "p": 55,
         "col": [
@@ -1613,7 +1613,7 @@
         "absorption": "0.12%",
         "density": "2,700 kg\/m3",
         "strength": "66 MPa",
-        "slip": "SRV Dry 46, Wet 11 (honed)",
+        "slip": "SRV Dry 46, Wet 11 (polished)",
         "age": "Triassic (Sivas, ~225 Ma)",
         "p": 52,
         "col": [
@@ -1638,7 +1638,7 @@
         "absorption": "0.16%",
         "density": "2,710 kg\/m3",
         "strength": "70 MPa",
-        "slip": "SRV Dry 46, Wet 11 (honed)",
+        "slip": "SRV Dry 46, Wet 11 (polished)",
         "age": "Miocene (Turkey, ~15 Ma)",
         "p": 59,
         "col": [
@@ -1695,7 +1695,7 @@
         "absorption": "0.15%",
         "density": "2,700 kg\/m3",
         "strength": "58 MPa",
-        "slip": "SRV Dry 47, Wet 12 (honed)",
+        "slip": "SRV Dry 47, Wet 12 (polished)",
         "age": "Miocene (Bursa, ~15 Ma)",
         "p": 46,
         "col": [
@@ -1746,7 +1746,7 @@
         "absorption": "0.16-0.50%",
         "density": "2,670-2,700 kg\/m3",
         "strength": "157-165 MPa",
-        "slip": "SRV Dry 48, Wet 11 (honed)",
+        "slip": "SRV Dry 48, Wet 11 (polished)",
         "age": "Miocene (Alicante, ~15 Ma)",
         "p": 72,
         "col": [
@@ -1772,7 +1772,7 @@
         "absorption": "0.10-0.19%",
         "density": "2,664-2,710 kg\/m3",
         "strength": "145.1 MPa",
-        "slip": "SRV Dry 45, Wet 10 (honed)",
+        "slip": "SRV Dry 45, Wet 10 (polished)",
         "age": "Cretaceous (Basque Country, ~120 Ma)",
         "p": 91,
         "col": [
@@ -1823,7 +1823,7 @@
         "absorption": "0.40-0.90%",
         "density": "2,650-2,750 kg\/m3",
         "strength": "71-159 MPa",
-        "slip": "SRV Dry 44, Wet 10 (honed)",
+        "slip": "SRV Dry 44, Wet 10 (polished)",
         "age": "Jurassic (Murcia\/Valencia, ~160 Ma)",
         "p": 78,
         "col": [
@@ -1848,7 +1848,7 @@
         "absorption": "0.30%",
         "density": "2,680 kg\/m3",
         "strength": "120 MPa",
-        "slip": "SRV Dry 47, Wet 11 (honed)",
+        "slip": "SRV Dry 47, Wet 11 (polished)",
         "age": "Miocene (Alicante, ~15 Ma)",
         "p": 65,
         "col": [
@@ -1873,7 +1873,7 @@
         "absorption": "0.12%",
         "density": "2,710 kg\/m3",
         "strength": "100 MPa",
-        "slip": "SRV Dry 48, Wet 12 (honed)",
+        "slip": "SRV Dry 48, Wet 12 (polished)",
         "age": "Triassic (Almeria, ~230 Ma)",
         "p": 78,
         "col": [
@@ -1898,7 +1898,7 @@
         "absorption": "0.22%",
         "density": "2,690 kg\/m3",
         "strength": "95 MPa",
-        "slip": "SRV Dry 46, Wet 11 (honed)",
+        "slip": "SRV Dry 46, Wet 11 (polished)",
         "age": "Miocene (Alicante, ~15 Ma)",
         "p": 59,
         "col": [
@@ -1923,7 +1923,7 @@
         "absorption": "0.25%",
         "density": "2,680 kg\/m3",
         "strength": "115 MPa",
-        "slip": "SRV Dry 47, Wet 11 (honed)",
+        "slip": "SRV Dry 47, Wet 11 (polished)",
         "age": "Miocene (Alicante, ~15 Ma)",
         "p": 68,
         "col": [
@@ -1948,7 +1948,7 @@
         "absorption": "0.14%",
         "density": "2,710 kg\/m3",
         "strength": "98 MPa",
-        "slip": "SRV Dry 47, Wet 12 (honed)",
+        "slip": "SRV Dry 47, Wet 12 (polished)",
         "age": "Triassic (Spain, ~230 Ma)",
         "p": 65,
         "col": [
@@ -1973,7 +1973,7 @@
         "absorption": "0.18%",
         "density": "2,700 kg\/m3",
         "strength": "105 MPa",
-        "slip": "SRV Dry 46, Wet 11 (honed)",
+        "slip": "SRV Dry 46, Wet 11 (polished)",
         "age": "Miocene (Murcia, ~15 Ma)",
         "p": 72,
         "col": [
@@ -1995,11 +1995,11 @@
         "thicknesses": "2 cm, 3 cm, 5 cm",
         "finishes": "Honed, Brushed, Sandblasted, Aged, Tumbled",
         "applications": "Interior flooring, exterior paving, wall cladding, landscape design",
-        "absorption": "3.0%",
-        "density": "2,200 kg\/m3",
-        "strength": "45 MPa",
+        "absorption": "0.35%",
+        "density": "2,680 kg\/m3",
+        "strength": "90 MPa",
         "slip": "SRV Dry 60, Wet 25 (honed)",
-        "age": "Cretaceous (Languedoc, ~100 Ma)",
+        "age": "Devonian (Montagne Noire, ~380 Ma)",
         "p": 46,
         "col": [
             "earth-fire"
@@ -2020,11 +2020,11 @@
         "thicknesses": "2 cm, 3 cm, 5 cm",
         "finishes": "Honed, Brushed, Sandblasted, Aged, Tumbled",
         "applications": "Interior flooring, exterior paving, wall cladding, landscape design",
-        "absorption": "2.8%",
-        "density": "2,250 kg\/m3",
-        "strength": "48 MPa",
+        "absorption": "0.30%",
+        "density": "2,690 kg\/m3",
+        "strength": "95 MPa",
         "slip": "SRV Dry 62, Wet 27 (honed)",
-        "age": "Cretaceous (Languedoc, ~100 Ma)",
+        "age": "Devonian (Montagne Noire, ~380 Ma)",
         "p": 49,
         "col": [
             "earth-fire"
@@ -2100,7 +2100,7 @@
         "density": "2,710 kg\/m3",
         "strength": "100 MPa",
         "slip": "SRV Dry 44, Wet 10 (polished)",
-        "age": "Jurassic (France, ~170 Ma)",
+        "age": "Devonian (Pyrenees, ~380 Ma)",
         "p": 111,
         "col": [
             "earth-fire"
@@ -2150,7 +2150,7 @@
         "absorption": "0.07-0.10%",
         "density": "2,710-2,730 kg\/m3",
         "strength": "91-97 MPa",
-        "slip": "SRV Dry 49, Wet 12 (honed)",
+        "slip": "SRV Dry 49, Wet 12 (polished)",
         "age": "Cambrian-Silurian (Estremoz, ~400 Ma)",
         "p": 85,
         "col": [
@@ -2177,7 +2177,7 @@
         "absorption": "0.08%",
         "density": "2,720 kg\/m3",
         "strength": "95 MPa",
-        "slip": "SRV Dry 48, Wet 12 (honed)",
+        "slip": "SRV Dry 48, Wet 12 (polished)",
         "age": "Cambrian-Silurian (Estremoz, ~400 Ma)",
         "p": 78,
         "col": [
@@ -2202,7 +2202,7 @@
         "absorption": "0.15%",
         "density": "2,700 kg\/m3",
         "strength": "88 MPa",
-        "slip": "SRV Dry 47, Wet 11 (honed)",
+        "slip": "SRV Dry 47, Wet 11 (polished)",
         "age": "Cambrian-Silurian (Estremoz, ~400 Ma)",
         "p": 65,
         "col": [
@@ -2279,7 +2279,7 @@
         "absorption": "0.8%",
         "density": "2,600 kg\/m3",
         "strength": "65 MPa",
-        "slip": "SRV Dry 50, Wet 14 (honed)",
+        "slip": "SRV Dry 50, Wet 14 (polished)",
         "age": "Cretaceous (Thala, ~100 Ma)",
         "g": [
             "\/assets\/uploads\/6a3a73dbb77c2-bcef288f.png",
@@ -2310,7 +2310,7 @@
         "absorption": "0.6%",
         "density": "2,650 kg\/m3",
         "strength": "75 MPa",
-        "slip": "SRV Dry 52, Wet 15 (honed)",
+        "slip": "SRV Dry 52, Wet 15 (polished)",
         "age": "Jurassic (Chemtou, ~160 Ma)",
         "p": 46,
         "col": [
@@ -2335,7 +2335,7 @@
         "absorption": "0.9%",
         "density": "2,550 kg\/m3",
         "strength": "58 MPa",
-        "slip": "SRV Dry 50, Wet 14 (honed)",
+        "slip": "SRV Dry 50, Wet 14 (polished)",
         "age": "Cretaceous (Kesra, ~100 Ma)",
         "p": 36,
         "col": [
@@ -2360,7 +2360,7 @@
         "absorption": "0.7%",
         "density": "2,600 kg\/m3",
         "strength": "68 MPa",
-        "slip": "SRV Dry 50, Wet 14 (honed)",
+        "slip": "SRV Dry 50, Wet 14 (polished)",
         "age": "Cretaceous (Tunis, ~100 Ma)",
         "p": 42,
         "col": [
@@ -2393,7 +2393,7 @@
         "absorption": "0.5%",
         "density": "2,650 kg\/m3",
         "strength": "80 MPa",
-        "slip": "SRV Dry 48, Wet 13 (honed)",
+        "slip": "SRV Dry 48, Wet 13 (polished)",
         "age": "Jurassic (Tunisia, ~160 Ma)",
         "g": [
             "\/assets\/uploads\/6a44e08861714-d2fc3585.jpg",
@@ -2420,7 +2420,7 @@
         "absorption": "0.04%",
         "density": "2,600-2,700 kg\/m3",
         "strength": "83-96 MPa",
-        "slip": "SRV Dry 47, Wet 11 (honed)",
+        "slip": "SRV Dry 47, Wet 11 (polished)",
         "age": "Precambrian (Rajasthan, ~800 Ma)",
         "p": 59,
         "col": [
@@ -2445,7 +2445,7 @@
         "absorption": "0.10%",
         "density": "2,680 kg\/m3",
         "strength": "80 MPa",
-        "slip": "SRV Dry 46, Wet 11 (honed)",
+        "slip": "SRV Dry 46, Wet 11 (polished)",
         "age": "Precambrian (Rajasthan, ~800 Ma)",
         "p": 55,
         "col": [
@@ -2935,8 +2935,8 @@
         ]
     },
     {
-        "id": "balmoral-red",
-        "n": "Balmoral Red",
+        "id": "brasilia-red",
+        "n": "Brasília Red",
         "c": "Brazil",
         "r": "Espirito Santo",
         "ci": "Vitoria",
@@ -3745,10 +3745,11 @@
         "c": "India",
         "r": "Rajasthan",
         "ci": "Udaipur",
-        "ty": "Quartzite",
+        "ty": "Marble",
         "to": "brown",
         "cn": "Brown \/ Grey \/ White",
-        "d": "Indian quartzite with complex brown and grey veining, extremely dense and hard.",
+        "d": "Hard dolomitic marble with complex brown and grey veining. Often marketed as quartzite; we grade it honestly as marble — harder than most marbles, but mild acid sensitivity applies.",
+        "dm": true,
         "sizes": "Slabs up to 300x180 cm, Tiles 30x30 to 60x60 cm",
         "thicknesses": "2 cm, 3 cm",
         "finishes": "Polished, Honed, Leather, Brushed",

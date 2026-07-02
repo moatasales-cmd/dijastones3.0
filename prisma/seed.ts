@@ -69,6 +69,7 @@ async function main() {
         strength: orNull(s.strength),
         slip: orNull(s.slip),
         age: orNull(s.age),
+        dm: !!s.dm,
         g: s.g ?? undefined,
         col: s.col ?? undefined,
       },

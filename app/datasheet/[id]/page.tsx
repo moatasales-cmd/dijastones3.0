@@ -74,7 +74,12 @@ export default async function DatasheetPage({
         <div className="ds-hero">
           <div className="ds-hero-img"><img src={img(0)} alt={s.n} /></div>
           <div className="ds-hero-info">
-            <h1>{s.n}</h1>
+            <h1>
+              {s.n}
+              {Boolean((s as unknown as { dm?: boolean }).dm) && (
+                <span className="ds-dolomite">{t("datasheet.dolomite_badge")}</span>
+              )}
+            </h1>
             <div className="ds-subtitle">{s.ty} · {s.c}</div>
             {s.d && <div className="ds-desc">{s.d}</div>}
             {s.no && <div className="ds-note">{s.no}</div>}

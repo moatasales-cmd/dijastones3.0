@@ -48,3 +48,8 @@ next-env.d.ts
 # local database
 *.db
 *.db-journal
+
+# local reports & helper scripts
+*-report.txt
+run-checks.cmd
+commit-audit.cmd

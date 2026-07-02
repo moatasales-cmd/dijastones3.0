@@ -23,11 +23,12 @@ const QUARRY_COUNTRIES: { name: string; types: string[]; districts: string[] }[]
   { name: "France", types: ["Marble", "Limestone"], districts: ["Saint-Pons (Languedoc)", "Caunes-Minervois", "Comblanchien (Burgundy)", "Massangis (Burgundy)", "Sarrancolin (Pyrenees)", "Arudy (Pyrenees)"] },
   { name: "Portugal", types: ["Marble", "Limestone"], districts: ["Estremoz / Borba / Vila Viçosa (Alentejo)", "Sintra (Lisbon)", "Ançã (Coimbra)"] },
   { name: "Tunisia", types: ["Marble", "Limestone"], districts: ["Thala (Kasserine)", "Chemtou (Jendouba)", "Kesra (Siliana)", "Carthage (Tunis)", "Sidi Kacem", "Keddel", "Matmata", "Ghoumrassen", "Ain Drahem"] },
+  { name: "Iran", types: ["Onyx", "Travertine", "Granite", "Limestone"], districts: ["Azarshahr (East Azerbaijan)", "Mahallat (Markazi)", "Natanz (Isfahan)", "Abadeh (Fars)", "Dehbid (Fars)"] },
   { name: "India", types: ["Marble", "Granite"], districts: ["Makrana (Rajasthan)", "Ambaji (Rajasthan)", "Udaipur (Rajasthan)", "Chimakurthy (Andhra Pradesh)", "Hyderabad (Telangana)", "Jalore (Rajasthan)", "Dharmapuri (Tamil Nadu)"] },
   { name: "Brazil", types: ["Granite", "Quartzite"], districts: ["Feira de Santana / Ceará", "Macaubas (Bahia)", "Bahia interior", "Espírito Santo"] },
 ];
 
-const REGIONS = ["mediterranean_basin", "apuan_alps", "anatolian_plateau", "thassos_island", "estremoz_belt", "rajasthan_craton", "brazilian_shield"];
+const REGIONS = ["mediterranean_basin", "apuan_alps", "anatolian_plateau", "thassos_island", "estremoz_belt", "zagros_belt", "rajasthan_craton", "brazilian_shield"];
 
 export default async function QuarriesPage() {
   const { t } = await getT();
@@ -77,10 +78,12 @@ export default async function QuarriesPage() {
     [t("quarries.row_9"), "2.8–3.2", "1.5–1.8", "1.4–1.7", "20–26"],
   ];
 
+  // Counts derived from the live catalogue, so they never drift from reality.
+  const countryCount = new Set(stones.map((s) => s.c)).size;
   const stats = [
-    { num: "9", label: t("quarries.stat_countries") },
+    { num: String(countryCount), label: t("quarries.stat_countries") },
     { num: "30+", label: t("quarries.stat_quarries") },
-    { num: "152", label: t("quarries.stat_varieties") },
+    { num: String(stones.length), label: t("quarries.stat_varieties") },
     { num: "98%", label: t("quarries.stat_yield") },
   ];
 

@@ -91,6 +91,48 @@ Rebuild of the original PHP site (`D:\dija-2.2`) as a modern Next.js app,
       used `&amp;`/`&mdash;`/… that React rendered literally) — fixes the whole
       site. Data in `lib/catalogue.ts` + `lib/datasheet.ts`; `svgPlaceholder`
       ported. Country-origin maps were dead code in the original, so omitted.
+- [~] **Expert content + dev audit pass** (in progress — staged, execution pending
+      a tooling outage). As stone-industry expert: (1) ~51 slip-resistance labels
+      corrected in seed data — "Wet 9–15 (honed)" relabeled "(polished)"; wet ≤15
+      is a polished figure, honed marble tests ~35–47 wet. (2) Added full Iran
+      quarry profile (EN+FR i18n: geology/extraction/blocks/ports/note +
+      country_iran + type_onyx + region_zagros_belt) — catalogue has ~10 Iranian
+      stones but the sourcing page omitted Iran and claimed "9 countries".
+      (3) Stats made data-driven: home (stone+country counts), quarries stats,
+      catalogue about/sourcing facts (countries, offices, office-city list, HQ
+      address from DB). (4) Corrected: "3 continents"→4, "170+ Pages"→"160+",
+      catalogue HQ block showed Izmir factory address though HQ is Istanbul,
+      office list omitted Istanbul (6 offices not 5). (5) Languedoc Jaune/Rouge
+      had soft-limestone specs under type Marble (2,200 kg/m³ / 3.0% / 45 MPa) —
+      corrected to real compact-marble figures; ages fixed to Devonian (~380 Ma,
+      Montagne Noire — Rouge de Caunes); Griotte Rouge age also → Devonian.
+      (6) Restored `dm` (dolomitic) field dropped in the Phase-1 migration —
+      schema + seed.ts updated; 6 Greek whites carry it. Dolomite badges staged
+      in material detail + catalogue product page + datasheet (defensive
+      `(s as {dm?:boolean}).dm` casts — compile-safe before AND after the
+      migration; grid-card badge deferred, needs `dm: true` in select lists
+      post-generate). Added missing `catalogue.product.dolomite` i18n key (EN+FR).
+      (7) "Balmoral Red" claimed as Brazilian — Balmoral Red is the famous
+      Finnish rapakivi; the record's description/origin match Brazil's red
+      granite, so renamed to **Brasília Red** (id `brasilia-red`; no other
+      references existed). (8) **Fantasy Brown** retyped Quartzite → Marble
+      with `dm: true` and a disclosure description — it's the trade's most
+      notorious misnomer (hard dolomitic marble sold as quartzite).
+      As senior dev: built /privacy /terms /cookies (footer linked them but they
+      404'd — one dynamic [legal] route, bilingual), branded 404 (app/not-found)
+      + error page (app/error), security headers in next.config.ts, metadataBase,
+      robots now also disallows /datasheet + /compare. Wrote prisma/audit-stones.ts
+      (per-type spec-range validator) + prisma/fix-content.ts + admin-gated
+      /api/admin/fix-content.
+      **PENDING (blocked by tool outage — run in order):**
+      1. `npx prisma migrate dev --name stone_dm` && `npx prisma generate`
+      2. `npm run seed` (reseeds corrected data incl. slips/specs/dm; replaces dev test accounts)
+      3. Add dolomite badges in UI (uses s.dm): materials/[id] hero (`mat-detail-dolomite`),
+         MaterialCard (`card-dolomite`), catalogue product origin line, datasheet hero (`ds-dolomite`)
+      4. `npx tsx prisma/audit-stones.ts` (review remaining flags)
+      5. `npx tsc --noEmit` && `npm run build` (first production build)
+      6. Verify in browser: /quarries (Iran, stats 10/152), /privacy|/terms|/cookies,
+         404 page, home stats, catalogue (6 offices, Istanbul HQ, 4 continents), then commit.
 - [ ] **Phase 7 — Polish & deploy.**
 
 ## Notes / carried-over quirks to fix during migration

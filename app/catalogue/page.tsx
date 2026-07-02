@@ -20,6 +20,9 @@ const inch = (cm: number) => Math.round(cm / 2.54);
 export default async function CataloguePage() {
   const { t, locale } = await getT();
   const stones = await prisma.stone.findMany();
+  const offices = await prisma.office.findMany({ where: { type: "office" } });
+  const officeCities = offices.map((o) => o.city).filter(Boolean).join(" · ");
+  const hq = offices.find((o) => o.role === "Headquarters");
 
   // Group by type in the canonical order, each sorted by name.
   const byType: Record<string, Stone[]> = {};
@@ -123,14 +126,14 @@ export default async function CataloguePage() {
         </div>
         <div className="facts">
           <div className="fact"><div className="fact-num">{stones.length}</div><div className="fact-label">{t("catalogue.about_fact_stones")}</div></div>
-          <div className="fact"><div className="fact-num">10</div><div className="fact-label">{t("catalogue.about_fact_countries")}</div></div>
+          <div className="fact"><div className="fact-num">{sortedCountries.length}</div><div className="fact-label">{t("catalogue.about_fact_countries")}</div></div>
           <div className="fact"><div className="fact-num">{orderedTypes.length}</div><div className="fact-label">{t("catalogue.about_fact_types")}</div></div>
-          <div className="fact"><div className="fact-num">5</div><div className="fact-label">{t("catalogue.about_fact_offices")}</div></div>
+          <div className="fact"><div className="fact-num">{offices.length}</div><div className="fact-label">{t("catalogue.about_fact_offices")}</div></div>
         </div>
         <div className="contact">
-          <div><strong>{t("catalogue.about_hq")}</strong><br />10031 Sok. No: 14, AOSB, Cigli 35620<br />Izmir, Türkiye</div>
+          <div><strong>{t("catalogue.about_hq")}</strong><br />{hq ? <>{hq.address}<br />{hq.address2} — {hq.country}</> : <>10031 Sok. No: 14, AOSB, Cigli 35620<br />Izmir, Türkiye</>}</div>
           <div><strong>{t("catalogue.about_contact")}</strong><br />+90 232 556 12 00<br />contact@dijastones.com</div>
-          <div><strong>{t("catalogue.about_offices")}</strong><br />Izmir · Tunis · Doha · Rome · Quebec</div>
+          <div><strong>{t("catalogue.about_offices")}</strong><br />{officeCities}</div>
           <div><strong>{t("catalogue.about_web")}</strong><br />www.dijastones.com</div>
         </div>
         {footer(<span {...rich(t("catalogue.footer_brand"))} />)}
@@ -211,7 +214,15 @@ export default async function CataloguePage() {
               <div className="product-image"><img src={gimg(s, 0)} alt={s.n} /></div>
               <div className="product-info">
                 <h2>{s.n}</h2>
-                <div className="origin">{s.ci}, {s.c} · {s.cn}</div>
+                <div className="origin">
+                  {s.ci}, {s.c}
+                  {Boolean((s as unknown as { dm?: boolean }).dm) && (
+                    <span style={{ display: "inline-block", fontSize: "7pt", letterSpacing: "0.12em", textTransform: "uppercase", padding: "1px 6px", background: "#4a7fa8", color: "#fff", fontWeight: 600, borderRadius: 2, verticalAlign: "middle", marginLeft: "0.3rem" }}>
+                      {t("catalogue.product.dolomite")}
+                    </span>
+                  )}{" "}
+                  · {s.cn}
+                </div>
                 <div className="thickness-line">10 mm · 20 mm · 30 mm</div>
                 {s.d && <div className="desc">{s.d}</div>}
                 {s.no && <div className="note">{s.no}</div>}
@@ -321,10 +332,10 @@ export default async function CataloguePage() {
         <p className="ref-lead">{t("catalogue.ref_sourcing_lead")}</p>
         <div className="ref-stats-grid">
           <div><div className="ref-stat-num">{stones.length}</div><div className="ref-stat-label">{t("catalogue.about_fact_stones")}</div></div>
-          <div><div className="ref-stat-num">10</div><div className="ref-stat-label">{t("catalogue.about_fact_countries")}</div></div>
+          <div><div className="ref-stat-num">{sortedCountries.length}</div><div className="ref-stat-label">{t("catalogue.about_fact_countries")}</div></div>
           <div><div className="ref-stat-num">{orderedTypes.length}</div><div className="ref-stat-label">{t("catalogue.about_fact_types")}</div></div>
-          <div><div className="ref-stat-num">5</div><div className="ref-stat-label">{t("catalogue.about_fact_offices")}</div></div>
-          <div><div className="ref-stat-num">3</div><div className="ref-stat-label">{t("catalogue.ref_continents")}</div></div>
+          <div><div className="ref-stat-num">{offices.length}</div><div className="ref-stat-label">{t("catalogue.about_fact_offices")}</div></div>
+          <div><div className="ref-stat-num">4</div><div className="ref-stat-label">{t("catalogue.ref_continents")}</div></div>
         </div>
         <table className="ref-table"><tbody>
           <tr><th style={{ width: "35%" }}>{t("catalogue.ref_country")}</th><th style={{ width: "45%" }}>{t("catalogue.ref_regions")}</th><th style={{ width: "20%", textAlign: "center" }}>{t("catalogue.ref_stones_header")}</th></tr>

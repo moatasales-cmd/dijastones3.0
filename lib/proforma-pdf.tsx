@@ -142,7 +142,6 @@ function ProformaDocument({ v }: { v: InvoiceView }) {
             <Text style={[s.th, s.stoneCol]}>Stone</Text>
             <Text style={[s.th, s.colSm]}>Finish</Text>
             <Text style={[s.th, s.colSm]}>Size</Text>
-            <Text style={[s.th, s.colSm]}>Qty</Text>
             <Text style={[s.th, s.colSm]}>Area</Text>
             <Text style={[s.th, s.colSm]}>Thk</Text>
             <Text style={[s.th, s.colNum]}>Unit</Text>
@@ -161,7 +160,6 @@ function ProformaDocument({ v }: { v: InvoiceView }) {
                 </View>
                 <Text style={s.colSm}>{it.finish}</Text>
                 <Text style={s.colSm}>{it.sizeLabel}</Text>
-                <Text style={s.colSm}>{it.pieces ? `${it.pieces} pc` : "—"}</Text>
                 <Text style={s.colSm}>{it.totalArea.toFixed(2)} {sysLabel}</Text>
                 <Text style={s.colSm}>{it.thickness}</Text>
                 <Text style={s.colNum}>{money(it.unitPrice)}</Text>

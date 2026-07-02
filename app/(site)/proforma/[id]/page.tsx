@@ -137,7 +137,6 @@ export default async function ProformaView({
                 <th style={{ textAlign: "left" }}>Stone</th>
                 <th>Finish</th>
                 <th>Size</th>
-                <th>Qty</th>
                 <th>Total area</th>
                 <th>Thk</th>
                 <th>Unit price</th>
@@ -162,7 +161,6 @@ export default async function ProformaView({
                   </td>
                   <td>{it.finish}</td>
                   <td>{it.categoryName}<br /><span style={{ fontSize: "0.75rem", opacity: 0.7 }}>{it.sizeLabel}</span></td>
-                  <td>{it.pieces ? `${it.pieces} pc` : "—"}</td>
                   <td>{it.totalArea.toLocaleString("en-US", { maximumFractionDigits: 2 })} {sysLabel}</td>
                   <td>{it.thickness}</td>
                   <td>{money(it.unitPrice)}/{sysLabel}</td>

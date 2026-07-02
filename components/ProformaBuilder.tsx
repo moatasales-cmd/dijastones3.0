@@ -374,9 +374,6 @@ export default function ProformaBuilder({
                   {item ? (
                     <div className="pi-subtotals">
                       <div className="pi-sub-row"><span>Unit price:</span> <strong>{money(unit === "sqf" ? item.adjusted_unit_price / SQM_TO_SQF : item.adjusted_unit_price)}/{unit === "sqf" ? "ft²" : "m²"}</strong></div>
-                      {item.pieces > 0 && (
-                        <div className="pi-sub-row"><span>Pieces:</span> <strong>{item.pieces}</strong></div>
-                      )}
                       <div className="pi-sub-row"><span>Area:</span> <strong>{r.area || "0"} {unit === "sqf" ? "ft²" : "m²"}</strong></div>
                       <div className="pi-sub-row pi-lt-row"><span>Line total:</span> <strong>{money(item.line_total)}</strong></div>
                     </div>

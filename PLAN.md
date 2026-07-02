@@ -183,6 +183,54 @@ Rebuild of the original PHP site (`D:\dija-2.2`) as a modern Next.js app,
       (reading 'toLocaleString')`. Added `normalizeItem()` in that page to read
       either schema. Verified against all 9 real legacy records (script-checked)
       plus one full browser render of a genuine $21,915 customer order.
+- [x] **Reworked the proforma builder + invoice back to (and beyond) old-site
+      parity.** ✅ User reported the rebuilt proforma had regressed: no tile
+      size selection, no stone image on selection, and the finished document
+      was missing incoterm/bank/payment-terms detail entirely. Root cause:
+      the first Next.js pass reimplemented the builder from scratch instead
+      of porting the old PHP/JS system (`assets/js/proforma.js`,
+      `inc/incoterms.php`), losing most of its depth.
+      **New shared engine** `lib/proforma-engine.ts` — ported directly from
+      the old site: 10 size categories (mosaic → jumbo slabs → custom) each
+      with per-size available thicknesses and a category multiplier; full
+      Incoterm list (10, with buyer/seller responsibility + risk-transfer
+      text) and cost matrix (which of 8 cost legs — packing/inland/customs/
+      loading/freight/insurance/import/delivery — apply per incoterm); 3
+      payment terms with a 30/70 advance/balance split. Corrected a pricing
+      misunderstanding while porting: grade (Standard/Premium) selects an
+      absolute price (`p` vs `pPremium`), it is **not** an extra multiplier —
+      confirmed against `proforma.js` line 628/718 by hand. `computeItem()`
+      is called identically client-side (live preview) and server-side (save),
+      so what the client sees always matches what's persisted.
+      **Rebuilt `ProformaBuilder.tsx`** using the old site's existing `.pi-row`
+      CSS (never removed, just unused): stone select now shows a live
+      image/type/origin/grade-price preview; category → size → thickness
+      selects cascade properly again; full incoterm and payment-term selects
+      with live description panels; destination country → port cascade;
+      summary shows the real per-incoterm cost breakdown, not a flat number.
+      **Save API hardened**: `POST /api/proforma` now looks up every stone's
+      real price/name/image server-side by ID — the client only ever sends
+      `stoneId` + selection fields, never a price, closing a trust gap.
+      **Rebuilt the invoice page** (`/proforma/[id]`) via a new shared
+      `lib/proforma-view.ts` normalizer (handles old/new/legacy item field
+      names so nothing already saved breaks): logo header, seller/buyer grid,
+      incoterm detail, container-requirements box, items table with stone
+      photos, cost breakdown, totals, **Payment Terms** section (30/70 split
+      + accepted methods), **Bank Details** section (from `config/bank.json`),
+      full 8-paragraph Terms & Conditions, footer.
+      **New: real "send as PDF" email.** Old site only had a client-side
+      `mailto:` link — never actually sent anything. Built `lib/proforma-pdf.tsx`
+      (`@react-pdf/renderer`) rendering the same `buildInvoiceView()` data as
+      the on-screen page, and `POST /api/proforma/[id]/send`, which generates
+      the PDF and emails it (via the existing `lib/mail.ts`, extended to
+      support attachments) to the signed-in client's own address. Wired to a
+      new "Send to my email" button next to Print. Verified end-to-end in the
+      browser: clicked send → server logged a dev-mode email with a real
+      9.5 KB PDF attachment, correct grand total and buyer name. Also verified
+      the reworked invoice page against a genuine legacy PHP-migrated
+      proforma (temporarily reassigned, checked, reverted) — renders with no
+      crash and full bank/incoterm detail. `tsc --noEmit` clean, production
+      build green (56 routes).
 - [ ] **Phase 7 — Polish & deploy.**
 
 ## Notes / carried-over quirks to fix during migration

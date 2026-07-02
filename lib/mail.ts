@@ -4,6 +4,7 @@ export interface MailOptions {
   to: string;
   subject: string;
   text: string;
+  attachments?: { filename: string; content: Buffer; contentType?: string }[];
 }
 
 /**
@@ -27,12 +28,16 @@ export async function sendMail(opts: MailOptions): Promise<{ sent: boolean }> {
       to: opts.to,
       subject: opts.subject,
       text: opts.text,
+      attachments: opts.attachments,
     });
     return { sent: true };
   }
 
+  const attachInfo = opts.attachments?.length
+    ? `\nAttachments: ${opts.attachments.map((a) => `${a.filename} (${a.content.length} bytes)`).join(", ")}`
+    : "";
   console.log(
-    `\n──────── [DEV EMAIL] ────────\nTo: ${opts.to}\nSubject: ${opts.subject}\n\n${opts.text}\n─────────────────────────────\n`
+    `\n──────── [DEV EMAIL] ────────\nTo: ${opts.to}\nSubject: ${opts.subject}\n\n${opts.text}${attachInfo}\n─────────────────────────────\n`
   );
   return { sent: false };
 }

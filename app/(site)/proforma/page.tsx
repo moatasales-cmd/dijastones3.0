@@ -48,10 +48,18 @@ export default async function ProformaPage() {
 
   const stoneRows = await prisma.stone.findMany({
     where: { p: { not: null } },
-    select: { id: true, n: true, p: true },
+    select: { id: true, n: true, p: true, pPremium: true, ty: true, c: true, g: true },
     orderBy: { n: "asc" },
   });
-  const stones: Priced[] = stoneRows.map((s) => ({ id: s.id, n: s.n, p: s.p as number }));
+  const stones: Priced[] = stoneRows.map((s) => ({
+    id: s.id,
+    n: s.n,
+    p: s.p as number,
+    pPremium: s.pPremium,
+    ty: s.ty,
+    c: s.c,
+    image: (Array.isArray(s.g) ? (s.g as string[])[0] : null) ?? null,
+  }));
 
   const prefill: ClientPrefill = {
     name: client.name || client.fullName || "",

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import StoneEditor, { type StoneData } from "@/components/StoneEditor";
+import DeleteStoneButton from "@/components/DeleteStoneButton";
 
 export const metadata = { title: "Edit stone — Admin" };
 
@@ -27,9 +28,12 @@ export default async function AdminStoneEdit({
       <Link href="/admin/stones" className="text-sm text-zinc-500 hover:text-zinc-900">
         <i className="fa-solid fa-arrow-left" /> Stones
       </Link>
-      <h1 className="text-2xl font-semibold my-4">
-        {isNew ? "New stone" : stone.n}
-      </h1>
+      <div className="flex items-center justify-between my-4">
+        <h1 className="text-2xl font-semibold">{isNew ? "New stone" : stone.n}</h1>
+        {!isNew && (
+          <DeleteStoneButton stoneId={stone.id} stoneName={stone.n ?? stone.id} redirectTo="/admin/stones" />
+        )}
+      </div>
       <StoneEditor stone={stone} isNew={isNew} />
     </div>
   );

@@ -171,30 +171,45 @@ export default function ProformaBuilder({
             const up = s ? unitPrice({ basePrice: s.p, thickness: r.thickness, finish: r.finish, grade: r.grade }) : 0;
             const lt = s && parseFloat(r.area) > 0 ? up * toM2(r.area) : 0;
             return (
-              <div className="pf-item-row" key={i} style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr 1fr auto", gap: "0.5rem", alignItems: "center", marginBottom: "0.5rem" }}>
-                <select className="pf-input" value={r.stoneId} onChange={(e) => setRow(i, { stoneId: e.target.value })}>
-                  <option value="">Select stone…</option>
-                  {stones.map((st) => (
-                    <option key={st.id} value={st.id}>
-                      {st.n}
-                    </option>
-                  ))}
-                </select>
-                <select className="pf-input" value={r.thickness} onChange={(e) => setRow(i, { thickness: e.target.value })}>
-                  {THICKNESSES.map((t) => <option key={t}>{t}</option>)}
-                </select>
-                <select className="pf-input" value={r.finish} onChange={(e) => setRow(i, { finish: e.target.value })}>
-                  {FINISHES.map((f) => <option key={f}>{f}</option>)}
-                </select>
-                <select className="pf-input" value={r.grade} onChange={(e) => setRow(i, { grade: e.target.value })}>
-                  {GRADES.map((g) => <option key={g}>{g}</option>)}
-                </select>
-                <input className="pf-input" type="number" min="0" step="any" placeholder={`Area ${unit === "sqf" ? "ft²" : "m²"}`} value={r.area} onChange={(e) => setRow(i, { area: e.target.value })} />
-                <div style={{ whiteSpace: "nowrap", textAlign: "right", minWidth: 90 }}>
+              <div className="pf-item-row" key={i}>
+                <div>
+                  <label className="pf-item-field-label">Stone</label>
+                  <select className="pf-input" value={r.stoneId} onChange={(e) => setRow(i, { stoneId: e.target.value })}>
+                    <option value="">Select stone…</option>
+                    {stones.map((st) => (
+                      <option key={st.id} value={st.id}>
+                        {st.n}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="pf-item-field-label">Thickness</label>
+                  <select className="pf-input" value={r.thickness} onChange={(e) => setRow(i, { thickness: e.target.value })}>
+                    {THICKNESSES.map((t) => <option key={t}>{t}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label className="pf-item-field-label">Finish</label>
+                  <select className="pf-input" value={r.finish} onChange={(e) => setRow(i, { finish: e.target.value })}>
+                    {FINISHES.map((f) => <option key={f}>{f}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label className="pf-item-field-label">Grade</label>
+                  <select className="pf-input" value={r.grade} onChange={(e) => setRow(i, { grade: e.target.value })}>
+                    {GRADES.map((g) => <option key={g}>{g}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label className="pf-item-field-label">Area ({unit === "sqf" ? "ft²" : "m²"})</label>
+                  <input className="pf-input" type="number" min="0" step="any" placeholder={`Area ${unit === "sqf" ? "ft²" : "m²"}`} value={r.area} onChange={(e) => setRow(i, { area: e.target.value })} />
+                </div>
+                <div className="pf-item-total-row" style={{ whiteSpace: "nowrap", textAlign: "right", minWidth: 90 }}>
                   {lt ? money(lt) : <span style={{ opacity: 0.5 }}>—</span>}
                   {rows.length > 1 && (
                     <button type="button" className="pf-btn pf-btn-ghost pf-btn-sm" style={{ marginLeft: 8 }} onClick={() => removeRow(i)} aria-label="Remove">
-                      <i className="fa-solid fa-xmark" />
+                      <i className="fa-solid fa-xmark" /> Remove
                     </button>
                   )}
                 </div>

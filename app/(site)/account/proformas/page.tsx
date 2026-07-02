@@ -4,6 +4,15 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { getCurrentClient } from "@/lib/auth";
 import { getT } from "@/lib/i18n-server";
+import AccountNav from "@/components/AccountNav";
+
+const STATUS_COLORS: Record<string, string> = {
+  draft: "var(--text-light)",
+  sent: "#2d6cdf",
+  accepted: "#2d7d46",
+  declined: "#c0392b",
+  expired: "#c97d2d",
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getT();
@@ -30,10 +39,11 @@ export default async function ProformasListPage() {
             <div className="hero-label">My Account</div>
             <h1>My Proformas</h1>
           </div>
-          <Link href="/proforma" className="pf-btn pf-btn-primary">
-            <i className="fa-solid fa-plus" /> New proforma
-          </Link>
         </div>
+        <AccountNav
+          active="proformas"
+          labels={{ dashboard: "Dashboard", proformas: `My Proformas (${proformas.length})`, newProforma: "New proforma", signOut: "Sign Out" }}
+        />
 
         {proformas.length === 0 ? (
           <p className="dash-empty" style={{ marginTop: "2rem" }}>
@@ -54,7 +64,18 @@ export default async function ProformasListPage() {
                 <span style={{ textAlign: "right" }}>
                   {money(p.grandTotal)}
                   <br />
-                  <span className="pf-status" style={{ opacity: 0.7, fontSize: "0.8rem" }}>{p.status}</span>
+                  <span
+                    className="pf-status"
+                    style={{
+                      fontSize: "0.75rem",
+                      fontWeight: 600,
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
+                      color: STATUS_COLORS[p.status ?? "draft"] ?? "var(--text-light)",
+                    }}
+                  >
+                    {p.status}
+                  </span>
                 </span>
               </Link>
             ))}

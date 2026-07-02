@@ -18,6 +18,7 @@ export interface CardStone {
   p: number | null;
   pPremium: number | null;
   g: unknown;
+  dm?: boolean; // dolomitic marble badge
 }
 
 export interface CardLabels {
@@ -64,6 +65,7 @@ export default function MaterialCard({
             }}
           />
         )}
+        {s.dm && <span className="card-dolomite">Dolomite</span>}
         <span className="card-country">{s.c}</span>
         <FavoriteButton stoneId={s.id} title={labels.addFavorite} />
         <CompareToggle stoneId={s.id} stoneName={s.n} />

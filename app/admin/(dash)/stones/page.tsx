@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import DeleteStoneButton from "@/components/DeleteStoneButton";
 
 export const metadata = { title: "Stones — Admin" };
 
@@ -38,10 +39,16 @@ export default async function AdminStones() {
                 <td className={td}>{s.ty}</td>
                 <td className={td}>{s.c}</td>
                 <td className={td}>{s.p != null ? `$${s.p}` : "—"}</td>
-                <td className={td + " text-right"}>
-                  <Link href={`/admin/stones/${s.id}`} className="text-amber-700 hover:underline">
-                    Edit
-                  </Link>
+                <td className={td + " text-right whitespace-nowrap"}>
+                  {/* flex+gap, not space-x: the site's global `* { margin: 0 }`
+                      reset (shared with /admin) overrides Tailwind's
+                      zero-specificity space-x margins, but not gap. */}
+                  <span className="inline-flex items-center justify-end gap-3">
+                    <Link href={`/admin/stones/${s.id}`} className="text-amber-700 hover:underline">
+                      Edit
+                    </Link>
+                    <DeleteStoneButton stoneId={s.id} stoneName={s.n} />
+                  </span>
                 </td>
               </tr>
             ))}

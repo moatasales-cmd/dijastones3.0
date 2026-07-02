@@ -91,8 +91,9 @@ Rebuild of the original PHP site (`D:\dija-2.2`) as a modern Next.js app,
       used `&amp;`/`&mdash;`/… that React rendered literally) — fixes the whole
       site. Data in `lib/catalogue.ts` + `lib/datasheet.ts`; `svgPlaceholder`
       ported. Country-origin maps were dead code in the original, so omitted.
-- [~] **Expert content + dev audit pass** (in progress — staged, execution pending
-      a tooling outage). As stone-industry expert: (1) ~51 slip-resistance labels
+- [x] **Expert content + dev audit pass.** ✅ COMPLETE — committed as 05a179f.
+      All verified: audit 152 stones / 10 countries / 0 issues; tsc clean; first
+      production build green (50 routes); all changed pages 200, unknown → 404. As stone-industry expert: (1) ~51 slip-resistance labels
       corrected in seed data — "Wet 9–15 (honed)" relabeled "(polished)"; wet ≤15
       is a polished figure, honed marble tests ~35–47 wet. (2) Added full Iran
       quarry profile (EN+FR i18n: geology/extraction/blocks/ports/note +
@@ -124,15 +125,54 @@ Rebuild of the original PHP site (`D:\dija-2.2`) as a modern Next.js app,
       robots now also disallows /datasheet + /compare. Wrote prisma/audit-stones.ts
       (per-type spec-range validator) + prisma/fix-content.ts + admin-gated
       /api/admin/fix-content.
-      **PENDING (blocked by tool outage — run in order):**
-      1. `npx prisma migrate dev --name stone_dm` && `npx prisma generate`
-      2. `npm run seed` (reseeds corrected data incl. slips/specs/dm; replaces dev test accounts)
-      3. Add dolomite badges in UI (uses s.dm): materials/[id] hero (`mat-detail-dolomite`),
-         MaterialCard (`card-dolomite`), catalogue product origin line, datasheet hero (`ds-dolomite`)
-      4. `npx tsx prisma/audit-stones.ts` (review remaining flags)
-      5. `npx tsc --noEmit` && `npm run build` (first production build)
-      6. Verify in browser: /quarries (Iran, stats 10/152), /privacy|/terms|/cookies,
-         404 page, home stats, catalogue (6 offices, Istanbul HQ, 4 continents), then commit.
+      All follow-ups executed (user ran commands during a tool outage; helper
+      scripts run-checks.cmd / commit-audit.cmd, gitignored). Audit validator
+      ranges tuned against the reviewed catalogue (dense limestones 0.1%,
+      Makrana 0.04%, syenite-granites 2,540 kg/m³, Turkish beiges 55 MPa).
+      Remaining nice-to-have: dolomite badge on grid cards (add `dm: true` to
+      the card select lists + CardStone type — client is generated now).
+- [x] **Mobile menu + My Account overhaul + admin stone delete.** ✅
+      **Mobile menu bug fixed:** the `.mobile-nav-parent.open` class (which the
+      stylesheet's `max-height` transition depends on) was being applied to a
+      wrapper `<div>` instead of the parent element the CSS selector targets —
+      submenus (Stone/Atelier/Trade) rendered but stayed permanently
+      `max-height:0`, so items existed in the DOM but weren't visible/tappable.
+      Verified end-to-end: open menu → expand Stone → tap Materials → navigates.
+      **My Account overhaul:** `AccountNav` tab bar (Dashboard / My Proformas /
+      New Proforma / Sign Out) on every account page; dashboard now shows a
+      "Recent proformas" widget (up to 3, with total count + "View all" link)
+      pulling live from the DB; full proformas list unchanged but now reachable
+      from every account page. Favorites are individually removable via
+      `RemoveFavoriteButton` → `POST /api/favorites {remove}` (a new explicit
+      removal branch, safer than the old add/remove toggle for a one-way
+      "remove" action) — verified add/remove round-trip. `FavoritesSync`
+      mirrors the account's server-side favorites into localStorage on
+      dashboard load, so heart icons across the site match after signing in
+      on a new device/browser.
+      **Admin stone delete:** `DELETE /api/admin/stones/[id]` (admin-gated,
+      cleans up favorites referencing the stone first, no FK on Favorite→Stone)
+      + `DeleteStoneButton` (confirm dialog) wired into both the stones list
+      and the editor page. Verified: create → list → delete → gone, 152/152
+      real stones intact.
+      **Dev fixes found during the mobile sweep:** (1) Tailwind `space-x-3` in
+      `/admin/stones`' action column rendered with a 0px gap — Tailwind v4
+      wraps `space-x`'s child-margin selector in `:where()` (zero specificity,
+      intentionally overridable), and the site's global `* { margin: 0 }` reset
+      (imported for the whole app, admin included) has equal specificity and
+      comes later in the cascade, so it won. Fixed by switching to `inline-flex
+      gap-3` (gap isn't margin-based, the reset can't touch it) — same fix
+      applied to the admin sidebar's `space-y-1`. (2) The proforma builder's
+      item-row was a fixed 6-column CSS grid (`2fr 1fr 1fr 1fr 1fr auto`) with
+      no responsive fallback — every field squeezed to ~30px wide and became
+      illegible below ~860px. Moved the layout from an inline style to
+      `styles/proforma.css` with a `@media (max-width: 860px)` rule that
+      stacks fields to full-width with mobile-only labels (`.pf-item-field-label`,
+      hidden on desktop). Verified both breakpoints via computed field widths.
+      Everything else checked and confirmed already working: quote modal,
+      materials search/filter, quarries accordion, contact form + map, desktop
+      nav dropdowns, compare page's horizontal-scroll table, all admin list
+      tables (already `overflow-x-auto`-wrapped). tsc clean, production build
+      green (51 routes).
 - [ ] **Phase 7 — Polish & deploy.**
 
 ## Notes / carried-over quirks to fix during migration

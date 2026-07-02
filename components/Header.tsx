@@ -277,7 +277,13 @@ export default function Header({
             if (item.children) {
               const open = openMobileSub === item.label;
               return (
-                <div key={item.label} className="mobile-nav-parent">
+                // The stylesheet drives expansion via `.mobile-nav-parent.open`
+                // (max-height transition on .mobile-subnav) — the class must go
+                // on the parent, not inline display on the subnav.
+                <div
+                  key={item.label}
+                  className={`mobile-nav-parent${open ? " open" : ""}`}
+                >
                   <div
                     className="mobile-nav-header"
                     onClick={() => setOpenMobileSub(open ? null : item.label)}
@@ -288,16 +294,9 @@ export default function Header({
                     >
                       {item.label}
                     </span>
-                    <i
-                      className={`fa-solid fa-chevron-down mobile-caret${
-                        open ? " open" : ""
-                      }`}
-                    />
+                    <i className="fa-solid fa-chevron-down mobile-caret" />
                   </div>
-                  <div
-                    className="mobile-subnav"
-                    style={{ display: open ? "flex" : undefined }}
-                  >
+                  <div className="mobile-subnav">
                     {item.children.map((child) => (
                       <Link
                         key={child.href}

@@ -216,7 +216,7 @@ export default async function CataloguePage() {
                 <h2>{s.n}</h2>
                 <div className="origin">
                   {s.ci}, {s.c}
-                  {Boolean((s as unknown as { dm?: boolean }).dm) && (
+                  {s.dm && (
                     <span style={{ display: "inline-block", fontSize: "7pt", letterSpacing: "0.12em", textTransform: "uppercase", padding: "1px 6px", background: "#4a7fa8", color: "#fff", fontWeight: 600, borderRadius: 2, verticalAlign: "middle", marginLeft: "0.3rem" }}>
                       {t("catalogue.product.dolomite")}
                     </span>

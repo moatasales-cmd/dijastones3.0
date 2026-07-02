@@ -53,3 +53,4 @@ next-env.d.ts
 *-report.txt
 run-checks.cmd
 commit-audit.cmd
+upgrade-checks.cmd

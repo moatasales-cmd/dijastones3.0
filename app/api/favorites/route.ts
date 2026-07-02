@@ -43,6 +43,11 @@ export async function POST(req: Request) {
         });
       }
     }
+  } else if (typeof body.remove === "string" && body.remove) {
+    // Explicit removal (dashboard) — idempotent, never accidentally adds.
+    await prisma.favorite.deleteMany({
+      where: { clientId: client.id, stoneId: body.remove },
+    });
   } else {
     const stoneId = String(body.stoneId ?? "");
     if (!stoneId) {

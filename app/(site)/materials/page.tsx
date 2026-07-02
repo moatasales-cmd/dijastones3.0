@@ -24,6 +24,7 @@ export default async function MaterialsPage() {
       p: true,
       pPremium: true,
       g: true,
+      dm: true,
     },
   });
 

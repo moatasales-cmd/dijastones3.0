@@ -24,6 +24,7 @@ const CARD_FIELDS = {
   p: true,
   pPremium: true,
   g: true,
+  dm: true,
 } as const;
 
 async function getStone(id: string) {
@@ -64,9 +65,7 @@ export default async function MaterialPage({
   const s = await getStone(id);
   if (!s) notFound();
 
-  // Dolomitic-marble badge. Read defensively so the page compiles before and
-  // after the `dm` column migration lands (absent column → false).
-  const isDolomitic = Boolean((s as unknown as { dm?: boolean }).dm);
+  const isDolomitic = s.dm;
 
   const images = (Array.isArray(s.g) ? (s.g as string[]) : []).filter(Boolean);
 

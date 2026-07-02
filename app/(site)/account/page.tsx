@@ -3,10 +3,13 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { getCurrentClient } from "@/lib/auth";
 import { getT } from "@/lib/i18n-server";
+import Link from "next/link";
 import { calcCompletion, PROFILE_FIELDS } from "@/lib/profile";
 import ProfileEditor from "@/components/ProfileEditor";
-import SignOutButton from "@/components/SignOutButton";
 import MaterialCard, { type CardLabels } from "@/components/MaterialCard";
+import AccountNav from "@/components/AccountNav";
+import FavoritesSync from "@/components/FavoritesSync";
+import RemoveFavoriteButton from "@/components/RemoveFavoriteButton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getT();
@@ -33,9 +36,18 @@ export default async function AccountPage() {
   const favStones = favRows.length
     ? await prisma.stone.findMany({
         where: { id: { in: favRows.map((f) => f.stoneId) } },
-        select: { id: true, n: true, c: true, ci: true, ty: true, to: true, cn: true, p: true, pPremium: true, g: true },
+        select: { id: true, n: true, c: true, ci: true, ty: true, to: true, cn: true, p: true, pPremium: true, g: true, dm: true },
       })
     : [];
+
+  // Recent proformas for the dashboard card.
+  const proformas = await prisma.proforma.findMany({
+    where: { clientId: client.id },
+    orderBy: { createdAt: "desc" },
+    take: 3,
+    select: { id: true, createdAt: true, destinationCountry: true, grandTotal: true, status: true },
+  });
+  const proformaCount = await prisma.proforma.count({ where: { clientId: client.id } });
 
   const activity: ActivityEntry[] = Array.isArray(client.activityLog)
     ? [...(client.activityLog as unknown as ActivityEntry[])].reverse().slice(0, 10)
@@ -57,8 +69,12 @@ export default async function AccountPage() {
 
   const displayName = client.name || client.fullName || client.email;
 
+  const money = (v: number | null) =>
+    "$" + (v ?? 0).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
   return (
     <section className="auth-page">
+      <FavoritesSync serverIds={favRows.map((f) => f.stoneId)} />
       <div className="container" style={{ maxWidth: 960 }}>
         <div className="dash-header">
           <div>
@@ -69,7 +85,49 @@ export default async function AccountPage() {
               {client.createdAt ? ` · Member since ${client.createdAt.slice(0, 10)}` : ""}
             </p>
           </div>
-          <SignOutButton label="Sign Out" />
+        </div>
+        <AccountNav
+          active="dashboard"
+          labels={{ dashboard: "Dashboard", proformas: `My Proformas (${proformaCount})`, newProforma: "New proforma", signOut: "Sign Out" }}
+        />
+
+        {/* Recent proformas */}
+        <div className="info-card" style={{ marginTop: "2rem" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <h3 style={{ margin: 0 }}>
+              <i className="fa-solid fa-file-invoice" style={{ color: "var(--accent)" }} /> Recent proformas
+            </h3>
+            <Link href="/account/proformas" className="auth-link" style={{ fontSize: "0.85rem" }}>
+              View all ({proformaCount}) <i className="fa-solid fa-arrow-right" />
+            </Link>
+          </div>
+          {proformas.length === 0 ? (
+            <p className="dash-empty" style={{ marginTop: "0.75rem" }}>
+              No proformas yet. <Link href="/proforma" className="auth-link">Create your first quote</Link>.
+            </p>
+          ) : (
+            <div className="dash-activity-list" style={{ marginTop: "0.75rem" }}>
+              {proformas.map((p) => (
+                <Link
+                  key={p.id}
+                  href={`/proforma/${p.id}`}
+                  className="dash-activity-item"
+                  style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}
+                >
+                  <span>
+                    <strong>{p.id}</strong>
+                    <span style={{ opacity: 0.7, fontSize: "0.85rem" }}>
+                      {" "}· {p.createdAt?.slice(0, 10)} · {p.destinationCountry}
+                    </span>
+                  </span>
+                  <span style={{ textAlign: "right" }}>
+                    {money(p.grandTotal)}{" "}
+                    <span style={{ opacity: 0.7, fontSize: "0.8rem" }}>({p.status})</span>
+                  </span>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Profile completion */}
@@ -103,7 +161,10 @@ export default async function AccountPage() {
           ) : (
             <div className="grid-4" style={{ marginTop: "1.5rem" }}>
               {favStones.map((s) => (
-                <MaterialCard key={s.id} stone={s} unit="sqm" labels={cardLabels} />
+                <div key={s.id}>
+                  <MaterialCard stone={s} unit="sqm" labels={cardLabels} />
+                  <RemoveFavoriteButton stoneId={s.id} label="Remove" />
+                </div>
               ))}
             </div>
           )}

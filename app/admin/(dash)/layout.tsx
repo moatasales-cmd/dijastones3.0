@@ -25,7 +25,7 @@ export default async function AdminLayout({
           <div className="text-white font-semibold tracking-wide">DIJA</div>
           <div className="text-xs text-zinc-500">Admin CRM</div>
         </div>
-        <nav className="flex-1 p-3 space-y-1">
+        <nav className="flex-1 p-3 flex flex-col gap-1">
           {NAV.map((n) => (
             <Link
               key={n.href}

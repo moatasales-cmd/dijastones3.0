@@ -76,7 +76,7 @@ export default async function DatasheetPage({
           <div className="ds-hero-info">
             <h1>
               {s.n}
-              {Boolean((s as unknown as { dm?: boolean }).dm) && (
+              {s.dm && (
                 <span className="ds-dolomite">{t("datasheet.dolomite_badge")}</span>
               )}
             </h1>

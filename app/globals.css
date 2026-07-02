@@ -23,4 +23,12 @@
   .pf-invoice {
     border: none !important;
   }
+  /* Always print the dark-on-light logo variant, regardless of the
+     current color theme (paper is always light). */
+  .logo-light-mode {
+    display: block !important;
+  }
+  .logo-dark-mode {
+    display: none !important;
+  }
 }

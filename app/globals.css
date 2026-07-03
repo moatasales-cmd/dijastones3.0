@@ -32,3 +32,29 @@
     display: none !important;
   }
 }
+
+/* RTL (Arabic): flip base text direction and the handful of structural
+   left/right assumptions that would otherwise read backwards. The site's
+   hand-authored CSS uses physical (not logical) properties throughout, so
+   this is a pragmatic baseline covering layout-critical spots — not a full
+   mirror of every component. */
+html[dir="rtl"] body {
+  direction: rtl;
+  text-align: right;
+}
+html[dir="rtl"] .lang-dropdown {
+  right: auto;
+  left: 0;
+}
+html[dir="rtl"] .mobile-nav {
+  transform: translateX(-100%);
+}
+html[dir="rtl"] .mobile-nav.open {
+  transform: translateX(0);
+}
+html[dir="rtl"] .fa-arrow-left::before {
+  content: "\f061";
+}
+html[dir="rtl"] .fa-arrow-right::before {
+  content: "\f060";
+}

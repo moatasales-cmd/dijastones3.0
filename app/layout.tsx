@@ -22,9 +22,10 @@ const themeInit = `(function(){try{var t=localStorage.getItem('theme')||(window.
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const { locale } = await getT();
+  const { t, locale } = await getT();
+  const dir = t("lang.dir") === "rtl" ? "rtl" : "ltr";
   return (
-    <html lang={locale} dir="ltr" suppressHydrationWarning>
+    <html lang={locale} dir={dir} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

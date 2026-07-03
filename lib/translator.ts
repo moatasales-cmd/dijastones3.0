@@ -10,8 +10,9 @@ import el from "@/messages/el.json";
 import ar from "@/messages/ar.json";
 import zh from "@/messages/zh.json";
 import ja from "@/messages/ja.json";
+import tr from "@/messages/tr.json";
 
-const dicts: Record<Locale, Record<string, string>> = { en, fr, es, pt, ru, el, ar, zh, ja };
+const dicts: Record<Locale, Record<string, string>> = { en, fr, es, pt, ru, el, ar, zh, ja, tr };
 
 // The source messages (ported from the PHP site) were authored with HTML
 // entities for direct echo. React renders text nodes literally, so decode

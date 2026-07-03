@@ -3,7 +3,7 @@
 // browser bundle. The dictionaries + translator live in lib/translator.ts
 // (server-only usage via lib/i18n-server.ts).
 
-export const locales = ["en", "fr", "es", "pt", "ru", "el", "ar", "zh", "ja"] as const;
+export const locales = ["en", "fr", "es", "pt", "ru", "el", "ar", "zh", "ja", "tr"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "en";
 
@@ -17,6 +17,7 @@ export const localeNames: Record<Locale, string> = {
   ar: "العربية",
   zh: "中文",
   ja: "日本語",
+  tr: "Türkçe",
 };
 
 export const rtlLocales: readonly Locale[] = ["ar"];

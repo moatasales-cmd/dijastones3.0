@@ -85,6 +85,14 @@ const flagSvg: Record<Locale, React.ReactNode> = {
       <circle cx="30" cy="15" r="9" fill="#BC002D" />
     </svg>
   ),
+  tr: (
+    <svg viewBox="0 0 60 30" width="18" height="9" style={{ verticalAlign: "middle" }}>
+      <rect width="60" height="30" fill="#E30A17" />
+      <circle cx="24" cy="15" r="7.5" fill="#fff" />
+      <circle cx="26" cy="15" r="6" fill="#E30A17" />
+      <polygon points="34,15 39.5,16.8 36.3,12 36.3,18 39.5,13.2" fill="#fff" />
+    </svg>
+  ),
 };
 
 function setLocale(code: Locale) {

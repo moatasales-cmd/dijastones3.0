@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { nowStamp } from "@/lib/time";
+import { notifyLead } from "@/lib/mail";
 
 export async function POST(req: Request) {
   const body = await req.json().catch(() => ({}));
@@ -34,6 +35,15 @@ export async function POST(req: Request) {
       areaUnit: str(body.areaUnit) || "m²",
       message: str(body.message) || null,
     },
+  });
+
+  await notifyLead("quote request", {
+    Name: name,
+    Email: email,
+    Phone: phone,
+    Stone: stoneName,
+    Area: str(body.area) ? `${str(body.area)} ${str(body.areaUnit) || "m²"}` : null,
+    Message: str(body.message),
   });
 
   return NextResponse.json({ ok: true, message: `Quote request sent for ${stoneName}.` });

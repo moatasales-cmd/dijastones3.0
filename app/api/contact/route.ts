@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { notifyLead } from "@/lib/mail";
 
 function nowStamp() {
   const d = new Date();
@@ -40,6 +41,15 @@ export async function POST(req: Request) {
       office: str(body.office) || null,
       message,
     },
+  });
+
+  await notifyLead("contact form message", {
+    Name: name,
+    Email: email,
+    Phone: str(body.phone),
+    Company: str(body.company),
+    Office: str(body.office),
+    Message: message,
   });
 
   return NextResponse.json({ ok: true });

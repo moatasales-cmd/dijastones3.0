@@ -48,3 +48,28 @@ export function verificationEmail(code: string): { subject: string; text: string
     text: `Your DIJA Natural Stone verification code is:\n\n${code}\n\nThis code expires in 10 minutes.\n\nIf you did not request this, please ignore this email.`,
   };
 }
+
+/**
+ * Best-effort real-time notification to the sales team for a new lead
+ * (contact form, quote request, or trade application). Never throws --
+ * a notification failure must not block the lead from being saved, since
+ * the database row is the source of truth and admins can still see it
+ * there. Recipient is configurable via LEAD_NOTIFY_EMAIL for environments
+ * that want a different inbox than the public sales@ address.
+ */
+export async function notifyLead(kind: string, fields: Record<string, string | null | undefined>): Promise<void> {
+  const to = process.env.LEAD_NOTIFY_EMAIL || "sales@dijastones.com";
+  const lines = Object.entries(fields)
+    .filter(([, v]) => v)
+    .map(([k, v]) => `${k}: ${v}`)
+    .join("\n");
+  try {
+    await sendMail({
+      to,
+      subject: `New ${kind} — DIJA Natural Stone`,
+      text: `A new ${kind} was just submitted on the website:\n\n${lines}\n\nView it in the admin panel for full details.`,
+    });
+  } catch (err) {
+    console.error(`[notifyLead] failed to send ${kind} notification:`, err);
+  }
+}

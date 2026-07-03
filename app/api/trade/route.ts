@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { nowStamp } from "@/lib/time";
+import { notifyLead } from "@/lib/mail";
 
 export async function POST(req: Request) {
   const body = await req.json().catch(() => ({}));
@@ -41,6 +42,16 @@ export async function POST(req: Request) {
       stoneInterest: str(body.stoneInterest) || null,
       notes: str(body.notes) || null,
     },
+  });
+
+  await notifyLead("trade program application", {
+    Name: name,
+    Email: email,
+    Phone: str(body.phone),
+    Company: company,
+    Role: role,
+    Volume: str(body.volume),
+    "Project example": projectExample,
   });
 
   return NextResponse.json({ ok: true, message: "Application received. We'll be in touch." });

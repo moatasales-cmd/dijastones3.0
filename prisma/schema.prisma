@@ -74,6 +74,12 @@ model Project {
   qb   String?
   qbFr String? @map("qb_fr")
   g    Json? // gallery (array)
+  /// Translations for the other 8 site locales (es, pt, ru, el, ar, zh, ja, tr),
+  /// keyed by locale code: { [locale]: { t?, c?, b?, bo?, q?, qb? } }.
+  /// EN/FR keep their own columns above for backward compatibility; every
+  /// other locale falls back field-by-field to EN when a translation (or
+  /// this column) is missing — see lib/lang.ts.
+  i18n Json?
 }
 
 /// Journal / blog posts (bilingual EN/FR).
@@ -91,6 +97,10 @@ model Post {
   img String?
   b   Json? // body — array of paragraphs
   bFr Json?   @map("b_fr")
+  /// Translations for the other 8 site locales, keyed by locale code:
+  /// { [locale]: { t?, c?, e?, b? } }. Falls back field-by-field to EN
+  /// when a translation (or this column) is missing — see lib/lang.ts.
+  i18n Json?
 }
 
 /// Registered trade clients / accounts.

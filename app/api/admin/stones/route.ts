@@ -20,6 +20,15 @@ function buildData(body: Record<string, unknown>) {
       data[f] = Number.isFinite(n) ? Math.round(n) : null;
     }
   }
+  if (body.dm !== undefined) data.dm = body.dm === true || body.dm === "true";
+  if (typeof body.g === "string") {
+    try {
+      const parsed = JSON.parse(body.g);
+      if (Array.isArray(parsed)) data.g = parsed.filter((p) => typeof p === "string");
+    } catch {
+      // leave gallery untouched if it doesn't parse
+    }
+  }
   return data;
 }
 

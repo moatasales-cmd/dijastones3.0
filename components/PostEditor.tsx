@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ImageUploader from "@/components/admin/ImageUploader";
 
 export interface PostData {
   id: string;
@@ -60,7 +61,10 @@ export default function PostEditor({ post, isNew }: { post: PostData; isNew: boo
         <label className="block"><span className={lbl}>Author</span><input name="a" defaultValue={v(post.a)} className={input} /></label>
         <label className="block"><span className={lbl}>Date</span><input name="dt" defaultValue={v(post.dt)} className={input} /></label>
         <label className="block"><span className={lbl}>Read time</span><input name="r" defaultValue={v(post.r)} className={input} /></label>
-        <label className="block col-span-2"><span className={lbl}>Image path</span><input name="img" defaultValue={v(post.img)} className={input} /></label>
+        <div className="col-span-2">
+          <span className={lbl}>Cover image</span>
+          <ImageUploader name="img" initial={post.img} />
+        </div>
         <label className="block col-span-2"><span className={lbl}>Excerpt (EN)</span><textarea name="e" defaultValue={v(post.e)} rows={2} className={input} /></label>
         <label className="block col-span-2"><span className={lbl}>Excerpt (FR)</span><textarea name="eFr" defaultValue={v(post.eFr)} rows={2} className={input} /></label>
       </div>

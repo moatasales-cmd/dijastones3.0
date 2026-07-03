@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import GalleryUploader from "@/components/admin/GalleryUploader";
 
 export interface StoneData {
   id: string;
@@ -24,6 +25,8 @@ export interface StoneData {
   strength?: string | null;
   slip?: string | null;
   age?: string | null;
+  dm?: boolean | null;
+  g?: unknown;
 }
 
 const input = "w-full px-3 py-2 border border-zinc-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-amber-600";
@@ -47,6 +50,7 @@ export default function StoneEditor({ stone, isNew }: { stone: StoneData; isNew:
     const fd = new FormData(e.currentTarget);
     const payload: Record<string, unknown> = Object.fromEntries(fd.entries());
     payload.id = stone.id || payload.id;
+    payload.dm = fd.has("dm");
     if (!isNew) payload._existing = true;
     setBusy(true);
     setMsg(null);
@@ -74,6 +78,11 @@ export default function StoneEditor({ stone, isNew }: { stone: StoneData; isNew:
         </div>
       )}
 
+      <div className="bg-white rounded-lg border border-zinc-200 p-5 mb-5">
+        <span className={lbl}>Gallery images</span>
+        <GalleryUploader name="g" initial={Array.isArray(stone.g) ? (stone.g as string[]) : []} />
+      </div>
+
       <div className="bg-white rounded-lg border border-zinc-200 p-5 mb-5 grid grid-cols-2 gap-4">
         <Field name="n" label="Name" value={v(stone.n)} />
         <Field name="ty" label="Type (Marble, Granite…)" value={v(stone.ty)} />
@@ -82,6 +91,10 @@ export default function StoneEditor({ stone, isNew }: { stone: StoneData; isNew:
         <Field name="ci" label="City / quarry" value={v(stone.ci)} />
         <Field name="to" label="Tone (white, black…)" value={v(stone.to)} />
         <Field name="cn" label="Colour name" value={v(stone.cn)} />
+        <label className="flex items-center gap-2 mt-1">
+          <input type="checkbox" name="dm" defaultChecked={!!stone.dm} className="w-4 h-4 accent-amber-700" />
+          <span className="text-sm text-zinc-700">Dolomitic marble (shows a badge on the site &amp; PDFs)</span>
+        </label>
       </div>
 
       <div className="bg-white rounded-lg border border-zinc-200 p-5 mb-5 grid grid-cols-2 gap-4">

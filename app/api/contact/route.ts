@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { notifyLead } from "@/lib/mail";
+import { rateLimit } from "@/lib/rate-limit";
 
 function nowStamp() {
   const d = new Date();
@@ -11,6 +12,9 @@ function nowStamp() {
 }
 
 export async function POST(req: Request) {
+  const limited = rateLimit(req, "contact", 5, 10 * 60_000);
+  if (limited) return limited;
+
   let body: Record<string, unknown>;
   try {
     body = await req.json();

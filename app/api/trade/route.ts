@@ -2,8 +2,12 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { nowStamp } from "@/lib/time";
 import { notifyLead } from "@/lib/mail";
+import { rateLimit } from "@/lib/rate-limit";
 
 export async function POST(req: Request) {
+  const limited = rateLimit(req, "trade", 5, 10 * 60_000);
+  if (limited) return limited;
+
   const body = await req.json().catch(() => ({}));
   const str = (v: unknown) => (typeof v === "string" ? v.trim() : "");
   const name = str(body.name);

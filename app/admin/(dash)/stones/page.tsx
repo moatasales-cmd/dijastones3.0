@@ -1,60 +1,40 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import DeleteStoneButton from "@/components/DeleteStoneButton";
+import PageHeader from "@/components/admin/PageHeader";
+import StonesTable, { type StoneRow } from "@/components/admin/StonesTable";
 
 export const metadata = { title: "Stones — Admin" };
-
-const th = "text-left font-medium text-zinc-500 px-4 py-2";
-const td = "px-4 py-2";
 
 export default async function AdminStones() {
   const stones = await prisma.stone.findMany({
     orderBy: { n: "asc" },
-    select: { id: true, n: true, c: true, ty: true, p: true },
+    select: { id: true, n: true, c: true, ty: true, p: true, g: true },
   });
+
+  const rows: StoneRow[] = stones.map((s) => ({
+    id: s.id,
+    n: s.n,
+    c: s.c,
+    ty: s.ty,
+    p: s.p,
+    thumb: Array.isArray(s.g) && typeof s.g[0] === "string" ? (s.g[0] as string) : null,
+  }));
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-semibold">Stones ({stones.length})</h1>
-        <Link href="/admin/stones/new" className="bg-zinc-900 text-white text-sm px-4 py-2 rounded hover:bg-zinc-800">
-          <i className="fa-solid fa-plus" /> New stone
-        </Link>
-      </div>
-      <div className="bg-white rounded-lg border border-zinc-200 overflow-x-auto">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="border-b border-zinc-100">
-              <th className={th}>Name</th>
-              <th className={th}>Type</th>
-              <th className={th}>Country</th>
-              <th className={th}>Price /m²</th>
-              <th className={th}></th>
-            </tr>
-          </thead>
-          <tbody>
-            {stones.map((s) => (
-              <tr key={s.id} className="border-b border-zinc-50 hover:bg-zinc-50">
-                <td className={td + " font-medium"}>{s.n}</td>
-                <td className={td}>{s.ty}</td>
-                <td className={td}>{s.c}</td>
-                <td className={td}>{s.p != null ? `$${s.p}` : "—"}</td>
-                <td className={td + " text-right whitespace-nowrap"}>
-                  {/* flex+gap, not space-x: the site's global `* { margin: 0 }`
-                      reset (shared with /admin) overrides Tailwind's
-                      zero-specificity space-x margins, but not gap. */}
-                  <span className="inline-flex items-center justify-end gap-3">
-                    <Link href={`/admin/stones/${s.id}`} className="text-amber-700 hover:underline">
-                      Edit
-                    </Link>
-                    <DeleteStoneButton stoneId={s.id} stoneName={s.n} />
-                  </span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <PageHeader
+        title="Stones"
+        count={stones.length}
+        actions={
+          <Link
+            href="/admin/stones/new"
+            className="bg-zinc-900 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-zinc-800 transition-colors"
+          >
+            <i className="fa-solid fa-plus" /> New stone
+          </Link>
+        }
+      />
+      <StonesTable stones={rows} />
     </div>
   );
 }

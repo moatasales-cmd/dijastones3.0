@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import PostEditor, { type PostData } from "@/components/PostEditor";
+import PageHeader from "@/components/admin/PageHeader";
 
 export const metadata = { title: "Edit post — Admin" };
 
@@ -24,10 +24,7 @@ export default async function AdminPostEdit({
 
   return (
     <div>
-      <Link href="/admin/posts" className="text-sm text-zinc-500 hover:text-zinc-900">
-        <i className="fa-solid fa-arrow-left" /> Journal
-      </Link>
-      <h1 className="text-2xl font-semibold my-4">{isNew ? "New post" : post.t}</h1>
+      <PageHeader title={isNew ? "New post" : post.t ?? post.id} backHref="/admin/posts" backLabel="Journal" />
       <PostEditor post={post} isNew={isNew} />
     </div>
   );

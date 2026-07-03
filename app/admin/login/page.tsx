@@ -28,8 +28,8 @@ export default function AdminLogin() {
         onSubmit={onSubmit}
         className="w-full max-w-sm bg-white rounded-lg shadow-xl p-8 border border-zinc-200"
       >
-        <h1 className="text-2xl font-semibold text-zinc-900 mb-1">DIJA Admin</h1>
-        <p className="text-sm text-zinc-500 mb-6">Sign in to manage the CRM.</p>
+        <div role="heading" aria-level={1} className="text-2xl font-semibold text-zinc-900 mb-1">DIJA Admin</div>
+        <div className="text-sm text-zinc-500 mb-6">Sign in to manage the CRM.</div>
         {error && (
           <div className="mb-4 text-sm text-red-600 bg-red-50 border border-red-200 rounded px-3 py-2">
             {error}

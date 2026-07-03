@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { requireAdmin } from "@/lib/admin";
 import AdminLogout from "@/components/AdminLogout";
+import AdminNav, { type NavItem } from "@/components/admin/AdminNav";
 
-const NAV = [
+const NAV: NavItem[] = [
   { href: "/admin", label: "Dashboard", icon: "fa-gauge-high" },
   { href: "/admin/stones", label: "Stones", icon: "fa-cube" },
   { href: "/admin/clients", label: "Clients", icon: "fa-users" },
@@ -19,32 +20,29 @@ export default async function AdminLayout({
   await requireAdmin();
 
   return (
-    <div className="min-h-screen flex bg-zinc-100 text-zinc-900">
-      <aside className="w-56 shrink-0 bg-zinc-900 text-zinc-300 flex flex-col">
-        <div className="px-5 py-5 border-b border-zinc-800">
-          <div className="text-white font-semibold tracking-wide">DIJA</div>
-          <div className="text-xs text-zinc-500">Admin CRM</div>
+    <div className="min-h-screen flex bg-zinc-50 text-zinc-900">
+      <aside className="w-60 shrink-0 bg-zinc-900 text-zinc-300 flex flex-col min-h-screen sticky top-0">
+        <div className="px-5 py-5 border-b border-white/10 flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-lg bg-amber-700 text-white flex items-center justify-center font-serif font-semibold text-sm shrink-0">
+            D
+          </div>
+          <div>
+            <div className="text-white font-semibold tracking-wide leading-tight">DIJA</div>
+            <div className="text-[11px] text-zinc-500 leading-tight">Admin CRM</div>
+          </div>
         </div>
-        <nav className="flex-1 p-3 flex flex-col gap-1">
-          {NAV.map((n) => (
-            <Link
-              key={n.href}
-              href={n.href}
-              className="flex items-center gap-3 px-3 py-2 rounded text-sm hover:bg-zinc-800 hover:text-white transition-colors"
-            >
-              <i className={`fa-solid ${n.icon} w-4 text-center`} />
-              {n.label}
-            </Link>
-          ))}
-        </nav>
-        <div className="p-4 border-t border-zinc-800 flex items-center justify-between">
-          <Link href="/" className="text-sm text-zinc-400 hover:text-white">
-            <i className="fa-solid fa-arrow-left" /> Site
+        <AdminNav items={NAV} />
+        <div className="p-3 border-t border-white/10 flex items-center justify-between">
+          <Link
+            href="/"
+            className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-zinc-400 hover:bg-white/5 hover:text-white transition-colors"
+          >
+            <i className="fa-solid fa-arrow-left" /> Back to site
           </Link>
           <AdminLogout />
         </div>
       </aside>
-      <main className="flex-1 min-w-0 p-8">{children}</main>
+      <main className="flex-1 min-w-0 p-8 max-w-[1400px]">{children}</main>
     </div>
   );
 }

@@ -123,7 +123,7 @@ export default function GalleryUploader({ name, initial }: { name: string; initi
         />
       </div>
       {error && <div className="text-red-600 text-sm mt-1">{error}</div>}
-      <p className="text-xs text-zinc-400 mt-1">The first image is used as the cover photo everywhere on the site.</p>
+      <div className="text-xs text-zinc-400 mt-1">The first image is used as the cover photo everywhere on the site.</div>
     </div>
   );
 }

@@ -8,6 +8,21 @@
 @import "../styles/auth.css";
 @import "../styles/proforma.css";
 
+/* iOS Safari auto-zooms the page when a focused input's font-size is under
+   16px — every form on the site (auth, contact, quote, proforma builder)
+   used ~14.4px inputs, so tapping any field on an iPhone triggered a jarring
+   zoom that made the page feel broken. 16px is the zoom threshold, not a
+   visual preference. The !important is deliberate and narrowly scoped: the
+   site's hand-authored CSS sets font-size on form inputs from many different
+   selectors (.pf-input, .auth-field .pf-input, etc.) at various specificities,
+   and this single non-negotiable property needs to win over all of them on
+   small screens without hunting down and overriding each one individually. */
+@media (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
 /* Print: show only the invoice, hide site chrome. */
 @media print {
   header,

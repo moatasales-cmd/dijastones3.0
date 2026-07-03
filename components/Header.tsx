@@ -68,9 +68,8 @@ const flagSvg: Record<Locale, React.ReactNode> = {
   ),
   ar: (
     <svg viewBox="0 0 60 30" width="18" height="9" style={{ verticalAlign: "middle" }}>
-      <rect width="60" height="30" fill="#007A3D" />
-      <rect width="60" height="30" fill="none" stroke="#fff" strokeWidth="1" />
-      <text x="30" y="19" textAnchor="middle" fontSize="9" fill="#fff">لا إله إلا الله</text>
+      <rect width="60" height="30" rx="3" fill="var(--accent, #915D36)" />
+      <text x="30" y="21" textAnchor="middle" fontSize="17" fontFamily="serif" fill="#fff">ع</text>
     </svg>
   ),
   zh: (
@@ -233,15 +232,15 @@ export default function Header({
     <>
       <header ref={headerRef} className={scrolled ? "scrolled" : ""}>
         <div className="header-inner">
-          <Link href="/" className="logo" aria-label="DIJA Marble">
+          <Link href="/" className="logo" aria-label="DIJA Natural Stone">
             <img
               src="/assets/images/logo-dark.png"
-              alt="DIJA Marble"
+              alt="DIJA Natural Stone"
               className="logo-img logo-light-mode"
             />
             <img
               src="/assets/images/logo-light.png"
-              alt="DIJA Marble"
+              alt="DIJA Natural Stone"
               className="logo-img logo-dark-mode"
             />
           </Link>

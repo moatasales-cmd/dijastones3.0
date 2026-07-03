@@ -59,9 +59,9 @@ export default async function ProformaView({
           {/* Header: logo + doc title */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "2rem", borderBottom: "2px solid var(--accent)", paddingBottom: "1.25rem" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/images/logo-dark.png" alt="DIJA Marble" style={{ height: 44, width: "auto" }} className="logo-light-mode" />
+            <img src="/assets/images/logo-dark.png" alt="DIJA Natural Stone" style={{ height: 44, width: "auto" }} className="logo-light-mode" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/images/logo-light.png" alt="DIJA Marble" style={{ height: 44, width: "auto" }} className="logo-dark-mode" />
+            <img src="/assets/images/logo-light.png" alt="DIJA Natural Stone" style={{ height: 44, width: "auto" }} className="logo-dark-mode" />
             <div style={{ textAlign: "right" }}>
               <h1 style={{ margin: 0 }}>Proforma Invoice</h1>
               <p style={{ margin: 0, opacity: 0.7 }}>{v.id}</p>
@@ -212,33 +212,45 @@ export default async function ProformaView({
 
           {/* Payment terms */}
           <h3 style={{ marginTop: "2rem", marginBottom: "0.5rem" }}>Payment Terms</h3>
-          <div style={{ background: "var(--bg-mist)", borderLeft: "3px solid var(--accent)", padding: "1rem", fontSize: "0.85rem" }}>
-            {v.paymentTermName && <p style={{ fontWeight: 600, margin: 0 }}>{v.paymentTermName}</p>}
-            {v.paymentTermDescription && <p style={{ margin: "0.35rem 0" }}>{v.paymentTermDescription}</p>}
-            {v.paymentTermRequirements && <p style={{ opacity: 0.7, margin: 0 }}>Requirements: {v.paymentTermRequirements}</p>}
-            <hr style={{ border: "none", borderTop: "1px solid var(--border)", margin: "0.75rem 0" }} />
-            <p style={{ fontWeight: 600, margin: 0 }}>Advance payment (30%): {money(v.advancePayment)}</p>
-            <p style={{ fontWeight: 600, margin: "0.25rem 0 0" }}>Balance before shipment (70%): {money(v.balancePayment)}</p>
-            <hr style={{ border: "none", borderTop: "1px solid var(--border)", margin: "0.75rem 0" }} />
-            <p style={{ fontWeight: 600, margin: 0 }}>
-              Payment methods accepted: Bank Wire Transfer (T/T), Confirmed Irrevocable L/C at Sight, Cash Against Documents (subject to approval)
-            </p>
-          </div>
+          {v.status === "draft" ? (
+            <div style={{ background: "var(--bg-mist)", borderLeft: "3px solid var(--accent)", padding: "1rem", fontSize: "0.85rem" }}>
+              <p style={{ fontWeight: 600, margin: 0 }}>Indicative quotation — not a payment request.</p>
+              <p style={{ margin: "0.35rem 0 0", opacity: 0.8 }}>
+                This proforma is still a draft. Payment schedule and bank details will be provided
+                once our team has confirmed pricing, stock, and shipping details with you directly.
+              </p>
+            </div>
+          ) : (
+            <>
+              <div style={{ background: "var(--bg-mist)", borderLeft: "3px solid var(--accent)", padding: "1rem", fontSize: "0.85rem" }}>
+                {v.paymentTermName && <p style={{ fontWeight: 600, margin: 0 }}>{v.paymentTermName}</p>}
+                {v.paymentTermDescription && <p style={{ margin: "0.35rem 0" }}>{v.paymentTermDescription}</p>}
+                {v.paymentTermRequirements && <p style={{ opacity: 0.7, margin: 0 }}>Requirements: {v.paymentTermRequirements}</p>}
+                <hr style={{ border: "none", borderTop: "1px solid var(--border)", margin: "0.75rem 0" }} />
+                <p style={{ fontWeight: 600, margin: 0 }}>Advance payment (30%): {money(v.advancePayment)}</p>
+                <p style={{ fontWeight: 600, margin: "0.25rem 0 0" }}>Balance before shipment (70%): {money(v.balancePayment)}</p>
+                <hr style={{ border: "none", borderTop: "1px solid var(--border)", margin: "0.75rem 0" }} />
+                <p style={{ fontWeight: 600, margin: 0 }}>
+                  Payment methods accepted: Bank Wire Transfer (T/T), Confirmed Irrevocable L/C at Sight, Cash Against Documents (subject to approval)
+                </p>
+              </div>
 
-          {/* Bank details */}
-          <h3 style={{ marginTop: "2rem", marginBottom: "0.5rem" }}>Bank Details</h3>
-          <div style={{ background: "var(--bg-mist)", borderLeft: "3px solid var(--accent)", padding: "1rem", fontSize: "0.85rem" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
-              <tbody>
-                <tr><td style={{ padding: "0.25rem 0.5rem 0.25rem 0", fontWeight: 600, width: 130 }}>Bank:</td><td>{bank.bank_name}</td></tr>
-                <tr><td style={{ padding: "0.25rem 0.5rem 0.25rem 0", fontWeight: 600 }}>Address:</td><td>{bank.bank_address}</td></tr>
-                <tr><td style={{ padding: "0.25rem 0.5rem 0.25rem 0", fontWeight: 600 }}>Account:</td><td>{bank.account_number}</td></tr>
-                <tr><td style={{ padding: "0.25rem 0.5rem 0.25rem 0", fontWeight: 600 }}>SWIFT/BIC:</td><td>{bank.swift_bic}</td></tr>
-                <tr><td style={{ padding: "0.25rem 0.5rem 0.25rem 0", fontWeight: 600 }}>IBAN:</td><td style={{ fontFamily: "monospace", fontWeight: 600 }}>{bank.iban}</td></tr>
-                <tr><td style={{ padding: "0.25rem 0.5rem 0.25rem 0", fontWeight: 600 }}>Beneficiary:</td><td>{bank.company_name}</td></tr>
-              </tbody>
-            </table>
-          </div>
+              {/* Bank details */}
+              <h3 style={{ marginTop: "2rem", marginBottom: "0.5rem" }}>Bank Details</h3>
+              <div style={{ background: "var(--bg-mist)", borderLeft: "3px solid var(--accent)", padding: "1rem", fontSize: "0.85rem" }}>
+                <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                  <tbody>
+                    <tr><td style={{ padding: "0.25rem 0.5rem 0.25rem 0", fontWeight: 600, width: 130 }}>Bank:</td><td>{bank.bank_name}</td></tr>
+                    <tr><td style={{ padding: "0.25rem 0.5rem 0.25rem 0", fontWeight: 600 }}>Address:</td><td>{bank.bank_address}</td></tr>
+                    <tr><td style={{ padding: "0.25rem 0.5rem 0.25rem 0", fontWeight: 600 }}>Account:</td><td>{bank.account_number}</td></tr>
+                    <tr><td style={{ padding: "0.25rem 0.5rem 0.25rem 0", fontWeight: 600 }}>SWIFT/BIC:</td><td>{bank.swift_bic}</td></tr>
+                    <tr><td style={{ padding: "0.25rem 0.5rem 0.25rem 0", fontWeight: 600 }}>IBAN:</td><td style={{ fontFamily: "monospace", fontWeight: 600 }}>{bank.iban}</td></tr>
+                    <tr><td style={{ padding: "0.25rem 0.5rem 0.25rem 0", fontWeight: 600 }}>Beneficiary:</td><td>{bank.company_name}</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
 
           {/* T&Cs */}
           <h3 style={{ marginTop: "2rem", marginBottom: "0.5rem" }}>Terms &amp; Conditions</h3>

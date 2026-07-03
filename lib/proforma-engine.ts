@@ -115,6 +115,15 @@ export const INCOTERMS: Incoterm[] = [
 ];
 export const incotermByCode = (code: string) => INCOTERMS.find((i) => i.code === code) ?? null;
 
+// Incoterms actually offered to clients self-serving a quote. DAP/DDP put us
+// on the hook for destination-country import clearance and duties sight
+// unseen — not something to hand out through a self-serve tool at our size;
+// available by negotiation only. FAS/CPT/CIP are rare for stone freight and
+// just add clutter to the picker. The full INCOTERMS list above is kept
+// intact so incotermByCode() still resolves correctly for any legacy or
+// negotiated proforma that used one of the hidden codes.
+export const SELECTABLE_INCOTERMS: readonly string[] = ["EXW", "FCA", "FOB", "CFR", "CIF"];
+
 export interface PaymentTerm {
   code: string;
   name: string;

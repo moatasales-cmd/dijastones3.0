@@ -16,7 +16,7 @@ export default async function Footer() {
               <div className="logo">
                 <img
                   src="/assets/images/logo-light.png"
-                  alt="DIJA Marble"
+                  alt="DIJA Natural Stone"
                   className="logo-img"
                   style={{ height: 40, width: "auto" }}
                 />
@@ -64,7 +64,7 @@ export default async function Footer() {
           </div>
 
           <div className="footer-bottom">
-            <p>{t("footer.copyright")}</p>
+            <p>{t("footer.copyright", new Date().getFullYear())}</p>
             <div className="footer-legal">
               <Link href="/privacy">{t("footer.privacy")}</Link>
               <Link href="/terms">{t("footer.terms")}</Link>

@@ -199,30 +199,42 @@ function ProformaDocument({ v }: { v: InvoiceView }) {
         ) : null}
 
         <Text style={s.sectionTitle}>Payment Terms</Text>
-        <View style={s.box}>
-          {v.paymentTermName ? <Text style={[s.p, { fontFamily: "Helvetica-Bold" }]}>{v.paymentTermName}</Text> : null}
-          {v.paymentTermDescription ? <Text style={s.p}>{v.paymentTermDescription}</Text> : null}
-          {v.paymentTermRequirements ? <Text style={s.small}>Requirements: {v.paymentTermRequirements}</Text> : null}
-          <Text style={[s.p, { fontFamily: "Helvetica-Bold", marginTop: 6 }]}>
-            Advance payment (30%): {money(v.advancePayment)}
-          </Text>
-          <Text style={[s.p, { fontFamily: "Helvetica-Bold" }]}>
-            Balance before shipment (70%): {money(v.balancePayment)}
-          </Text>
-          <Text style={[s.p, { fontFamily: "Helvetica-Bold", marginTop: 6 }]}>
-            Payment methods accepted: Bank Wire Transfer (T/T), Confirmed Irrevocable L/C at Sight, Cash Against Documents (subject to approval)
-          </Text>
-        </View>
+        {v.status === "draft" ? (
+          <View style={s.box}>
+            <Text style={[s.p, { fontFamily: "Helvetica-Bold" }]}>Indicative quotation — not a payment request.</Text>
+            <Text style={s.p}>
+              This proforma is still a draft. Payment schedule and bank details will be provided once
+              our team has confirmed pricing, stock, and shipping details with you directly.
+            </Text>
+          </View>
+        ) : (
+          <>
+            <View style={s.box}>
+              {v.paymentTermName ? <Text style={[s.p, { fontFamily: "Helvetica-Bold" }]}>{v.paymentTermName}</Text> : null}
+              {v.paymentTermDescription ? <Text style={s.p}>{v.paymentTermDescription}</Text> : null}
+              {v.paymentTermRequirements ? <Text style={s.small}>Requirements: {v.paymentTermRequirements}</Text> : null}
+              <Text style={[s.p, { fontFamily: "Helvetica-Bold", marginTop: 6 }]}>
+                Advance payment (30%): {money(v.advancePayment)}
+              </Text>
+              <Text style={[s.p, { fontFamily: "Helvetica-Bold" }]}>
+                Balance before shipment (70%): {money(v.balancePayment)}
+              </Text>
+              <Text style={[s.p, { fontFamily: "Helvetica-Bold", marginTop: 6 }]}>
+                Payment methods accepted: Bank Wire Transfer (T/T), Confirmed Irrevocable L/C at Sight, Cash Against Documents (subject to approval)
+              </Text>
+            </View>
 
-        <Text style={s.sectionTitle}>Bank Details</Text>
-        <View style={s.box}>
-          <View style={{ flexDirection: "row" }}><Text style={{ width: 90, fontFamily: "Helvetica-Bold" }}>Bank:</Text><Text>{bank.bank_name}</Text></View>
-          <View style={{ flexDirection: "row" }}><Text style={{ width: 90, fontFamily: "Helvetica-Bold" }}>Address:</Text><Text style={{ flex: 1 }}>{bank.bank_address}</Text></View>
-          <View style={{ flexDirection: "row" }}><Text style={{ width: 90, fontFamily: "Helvetica-Bold" }}>Account:</Text><Text>{bank.account_number}</Text></View>
-          <View style={{ flexDirection: "row" }}><Text style={{ width: 90, fontFamily: "Helvetica-Bold" }}>SWIFT/BIC:</Text><Text>{bank.swift_bic}</Text></View>
-          <View style={{ flexDirection: "row" }}><Text style={{ width: 90, fontFamily: "Helvetica-Bold" }}>IBAN:</Text><Text style={{ fontFamily: "Courier" }}>{bank.iban}</Text></View>
-          <View style={{ flexDirection: "row" }}><Text style={{ width: 90, fontFamily: "Helvetica-Bold" }}>Beneficiary:</Text><Text>{bank.company_name}</Text></View>
-        </View>
+            <Text style={s.sectionTitle}>Bank Details</Text>
+            <View style={s.box}>
+              <View style={{ flexDirection: "row" }}><Text style={{ width: 90, fontFamily: "Helvetica-Bold" }}>Bank:</Text><Text>{bank.bank_name}</Text></View>
+              <View style={{ flexDirection: "row" }}><Text style={{ width: 90, fontFamily: "Helvetica-Bold" }}>Address:</Text><Text style={{ flex: 1 }}>{bank.bank_address}</Text></View>
+              <View style={{ flexDirection: "row" }}><Text style={{ width: 90, fontFamily: "Helvetica-Bold" }}>Account:</Text><Text>{bank.account_number}</Text></View>
+              <View style={{ flexDirection: "row" }}><Text style={{ width: 90, fontFamily: "Helvetica-Bold" }}>SWIFT/BIC:</Text><Text>{bank.swift_bic}</Text></View>
+              <View style={{ flexDirection: "row" }}><Text style={{ width: 90, fontFamily: "Helvetica-Bold" }}>IBAN:</Text><Text style={{ fontFamily: "Courier" }}>{bank.iban}</Text></View>
+              <View style={{ flexDirection: "row" }}><Text style={{ width: 90, fontFamily: "Helvetica-Bold" }}>Beneficiary:</Text><Text>{bank.company_name}</Text></View>
+            </View>
+          </>
+        )}
 
         <Text style={s.sectionTitle}>Terms &amp; Conditions</Text>
         {TNC.map((t, i) => (

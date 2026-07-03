@@ -24,7 +24,7 @@ export async function sendMail(opts: MailOptions): Promise<{ sent: boolean }> {
       auth: { user: SMTP_USER, pass: SMTP_PASS },
     });
     await transport.sendMail({
-      from: `${SMTP_FROM_NAME || "DIJA Marble"} <${SMTP_FROM || SMTP_USER}>`,
+      from: `${SMTP_FROM_NAME || "DIJA Natural Stone"} <${SMTP_FROM || SMTP_USER}>`,
       to: opts.to,
       subject: opts.subject,
       text: opts.text,
@@ -44,7 +44,7 @@ export async function sendMail(opts: MailOptions): Promise<{ sent: boolean }> {
 
 export function verificationEmail(code: string): { subject: string; text: string } {
   return {
-    subject: "Your DIJA Marble verification code",
-    text: `Your DIJA Marble verification code is:\n\n${code}\n\nThis code expires in 10 minutes.\n\nIf you did not request this, please ignore this email.`,
+    subject: "Your DIJA Natural Stone verification code",
+    text: `Your DIJA Natural Stone verification code is:\n\n${code}\n\nThis code expires in 10 minutes.\n\nIf you did not request this, please ignore this email.`,
   };
 }

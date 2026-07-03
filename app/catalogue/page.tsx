@@ -165,7 +165,7 @@ export default async function CataloguePage() {
             </div>
           ))}
         </div>
-        {footer("DIJA Marble — Izmir, Türkiye")}
+        {footer("DIJA Natural Stone — Izmir, Türkiye")}
       </div>
     </div>
   );

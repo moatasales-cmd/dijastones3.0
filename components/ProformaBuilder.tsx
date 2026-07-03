@@ -10,6 +10,7 @@ import {
   DESTINATION_COUNTRIES,
   DESTINATION_PORTS,
   INCOTERMS,
+  SELECTABLE_INCOTERMS,
   PAYMENT_TERMS,
   SHIPPING_DISCLAIMER,
   SQM_TO_SQF,
@@ -407,10 +408,14 @@ export default function ProformaBuilder({
           <div>
             <label className="pf-label">Incoterm *</label>
             <select className="pf-input" value={incoterm} onChange={(e) => setIncoterm(e.target.value)}>
-              {INCOTERMS.map((it) => (
+              {INCOTERMS.filter((it) => SELECTABLE_INCOTERMS.includes(it.code)).map((it) => (
                 <option key={it.code} value={it.code}>{it.code} — {it.name}</option>
               ))}
             </select>
+            <p className="pf-note" style={{ marginTop: "0.35rem", fontSize: "0.78rem", opacity: 0.7 }}>
+              Need Delivered at Place / Delivered Duty Paid? Contact our trade team — these
+              require case-by-case customs arrangements in your country.
+            </p>
             {incotermDetail && (
               <div className="inc-detail" style={{ marginTop: "0.5rem", fontSize: "0.8rem", opacity: 0.85 }}>
                 <p style={{ marginBottom: "0.35rem" }}>{incotermDetail.description}</p>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import GoogleSignInButton from "@/components/GoogleSignInButton";
 
 export interface AuthStrings {
   signIn: string;
@@ -19,6 +20,7 @@ export interface AuthStrings {
   verify: string;
   resend: string;
   useDifferentEmail: string;
+  or: string;
 }
 
 const KEY = "dija_favorites";
@@ -30,7 +32,7 @@ function readFavs(): string[] {
   }
 }
 
-export default function AuthForm({ s }: { s: AuthStrings }) {
+export default function AuthForm({ s, googleClientId }: { s: AuthStrings; googleClientId?: string }) {
   const [mode, setMode] = useState<"signin" | "register">("signin");
   const [step, setStep] = useState<1 | 2>(1);
   const [email, setEmail] = useState("");
@@ -80,6 +82,15 @@ export default function AuthForm({ s }: { s: AuthStrings }) {
     } else {
       setMsg({ text: res.error || "Registration failed", ok: false });
     }
+  }
+
+  async function onGoogleCredential(credential: string) {
+    setBusy(true);
+    setMsg(null);
+    const res = await post("/api/auth/google", { credential });
+    setBusy(false);
+    if (res.ok) return afterAuth();
+    setMsg({ text: res.error || "Google sign-in failed", ok: false });
   }
 
   async function onUseCode() {
@@ -235,6 +246,14 @@ export default function AuthForm({ s }: { s: AuthStrings }) {
                 </a>
               </p>
             </div>
+          )}
+
+          {googleClientId && (
+            <GoogleSignInButton
+              clientId={googleClientId}
+              orText={s.or}
+              onCredential={onGoogleCredential}
+            />
           )}
         </>
       )}

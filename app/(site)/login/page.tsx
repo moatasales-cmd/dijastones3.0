@@ -31,6 +31,7 @@ export default async function LoginPage() {
     verify: t("login.verify"),
     resend: t("login.resend"),
     useDifferentEmail: t("login.use_different_email"),
+    or: t("login.or"),
   };
 
   return (
@@ -41,7 +42,7 @@ export default async function LoginPage() {
           <h1>{t("login.welcome")}</h1>
           <p>{t("login.welcome_text")}</p>
         </div>
-        <AuthForm s={s} />
+        <AuthForm s={s} googleClientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID} />
       </div>
     </section>
   );

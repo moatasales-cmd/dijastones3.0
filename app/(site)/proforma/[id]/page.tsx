@@ -6,6 +6,7 @@ import { getCurrentClient } from "@/lib/auth";
 import PrintButton from "@/components/PrintButton";
 import SendProformaEmailButton from "@/components/SendProformaEmailButton";
 import { buildInvoiceView, money } from "@/lib/proforma-view";
+import { getT } from "@/lib/i18n-server";
 import bank from "@/config/bank.json";
 
 export const metadata: Metadata = { title: "Proforma Invoice" };
@@ -34,7 +35,8 @@ export default async function ProformaView({
   const client = await getCurrentClient();
   if (!client || pf.clientId !== client.id) notFound();
 
-  const v = buildInvoiceView(pf);
+  const { t } = await getT();
+  const v = buildInvoiceView(pf, t);
   const sysLabel = v.unitSystem === "sqf" ? "ft²" : "m²";
 
   return (

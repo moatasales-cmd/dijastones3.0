@@ -152,6 +152,8 @@ export interface ProformaBuilderStrings {
   errIncotermRequired: string;
   errPaymentRequired: string;
   errSaveFailed: string;
+  /** Cost-breakdown line label by code (packing, inland, customs, ...). */
+  costLabels: Record<string, string>;
 }
 
 export default function ProformaBuilder({
@@ -559,7 +561,7 @@ export default function ProformaBuilder({
         <div className="pf-summary-row"><span>{s2.containers20ft}</span><span>{containers}</span></div>
         {costs.breakdown.filter((b) => b.included && b.amount > 0).map((b) => (
           <div className="pf-summary-row" key={b.code} style={{ opacity: 0.8, fontSize: "0.85rem" }}>
-            <span>{b.label}</span><span>{money(b.amount)}</span>
+            <span>{s2.costLabels[b.code] ?? b.label}</span><span>{money(b.amount)}</span>
           </div>
         ))}
         <div className="pf-summary-row pf-summary-total"><span>{fmt(s2.grandTotalWithIncotermTemplate, incoterm)}</span><span>{money(costs.grandTotal)}</span></div>

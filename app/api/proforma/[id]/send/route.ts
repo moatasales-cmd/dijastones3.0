@@ -5,6 +5,7 @@ import { logClientActivity } from "@/lib/activity";
 import { buildInvoiceView, money } from "@/lib/proforma-view";
 import { generateProformaPdf } from "@/lib/proforma-pdf";
 import { sendMail } from "@/lib/mail";
+import { getT } from "@/lib/i18n-server";
 
 export async function POST(_req: Request, { params }: { params: Promise<{ id: string }> }) {
   const client = await getCurrentClient();
@@ -21,7 +22,8 @@ export async function POST(_req: Request, { params }: { params: Promise<{ id: st
     return NextResponse.json({ ok: false, error: "No email address on file for your account." }, { status: 400 });
   }
 
-  const view = buildInvoiceView(pf);
+  const { t } = await getT();
+  const view = buildInvoiceView(pf, t);
   const pdfBuffer = await generateProformaPdf(view);
 
   const { sent } = await sendMail({

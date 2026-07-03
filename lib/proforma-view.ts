@@ -1,5 +1,6 @@
 import "server-only";
 import { incotermByCode, paymentTermByCode } from "@/lib/proforma-engine";
+import type { T } from "@/lib/translator";
 
 // Shared read-side model for a saved Proforma record — used by both the
 // on-screen invoice (app/(site)/proforma/[id]/page.tsx) and the PDF/email
@@ -126,13 +127,21 @@ export interface ViewCostLine {
   amount: number;
   included: boolean;
 }
-export function normalizeCostBreakdown(raw: unknown): ViewCostLine[] {
+export function normalizeCostBreakdown(raw: unknown, t?: T): ViewCostLine[] {
   if (!Array.isArray(raw)) return [];
   return raw.map((c) => {
     const o = c as Record<string, unknown>;
+    const code = str(o.code, "");
+    // Labels used to be persisted as plain English at save time. Re-derive
+    // from the code in the viewer's current locale where possible, falling
+    // back to whatever was persisted for any legacy/unknown code (t() returns
+    // the bare key itself for an unrecognized code, which we must not use).
+    const key = `cost.${code}`;
+    const translated = t && code ? t(key) : "";
+    const localized = translated && translated !== key ? translated : "";
     return {
-      code: str(o.code, ""),
-      label: str(o.label, ""),
+      code,
+      label: localized || str(o.label, ""),
       amount: num(o.amount),
       included: !!o.included,
     };
@@ -164,11 +173,11 @@ export function buildInvoiceView(pf: {
   items: unknown;
   notes: string | null;
   status: string | null;
-}) {
+}, t?: T) {
   const items = (Array.isArray(pf.items) ? (pf.items as RawItem[]) : []).map(normalizeItem);
   const client = normalizeClient(pf.client);
   const containers = normalizeContainers(pf.containerDetail);
-  const costBreakdown = normalizeCostBreakdown(pf.costBreakdown);
+  const costBreakdown = normalizeCostBreakdown(pf.costBreakdown, t);
   const incoterm = pf.incoterm ? incotermByCode(pf.incoterm) : null;
   const paymentTerm = pf.paymentTerm ? paymentTermByCode(pf.paymentTerm) : null;
   const grandTotal = num(pf.grandTotal);

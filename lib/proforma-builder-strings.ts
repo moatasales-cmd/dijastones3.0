@@ -67,5 +67,15 @@ export function buildProformaBuilderStrings(t: T): ProformaBuilderStrings {
     errIncotermRequired: t("proforma.err_incoterm_required"),
     errPaymentRequired: t("proforma.err_payment_required"),
     errSaveFailed: t("proforma.err_save_failed"),
+    costLabels: {
+      packing: t("cost.packing"),
+      inland: t("cost.inland"),
+      customs: t("cost.customs"),
+      loading: t("cost.loading"),
+      freight: t("cost.freight"),
+      insurance: t("cost.insurance"),
+      import: t("cost.import"),
+      delivery: t("cost.delivery"),
+    },
   };
 }

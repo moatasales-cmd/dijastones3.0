@@ -99,6 +99,91 @@ function setLocale(code: Locale) {
   window.location.reload();
 }
 
+// Declared at module scope (not inside Header) so React treats them as the
+// same component type across renders — defining a component inline in a
+// render body makes React remount its whole DOM subtree (losing open/closed
+// state, event bindings, CSS transitions) every time any Header state
+// changes, which produced hard-to-reproduce "the dropdown didn't open"
+// interaction bugs.
+function ThemeToggle({
+  theme,
+  applyTheme,
+  labels,
+}: {
+  theme: "light" | "dark";
+  applyTheme: (tm: "light" | "dark") => void;
+  labels: { light: string; dark: string };
+}) {
+  return (
+    <div className="theme-toggle-group">
+      {(["light", "dark"] as const).map((tm) => (
+        <button
+          key={tm}
+          className={`theme-toggle-btn${theme === tm ? " active" : ""}`}
+          data-theme={tm}
+          aria-label={tm === "light" ? labels.light : labels.dark}
+          onClick={() => applyTheme(tm)}
+        >
+          <i className={`fa-regular ${tm === "light" ? "fa-sun" : "fa-moon"}`} />
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function LangSwitcher({
+  locale,
+  langOpen,
+  setLangOpen,
+}: {
+  locale: Locale;
+  langOpen: boolean;
+  setLangOpen: (fn: (v: boolean) => boolean) => void;
+}) {
+  return (
+    <div className="lang-switcher">
+      <button
+        className="lang-current"
+        aria-label="Language"
+        type="button"
+        aria-expanded={langOpen}
+        onClick={() => setLangOpen((v) => !v)}
+      >
+        <span className="lang-flag">{flagSvg[locale]}</span>
+        <span className="lang-name">{localeNames[locale]}</span>
+        <svg className="lang-chevron" width="10" height="6" viewBox="0 0 10 6">
+          <path
+            d="M1 1l4 4 4-4"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+      <ul className="lang-dropdown" style={{ display: langOpen ? "block" : undefined }}>
+        {locales
+          .filter((c) => c !== locale)
+          .map((c) => (
+            <li key={c}>
+              <a
+                href="#"
+                data-lang={c}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setLocale(c);
+                }}
+              >
+                <span className="lang-flag">{flagSvg[c]}</span> {localeNames[c]}
+              </a>
+            </li>
+          ))}
+      </ul>
+    </div>
+  );
+}
+
 export default function Header({
   locale,
   nav,
@@ -168,65 +253,6 @@ export default function Header({
     setMobileOpen(false);
     setOpenMobileSub(null);
   };
-
-  const ThemeToggle = () => (
-    <div className="theme-toggle-group">
-      {(["light", "dark"] as const).map((tm) => (
-        <button
-          key={tm}
-          className={`theme-toggle-btn${theme === tm ? " active" : ""}`}
-          data-theme={tm}
-          aria-label={tm === "light" ? ui.light : ui.dark}
-          onClick={() => applyTheme(tm)}
-        >
-          <i className={`fa-regular ${tm === "light" ? "fa-sun" : "fa-moon"}`} />
-        </button>
-      ))}
-    </div>
-  );
-
-  const LangSwitcher = () => (
-    <div className="lang-switcher">
-      <button
-        className="lang-current"
-        aria-label="Language"
-        type="button"
-        aria-expanded={langOpen}
-        onClick={() => setLangOpen((v) => !v)}
-      >
-        <span className="lang-flag">{flagSvg[locale]}</span>
-        <span className="lang-name">{localeNames[locale]}</span>
-        <svg className="lang-chevron" width="10" height="6" viewBox="0 0 10 6">
-          <path
-            d="M1 1l4 4 4-4"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
-      <ul className="lang-dropdown" style={{ display: langOpen ? "block" : undefined }}>
-        {locales
-          .filter((c) => c !== locale)
-          .map((c) => (
-            <li key={c}>
-              <a
-                href="#"
-                data-lang={c}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setLocale(c);
-                }}
-              >
-                <span className="lang-flag">{flagSvg[c]}</span> {localeNames[c]}
-              </a>
-            </li>
-          ))}
-      </ul>
-    </div>
-  );
 
   return (
     <>
@@ -307,8 +333,8 @@ export default function Header({
             </span>
           </nav>
 
-          <LangSwitcher />
-          <ThemeToggle />
+          <LangSwitcher locale={locale} langOpen={langOpen} setLangOpen={setLangOpen} />
+          <ThemeToggle theme={theme} applyTheme={applyTheme} labels={{ light: ui.light, dark: ui.dark }} />
 
           <button
             className="menu-toggle"
@@ -385,8 +411,8 @@ export default function Header({
               {ui.accountLabel}
             </Link>
           </span>
-          <LangSwitcher />
-          <ThemeToggle />
+          <LangSwitcher locale={locale} langOpen={langOpen} setLangOpen={setLangOpen} />
+          <ThemeToggle theme={theme} applyTheme={applyTheme} labels={{ light: ui.light, dark: ui.dark }} />
         </div>
       </nav>
     </>

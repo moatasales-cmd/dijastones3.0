@@ -5,6 +5,7 @@ import { getCurrentClient } from "@/lib/auth";
 import { getT } from "@/lib/i18n-server";
 import { rich } from "@/lib/lang";
 import ProformaBuilder, { type Priced, type ClientPrefill } from "@/components/ProformaBuilder";
+import { buildProformaBuilderStrings } from "@/lib/proforma-builder-strings";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getT();
@@ -82,7 +83,7 @@ export default async function ProformaPage() {
       </section>
       <section className="section pt-0">
         <div className="container">
-          <ProformaBuilder stones={stones} client={prefill} />
+          <ProformaBuilder stones={stones} client={prefill} strings={buildProformaBuilderStrings(t)} />
         </div>
       </section>
     </>

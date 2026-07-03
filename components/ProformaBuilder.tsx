@@ -55,6 +55,15 @@ export interface Row {
 const money = (v: number) =>
   "$" + v.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
+// Mirrors lib/translator.ts's format() — substitutes %s/%d sequentially.
+// Needed here because translated template strings cross the server/client
+// boundary as plain data, but the substitution itself happens client-side
+// (functions can't be passed as props to a "use client" component).
+const fmt = (template: string, ...args: (string | number)[]) => {
+  let i = 0;
+  return template.replace(/%%|%[sd]/g, (m) => (m === "%%" ? "%" : String(args[i++] ?? "")));
+};
+
 const emptyRow = (): Row => ({
   stoneId: "",
   grade: "Standard",
@@ -78,14 +87,83 @@ export interface EditPrefill {
   notes: string;
 }
 
+export interface ProformaBuilderStrings {
+  sectionClient: string;
+  clientNamePh: string;
+  clientEmailPh: string;
+  clientCompanyPh: string;
+  clientPhonePh: string;
+  clientCityPh: string;
+  clientCountryPh: string;
+  unitSqm: string;
+  unitSqf: string;
+  stoneItems: string;
+  itemStoneLabel: string;
+  itemGradeLabel: string;
+  itemCategoryLabel: string;
+  itemSizeLabel: string;
+  itemThicknessLabel: string;
+  itemFinishLabel: string;
+  selectStonePh: string;
+  selectCategoryPh: string;
+  selectSizePh: string;
+  customSizeLabel: string;
+  widthCmLabel: string;
+  heightCmLabel: string;
+  /** "%s×%s cm — %s m²/piece" — filled in client-side via fmt(). */
+  areaPerPieceTemplate: string;
+  /** "Total area (%s) needed" */
+  totalAreaNeededTemplate: string;
+  totalAreaNeededPh: string;
+  unitPriceLabel: string;
+  areaLabel: string;
+  lineTotalLabel: string;
+  selectPrompt: string;
+  removeItemAria: string;
+  addItem: string;
+  incotermPaymentLabel: string;
+  incotermLabel: string;
+  incotermDdpNote: string;
+  incotermBuyerLabel: string;
+  incotermSellerLabel: string;
+  incotermRiskLabel: string;
+  paymentTermLabel: string;
+  shippingLabel: string;
+  destinationCountryLabel: string;
+  selectGenericPh: string;
+  destinationPortLabel: string;
+  selectCountryFirst: string;
+  /** "Zone: %s · %s/container · transit %d days" */
+  zoneInfoTemplate: string;
+  notesForTeamLabel: string;
+  notesForTeamPh: string;
+  sectionSummary: string;
+  totalArea: string;
+  goodsSubtotal: string;
+  containers20ft: string;
+  /** "Grand Total (%s)" */
+  grandTotalWithIncotermTemplate: string;
+  saving: string;
+  createBtn: string;
+  saveChangesBtn: string;
+  errClientRequired: string;
+  errItemsRequired: string;
+  errCountryRequired: string;
+  errIncotermRequired: string;
+  errPaymentRequired: string;
+  errSaveFailed: string;
+}
+
 export default function ProformaBuilder({
   stones,
   client,
   edit,
+  strings: s2,
 }: {
   stones: Priced[];
   client: ClientPrefill;
   edit?: EditPrefill;
+  strings: ProformaBuilderStrings;
 }) {
   const stoneMap = useMemo(() => new Map(stones.map((s) => [s.id, s])), [stones]);
 
@@ -155,11 +233,11 @@ export default function ProformaBuilder({
 
   async function save() {
     setError("");
-    if (!c.name || !c.email) return setError("Client name and email are required.");
-    if (validItems.length === 0) return setError("Add at least one stone item with an area.");
-    if (!country) return setError("Select a destination country.");
-    if (!incoterm) return setError("Select an incoterm.");
-    if (!paymentTerm) return setError("Select a payment term.");
+    if (!c.name || !c.email) return setError(s2.errClientRequired);
+    if (validItems.length === 0) return setError(s2.errItemsRequired);
+    if (!country) return setError(s2.errCountryRequired);
+    if (!incoterm) return setError(s2.errIncotermRequired);
+    if (!paymentTerm) return setError(s2.errPaymentRequired);
 
     setBusy(true);
     try {
@@ -192,9 +270,9 @@ export default function ProformaBuilder({
       });
       const json = await res.json();
       if (json.ok) window.location.href = `/proforma/${json.id}`;
-      else setError(json.error || "Could not save.");
+      else setError(json.error || s2.errSaveFailed);
     } catch {
-      setError("Could not save.");
+      setError(s2.errSaveFailed);
     } finally {
       setBusy(false);
     }
@@ -205,21 +283,21 @@ export default function ProformaBuilder({
       {/* Client */}
       <div className="pf-section">
         <h2>
-          <i className="fa-solid fa-building" /> Client details
+          <i className="fa-solid fa-building" /> {s2.sectionClient}
         </h2>
         <div className="pf-grid-2">
-          <input className="pf-input" placeholder="Client name *" value={c.name} onChange={(e) => setC({ ...c, name: e.target.value })} />
-          <input className="pf-input" placeholder="Email *" value={c.email} onChange={(e) => setC({ ...c, email: e.target.value })} />
-          <input className="pf-input" placeholder="Company" value={c.company} onChange={(e) => setC({ ...c, company: e.target.value })} />
-          <input className="pf-input" placeholder="Phone" value={c.phone} onChange={(e) => setC({ ...c, phone: e.target.value })} />
-          <input className="pf-input" placeholder="City" value={c.city} onChange={(e) => setC({ ...c, city: e.target.value })} />
-          <input className="pf-input" placeholder="Country" value={c.country} onChange={(e) => setC({ ...c, country: e.target.value })} />
+          <input className="pf-input" placeholder={s2.clientNamePh} value={c.name} onChange={(e) => setC({ ...c, name: e.target.value })} />
+          <input className="pf-input" placeholder={s2.clientEmailPh} value={c.email} onChange={(e) => setC({ ...c, email: e.target.value })} />
+          <input className="pf-input" placeholder={s2.clientCompanyPh} value={c.company} onChange={(e) => setC({ ...c, company: e.target.value })} />
+          <input className="pf-input" placeholder={s2.clientPhonePh} value={c.phone} onChange={(e) => setC({ ...c, phone: e.target.value })} />
+          <input className="pf-input" placeholder={s2.clientCityPh} value={c.city} onChange={(e) => setC({ ...c, city: e.target.value })} />
+          <input className="pf-input" placeholder={s2.clientCountryPh} value={c.country} onChange={(e) => setC({ ...c, country: e.target.value })} />
         </div>
         <div className="pf-unit-toggle" style={{ marginTop: "1rem" }}>
           {(["sqm", "sqf"] as const).map((u) => (
             <label className="pf-unit-opt" key={u}>
               <input type="radio" name="unit" checked={unit === u} onChange={() => setUnit(u)} />{" "}
-              <span>{u === "sqm" ? "Square meters (m²)" : "Square feet (ft²)"}</span>
+              <span>{u === "sqm" ? s2.unitSqm : s2.unitSqf}</span>
             </label>
           ))}
         </div>
@@ -228,7 +306,7 @@ export default function ProformaBuilder({
       {/* Items */}
       <div className="pf-section">
         <h2>
-          <i className="fa-solid fa-cube" /> Stone items
+          <i className="fa-solid fa-cube" /> {s2.stoneItems}
         </h2>
         {rows.map((r, i) => {
           const s = r.stoneId ? stoneMap.get(r.stoneId) : null;
@@ -245,13 +323,13 @@ export default function ProformaBuilder({
               <div className="pi-row-inner">
                 {/* Stone + grade + preview */}
                 <div className="pi-cell pi-cell-stone">
-                  <label className="pi-clabel">Stone *</label>
+                  <label className="pi-clabel">{s2.itemStoneLabel}</label>
                   <select
                     className="pi-sel"
                     value={r.stoneId}
                     onChange={(e) => setRow(i, { stoneId: e.target.value })}
                   >
-                    <option value="">Select stone…</option>
+                    <option value="">{s2.selectStonePh}</option>
                     {stones.map((st) => (
                       <option key={st.id} value={st.id}>
                         {st.n} — {st.c}
@@ -259,7 +337,7 @@ export default function ProformaBuilder({
                     ))}
                   </select>
                   <div className="pi-grade-row">
-                    <label className="pi-clabel" style={{ marginTop: 4 }}>Grade</label>
+                    <label className="pi-clabel" style={{ marginTop: 4 }}>{s2.itemGradeLabel}</label>
                     <select className="pi-grade" value={r.grade} onChange={(e) => setRow(i, { grade: e.target.value })}>
                       {GRADES.map((g) => (
                         <option key={g} value={g}>{g}</option>
@@ -287,30 +365,30 @@ export default function ProformaBuilder({
 
                 {/* Category + size + custom dims */}
                 <div className="pi-cell pi-cell-size">
-                  <label className="pi-clabel">Category</label>
+                  <label className="pi-clabel">{s2.itemCategoryLabel}</label>
                   <select
                     className="pi-cat"
                     value={r.categoryId}
                     onChange={(e) => setRow(i, { categoryId: e.target.value, sizeIndex: null })}
                   >
-                    <option value="">Select category…</option>
+                    <option value="">{s2.selectCategoryPh}</option>
                     {categories.map((cat) => (
                       <option key={cat.id} value={cat.id}>
                         {cat.name}{cat.multiplier !== 1 ? ` (×${cat.multiplier.toFixed(2)})` : ""}
                       </option>
                     ))}
-                    <option value="custom">Custom Size (×1.20)</option>
+                    <option value="custom">{s2.customSizeLabel}</option>
                   </select>
 
                   {category && (
                     <>
-                      <label className="pi-clabel" style={{ marginTop: 4 }}>Size</label>
+                      <label className="pi-clabel" style={{ marginTop: 4 }}>{s2.itemSizeLabel}</label>
                       <select
                         className="pi-size"
                         value={r.sizeIndex ?? ""}
                         onChange={(e) => setRow(i, { sizeIndex: e.target.value === "" ? null : Number(e.target.value) })}
                       >
-                        <option value="">Select size…</option>
+                        <option value="">{s2.selectSizePh}</option>
                         {category.sizes.map((sz, si) => (
                           <option key={si} value={si}>
                             {sz.l}
@@ -323,11 +401,11 @@ export default function ProformaBuilder({
                   {isCustom && (
                     <div className="pi-custom-dims" style={{ display: "flex", gap: "0.5rem", marginTop: 4 }}>
                       <div>
-                        <label className="pi-clabel">W (cm)</label>
+                        <label className="pi-clabel">{s2.widthCmLabel}</label>
                         <input className="pi-num pf-input" type="number" min="1" step="0.1" value={r.customWidth} onChange={(e) => setRow(i, { customWidth: e.target.value })} />
                       </div>
                       <div>
-                        <label className="pi-clabel">H (cm)</label>
+                        <label className="pi-clabel">{s2.heightCmLabel}</label>
                         <input className="pi-num pf-input" type="number" min="1" step="0.1" value={r.customHeight} onChange={(e) => setRow(i, { customHeight: e.target.value })} />
                       </div>
                     </div>
@@ -335,14 +413,14 @@ export default function ProformaBuilder({
 
                   {size && (
                     <div style={{ marginTop: "0.4rem", fontSize: "0.75rem", opacity: 0.7 }}>
-                      {size.w}×{size.h} cm — {((size.w * size.h) / 10000).toFixed(3)} m²/piece
+                      {fmt(s2.areaPerPieceTemplate, size.w, size.h, ((size.w * size.h) / 10000).toFixed(3))}
                     </div>
                   )}
                 </div>
 
                 {/* Thickness + finish + area */}
                 <div className="pi-cell pi-cell-detail">
-                  <label className="pi-clabel">Thickness</label>
+                  <label className="pi-clabel">{s2.itemThicknessLabel}</label>
                   <select className="pi-thk" value={r.thickness} onChange={(e) => setRow(i, { thickness: e.target.value })}>
                     {availThicknesses.map((t) => (
                       <option key={t} value={t}>
@@ -350,21 +428,21 @@ export default function ProformaBuilder({
                       </option>
                     ))}
                   </select>
-                  <label className="pi-clabel" style={{ marginTop: 4 }}>Finish</label>
+                  <label className="pi-clabel" style={{ marginTop: 4 }}>{s2.itemFinishLabel}</label>
                   <select className="pi-finish" value={r.finish} onChange={(e) => setRow(i, { finish: e.target.value })}>
                     {FINISHES.map((f) => (
                       <option key={f} value={f}>{f}</option>
                     ))}
                   </select>
                   <label className="pi-clabel" style={{ marginTop: 4 }}>
-                    Total area ({unit === "sqf" ? "ft²" : "m²"}) needed
+                    {fmt(s2.totalAreaNeededTemplate, unit === "sqf" ? "ft²" : "m²")}
                   </label>
                   <input
                     className="pi-qty pf-input"
                     type="number"
                     min="0"
                     step="any"
-                    placeholder="Total area needed"
+                    placeholder={s2.totalAreaNeededPh}
                     value={r.area}
                     onChange={(e) => setRow(i, { area: e.target.value })}
                   />
@@ -374,18 +452,18 @@ export default function ProformaBuilder({
                 <div className="pi-cell pi-cell-price">
                   {item ? (
                     <div className="pi-subtotals">
-                      <div className="pi-sub-row"><span>Unit price:</span> <strong>{money(unit === "sqf" ? item.adjusted_unit_price / SQM_TO_SQF : item.adjusted_unit_price)}/{unit === "sqf" ? "ft²" : "m²"}</strong></div>
-                      <div className="pi-sub-row"><span>Area:</span> <strong>{r.area || "0"} {unit === "sqf" ? "ft²" : "m²"}</strong></div>
-                      <div className="pi-sub-row pi-lt-row"><span>Line total:</span> <strong>{money(item.line_total)}</strong></div>
+                      <div className="pi-sub-row"><span>{s2.unitPriceLabel}</span> <strong>{money(unit === "sqf" ? item.adjusted_unit_price / SQM_TO_SQF : item.adjusted_unit_price)}/{unit === "sqf" ? "ft²" : "m²"}</strong></div>
+                      <div className="pi-sub-row"><span>{s2.areaLabel}</span> <strong>{r.area || "0"} {unit === "sqf" ? "ft²" : "m²"}</strong></div>
+                      <div className="pi-sub-row pi-lt-row"><span>{s2.lineTotalLabel}</span> <strong>{money(item.line_total)}</strong></div>
                     </div>
                   ) : (
-                    <span style={{ opacity: 0.5, fontSize: "0.85rem" }}>Select a stone, size, and area</span>
+                    <span style={{ opacity: 0.5, fontSize: "0.85rem" }}>{s2.selectPrompt}</span>
                   )}
                 </div>
 
                 <div className="pi-cell pi-cell-del">
                   {rows.length > 1 && (
-                    <button type="button" className="pi-del" onClick={() => removeRow(i)} aria-label="Remove item" title="Remove item">
+                    <button type="button" className="pi-del" onClick={() => removeRow(i)} aria-label={s2.removeItemAria} title={s2.removeItemAria}>
                       <i className="fa-solid fa-xmark" />
                     </button>
                   )}
@@ -395,38 +473,37 @@ export default function ProformaBuilder({
           );
         })}
         <button type="button" className="pf-add-item" onClick={addRow} style={{ marginTop: "0.75rem" }}>
-          <i className="fa-solid fa-plus" /> Add item
+          <i className="fa-solid fa-plus" /> {s2.addItem}
         </button>
       </div>
 
       {/* Incoterm + payment terms */}
       <div className="pf-section">
         <h2>
-          <i className="fa-solid fa-file-contract" /> Incoterm & payment
+          <i className="fa-solid fa-file-contract" /> {s2.incotermPaymentLabel}
         </h2>
         <div className="pf-grid-2">
           <div>
-            <label className="pf-label">Incoterm *</label>
+            <label className="pf-label">{s2.incotermLabel} *</label>
             <select className="pf-input" value={incoterm} onChange={(e) => setIncoterm(e.target.value)}>
               {INCOTERMS.filter((it) => SELECTABLE_INCOTERMS.includes(it.code)).map((it) => (
                 <option key={it.code} value={it.code}>{it.code} — {it.name}</option>
               ))}
             </select>
             <p className="pf-note" style={{ marginTop: "0.35rem", fontSize: "0.78rem", opacity: 0.7 }}>
-              Need Delivered at Place / Delivered Duty Paid? Contact our trade team — these
-              require case-by-case customs arrangements in your country.
+              {s2.incotermDdpNote}
             </p>
             {incotermDetail && (
               <div className="inc-detail" style={{ marginTop: "0.5rem", fontSize: "0.8rem", opacity: 0.85 }}>
                 <p style={{ marginBottom: "0.35rem" }}>{incotermDetail.description}</p>
-                <p><strong>Buyer:</strong> {incotermDetail.buyer_responsibility}</p>
-                <p><strong>Seller:</strong> {incotermDetail.seller_responsibility}</p>
-                <p><strong>Risk transfers:</strong> {incotermDetail.risk_transfer}</p>
+                <p><strong>{s2.incotermBuyerLabel}</strong> {incotermDetail.buyer_responsibility}</p>
+                <p><strong>{s2.incotermSellerLabel}</strong> {incotermDetail.seller_responsibility}</p>
+                <p><strong>{s2.incotermRiskLabel}</strong> {incotermDetail.risk_transfer}</p>
               </div>
             )}
           </div>
           <div>
-            <label className="pf-label">Payment term *</label>
+            <label className="pf-label">{s2.paymentTermLabel} *</label>
             <select className="pf-input" value={paymentTerm} onChange={(e) => setPaymentTerm(e.target.value)}>
               {PAYMENT_TERMS.map((p) => (
                 <option key={p.code} value={p.code}>{p.name}</option>
@@ -445,52 +522,52 @@ export default function ProformaBuilder({
       {/* Shipping */}
       <div className="pf-section">
         <h2>
-          <i className="fa-solid fa-ship" /> Shipping destination
+          <i className="fa-solid fa-ship" /> {s2.shippingLabel}
         </h2>
         <div className="pf-grid-2">
           <div>
-            <label className="pf-label">Destination country *</label>
+            <label className="pf-label">{s2.destinationCountryLabel} *</label>
             <select className="pf-input" value={country} onChange={(e) => (setCountry(e.target.value), setDestPort(""))}>
-              <option value="">Select…</option>
+              <option value="">{s2.selectGenericPh}</option>
               {DESTINATION_COUNTRIES.map((co) => <option key={co}>{co}</option>)}
             </select>
           </div>
           <div>
-            <label className="pf-label">Destination port</label>
+            <label className="pf-label">{s2.destinationPortLabel}</label>
             <select className="pf-input" value={destPort} onChange={(e) => setDestPort(e.target.value)} disabled={!destPorts.length}>
-              <option value="">{destPorts.length ? "Select…" : "Select a country first"}</option>
+              <option value="">{destPorts.length ? s2.selectGenericPh : s2.selectCountryFirst}</option>
               {destPorts.map((p) => <option key={p}>{p}</option>)}
             </select>
           </div>
         </div>
         {zone && (
           <p className="pf-note" style={{ marginTop: "0.75rem" }}>
-            <i className="fa-solid fa-info-circle" /> Zone: <strong>{zone.zone}</strong> · {money(zone.rate_per_container_20ft)}/container · transit {zone.transit_days} days
+            <i className="fa-solid fa-info-circle" /> {fmt(s2.zoneInfoTemplate, zone.zone, money(zone.rate_per_container_20ft), zone.transit_days)}
           </p>
         )}
-        <label className="pf-label" style={{ marginTop: "1rem", display: "block" }}>Notes for our team</label>
-        <textarea className="pf-input" rows={3} value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Any special instructions, delivery constraints, etc." />
+        <label className="pf-label" style={{ marginTop: "1rem", display: "block" }}>{s2.notesForTeamLabel}</label>
+        <textarea className="pf-input" rows={3} value={notes} onChange={(e) => setNotes(e.target.value)} placeholder={s2.notesForTeamPh} />
       </div>
 
       {/* Totals */}
       <div className="pf-section pf-summary">
         <h2>
-          <i className="fa-solid fa-receipt" /> Summary
+          <i className="fa-solid fa-receipt" /> {s2.sectionSummary}
         </h2>
-        <div className="pf-summary-row"><span>Total area</span><span>{totalArea.toLocaleString("en-US", { maximumFractionDigits: 2 })} m²</span></div>
-        <div className="pf-summary-row"><span>Goods subtotal</span><span>{money(subtotal)}</span></div>
-        <div className="pf-summary-row"><span>Containers (20ft)</span><span>{containers}</span></div>
+        <div className="pf-summary-row"><span>{s2.totalArea}</span><span>{totalArea.toLocaleString("en-US", { maximumFractionDigits: 2 })} m²</span></div>
+        <div className="pf-summary-row"><span>{s2.goodsSubtotal}</span><span>{money(subtotal)}</span></div>
+        <div className="pf-summary-row"><span>{s2.containers20ft}</span><span>{containers}</span></div>
         {costs.breakdown.filter((b) => b.included && b.amount > 0).map((b) => (
           <div className="pf-summary-row" key={b.code} style={{ opacity: 0.8, fontSize: "0.85rem" }}>
             <span>{b.label}</span><span>{money(b.amount)}</span>
           </div>
         ))}
-        <div className="pf-summary-row pf-summary-total"><span>Grand total ({incoterm})</span><span>{money(costs.grandTotal)}</span></div>
+        <div className="pf-summary-row pf-summary-total"><span>{fmt(s2.grandTotalWithIncotermTemplate, incoterm)}</span><span>{money(costs.grandTotal)}</span></div>
         <p className="pf-disclaimer" style={{ opacity: 0.6, fontSize: "0.8rem", marginTop: "0.75rem" }}>{SHIPPING_DISCLAIMER}</p>
 
         {error && <div style={{ color: "#c0392b", margin: "0.75rem 0" }}>{error}</div>}
         <button type="button" className="pf-btn pf-btn-primary" disabled={busy} onClick={save} style={{ marginTop: "0.5rem" }}>
-          {busy ? "Saving…" : edit ? "Save changes" : "Create proforma"} <i className="fa-solid fa-file-invoice" />
+          {busy ? s2.saving : edit ? s2.saveChangesBtn : s2.createBtn} <i className="fa-solid fa-file-invoice" />
         </button>
       </div>
     </div>

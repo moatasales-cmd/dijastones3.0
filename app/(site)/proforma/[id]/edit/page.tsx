@@ -5,6 +5,7 @@ import { getCurrentClient } from "@/lib/auth";
 import { getT } from "@/lib/i18n-server";
 import ProformaBuilder, { type Priced, type ClientPrefill, type Row, type EditPrefill } from "@/components/ProformaBuilder";
 import { SIZE_CATEGORIES_METRIC, SIZE_CATEGORIES_IMPERIAL, SQM_TO_SQF } from "@/lib/proforma-engine";
+import { buildProformaBuilderStrings } from "@/lib/proforma-builder-strings";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getT();
@@ -25,6 +26,7 @@ interface SavedItem {
 
 export default async function EditProformaPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+  const { t } = await getT();
   const client = await getCurrentClient();
   if (!client) redirect("/login");
 
@@ -105,7 +107,7 @@ export default async function EditProformaPage({ params }: { params: Promise<{ i
       </section>
       <section className="section pt-0">
         <div className="container">
-          <ProformaBuilder stones={stones} client={prefill} edit={edit} />
+          <ProformaBuilder stones={stones} client={prefill} edit={edit} strings={buildProformaBuilderStrings(t)} />
         </div>
       </section>
     </>

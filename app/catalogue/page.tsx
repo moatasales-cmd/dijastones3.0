@@ -72,7 +72,7 @@ export default async function CataloguePage() {
   pageNum++;
   pages.push(
     <div className="page page-cover" key="cover">
-      <div className="cat-logo" style={{ position: "absolute", top: "50%", left: 0, width: "100%", textAlign: "center", transform: "translateY(-50%)" }}>
+      <div className="cat-logo" style={{ position: "absolute", top: "15mm", left: 0, width: "100%", textAlign: "center" }}>
         <img src="/assets/images/logo-dark.png" alt={t("catalogue.cover_title")} />
       </div>
       <h1 style={{ marginTop: "2rem" }}>{t("catalogue.cover_title")}</h1>

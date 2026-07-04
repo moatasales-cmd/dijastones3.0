@@ -54,3 +54,5 @@ next-env.d.ts
 run-checks.cmd
 commit-audit.cmd
 upgrade-checks.cmd
+
+.vercel

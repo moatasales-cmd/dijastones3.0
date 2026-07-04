@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 import { SITE_URL } from "@/lib/site";
 
+export const dynamic = "force-dynamic";
+
 const STATIC_PAGES = [
   "", "materials", "collections", "projects", "journal", "quarries",
   "heritage", "sustainability", "contact", "trade", "login", "catalogue",

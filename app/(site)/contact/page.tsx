@@ -66,7 +66,7 @@ export default async function ContactPage() {
               <i className="fa-solid fa-phone" /> +90 232 556 12 00
             </a>
             <span className="quick-contact-divider" />
-            <a href="https://wa.me/902325561200" target="_blank" rel="noopener noreferrer" className="quick-contact-item wa">
+            <a href="https://wa.me/21627986036" target="_blank" rel="noopener noreferrer" className="quick-contact-item wa">
               <i className="fa-brands fa-whatsapp" /> WhatsApp
             </a>
             <span className="quick-contact-divider" />

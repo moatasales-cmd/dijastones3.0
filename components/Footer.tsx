@@ -75,7 +75,7 @@ export default async function Footer() {
       </footer>
 
       <a
-        href="https://wa.me/21654795883"
+        href="https://wa.me/21627986036"
         target="_blank"
         rel="noopener noreferrer"
         className="whatsapp-float"

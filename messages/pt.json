@@ -1414,5 +1414,7 @@
   "catalogue.comp_limestone_mineral": "Calcite",
   "catalogue.comp_travertine_mineral": "Calcite",
   "catalogue.comp_granite_mineral": "Quartzo, Feldspato",
-  "catalogue.comp_quartzite_mineral": "Quartzo"
+  "catalogue.comp_quartzite_mineral": "Quartzo",
+  "project.read_article": "Ler a história",
+  "journal.view_project": "Ver o projeto"
 }

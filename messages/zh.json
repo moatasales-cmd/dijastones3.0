@@ -1414,5 +1414,7 @@
   "catalogue.comp_limestone_mineral": "方解石",
   "catalogue.comp_travertine_mineral": "方解石",
   "catalogue.comp_granite_mineral": "石英、长石",
-  "catalogue.comp_quartzite_mineral": "石英"
+  "catalogue.comp_quartzite_mineral": "石英",
+  "project.read_article": "阅读故事",
+  "journal.view_project": "查看项目"
 }

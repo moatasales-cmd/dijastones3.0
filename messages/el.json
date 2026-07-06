@@ -1414,5 +1414,7 @@
   "catalogue.comp_limestone_mineral": "Ασβεστίτης",
   "catalogue.comp_travertine_mineral": "Ασβεστίτης",
   "catalogue.comp_granite_mineral": "Χαλαζίας, Άστριος",
-  "catalogue.comp_quartzite_mineral": "Χαλαζίας"
+  "catalogue.comp_quartzite_mineral": "Χαλαζίας",
+  "project.read_article": "Διαβάστε την ιστορία",
+  "journal.view_project": "Δείτε το έργο"
 }

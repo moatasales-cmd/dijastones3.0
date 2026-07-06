@@ -26,6 +26,7 @@ export default async function ArticlePage({
   const a = await prisma.post.findUnique({ where: { id } });
   if (!a) notFound();
 
+  const relatedProject = await prisma.project.findFirst({ where: { articleId: id } });
   const body = tfArr(a, "b", locale);
 
   return (
@@ -56,6 +57,15 @@ export default async function ArticlePage({
               <p key={i}>{para}</p>
             ))}
           </div>
+          {relatedProject && (
+            <Link
+              href={`/projects/${relatedProject.id}`}
+              className="pf-btn pf-btn-ghost"
+              style={{ marginTop: "1.5rem" }}
+            >
+              <i className="fa-solid fa-diagram-project" /> {t("journal.view_project")}: {tf(relatedProject, "t", locale)}
+            </Link>
+          )}
         </div>
       </article>
     </>

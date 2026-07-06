@@ -74,6 +74,10 @@ model Project {
   qb   String?
   qbFr String? @map("qb_fr")
   g    Json? // gallery (array)
+  /// Optional Journal post that tells this project's story in detail (id of
+  /// a Post row). Not a DB foreign key — Post rows are seeded/managed
+  /// separately — just an id reference resolved at read time.
+  articleId String? @map("article_id")
   /// Translations for the other 8 site locales (es, pt, ru, el, ar, zh, ja, tr),
   /// keyed by locale code: { [locale]: { t?, c?, b?, bo?, q?, qb? } }.
   /// EN/FR keep their own columns above for backward compatibility; every

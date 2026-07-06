@@ -1414,5 +1414,7 @@
   "catalogue.comp_limestone_mineral": "Calcite",
   "catalogue.comp_travertine_mineral": "Calcite",
   "catalogue.comp_granite_mineral": "Quartz, Feldspar",
-  "catalogue.comp_quartzite_mineral": "Quartz"
+  "catalogue.comp_quartzite_mineral": "Quartz",
+  "project.read_article": "Read the Story",
+  "journal.view_project": "View the Project"
 }

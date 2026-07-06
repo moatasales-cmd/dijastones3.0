@@ -1414,5 +1414,7 @@
   "catalogue.comp_limestone_mineral": "Кальцит",
   "catalogue.comp_travertine_mineral": "Кальцит",
   "catalogue.comp_granite_mineral": "Кварц, Полевой Шпат",
-  "catalogue.comp_quartzite_mineral": "Кварц"
+  "catalogue.comp_quartzite_mineral": "Кварц",
+  "project.read_article": "Читать историю",
+  "journal.view_project": "Смотреть проект"
 }

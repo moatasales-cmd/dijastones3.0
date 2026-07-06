@@ -1414,5 +1414,7 @@
   "catalogue.comp_limestone_mineral": "Kalsit",
   "catalogue.comp_travertine_mineral": "Kalsit",
   "catalogue.comp_granite_mineral": "Kuvars, Feldspat",
-  "catalogue.comp_quartzite_mineral": "Kuvars"
+  "catalogue.comp_quartzite_mineral": "Kuvars",
+  "project.read_article": "Hikayeyi Oku",
+  "journal.view_project": "Projeyi Görüntüle"
 }

@@ -443,6 +443,8 @@ p { margin-bottom: 1rem; color: var(--text-light); line-height: 1.7; }
 .card-project { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
 @media (max-width: 768px) { .card-project { grid-template-columns: 1fr; gap: 1rem; } }
 .card-project-body h2 { font-size: 1.75rem; margin-bottom: 0.75rem; }
+.card-project-article-link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.75rem; font-size: 0.85rem; color: var(--accent); }
+.card-project-article-link:hover { text-decoration: underline; }
 
 /* Collection */
 .card-collection .card-img { aspect-ratio: 16/9; margin-bottom: 1rem; }

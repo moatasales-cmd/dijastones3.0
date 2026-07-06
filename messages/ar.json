@@ -1414,5 +1414,7 @@
   "catalogue.comp_limestone_mineral": "كالسيت",
   "catalogue.comp_travertine_mineral": "كالسيت",
   "catalogue.comp_granite_mineral": "كوارتز، فلسبار",
-  "catalogue.comp_quartzite_mineral": "كوارتز"
+  "catalogue.comp_quartzite_mineral": "كوارتز",
+  "project.read_article": "اقرأ القصة",
+  "journal.view_project": "عرض المشروع"
 }

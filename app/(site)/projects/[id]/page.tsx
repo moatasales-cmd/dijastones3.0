@@ -26,6 +26,10 @@ export default async function ProjectPage({
   const p = await prisma.project.findUnique({ where: { id } });
   if (!p) notFound();
 
+  const article = p.articleId
+    ? await prisma.post.findUnique({ where: { id: p.articleId } })
+    : null;
+
   const g = Array.isArray(p.g) ? (p.g as string[]) : [];
   const cover = g[0] ?? null;
   const thumbs = g.slice(1, 7);
@@ -96,6 +100,11 @@ export default async function ProjectPage({
                   <p>{quote}</p>
                   <span>— {tf(p, "qb", locale)}</span>
                 </div>
+              )}
+              {article && (
+                <Link href={`/journal/${article.id}`} className="pf-btn pf-btn-ghost" style={{ marginTop: "1.5rem" }}>
+                  <i className="fa-solid fa-book-open" /> {t("project.read_article")}: {tf(article, "t", locale)}
+                </Link>
               )}
             </div>
           </div>

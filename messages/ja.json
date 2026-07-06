@@ -1437,5 +1437,6 @@
   "casestudy.similar_match": "当社カタログでの最も近い一致",
   "casestudy.view_source": "元のケーススタディを見る",
   "casestudy.back": "ケーススタディに戻る",
-  "casestudy.no_materials": "素材の詳細は出典に記載されていませんでした。"
+  "casestudy.no_materials": "素材の詳細は出典に記載されていませんでした。",
+  "casestudy.suggested_match": "当社カタログからのおすすめ"
 }

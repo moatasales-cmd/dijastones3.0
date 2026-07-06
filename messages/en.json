@@ -1437,5 +1437,6 @@
   "casestudy.similar_match": "Closest match in our catalogue",
   "casestudy.view_source": "View Original Case Study",
   "casestudy.back": "Back to Case Studies",
-  "casestudy.no_materials": "Material details were not specified in the source."
+  "casestudy.no_materials": "Material details were not specified in the source.",
+  "casestudy.suggested_match": "Suggested from our catalogue"
 }

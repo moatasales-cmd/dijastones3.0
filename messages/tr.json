@@ -1437,5 +1437,6 @@
   "casestudy.similar_match": "Kataloğumuzdaki en yakın eşleşme",
   "casestudy.view_source": "Orijinal Vaka Çalışmasını Görüntüle",
   "casestudy.back": "Vaka Çalışmalarına Dön",
-  "casestudy.no_materials": "Malzeme detayları kaynakta belirtilmemiştir."
+  "casestudy.no_materials": "Malzeme detayları kaynakta belirtilmemiştir.",
+  "casestudy.suggested_match": "Kataloğumuzdan önerilen"
 }

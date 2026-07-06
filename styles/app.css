@@ -1033,3 +1033,13 @@ footer { background: var(--dark-bg); color: var(--dark-text); padding: 4rem 0 2r
 @media (max-width: 480px) {
   .mat-toolbar-right { flex-wrap: wrap; }
 }
+
+/* Case Studies: cover photos are always landscape ("wider than tall", like a
+   TV screen) — unlike the portrait 4:5 ratio Materials/Projects use for
+   their main detail image. Scoped so it doesn't affect those other pages. */
+.case-cover { aspect-ratio: 16/9; overflow: hidden; border-radius: 4px; margin-bottom: 0.75rem; background: linear-gradient(135deg, var(--bg-mist), var(--bg-alt)); }
+.case-cover img { width: 100%; height: 100%; object-fit: cover; }
+.case-swatches { display: flex; gap: 0.4rem; margin-top: 0.6rem; }
+.case-swatch { width: 40px; height: 40px; border-radius: 4px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border-light); }
+.case-swatch img { width: 100%; height: 100%; object-fit: cover; }
+.case-study-detail .detail-main-img { aspect-ratio: 16/9; }

@@ -1437,5 +1437,6 @@
   "casestudy.similar_match": "الأقرب في كتالوجنا",
   "casestudy.view_source": "عرض دراسة الحالة الأصلية",
   "casestudy.back": "العودة إلى دراسات الحالة",
-  "casestudy.no_materials": "لم يتم تحديد تفاصيل المادة في المصدر."
+  "casestudy.no_materials": "لم يتم تحديد تفاصيل المادة في المصدر.",
+  "casestudy.suggested_match": "مقترح من كتالوجنا"
 }

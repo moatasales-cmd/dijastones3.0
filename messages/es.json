@@ -1437,5 +1437,6 @@
   "casestudy.similar_match": "La más cercana en nuestro catálogo",
   "casestudy.view_source": "Ver caso de estudio original",
   "casestudy.back": "Volver a Casos de Estudio",
-  "casestudy.no_materials": "Los detalles del material no se especificaron en la fuente."
+  "casestudy.no_materials": "Los detalles del material no se especificaron en la fuente.",
+  "casestudy.suggested_match": "Sugerido de nuestro catálogo"
 }

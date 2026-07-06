@@ -1437,5 +1437,6 @@
   "casestudy.similar_match": "Ближайший аналог в нашем каталоге",
   "casestudy.view_source": "Смотреть оригинальный пример",
   "casestudy.back": "Назад к примерам проектов",
-  "casestudy.no_materials": "Детали материала не были указаны в источнике."
+  "casestudy.no_materials": "Детали материала не были указаны в источнике.",
+  "casestudy.suggested_match": "Предложено из нашего каталога"
 }

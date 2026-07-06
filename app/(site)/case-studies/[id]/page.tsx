@@ -64,7 +64,7 @@ export default async function CaseStudyPage({
   ];
 
   return (
-    <>
+    <div className="case-study-detail">
       <section className="page-hero">
         <div className="container">
           <Link href="/case-studies" className="back-link">
@@ -111,7 +111,11 @@ export default async function CaseStudyPage({
                   <div key={s.id}>
                     <MaterialCard stone={s} unit="sqm" labels={cardLabels} />
                     <p style={{ fontSize: "0.75rem", opacity: 0.6, marginTop: "0.4rem" }}>
-                      {m.matchType === "exact" ? t("casestudy.exact_match") : t("casestudy.similar_match")}
+                      {m.matchType === "exact"
+                        ? t("casestudy.exact_match")
+                        : m.matchType === "similar"
+                        ? t("casestudy.similar_match")
+                        : t("casestudy.suggested_match")}
                       {" — "}
                       {m.application ? `${m.application}: ` : ""}
                       {m.rawStone}
@@ -123,6 +127,6 @@ export default async function CaseStudyPage({
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 }

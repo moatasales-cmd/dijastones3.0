@@ -1438,5 +1438,7 @@
   "casestudy.view_source": "Δείτε την Αρχική Μελέτη Περίπτωσης",
   "casestudy.back": "Πίσω στις Μελέτες Περίπτωσης",
   "casestudy.no_materials": "Οι λεπτομέρειες του υλικού δεν προσδιορίστηκαν στην πηγή.",
-  "casestudy.suggested_match": "Προτεινόμενο από τον κατάλογό μας"
+  "casestudy.suggested_match": "Προτεινόμενο από τον κατάλογό μας",
+  "casestudy.read_story": "Διαβάστε ολόκληρη την ιστορία",
+  "journal.view_case_study": "Δείτε τη μελέτη περίπτωσης"
 }

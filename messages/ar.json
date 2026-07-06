@@ -1438,5 +1438,7 @@
   "casestudy.view_source": "عرض دراسة الحالة الأصلية",
   "casestudy.back": "العودة إلى دراسات الحالة",
   "casestudy.no_materials": "لم يتم تحديد تفاصيل المادة في المصدر.",
-  "casestudy.suggested_match": "مقترح من كتالوجنا"
+  "casestudy.suggested_match": "مقترح من كتالوجنا",
+  "casestudy.read_story": "اقرأ القصة كاملة",
+  "journal.view_case_study": "عرض دراسة الحالة"
 }

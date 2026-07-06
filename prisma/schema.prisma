@@ -282,7 +282,8 @@ model CaseStudy {
   area        String?
   sourceUrl   String // attribution link back to the original source
   /// Matched DIJA products: array of { application, rawStone, stoneId,
-  /// stoneName, matchType: "exact" | "similar" | "none" }
+  /// stoneName, matchType: "exact" | "similar" | "suggested" | "none" }
   materials   Json?
+  articleId   String? @map("article_id")
   createdAt   DateTime @default(now())
 }

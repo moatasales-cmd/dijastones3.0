@@ -1438,5 +1438,7 @@
   "casestudy.view_source": "View Original Case Study",
   "casestudy.back": "Back to Case Studies",
   "casestudy.no_materials": "Material details were not specified in the source.",
-  "casestudy.suggested_match": "Suggested from our catalogue"
+  "casestudy.suggested_match": "Suggested from our catalogue",
+  "casestudy.read_story": "Read the Full Story",
+  "journal.view_case_study": "View Case Study"
 }

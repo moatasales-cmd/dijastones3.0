@@ -1438,5 +1438,7 @@
   "casestudy.view_source": "元のケーススタディを見る",
   "casestudy.back": "ケーススタディに戻る",
   "casestudy.no_materials": "素材の詳細は出典に記載されていませんでした。",
-  "casestudy.suggested_match": "当社カタログからのおすすめ"
+  "casestudy.suggested_match": "当社カタログからのおすすめ",
+  "casestudy.read_story": "全文を読む",
+  "journal.view_case_study": "ケーススタディを見る"
 }

@@ -1438,5 +1438,7 @@
   "casestudy.view_source": "查看原始案例研究",
   "casestudy.back": "返回案例研究",
   "casestudy.no_materials": "来源中未说明材料详情。",
-  "casestudy.suggested_match": "来自我们目录的推荐"
+  "casestudy.suggested_match": "来自我们目录的推荐",
+  "casestudy.read_story": "阅读完整故事",
+  "journal.view_case_study": "查看案例研究"
 }

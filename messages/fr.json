@@ -1438,5 +1438,7 @@
   "casestudy.view_source": "Voir l'étude de cas originale",
   "casestudy.back": "Retour aux études de cas",
   "casestudy.no_materials": "Les détails du matériau n'étaient pas précisés dans la source.",
-  "casestudy.suggested_match": "Suggéré de notre catalogue"
+  "casestudy.suggested_match": "Suggéré de notre catalogue",
+  "casestudy.read_story": "Lire l'histoire complète",
+  "journal.view_case_study": "Voir l'étude de cas"
 }

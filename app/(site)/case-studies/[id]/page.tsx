@@ -92,7 +92,12 @@ export default async function CaseStudyPage({
                   ))}
               </div>
 
-              <p style={{ marginTop: "1.5rem" }}>
+              <p style={{ marginTop: "1.5rem", display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+                {c.articleId && (
+                  <Link href={`/journal/${c.articleId}`} className="pf-btn pf-btn-primary">
+                    <i className="fa-solid fa-book-open" /> {t("casestudy.read_story")}
+                  </Link>
+                )}
                 <a href={c.sourceUrl} target="_blank" rel="noopener noreferrer nofollow" className="pf-btn pf-btn-ghost">
                   <i className="fa-solid fa-arrow-up-right-from-square" /> {t("casestudy.view_source")}
                 </a>

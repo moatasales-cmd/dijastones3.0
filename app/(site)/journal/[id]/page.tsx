@@ -27,6 +27,7 @@ export default async function ArticlePage({
   if (!a) notFound();
 
   const relatedProject = await prisma.project.findFirst({ where: { articleId: id } });
+  const relatedCaseStudy = await prisma.caseStudy.findFirst({ where: { articleId: id } });
   const body = tfArr(a, "b", locale);
 
   return (
@@ -64,6 +65,15 @@ export default async function ArticlePage({
               style={{ marginTop: "1.5rem" }}
             >
               <i className="fa-solid fa-diagram-project" /> {t("journal.view_project")}: {tf(relatedProject, "t", locale)}
+            </Link>
+          )}
+          {relatedCaseStudy && (
+            <Link
+              href={`/case-studies/${relatedCaseStudy.id}`}
+              className="pf-btn pf-btn-ghost"
+              style={{ marginTop: "1.5rem" }}
+            >
+              <i className="fa-solid fa-gem" /> {t("journal.view_case_study")}: {relatedCaseStudy.title}
             </Link>
           )}
         </div>

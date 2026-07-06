@@ -5,15 +5,16 @@ import { SITE_URL } from "@/lib/site";
 const STATIC_PAGES = [
   "", "materials", "collections", "projects", "journal", "quarries",
   "heritage", "sustainability", "contact", "trade", "login", "catalogue",
-  "privacy", "terms", "cookies",
+  "case-studies", "privacy", "terms", "cookies",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [stones, collections, projects, posts] = await Promise.all([
+  const [stones, collections, projects, posts, caseStudies] = await Promise.all([
     prisma.stone.findMany({ select: { id: true, updatedAt: true } }),
     prisma.collection.findMany({ select: { id: true } }),
     prisma.project.findMany({ select: { id: true } }),
     prisma.post.findMany({ select: { id: true } }),
+    prisma.caseStudy.findMany({ select: { id: true } }),
   ]);
 
   const staticEntries: MetadataRoute.Sitemap = STATIC_PAGES.map((p) => ({
@@ -47,5 +48,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
-  return [...staticEntries, ...stoneEntries, ...collectionEntries, ...projectEntries, ...postEntries];
+  const caseStudyEntries: MetadataRoute.Sitemap = caseStudies.map((c) => ({
+    url: `${SITE_URL}/case-studies/${c.id}`,
+    changeFrequency: "yearly",
+    priority: 0.3,
+  }));
+
+  return [...staticEntries, ...stoneEntries, ...collectionEntries, ...projectEntries, ...postEntries, ...caseStudyEntries];
 }

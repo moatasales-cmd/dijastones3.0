@@ -1422,5 +1422,20 @@
   "heritage.iconic_pantheon_text": "The Pantheon's floor is set with Numidian marble — known to the Romans as Giallo Antico — quarried at ancient Simitthus, in what is now Chemtou, Tunisia. Nearly two thousand years later, we still source stone from that same region.",
   "heritage.iconic_un_text": "The green stone behind the United Nations General Assembly podium is Verde Antico, a serpentine marble from the Alps — geological kin to our own Verde Serpentino.",
   "heritage.iconic_colosseum_text": "The Colosseum was built almost entirely from travertine, quarried at Tivoli and carried to Rome across the Tiber — the same stone type, formed the same way in hot mineral springs, that we still supply today.",
-  "heritage.iconic_see_stone": "See this stone in our collection"
+  "heritage.iconic_see_stone": "See this stone in our collection",
+  "nav.stone.case_studies": "Case Studies",
+  "casestudy.title": "Case Studies",
+  "casestudy.hero_label": "Material Reference",
+  "casestudy.hero_title": "Real Buildings.<br><em>Real Stone.</em>",
+  "casestudy.hero_text": "A researched reference library of independently-documented architecture projects around the world — credited to their real architects and linked back to their original source. These are not DIJA projects. Where a project's stone is a genuine match to something in our range we say so; otherwise we show the closest equivalent we carry.",
+  "casestudy.spec_architect": "Architect",
+  "casestudy.spec_location": "Location",
+  "casestudy.spec_year": "Year",
+  "casestudy.spec_area": "Area",
+  "casestudy.materials_used": "Materials Used",
+  "casestudy.exact_match": "Exact match in our catalogue",
+  "casestudy.similar_match": "Closest match in our catalogue",
+  "casestudy.view_source": "View Original Case Study",
+  "casestudy.back": "Back to Case Studies",
+  "casestudy.no_materials": "Material details were not specified in the source."
 }

@@ -1422,5 +1422,20 @@
   "heritage.iconic_pantheon_text": "Pantheon'un zemini, Romalıların Giallo Antico olarak adlandırdığı Numidia mermeriyle döşenmiştir — antik Simitthus'ta, bugünkü Tunus'un Chemtou bölgesinde çıkarılmıştır. Neredeyse iki bin yıl sonra, hâlâ aynı bölgeden taş tedarik ediyoruz.",
   "heritage.iconic_un_text": "Birleşmiş Milletler Genel Kurulu kürsüsünün arkasındaki yeşil taş, Alp Dağları'ndan çıkarılan bir serpantin mermeri olan Verde Antico'dur — kendi Verde Serpentino'muzla jeolojik olarak akraba.",
   "heritage.iconic_colosseum_text": "Kolezyum neredeyse tamamen, Tivoli'de çıkarılıp Tiber Nehri üzerinden Roma'ya taşınan travertenden inşa edilmiştir — bugün hâlâ tedarik ettiğimiz, sıcak maden sularında aynı şekilde oluşan aynı taş türü.",
-  "heritage.iconic_see_stone": "Bu taşı koleksiyonumuzda görün"
+  "heritage.iconic_see_stone": "Bu taşı koleksiyonumuzda görün",
+  "nav.stone.case_studies": "Vaka Çalışmaları",
+  "casestudy.title": "Vaka Çalışmaları",
+  "casestudy.hero_label": "Malzeme Referansı",
+  "casestudy.hero_title": "Gerçek Binalar.<br><em>Gerçek Taş.</em>",
+  "casestudy.hero_text": "Dünya çapında bağımsız olarak belgelenmiş mimari projelerden oluşan bir referans kütüphanesi — gerçek mimarlarına atfedilmiş ve orijinal kaynağına bağlanmıştır. Bunlar DIJA projeleri değildir. Bir projenin taşı ürün yelpazemizdeki bir şeyle gerçekten eşleştiğinde bunu belirtiyoruz; aksi takdirde sunduğumuz en yakın eşdeğeri gösteriyoruz.",
+  "casestudy.spec_architect": "Mimar",
+  "casestudy.spec_location": "Konum",
+  "casestudy.spec_year": "Yıl",
+  "casestudy.spec_area": "Alan",
+  "casestudy.materials_used": "Kullanılan Malzemeler",
+  "casestudy.exact_match": "Kataloğumuzda tam eşleşme",
+  "casestudy.similar_match": "Kataloğumuzdaki en yakın eşleşme",
+  "casestudy.view_source": "Orijinal Vaka Çalışmasını Görüntüle",
+  "casestudy.back": "Vaka Çalışmalarına Dön",
+  "casestudy.no_materials": "Malzeme detayları kaynakta belirtilmemiştir."
 }

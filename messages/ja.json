@@ -1422,5 +1422,20 @@
   "heritage.iconic_pantheon_text": "パンテオンの床には、ローマ人が「ジャッロ・アンティコ」と呼んだヌミディア大理石が敷かれています。古代シミトゥス、現在のチュニジア・シェムトゥで採掘されたものです。約2000年後の今も、私たちは同じ地域から石材を調達しています。",
   "heritage.iconic_un_text": "国連総会の演壇の背後にある緑の石は、アルプス産の蛇紋岩大理石「ヴェルデ・アンティコ」です——私たちのヴェルデ・セルペンティーノと地質学的に近縁です。",
   "heritage.iconic_colosseum_text": "コロッセオはほぼ全体がトラバーチンで造られており、ティヴォリで採掘されテヴェレ川を渡ってローマまで運ばれました——今日私たちが供給しているのと同じ種類の、温泉の鉱泉で同じように形成された石です。",
-  "heritage.iconic_see_stone": "当社のコレクションでこの石を見る"
+  "heritage.iconic_see_stone": "当社のコレクションでこの石を見る",
+  "nav.stone.case_studies": "ケーススタディ",
+  "casestudy.title": "ケーススタディ",
+  "casestudy.hero_label": "素材リファレンス",
+  "casestudy.hero_title": "実在する建物。<br><em>本物の石。</em>",
+  "casestudy.hero_text": "世界各地の建築プロジェクトを独自に調査・記録したリファレンスライブラリです——実際の建築家のクレジットと、元の出典へのリンク付き。これらはDIJAのプロジェクトではありません。プロジェクトで使用された石材が当社の製品ラインと実際に一致する場合はその旨を明記し、そうでない場合は当社が扱う中で最も近い同等品をご紹介します。",
+  "casestudy.spec_architect": "建築家",
+  "casestudy.spec_location": "所在地",
+  "casestudy.spec_year": "年",
+  "casestudy.spec_area": "面積",
+  "casestudy.materials_used": "使用素材",
+  "casestudy.exact_match": "当社カタログとの完全一致",
+  "casestudy.similar_match": "当社カタログでの最も近い一致",
+  "casestudy.view_source": "元のケーススタディを見る",
+  "casestudy.back": "ケーススタディに戻る",
+  "casestudy.no_materials": "素材の詳細は出典に記載されていませんでした。"
 }

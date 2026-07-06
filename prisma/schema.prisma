@@ -265,3 +265,24 @@ model Office {
   image          String?
   whatsapp       String?
 }
+
+/// Independently-documented real-world buildings/projects (NOT DIJA's own
+/// work — these are third-party architecture projects, researched from a
+/// public industry reference site, kept here for the honest "materials in
+/// the wild" cross-reference feature). Every row must credit its real
+/// architect/source and link back to sourceUrl. Descriptions are generated
+/// from plain facts (title/architect/location/year), never copied creative
+/// text, to stay clear of the original site's copyright.
+model CaseStudy {
+  id          String  @id // slug
+  title       String
+  architect   String?
+  location    String?
+  year        String?
+  area        String?
+  sourceUrl   String // attribution link back to the original source
+  /// Matched DIJA products: array of { application, rawStone, stoneId,
+  /// stoneName, matchType: "exact" | "similar" | "none" }
+  materials   Json?
+  createdAt   DateTime @default(now())
+}

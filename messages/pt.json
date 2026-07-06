@@ -1422,5 +1422,20 @@
   "heritage.iconic_pantheon_text": "O piso do Panteão é feito de mármore numídico — conhecido pelos romanos como Giallo Antico — extraído da antiga Simitthus, hoje Chemtou, na Tunísia. Quase dois mil anos depois, ainda nos abastecemos nessa mesma região.",
   "heritage.iconic_un_text": "A pedra verde atrás do pódio da Assembleia Geral das Nações Unidas é Verde Antico, um mármore serpentino dos Alpes — parente geológico do nosso próprio Verde Serpentino.",
   "heritage.iconic_colosseum_text": "O Coliseu foi construído quase inteiramente em travertino, extraído em Tívoli e transportado a Roma pelo rio Tibre — o mesmo tipo de pedra, formada da mesma maneira em fontes minerais quentes, que ainda fornecemos hoje.",
-  "heritage.iconic_see_stone": "Ver esta pedra em nossa coleção"
+  "heritage.iconic_see_stone": "Ver esta pedra em nossa coleção",
+  "nav.stone.case_studies": "Estudos de Caso",
+  "casestudy.title": "Estudos de Caso",
+  "casestudy.hero_label": "Referência de Materiais",
+  "casestudy.hero_title": "Edifícios reais.<br><em>Pedra real.</em>",
+  "casestudy.hero_text": "Uma biblioteca de referência documentada de forma independente com projetos de arquitetura ao redor do mundo, creditados aos seus arquitetos reais e ligados à sua fonte original. Estes não são projetos da DIJA. Quando a pedra de um projeto corresponde genuinamente a algo em nossa linha, indicamos isso; caso contrário, mostramos o equivalente mais próximo que oferecemos.",
+  "casestudy.spec_architect": "Arquiteto",
+  "casestudy.spec_location": "Localização",
+  "casestudy.spec_year": "Ano",
+  "casestudy.spec_area": "Área",
+  "casestudy.materials_used": "Materiais Utilizados",
+  "casestudy.exact_match": "Correspondência exata em nosso catálogo",
+  "casestudy.similar_match": "Mais próximo em nosso catálogo",
+  "casestudy.view_source": "Ver Estudo de Caso Original",
+  "casestudy.back": "Voltar aos Estudos de Caso",
+  "casestudy.no_materials": "Os detalhes do material não foram especificados na fonte."
 }

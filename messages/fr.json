@@ -1422,5 +1422,20 @@
   "heritage.iconic_pantheon_text": "Le sol du Panthéon est pavé de marbre numidique — appelé par les Romains Giallo Antico — extrait de l'antique Simitthus, aujourd'hui Chemtou, en Tunisie. Près de deux mille ans plus tard, nous nous approvisionnons encore dans cette même région.",
   "heritage.iconic_un_text": "La pierre verte derrière le podium de l'Assemblée générale des Nations Unies est du Verde Antico, un marbre serpentin des Alpes — cousin géologique de notre propre Verde Serpentino.",
   "heritage.iconic_colosseum_text": "Le Colisée a été construit presque entièrement en travertin, extrait à Tivoli et transporté à Rome à travers le Tibre — le même type de pierre, formé de la même manière dans des sources minérales chaudes, que nous fournissons encore aujourd'hui.",
-  "heritage.iconic_see_stone": "Voir cette pierre dans notre collection"
+  "heritage.iconic_see_stone": "Voir cette pierre dans notre collection",
+  "nav.stone.case_studies": "Études de cas",
+  "casestudy.title": "Études de cas",
+  "casestudy.hero_label": "Référence Matériaux",
+  "casestudy.hero_title": "Bâtiments réels.<br><em>Pierre réelle.</em>",
+  "casestudy.hero_text": "Une bibliothèque de référence documentée indépendamment, recensant des projets d'architecture à travers le monde — crédités à leurs architectes réels et reliés à leur source d'origine. Il ne s'agit pas de projets DIJA. Lorsque la pierre d'un projet correspond réellement à l'un de nos produits, nous l'indiquons ; sinon, nous présentons l'équivalent le plus proche de notre gamme.",
+  "casestudy.spec_architect": "Architecte",
+  "casestudy.spec_location": "Lieu",
+  "casestudy.spec_year": "Année",
+  "casestudy.spec_area": "Surface",
+  "casestudy.materials_used": "Matériaux Utilisés",
+  "casestudy.exact_match": "Correspondance exacte dans notre catalogue",
+  "casestudy.similar_match": "Le plus proche dans notre catalogue",
+  "casestudy.view_source": "Voir l'étude de cas originale",
+  "casestudy.back": "Retour aux études de cas",
+  "casestudy.no_materials": "Les détails du matériau n'étaient pas précisés dans la source."
 }

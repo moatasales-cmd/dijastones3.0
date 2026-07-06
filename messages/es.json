@@ -1422,5 +1422,20 @@
   "heritage.iconic_pantheon_text": "El suelo del Panteón está formado por mármol númida —conocido por los romanos como Giallo Antico— extraído de la antigua Simitthus, hoy Chemtou, Túnez. Casi dos mil años después, seguimos obteniendo piedra de esa misma región.",
   "heritage.iconic_un_text": "La piedra verde detrás del podio de la Asamblea General de la ONU es Verde Antico, un mármol serpentino de los Alpes, pariente geológico de nuestro propio Verde Serpentino.",
   "heritage.iconic_colosseum_text": "El Coliseo se construyó casi por completo con travertino, extraído en Tívoli y transportado a Roma a través del Tíber: el mismo tipo de piedra, formada de la misma manera en manantiales minerales calientes, que seguimos suministrando hoy.",
-  "heritage.iconic_see_stone": "Ver esta piedra en nuestra colección"
+  "heritage.iconic_see_stone": "Ver esta piedra en nuestra colección",
+  "nav.stone.case_studies": "Casos de Estudio",
+  "casestudy.title": "Casos de Estudio",
+  "casestudy.hero_label": "Referencia de Materiales",
+  "casestudy.hero_title": "Edificios reales.<br><em>Piedra real.</em>",
+  "casestudy.hero_text": "Una biblioteca de referencia documentada de forma independiente con proyectos de arquitectura de todo el mundo, acreditados a sus arquitectos reales y enlazados a su fuente original. Estos no son proyectos de DIJA. Cuando la piedra de un proyecto coincide realmente con algo de nuestra gama lo indicamos; de lo contrario, mostramos el equivalente más cercano que ofrecemos.",
+  "casestudy.spec_architect": "Arquitecto",
+  "casestudy.spec_location": "Ubicación",
+  "casestudy.spec_year": "Año",
+  "casestudy.spec_area": "Superficie",
+  "casestudy.materials_used": "Materiales Utilizados",
+  "casestudy.exact_match": "Coincidencia exacta en nuestro catálogo",
+  "casestudy.similar_match": "La más cercana en nuestro catálogo",
+  "casestudy.view_source": "Ver caso de estudio original",
+  "casestudy.back": "Volver a Casos de Estudio",
+  "casestudy.no_materials": "Los detalles del material no se especificaron en la fuente."
 }

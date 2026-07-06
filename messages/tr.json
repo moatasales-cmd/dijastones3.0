@@ -1416,5 +1416,11 @@
   "catalogue.comp_granite_mineral": "Kuvars, Feldspat",
   "catalogue.comp_quartzite_mineral": "Kuvars",
   "project.read_article": "Hikayeyi Oku",
-  "journal.view_project": "Projeyi Görüntüle"
+  "journal.view_project": "Projeyi Görüntüle",
+  "heritage.iconic_title": "Bu Taşların İz Bıraktığı Yerler",
+  "heritage.iconic_intro": "Bu malzemelerden bazıları, herhangi bir şirketten daha uzun bir tarihe sahiptir — yüzyıllar boyunca mimaride bağımsız olarak belgelenmiştir. Bunlar DIJA projeleri değildir; taşın kendisinin bizden çok önce nerelerde kullanıldığının bir kaydıdır.",
+  "heritage.iconic_pantheon_text": "Pantheon'un zemini, Romalıların Giallo Antico olarak adlandırdığı Numidia mermeriyle döşenmiştir — antik Simitthus'ta, bugünkü Tunus'un Chemtou bölgesinde çıkarılmıştır. Neredeyse iki bin yıl sonra, hâlâ aynı bölgeden taş tedarik ediyoruz.",
+  "heritage.iconic_un_text": "Birleşmiş Milletler Genel Kurulu kürsüsünün arkasındaki yeşil taş, Alp Dağları'ndan çıkarılan bir serpantin mermeri olan Verde Antico'dur — kendi Verde Serpentino'muzla jeolojik olarak akraba.",
+  "heritage.iconic_colosseum_text": "Kolezyum neredeyse tamamen, Tivoli'de çıkarılıp Tiber Nehri üzerinden Roma'ya taşınan travertenden inşa edilmiştir — bugün hâlâ tedarik ettiğimiz, sıcak maden sularında aynı şekilde oluşan aynı taş türü.",
+  "heritage.iconic_see_stone": "Bu taşı koleksiyonumuzda görün"
 }

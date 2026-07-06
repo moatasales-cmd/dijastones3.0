@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getT } from "@/lib/i18n-server";
 import { FALLBACK_BG, rich } from "@/lib/lang";
+import IconicUses from "@/components/IconicUses";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getT();
@@ -63,6 +64,8 @@ export default async function HeritagePage() {
           </div>
         </section>
       ))}
+
+      <IconicUses t={t} />
     </>
   );
 }

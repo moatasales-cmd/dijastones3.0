@@ -1416,5 +1416,11 @@
   "catalogue.comp_granite_mineral": "Quartz, Feldspar",
   "catalogue.comp_quartzite_mineral": "Quartz",
   "project.read_article": "Read the Story",
-  "journal.view_project": "View the Project"
+  "journal.view_project": "View the Project",
+  "heritage.iconic_title": "Where These Stones Have Stood",
+  "heritage.iconic_intro": "Some of these materials carry a history longer than any company — independently documented across centuries of architecture. These are not DIJA projects; they are a record of where the stone itself has been used, long before us.",
+  "heritage.iconic_pantheon_text": "The Pantheon's floor is set with Numidian marble — known to the Romans as Giallo Antico — quarried at ancient Simitthus, in what is now Chemtou, Tunisia. Nearly two thousand years later, we still source stone from that same region.",
+  "heritage.iconic_un_text": "The green stone behind the United Nations General Assembly podium is Verde Antico, a serpentine marble from the Alps — geological kin to our own Verde Serpentino.",
+  "heritage.iconic_colosseum_text": "The Colosseum was built almost entirely from travertine, quarried at Tivoli and carried to Rome across the Tiber — the same stone type, formed the same way in hot mineral springs, that we still supply today.",
+  "heritage.iconic_see_stone": "See this stone in our collection"
 }

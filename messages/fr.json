@@ -1416,5 +1416,11 @@
   "catalogue.comp_granite_mineral": "Quartz, Feldspath",
   "catalogue.comp_quartzite_mineral": "Quartz",
   "project.read_article": "Lire l'histoire",
-  "journal.view_project": "Voir le projet"
+  "journal.view_project": "Voir le projet",
+  "heritage.iconic_title": "Là où ces pierres ont marqué l'histoire",
+  "heritage.iconic_intro": "Certains de ces matériaux ont une histoire plus longue qu'aucune entreprise — documentée indépendamment à travers des siècles d'architecture. Il ne s'agit pas de projets DIJA, mais d'une trace de l'usage de la pierre elle-même, bien avant nous.",
+  "heritage.iconic_pantheon_text": "Le sol du Panthéon est pavé de marbre numidique — appelé par les Romains Giallo Antico — extrait de l'antique Simitthus, aujourd'hui Chemtou, en Tunisie. Près de deux mille ans plus tard, nous nous approvisionnons encore dans cette même région.",
+  "heritage.iconic_un_text": "La pierre verte derrière le podium de l'Assemblée générale des Nations Unies est du Verde Antico, un marbre serpentin des Alpes — cousin géologique de notre propre Verde Serpentino.",
+  "heritage.iconic_colosseum_text": "Le Colisée a été construit presque entièrement en travertin, extrait à Tivoli et transporté à Rome à travers le Tibre — le même type de pierre, formé de la même manière dans des sources minérales chaudes, que nous fournissons encore aujourd'hui.",
+  "heritage.iconic_see_stone": "Voir cette pierre dans notre collection"
 }

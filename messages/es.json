@@ -1416,5 +1416,11 @@
   "catalogue.comp_granite_mineral": "Cuarzo, Feldespato",
   "catalogue.comp_quartzite_mineral": "Cuarzo",
   "project.read_article": "Leer la historia",
-  "journal.view_project": "Ver el proyecto"
+  "journal.view_project": "Ver el proyecto",
+  "heritage.iconic_title": "Donde estas piedras han dejado huella",
+  "heritage.iconic_intro": "Algunos de estos materiales tienen una historia más larga que cualquier empresa, documentada de forma independiente a lo largo de siglos de arquitectura. No son proyectos de DIJA; son un registro de dónde se ha usado la piedra misma, mucho antes que nosotros.",
+  "heritage.iconic_pantheon_text": "El suelo del Panteón está formado por mármol númida —conocido por los romanos como Giallo Antico— extraído de la antigua Simitthus, hoy Chemtou, Túnez. Casi dos mil años después, seguimos obteniendo piedra de esa misma región.",
+  "heritage.iconic_un_text": "La piedra verde detrás del podio de la Asamblea General de la ONU es Verde Antico, un mármol serpentino de los Alpes, pariente geológico de nuestro propio Verde Serpentino.",
+  "heritage.iconic_colosseum_text": "El Coliseo se construyó casi por completo con travertino, extraído en Tívoli y transportado a Roma a través del Tíber: el mismo tipo de piedra, formada de la misma manera en manantiales minerales calientes, que seguimos suministrando hoy.",
+  "heritage.iconic_see_stone": "Ver esta piedra en nuestra colección"
 }

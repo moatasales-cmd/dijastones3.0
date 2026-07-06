@@ -221,6 +221,20 @@ body.home header:not(.scrolled) .theme-toggle-btn.active { background: rgba(255,
 body.home header:not(.scrolled) .lang-current { border-color: rgba(255,255,255,0.35); color: rgba(255,255,255,0.7); }
 body.home header:not(.scrolled) .lang-switcher:hover .lang-current, body.home header:not(.scrolled) .lang-switcher:focus-within .lang-current { border-color: rgba(255,255,255,0.5); color: #FFFFFF; }
 body.home header:not(.scrolled) .lang-chevron path { stroke: rgba(255,255,255,0.7); }
+/* .nav-auth-link's default rule (10px text, thin left border) is styled for
+   the compact desktop toolbar. On mobile it landed inside a <span>, not a
+   direct `.mobile-nav-links > a`, so it never picked up the big, full-width
+   tappable-row style the other menu items get — it rendered as a tiny,
+   easy-to-miss sliver. Give it its own clear, full-width CTA button instead. */
+.mobile-nav .nav-auth-link { margin: 0.75rem 0 0; padding: 0; border-left: none; display: block; }
+.mobile-nav .nav-auth-link a {
+  display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+  font-family: inherit; font-size: 1rem; font-weight: 600; letter-spacing: 0.02em;
+  color: #fff; background: var(--accent); border-bottom: none;
+  padding: 0.9rem 1.25rem; border-radius: 999px;
+}
+.mobile-nav .nav-auth-link a:hover { color: #fff; filter: brightness(1.08); }
+
 /* On mobile the dropdown becomes a static, in-flow list (toggled by tap via
    React state, not :hover, since touch has no hover) — the switcher must
    stack its children in a column or the list renders beside the button

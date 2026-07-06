@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { getT } from "@/lib/i18n-server";
+import Gallery from "@/components/Gallery";
+import MaterialCard, { type CardLabels } from "@/components/MaterialCard";
 
 export async function generateMetadata({
   params,
@@ -33,7 +35,26 @@ export default async function CaseStudyPage({
   if (!c) notFound();
 
   const materials = Array.isArray(c.materials) ? (c.materials as unknown as MaterialMatch[]) : [];
-  const matched = materials.filter((m) => m.matchType !== "none" && m.stoneId);
+  const matched = materials.filter(
+    (m, i, arr): m is MaterialMatch & { stoneId: string } =>
+      m.matchType !== "none" && !!m.stoneId && arr.findIndex((x) => x.stoneId === m.stoneId) === i
+  );
+
+  // The stones actually used/matched — not photos of the third-party
+  // building itself (we never re-host that copyrighted photography). This
+  // gallery shows what the matched material(s) genuinely look like.
+  const matchedStones = matched.length
+    ? await prisma.stone.findMany({ where: { id: { in: matched.map((m) => m.stoneId) } } })
+    : [];
+  const galleryImages = matchedStones.flatMap((s) => (Array.isArray(s.g) ? (s.g as string[]).slice(0, 1) : []));
+
+  const cardLabels: CardLabels = {
+    from: t("materials.from"),
+    premium: t("materials.premium"),
+    exworks: t("materials.exworks_label"),
+    exworksTitle: t("materials.exworks_title"),
+    addFavorite: t("materials.add_favorite"),
+  };
 
   const specs: [string, string | null][] = [
     [t("casestudy.spec_architect"), c.architect],
@@ -54,46 +75,52 @@ export default async function CaseStudyPage({
         </div>
       </section>
       <section className="section pt-0">
-        <div className="container narrow">
-          <div className="detail-specs">
-            {specs
-              .filter(([, val]) => val)
-              .map(([label, val]) => (
-                <div className="spec" key={label}>
-                  <span className="spec-label">{label}</span>
-                  <span className="spec-val">{val}</span>
-                </div>
-              ))}
+        <div className="container">
+          <div className="detail-grid">
+            <div>
+              <Gallery images={galleryImages} alt={c.title} />
+            </div>
+            <div className="detail-info">
+              <div className="detail-specs">
+                {specs
+                  .filter(([, val]) => val)
+                  .map(([label, val]) => (
+                    <div className="spec" key={label}>
+                      <span className="spec-label">{label}</span>
+                      <span className="spec-val">{val}</span>
+                    </div>
+                  ))}
+              </div>
+
+              <p style={{ marginTop: "1.5rem" }}>
+                <a href={c.sourceUrl} target="_blank" rel="noopener noreferrer nofollow" className="pf-btn pf-btn-ghost">
+                  <i className="fa-solid fa-arrow-up-right-from-square" /> {t("casestudy.view_source")}
+                </a>
+              </p>
+            </div>
           </div>
 
-          <h2 style={{ marginTop: "2rem" }}>{t("casestudy.materials_used")}</h2>
-          {matched.length === 0 ? (
+          <h2 style={{ marginTop: "3rem" }}>{t("casestudy.materials_used")}</h2>
+          {matchedStones.length === 0 ? (
             <p style={{ opacity: 0.7 }}>{t("casestudy.no_materials")}</p>
           ) : (
-            <div className="detail-specs">
-              {matched.map((m, i) => (
-                <div className="spec" key={i}>
-                  <span className="spec-label">{m.application || t("casestudy.materials_used")}</span>
-                  <span className="spec-val">
-                    <Link href={`/materials/${m.stoneId}`}>
-                      <i className="fa-solid fa-gem" /> {m.stoneName}
-                    </Link>
-                    <span style={{ display: "block", fontSize: "0.75rem", opacity: 0.6 }}>
+            <div className="grid-4" style={{ marginTop: "1.5rem" }}>
+              {matchedStones.map((s) => {
+                const m = matched.find((x) => x.stoneId === s.id)!;
+                return (
+                  <div key={s.id}>
+                    <MaterialCard stone={s} unit="sqm" labels={cardLabels} />
+                    <p style={{ fontSize: "0.75rem", opacity: 0.6, marginTop: "0.4rem" }}>
                       {m.matchType === "exact" ? t("casestudy.exact_match") : t("casestudy.similar_match")}
                       {" — "}
+                      {m.application ? `${m.application}: ` : ""}
                       {m.rawStone}
-                    </span>
-                  </span>
-                </div>
-              ))}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           )}
-
-          <p style={{ marginTop: "2rem" }}>
-            <a href={c.sourceUrl} target="_blank" rel="noopener noreferrer nofollow" className="pf-btn pf-btn-ghost">
-              <i className="fa-solid fa-arrow-up-right-from-square" /> {t("casestudy.view_source")}
-            </a>
-          </p>
         </div>
       </section>
     </>

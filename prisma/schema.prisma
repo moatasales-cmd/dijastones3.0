@@ -284,6 +284,9 @@ model CaseStudy {
   /// Matched DIJA products: array of { application, rawStone, stoneId,
   /// stoneName, matchType: "exact" | "similar" | "suggested" | "none" }
   materials   Json?
+  /// Uploaded project photos (own DIJA-hosted uploads, not re-hosted
+  /// third-party photography). Array of image paths; first is the cover.
+  g           Json?
   articleId   String? @map("article_id")
   createdAt   DateTime @default(now())
 }

@@ -49,8 +49,9 @@ export default async function CaseStudiesPage() {
                 .map((m) => stoneById.get(m.stoneId!))
                 .filter((s): s is NonNullable<typeof s> => !!s);
               const uniqueStones = [...new Map(matchedStones.map((s) => [s.id, s])).values()];
+              const ownGallery = Array.isArray(c.g) ? (c.g as string[]) : [];
               const coverStone = uniqueStones[0];
-              const coverImg = coverStone && Array.isArray(coverStone.g) ? (coverStone.g as string[])[0] : null;
+              const coverImg = ownGallery[0] ?? (coverStone && Array.isArray(coverStone.g) ? (coverStone.g as string[])[0] : null);
 
               return (
                 <Link

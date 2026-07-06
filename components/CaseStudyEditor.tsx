@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import GalleryUploader from "@/components/admin/GalleryUploader";
 
 export interface MaterialMatch {
   application: string;
@@ -20,6 +21,7 @@ export interface CaseStudyData {
   sourceUrl?: string | null;
   articleId?: string | null;
   materials?: unknown;
+  g?: unknown;
 }
 
 export interface StoneOption {
@@ -61,6 +63,13 @@ export default function CaseStudyEditor({
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = Object.fromEntries(new FormData(e.currentTarget).entries()) as Record<string, string>;
+    let gallery: string[] = [];
+    try {
+      const parsed = JSON.parse(form.g || "[]");
+      if (Array.isArray(parsed)) gallery = parsed.filter((p) => typeof p === "string");
+    } catch {
+      // leave gallery untouched if it doesn't parse
+    }
     const payload = {
       id: caseStudy.id || form.id,
       title: form.title,
@@ -70,6 +79,7 @@ export default function CaseStudyEditor({
       area: form.area,
       sourceUrl: form.sourceUrl,
       articleId: form.articleId,
+      g: gallery,
       materials: materials
         .filter((m) => m.stoneId || m.rawStone)
         .map((m) => ({
@@ -109,6 +119,11 @@ export default function CaseStudyEditor({
           <span className={lbl}>Linked Journal article ID (optional)</span>
           <input name="articleId" defaultValue={v(caseStudy.articleId)} className={input} placeholder="e.g. story-abc-office" />
         </label>
+      </div>
+
+      <div className="bg-white rounded-lg border border-zinc-200 p-5 mb-5">
+        <span className={lbl}>Project photos (slider)</span>
+        <GalleryUploader name="g" initial={Array.isArray(caseStudy.g) ? (caseStudy.g as string[]) : []} />
       </div>
 
       <div className="bg-white rounded-lg border border-zinc-200 p-5 mb-5">

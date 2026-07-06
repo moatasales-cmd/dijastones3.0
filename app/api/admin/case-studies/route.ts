@@ -17,6 +17,7 @@ export async function POST(req: Request) {
     if (typeof body[f] === "string") data[f] = (body[f] as string).trim() || null;
   }
   if (Array.isArray(body.materials)) data.materials = body.materials;
+  if (Array.isArray(body.g)) data.g = body.g.filter((p: unknown) => typeof p === "string");
 
   const existing = await prisma.caseStudy.findUnique({ where: { id } });
   if (existing) {

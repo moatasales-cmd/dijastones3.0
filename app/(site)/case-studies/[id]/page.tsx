@@ -40,13 +40,17 @@ export default async function CaseStudyPage({
       m.matchType !== "none" && !!m.stoneId && arr.findIndex((x) => x.stoneId === m.stoneId) === i
   );
 
-  // The stones actually used/matched — not photos of the third-party
-  // building itself (we never re-host that copyrighted photography). This
-  // gallery shows what the matched material(s) genuinely look like.
   const matchedStones = matched.length
     ? await prisma.stone.findMany({ where: { id: { in: matched.map((m) => m.stoneId) } } })
     : [];
-  const galleryImages = matchedStones.flatMap((s) => (Array.isArray(s.g) ? (s.g as string[]).slice(0, 1) : []));
+
+  // Prefer the project's own uploaded photos when present. Fall back to the
+  // matched stones' photos (never third-party photography we don't have
+  // rights to re-host) so the slider isn't empty before photos are added.
+  const ownGallery = Array.isArray(c.g) ? (c.g as string[]) : [];
+  const galleryImages = ownGallery.length
+    ? ownGallery
+    : matchedStones.flatMap((s) => (Array.isArray(s.g) ? (s.g as string[]).slice(0, 1) : []));
 
   const cardLabels: CardLabels = {
     from: t("materials.from"),

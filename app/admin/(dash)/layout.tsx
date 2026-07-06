@@ -10,6 +10,7 @@ const NAV: NavItem[] = [
   { href: "/admin/leads", label: "Leads", icon: "fa-inbox" },
   { href: "/admin/proformas", label: "Proformas", icon: "fa-file-invoice" },
   { href: "/admin/posts", label: "Journal", icon: "fa-newspaper" },
+  { href: "/admin/case-studies", label: "Case Studies", icon: "fa-gem" },
 ];
 
 export default async function AdminLayout({

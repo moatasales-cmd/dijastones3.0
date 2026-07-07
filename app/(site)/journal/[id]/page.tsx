@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { getT } from "@/lib/i18n-server";
-import { pageMeta, articleLd } from "@/lib/seo";
+import { pageMeta, articleLd, translatedLocales } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 import { tf, tfArr, FALLBACK_BG } from "@/lib/lang";
 
@@ -22,6 +22,8 @@ export async function generateMetadata({
     path: `/journal/${a.id}`,
     ogImage: a.img,
     ogType: "article",
+    // The article body is the content — only advertise locales that have it.
+    langAlternates: translatedLocales(a, ["b"]),
   });
 }
 

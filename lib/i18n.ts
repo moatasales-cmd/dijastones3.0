@@ -3,7 +3,7 @@
 // browser bundle. The dictionaries + translator live in lib/translator.ts
 // (server-only usage via lib/i18n-server.ts).
 
-export const locales = ["en", "fr", "es", "pt", "ru", "el", "ar", "zh", "ja", "tr"] as const;
+export const locales = ["en", "fr", "es", "pt", "ru", "el", "ar", "zh", "ja", "tr", "it", "de", "fa"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "en";
 
@@ -18,9 +18,12 @@ export const localeNames: Record<Locale, string> = {
   zh: "中文",
   ja: "日本語",
   tr: "Türkçe",
+  it: "Italiano",
+  de: "Deutsch",
+  fa: "فارسی",
 };
 
-export const rtlLocales: readonly Locale[] = ["ar"];
+export const rtlLocales: readonly Locale[] = ["ar", "fa"];
 export function isRtl(locale: Locale): boolean {
   return (rtlLocales as readonly string[]).includes(locale);
 }

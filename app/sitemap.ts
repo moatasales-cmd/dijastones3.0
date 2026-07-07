@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 import { SITE_URL } from "@/lib/site";
 import { locales, defaultLocale } from "@/lib/i18n";
+import { translatedLocales } from "@/lib/seo";
 
 const STATIC_PAGES = [
   "", "materials", "collections", "projects", "journal", "quarries",
@@ -9,17 +10,25 @@ const STATIC_PAGES = [
   "case-studies", "privacy", "terms", "cookies",
 ];
 
-type Entry = Omit<MetadataRoute.Sitemap[number], "url"> & { path: string };
+type Entry = Omit<MetadataRoute.Sitemap[number], "url"> & {
+  path: string;
+  /** Locales this page's CONTENT exists in; defaults to all (UI-chrome pages). */
+  locales?: string[];
+};
 
 // One sitemap entry per locale variant: "/materials" also exists as
 // "/fr/materials", "/ar/materials", ... (served by middleware.ts). This is
 // how crawlers discover the localized pages — internal links stay unprefixed.
+// Content-bearing pages (journal, projects) list only genuinely translated
+// locales, so we never invite Google to index English text at a /zh/ URL.
 function localized(entries: Entry[]): MetadataRoute.Sitemap {
-  return entries.flatMap(({ path, ...rest }) =>
-    locales.map((l) => ({
-      url: `${SITE_URL}${l === defaultLocale ? "" : `/${l}`}${path}` || SITE_URL,
-      ...rest,
-    }))
+  return entries.flatMap(({ path, locales: entryLocales, ...rest }) =>
+    locales
+      .filter((l) => !entryLocales || l === defaultLocale || entryLocales.includes(l))
+      .map((l) => ({
+        url: `${SITE_URL}${l === defaultLocale ? "" : `/${l}`}${path}` || SITE_URL,
+        ...rest,
+      }))
   );
 }
 
@@ -27,8 +36,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [stones, collections, projects, posts, caseStudies] = await Promise.all([
     prisma.stone.findMany({ select: { id: true, updatedAt: true } }),
     prisma.collection.findMany({ select: { id: true } }),
-    prisma.project.findMany({ select: { id: true } }),
-    prisma.post.findMany({ select: { id: true } }),
+    prisma.project.findMany({ select: { id: true, tFr: true, bFr: true, i18n: true } }),
+    prisma.post.findMany({ select: { id: true, tFr: true, bFr: true, i18n: true } }),
     prisma.caseStudy.findMany({ select: { id: true } }),
   ]);
 
@@ -55,12 +64,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     path: `/projects/${p.id}`,
     changeFrequency: "yearly",
     priority: 0.5,
+    locales: translatedLocales(p, ["t", "b", "bo"]),
   }));
 
   const postEntries: Entry[] = posts.map((p) => ({
     path: `/journal/${p.id}`,
     changeFrequency: "yearly",
     priority: 0.5,
+    locales: translatedLocales(p, ["b"]),
   }));
 
   const caseStudyEntries: Entry[] = caseStudies.map((c) => ({

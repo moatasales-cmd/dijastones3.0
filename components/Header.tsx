@@ -92,6 +92,28 @@ const flagSvg: Record<Locale, React.ReactNode> = {
       <polygon points="34,15 39.5,16.8 36.3,12 36.3,18 39.5,13.2" fill="#fff" />
     </svg>
   ),
+  it: (
+    <svg viewBox="0 0 60 30" width="18" height="9" style={{ verticalAlign: "middle" }}>
+      <rect width="60" height="30" fill="#fff" />
+      <rect width="20" height="30" fill="#008C45" />
+      <rect x="40" width="20" height="30" fill="#CD212A" />
+    </svg>
+  ),
+  de: (
+    <svg viewBox="0 0 60 30" width="18" height="9" style={{ verticalAlign: "middle" }}>
+      <rect width="60" height="10" fill="#000" />
+      <rect y="10" width="60" height="10" fill="#DD0000" />
+      <rect y="20" width="60" height="10" fill="#FFCE00" />
+    </svg>
+  ),
+  // Neutral glyph badge, matching the Arabic entry's approach — avoids a
+  // national-flag depiction for a language spoken across several countries.
+  fa: (
+    <svg viewBox="0 0 60 30" width="18" height="9" style={{ verticalAlign: "middle" }}>
+      <rect width="60" height="30" rx="3" fill="var(--accent, #915D36)" />
+      <text x="30" y="21" textAnchor="middle" fontSize="15" fontFamily="serif" fill="#fff">فا</text>
+    </svg>
+  ),
 };
 
 function setLocale(code: Locale) {

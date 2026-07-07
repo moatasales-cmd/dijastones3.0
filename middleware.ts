@@ -27,5 +27,5 @@ export function middleware(req: NextRequest) {
 export const config = {
   // Non-default locales only — "/" stays English, and /en/* is deliberately
   // not served (it would duplicate the unprefixed pages).
-  matcher: ["/(fr|es|pt|ru|el|ar|zh|ja|tr)/:path*"],
+  matcher: ["/(fr|es|pt|ru|el|ar|zh|ja|tr|it|de|fa)/:path*"],
 };

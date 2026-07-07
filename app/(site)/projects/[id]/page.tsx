@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { getT } from "@/lib/i18n-server";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, translatedLocales } from "@/lib/seo";
 import { tf, tfArr, FALLBACK_BG } from "@/lib/lang";
 
 export async function generateMetadata({
@@ -21,6 +21,7 @@ export async function generateMetadata({
     description: tf(p, "b", locale) || undefined,
     path: `/projects/${p.id}`,
     ogImage: g[0],
+    langAlternates: translatedLocales(p, ["t", "b", "bo"]),
   });
 }
 

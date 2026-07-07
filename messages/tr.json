@@ -1440,5 +1440,6 @@
   "casestudy.no_materials": "Malzeme detayları kaynakta belirtilmemiştir.",
   "casestudy.suggested_match": "Kataloğumuzdan önerilen",
   "casestudy.read_story": "Hikayenin Tamamını Oku",
-  "journal.view_case_study": "Vaka Çalışmasını Görüntüle"
+  "journal.view_case_study": "Vaka Çalışmasını Görüntüle",
+  "material.seen_in_projects": "Bu projelerde görüldü"
 }

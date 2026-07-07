@@ -1,7 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { stoneImg } from "@/lib/img";
 import { getT } from "@/lib/i18n-server";
+import { pageMeta } from "@/lib/seo";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getT();
+  const meta = await pageMeta({ title: t("title.home"), description: t("meta.description"), path: "/" });
+  // title.home already carries the brand — bypass the layout's "%s — DIJA
+  // Natural Stone" template so it isn't appended twice.
+  return { ...meta, title: { absolute: t("title.home") } };
+}
 
 // Signature materials shown on the home page, in this order.
 const FEATURED_IDS = [

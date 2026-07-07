@@ -41,7 +41,7 @@
   "lightbox.close": "Close",
   "lightbox.prev": "Previous",
   "lightbox.next": "Next",
-  "title.home": "DIJA Natural Stone — Mediterranean Marble & Natural Stone Atelier",
+  "title.home": "Turkish Marble & Natural Stone Supplier | Wholesale Slabs, Tiles & Blocks — DIJA",
   "title.materials": "Materials",
   "title.collections": "Collections",
   "title.projects": "Projects",
@@ -62,10 +62,10 @@
   "title.login": "Sign In",
   "title.default": "DIJA Natural Stone",
   "title.suffix": "DIJA Natural Stone",
-  "meta.description": "Mediterranean marble & natural stone atelier. Family-owned, Izmir-based since 1995.",
+  "meta.description": "DIJA is a family-owned marble and natural stone supplier and exporter in Izmir, Türkiye. Wholesale slabs, tiles and blocks — marble, travertine, limestone, onyx — shipped worldwide on EXW, FOB, CFR or CIF terms.",
   "materials.title": "Materials",
   "materials.hero_title": "The complete<br><em>stone library.</em>",
-  "materials.hero_text": "Browse 152 natural stones across 6 types — marble, onyx, limestone, travertine, granite, and quartzite — from 10 countries.",
+  "materials.hero_text": "Browse 152 natural stones across 6 types — marble, onyx, limestone, travertine, granite, and quartzite — from 10 countries. Wholesale slabs, tiles, blocks and cut-to-size, supplied ex-works Izmir and exported worldwide.",
   "materials.search_placeholder": "Search stones...",
   "materials.all_types": "All Types",
   "materials.all_countries": "All Countries",
@@ -1440,5 +1440,6 @@
   "casestudy.no_materials": "Material details were not specified in the source.",
   "casestudy.suggested_match": "Suggested from our catalogue",
   "casestudy.read_story": "Read the Full Story",
-  "journal.view_case_study": "View Case Study"
+  "journal.view_case_study": "View Case Study",
+  "material.seen_in_projects": "Seen in these projects"
 }

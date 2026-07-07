@@ -5,6 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { getT } from "@/lib/i18n-server";
 import { stoneImg } from "@/lib/img";
 import { SITE_URL } from "@/lib/site";
+import { pageMeta, breadcrumbLd } from "@/lib/seo";
 import Gallery from "@/components/Gallery";
 import PriceSection from "@/components/PriceSection";
 import FavoriteButton from "@/components/FavoriteButton";
@@ -40,19 +41,22 @@ export async function generateMetadata({
   const s = await getStone(id);
   if (!s) return { title: "Material" };
   const img = stoneImg(s);
+  // Title formula (SEO-PLAN Part 3.2): name + type + buyer words. The layout
+  // template appends "— DIJA Natural Stone" as the brand.
+  const title = [s.n, s.ty ? `${s.ty} Slabs & Tiles, Price & Supplier` : "Price & Supplier"]
+    .filter(Boolean)
+    .join(" — ");
+  const origin = [s.ci, s.c].filter(Boolean).join(", ");
+  const priceBit = s.p != null ? ` From $${s.p}/m² ex-works.` : "";
   const description =
-    s.d || `${s.n} — ${s.ty} from ${s.ci ? s.ci + ", " : ""}${s.c}. Natural stone from DIJA.`;
-  return {
-    title: s.n,
+    (s.d ? `${s.d} ` : "") +
+    `${s.n}${s.ty ? ` ${s.ty.toLowerCase()}` : ""}${origin ? ` from ${origin}` : ""} — wholesale slabs, tiles and cut-to-size, exported worldwide by DIJA.${priceBit}`;
+  return pageMeta({
+    title,
     description,
-    alternates: { canonical: `${SITE_URL}/materials/${s.id}` },
-    openGraph: {
-      title: s.n,
-      description,
-      images: img ? [{ url: img }] : undefined,
-      type: "website",
-    },
-  };
+    path: `/materials/${s.id}`,
+    ogImage: img,
+  });
 }
 
 export default async function MaterialPage({
@@ -98,6 +102,19 @@ export default async function MaterialPage({
         })
       : [];
 
+  // Case studies that reference this stone (materials is a JSON column, so
+  // filter in JS — 113 small rows). Internal links both ways: the case study
+  // already links here; this closes the loop for visitors and crawlers.
+  const allCases = await prisma.caseStudy.findMany({
+    select: { id: true, title: true, location: true, materials: true },
+  });
+  const seenIn = allCases
+    .filter((c) =>
+      Array.isArray(c.materials) &&
+      (c.materials as { stoneId?: string | null }[]).some((m) => m.stoneId === s.id)
+    )
+    .slice(0, 6);
+
   const specs: [string, string | null][] = [
     [t("material.sizes"), s.sizes],
     [t("material.thicknesses"), s.thicknesses],
@@ -137,6 +154,12 @@ export default async function MaterialPage({
   return (
     <>
       <JsonLd data={productLd} />
+      <JsonLd
+        data={breadcrumbLd([
+          { name: t("material.breadcrumb_materials"), path: "/materials" },
+          { name: s.n, path: `/materials/${s.id}` },
+        ])}
+      />
       <section className="page-hero">
         <div className="container">
           <nav className="breadcrumbs">
@@ -205,6 +228,26 @@ export default async function MaterialPage({
                         className="mat-col-badge"
                       >
                         {c.n}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {seenIn.length > 0 && (
+                <div className="mat-collections">
+                  <h3>
+                    <i className="fa-solid fa-building-columns" /> {t("material.seen_in_projects")}
+                  </h3>
+                  <div className="mat-col-badges">
+                    {seenIn.map((c) => (
+                      <Link
+                        key={c.id}
+                        href={`/case-studies/${c.id}`}
+                        className="mat-col-badge"
+                      >
+                        {c.title}
+                        {c.location ? ` · ${c.location}` : ""}
                       </Link>
                     ))}
                   </div>

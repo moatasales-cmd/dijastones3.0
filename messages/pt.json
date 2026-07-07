@@ -1440,5 +1440,6 @@
   "casestudy.no_materials": "Os detalhes do material não foram especificados na fonte.",
   "casestudy.suggested_match": "Sugerido do nosso catálogo",
   "casestudy.read_story": "Ler a história completa",
-  "journal.view_case_study": "Ver estudo de caso"
+  "journal.view_case_study": "Ver estudo de caso",
+  "material.seen_in_projects": "Visto nestes projetos"
 }

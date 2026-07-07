@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { getT } from "@/lib/i18n-server";
+import { pageMeta } from "@/lib/seo";
 import { rich } from "@/lib/lang";
 import MaterialsGrid, { type GridStrings } from "@/components/MaterialsGrid";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getT();
-  return { title: t("materials.title") };
+  return pageMeta({ title: t("materials.title"), description: t("materials.hero_text"), path: "/materials" });
 }
 
 export default async function MaterialsPage() {

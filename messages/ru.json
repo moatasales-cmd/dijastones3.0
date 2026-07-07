@@ -1440,5 +1440,6 @@
   "casestudy.no_materials": "Детали материала не были указаны в источнике.",
   "casestudy.suggested_match": "Предложено из нашего каталога",
   "casestudy.read_story": "Читать историю полностью",
-  "journal.view_case_study": "Смотреть кейс"
+  "journal.view_case_study": "Смотреть кейс",
+  "material.seen_in_projects": "Использован в этих проектах"
 }

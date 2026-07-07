@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { getT } from "@/lib/i18n-server";
+import { pageMeta, articleLd } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 import { tf, tfArr, FALLBACK_BG } from "@/lib/lang";
 
 export async function generateMetadata({
@@ -13,7 +15,14 @@ export async function generateMetadata({
   const { id } = await params;
   const { locale } = await getT();
   const a = await prisma.post.findUnique({ where: { id } });
-  return { title: a ? tf(a, "t", locale) : "Journal" };
+  if (!a) return { title: "Journal" };
+  return pageMeta({
+    title: tf(a, "t", locale),
+    description: tf(a, "e", locale) || undefined,
+    path: `/journal/${a.id}`,
+    ogImage: a.img,
+    ogType: "article",
+  });
 }
 
 export default async function ArticlePage({
@@ -32,6 +41,16 @@ export default async function ArticlePage({
 
   return (
     <>
+      <JsonLd
+        data={articleLd({
+          title: tf(a, "t", locale),
+          description: tf(a, "e", locale),
+          path: `/journal/${a.id}`,
+          image: a.img,
+          author: a.a,
+          datePublished: a.dt,
+        })}
+      />
       <section className="page-hero">
         <div className="container">
           <Link href="/journal" className="back-link">

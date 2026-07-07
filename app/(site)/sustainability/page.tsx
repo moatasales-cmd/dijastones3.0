@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getT } from "@/lib/i18n-server";
+import { pageMeta } from "@/lib/seo";
 import { rich } from "@/lib/lang";
 import Pillars, { type Pillar } from "@/components/Pillars";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getT();
-  return { title: t("title.sustainability") };
+  return pageMeta({ title: t("title.sustainability"), description: t("sustainability.hero_text"), path: "/sustainability" });
 }
 
 export default async function SustainabilityPage() {

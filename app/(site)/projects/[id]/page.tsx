@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { getT } from "@/lib/i18n-server";
+import { pageMeta } from "@/lib/seo";
 import { tf, tfArr, FALLBACK_BG } from "@/lib/lang";
 
 export async function generateMetadata({
@@ -13,7 +14,14 @@ export async function generateMetadata({
   const { id } = await params;
   const { locale } = await getT();
   const p = await prisma.project.findUnique({ where: { id } });
-  return { title: p ? tf(p, "t", locale) : "Project" };
+  if (!p) return { title: "Project" };
+  const g = Array.isArray(p.g) ? (p.g as string[]) : [];
+  return pageMeta({
+    title: tf(p, "t", locale),
+    description: tf(p, "b", locale) || undefined,
+    path: `/projects/${p.id}`,
+    ogImage: g[0],
+  });
 }
 
 export default async function ProjectPage({

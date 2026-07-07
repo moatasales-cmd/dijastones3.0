@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { getT } from "@/lib/i18n-server";
+import { pageMeta } from "@/lib/seo";
 import { tf, FALLBACK_BG, rich } from "@/lib/lang";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getT();
-  return { title: t("title.projects") };
+  return pageMeta({ title: t("title.projects"), description: t("projects.hero_text"), path: "/projects" });
 }
 
 export default async function ProjectsPage() {

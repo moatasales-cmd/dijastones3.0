@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { getT } from "@/lib/i18n-server";
+import { pageMeta, breadcrumbLd } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 import Gallery from "@/components/Gallery";
 import MaterialCard, { type CardLabels } from "@/components/MaterialCard";
 
@@ -13,7 +15,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
   const c = await prisma.caseStudy.findUnique({ where: { id } });
-  return { title: c ? c.title : "Case Study" };
+  if (!c) return { title: "Case Study" };
+  const description = [c.architect, c.location, c.year].filter(Boolean).join(" · ");
+  const g = Array.isArray(c.g) ? (c.g as string[]) : [];
+  return pageMeta({
+    title: c.title,
+    description: description ? `${c.title} — ${description}. Documented reference project with the matching DIJA stones.` : undefined,
+    path: `/case-studies/${c.id}`,
+    ogImage: g[0],
+  });
 }
 
 interface MaterialMatch {
@@ -69,6 +79,12 @@ export default async function CaseStudyPage({
 
   return (
     <div className="case-study-detail">
+      <JsonLd
+        data={breadcrumbLd([
+          { name: t("casestudy.title"), path: "/case-studies" },
+          { name: c.title, path: `/case-studies/${c.id}` },
+        ])}
+      />
       <section className="page-hero">
         <div className="container">
           <Link href="/case-studies" className="back-link">

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { getT } from "@/lib/i18n-server";
 import { stoneImg } from "@/lib/img";
+import { pageMeta } from "@/lib/seo";
 import { FALLBACK_BG } from "@/lib/lang";
 
 export async function generateMetadata({
@@ -13,7 +14,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
   const col = await prisma.collection.findUnique({ where: { id } });
-  return { title: col ? col.n : "Collection" };
+  if (!col) return { title: "Collection" };
+  return pageMeta({
+    title: col.n,
+    description: col.d || undefined,
+    path: `/collections/${col.id}`,
+  });
 }
 
 export default async function CollectionPage({

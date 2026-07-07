@@ -1,0 +1,105 @@
+{
+  "disclaimer": " Para ser claros: este no es un proyecto de DIJA y no suministramos el material — figura aquí únicamente como referencia documentada.",
+  "openers": {
+    "residential": [
+      "{title} es una casa privada[ en {loc}][, terminada en {yr}], diseñada por {arch}. En las casas la elección de la piedra se vuelve más personal — alguien tendrá que vivir con el suelo que eligió, no solo fotografiarlo una vez para un portafolio.",
+      "{arch} construyó {title}[ en {loc}][ en {yr}]. Lo que nos atrajo es lo mismo que nos atrae en la mayoría de los proyectos residenciales de este archivo: la piedra debe ganarse su lugar a diario, con los pies descalzos, no solo en un render.",
+      "Residencia privada[ en {loc}], {title} fue diseñada por {arch}[ y terminada en {yr}]. La especificación de piedra doméstica suele ser conservadora por una buena razón: el cliente es quien tendrá que limpiarla.",
+      "{title}, una casa de {arch}[ en {loc}][ ({yr})], es uno de las decenas de proyectos residenciales del archivo que contrastamos con nuestra propia gama."
+    ],
+    "office": [
+      "{title} es un proyecto de oficinas de {arch}[ en {loc}][, terminado en {yr}]. Las oficinas suelen concentrar toda la ambición en una sola superficie — un mostrador de recepción o un muro del vestíbulo — y se mantienen sobrias en el resto, exactamente lo que vemos aquí.",
+      "{arch} diseñó el proyecto {title}[ en {loc}][, entregado en {yr}]. Los interiores comerciales como este son referencias valiosas precisamente porque la piedra debe sobrevivir años de tránsito sin el presupuesto de mantenimiento de una vivienda privada.",
+      "{title}[, en {loc}], es un proyecto de oficinas atribuido a {arch}[, de {yr}]. Seguimos estos proyectos por la misma razón por la que los clientes preguntan por ellos: quieren saber qué sigue luciendo bien tras cinco años de uso diario."
+    ],
+    "hospitality": [
+      "{title} es un proyecto hotelero[ en {loc}] de {arch}[, inaugurado en {yr}]. Los hoteles someten la piedra a una prueba más dura que casi cualquier otro edificio: cientos de desconocidos por semana, químicos de limpieza, y un diseño que debe seguir pareciendo lujo en el octavo año.",
+      "{title} de {arch}[ en {loc}][ ({yr})] es uno de los proyectos de hoteles y resorts del archivo. Lo que buscamos en ellos: durabilidad vestida de glamur — piedra que fotografía bien y sobrevive a mil carritos de servicio de habitaciones.",
+      "{title}[, {loc}], diseñado por {arch}[ y terminado en {yr}], es un proyecto hotelero. La prueba honesta de la piedra de un hotel no es la sesión de fotos de la inauguración, sino cómo luce el suelo del lobby un martes lluvioso, dos años después."
+    ],
+    "culture": [
+      "{title} es un edificio cultural[ en {loc}] de {arch}[, de {yr}]. Los museos y centros culturales eligen la piedra con un conservadurismo saludable: el material debe sobrevivir a las exposiciones que alberga.",
+      "{arch} diseñó {title}[ en {loc}][ en {yr}], un recinto cultural. Estos proyectos especifican la piedra como los archivos eligen su papel: por permanencia, no por tendencia.",
+      "{title}[, en {loc}], es un proyecto cultural atribuido a {arch}[ ({yr})]. Es exactamente el tipo de edificio donde la piedra debe seguir pareciendo correcta dentro de cincuenta años, lo que hace que su especificación merezca estudio."
+    ],
+    "religious": [
+      "{title} es un edificio religioso[ en {loc}] diseñado por {arch}[, terminado en {yr}]. En la arquitectura religiosa la piedra carga más que durabilidad: se elige para sentirse permanente y sin prisa, un encargo distinto a todo lo demás en este archivo.",
+      "{title} de {arch}[ en {loc}][ ({yr})] es un lugar de culto. Estos proyectos favorecen materiales con larga historia regional sobre lo importado o lo tendencioso, y la especificación aquí sigue ese patrón."
+    ],
+    "education": [
+      "{title} es un edificio educativo[ en {loc}] de {arch}[, de {yr}]. Escuelas y universidades son un campo de pruebas brutal para la piedra: décadas de tránsito diario de gente a la que nadie enseñó a cuidar un suelo.",
+      "{arch} diseñó {title}[ en {loc}][ en {yr}], un proyecto del sector educativo. Si una piedra sobrevive diez años a un pasillo escolar, sobrevivirá a casi todo lo demás de nuestra lista."
+    ],
+    "healthcare": [
+      "{title} es un centro de salud[ en {loc}] diseñado por {arch}[, terminado en {yr}]. Los interiores clínicos exigen a la piedra el encargo más estrecho que existe: fácil de desinfectar, resistente a manchas, y aun así serena para un paciente nervioso.",
+      "{title} de {arch}[ en {loc}][ ({yr})] es un proyecto de clínica u hospital. Los requisitos de higiene reducen mucho las opciones realistas, lo que hace especialmente útiles las decisiones tomadas aquí."
+    ],
+    "winery": [
+      "{title} es una bodega[ en {loc}] de {arch}[, terminada en {yr}]. Las bodegas se apoyan en la piedra por la misma razón que en el roble viejo: transmite paciencia y proceso como el vidrio y el acero no pueden."
+    ],
+    "food": [
+      "{title} es un restaurante o bar[ en {loc}] diseñado por {arch}[, inaugurado en {yr}]. Estos interiores eligen la piedra tanto por atmósfera como por durabilidad: la superficie debe lucir bien bajo la iluminación exacta que eligió el diseñador, a las 9 de la noche, no al mediodía.",
+      "{title} de {arch}[ en {loc}][ ({yr})] es un proyecto de hostelería. Estos interiores renuevan sus acabados más rápido que casi cualquier otro tipo de edificio; ver qué se especificó realmente — y no lo que recomiendan los artículos de tendencias — es valioso."
+    ],
+    "industrial": [
+      "{title} es una instalación industrial o administrativa[ en {loc}] de {arch}[, de {yr}]. Los almacenes y edificios administrativos rara vez llegan a las publicaciones de arquitectura, razón de más para leer con atención los que lo consiguen.",
+      "{arch} diseñó {title}[ en {loc}][ en {yr}], un edificio del sector industrial. Aquí la especificación de la piedra es pragmática más que decorativa, y ese pragmatismo es en sí mismo un dato útil."
+    ],
+    "public": [
+      "{title} es un proyecto de espacio público[ en {loc}] de {arch}[, entregado en {yr}]. La piedra exterior y cívica tiene el encargo más duro de todos: sobrevivir a la intemperie, al tránsito y a los presupuestos municipales de mantenimiento a la vez, sin climatización que la ayude.",
+      "{title} de {arch}[ en {loc}][ ({yr})] es un proyecto de urbanismo. Plazas, parques y paseos son donde se pone a prueba la resistencia real de una piedra a la intemperie, no solo su pulido."
+    ],
+    "civic": [
+      "{title} es un edificio institucional[ en {loc}][, de {yr}], atribuido a {arch}. Estos edificios especifican la piedra con prudencia, favoreciendo la longevidad y cierta formalidad sobre lo experimental."
+    ],
+    "general": [
+      "{title}[, en {loc}], fue diseñado por {arch}[ y terminado en {yr}]. Forma parte del amplio conjunto de proyectos de arquitectura turca que catalogamos por lo que revelan sobre la especificación real de la piedra.",
+      "Encontramos {title}[ en {loc}] al revisar un archivo de arquitectura turca compilado de forma independiente. El proyecto se atribuye a {arch}[ y data de {yr}].",
+      "{arch} es el autor de {title}[ en {loc}][ ({yr})]. No es un proyecto de DIJA — no suministramos nada — pero el expediente es lo bastante preciso sobre los materiales para merecer lectura."
+    ]
+  },
+  "stoneIntros": [
+    "El expediente publicado especifica el siguiente uso de materiales:",
+    "Según la propia documentación del proyecto, el desglose de la piedra fue:",
+    "Los arquitectos acreditaron estas aplicaciones concretas:",
+    "Esto es lo que lista la fuente, aplicación por aplicación:",
+    "La documentación del proyecto desglosa así la especificación:",
+    "Lo que el expediente lista realmente, superficie por superficie:"
+  ],
+  "noStoneIntros": [
+    "La documentación pública de este proyecto no desglosa la especificación de la piedra por estancia o superficie — algo más frecuente de lo que se cree, incluso en edificios bien fotografiados.",
+    "A diferencia de otras entradas mejor documentadas del archivo, el expediente de este proyecto no nombra tipos de piedra ni aplicaciones concretas.",
+    "Es uno de los proyectos con una lista de materiales publicada escasa. La arquitectura está bien documentada; la especificación de la piedra, no.",
+    "El archivo acredita al arquitecto y la obra, pero no llega a nombrar las piedras utilizadas — nada inusual en un proyecto de este tamaño."
+  ],
+  "matchIntros": {
+    "exact": [
+      "tenemos exactamente la piedra especificada:",
+      "la piedra especificada forma parte de nuestro stock:",
+      "coincidencia directa — vendemos el mismo material:",
+      "sin sustituciones — está en nuestra propia gama:"
+    ],
+    "similar": [
+      "el equivalente más cercano de nuestro catálogo es",
+      "no tenemos ese bloque de cantera exacto, pero un pariente muy cercano es",
+      "el equivalente más próximo que almacenamos es",
+      "lo más parecido que vendemos es"
+    ],
+    "suggested": [
+      "el expediente público no permite verificar el material exacto; como referencia general señalaríamos",
+      "a falta de un tipo de piedra documentado, un equivalente regional razonable de nuestra gama es",
+      "como sugerencia general (no documentada), algo en el espíritu de esta obra sería"
+    ]
+  },
+  "closers": [
+    "La presentación original del proyecto, con su fotografía y créditos completos, está enlazada abajo — no la reproducimos aquí, solo los hechos.",
+    "Los créditos fotográficos completos y el texto original del arquitecto están en el enlace de la fuente, abajo.",
+    "Para la serie fotográfica completa y el relato del propio arquitecto, vea el enlace de la fuente abajo.",
+    "El relato del arquitecto, y la fotografía que lo acompaña, está a un clic en el enlace de la fuente.",
+    "Este no es el lugar para ver la fotografía de este proyecto — ese crédito pertenece al enlace de la fuente, abajo."
+  ],
+  "forLine": "Para {raw}, {phrase} {stone}.",
+  "forLineNoRaw": "Para esta aplicación, {phrase} {stone}.",
+  "allSuggested": "Sin un tipo de piedra documentado, algunas sugerencias generales de nuestra gama que encajarían en un proyecto así: {names}.",
+  "excerpt": "{title}[, {loc}][ de {arch}] — un proyecto de referencia documentado, contrastado con nuestro propio catálogo."
+}

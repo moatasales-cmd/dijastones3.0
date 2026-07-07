@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Stone" ADD COLUMN "d_fr" TEXT;
+ALTER TABLE "Stone" ADD COLUMN "i18n" JSONB;
+ALTER TABLE "Stone" ADD COLUMN "no_fr" TEXT;

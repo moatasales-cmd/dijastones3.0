@@ -23,7 +23,9 @@ model Stone {
   to           String? // tone
   cn           String? // colour name e.g. "White / Gold"
   d            String? // description
+  dFr          String? @map("d_fr")
   no           String? // pull-quote / note
+  noFr         String? @map("no_fr")
   p            Int? // base price
   pPremium     Int?    @map("p_premium") // premium price
   sizes        String?
@@ -38,6 +40,10 @@ model Stone {
   dm           Boolean @default(false) // dolomitic marble (badge on site + PDFs)
   g            Json? // gallery image paths (array)
   col          Json? // collection ids this stone belongs to (array)
+  /// Translations for the other 8 site locales, keyed by locale code:
+  /// { [locale]: { d?, no? } }. EN/FR use the columns above; falls back
+  /// field-by-field to EN when missing — see lib/lang.ts.
+  i18n Json?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

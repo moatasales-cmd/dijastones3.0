@@ -1,0 +1,105 @@
+{
+  "disclaimer": " Précisons-le clairement : il ne s'agit pas d'un projet DIJA, et nous n'avons pas fourni les matériaux — il figure ici uniquement comme référence documentée.",
+  "openers": {
+    "residential": [
+      "{title} est une maison privée[ à {loc}][, achevée en {yr}], conçue par {arch}. C'est dans les maisons que le choix de la pierre devient le plus personnel — quelqu'un devra vivre avec le sol qu'il a choisi, pas seulement le photographier une fois pour un portfolio.",
+      "{arch} a construit {title}[ à {loc}][ en {yr}]. Ce qui nous a attirés est ce qui nous attire dans la plupart des projets résidentiels de ces archives : la pierre doit y mériter sa place chaque jour, pieds nus, pas seulement dans un rendu 3D.",
+      "Résidence privée[ à {loc}], {title} a été conçue par {arch}[ et achevée en {yr}]. La spécification de la pierre domestique reste prudente pour une bonne raison : c'est le client qui devra la nettoyer.",
+      "{title}, une maison de {arch}[ à {loc}][ ({yr})], fait partie des dizaines de projets résidentiels de ces archives que nous confrontons à notre propre gamme."
+    ],
+    "office": [
+      "{title} est un aménagement de bureaux signé {arch}[ à {loc}][, achevé en {yr}]. Les projets tertiaires concentrent souvent toute leur ambition sur une seule surface — un comptoir d'accueil ou un mur de hall — et restent sobres partout ailleurs, exactement ce que l'on observe ici.",
+      "{arch} a conçu le projet {title}[ à {loc}][, livré en {yr}]. Les intérieurs commerciaux comme celui-ci sont des références précieuses justement parce que la pierre doit y survivre à des années de passage sans le budget d'entretien d'une résidence privée.",
+      "{title}[, à {loc}], est un projet de bureaux attribué à {arch}[, datant de {yr}]. Nous suivons ces projets tertiaires pour la même raison que nos clients nous interrogent à leur sujet : savoir ce qui reste beau après cinq ans d'usage quotidien."
+    ],
+    "hospitality": [
+      "{title} est un projet hôtelier[ à {loc}] signé {arch}[, ouvert en {yr}]. Les hôtels soumettent la pierre à une épreuve plus dure que presque tout autre bâtiment — des centaines d'inconnus par semaine, les produits d'entretien, et un décor qui doit encore respirer le luxe à la huitième année.",
+      "{title} de {arch}[ à {loc}][ ({yr})] fait partie des projets d'hôtels et de resorts de ces archives. Ce que nous y cherchons : de la durabilité habillée en glamour — une pierre qui rend bien en photo et survit à mille chariots de room service.",
+      "{title}[, {loc}], conçu par {arch}[ et achevé en {yr}], est un projet hôtelier. Le vrai test de la pierre d'un hôtel n'est pas la séance photo de l'ouverture, mais l'état du sol du lobby un mardi pluvieux, deux ans plus tard."
+    ],
+    "culture": [
+      "{title} est un bâtiment culturel[ à {loc}] signé {arch}[, de {yr}]. Les musées et centres culturels choisissent la pierre avec un conservatisme assumé — le matériau doit survivre aux expositions qu'il abrite.",
+      "{arch} a conçu {title}[ à {loc}][ en {yr}], un lieu culturel. Ces projets spécifient la pierre comme les archives choisissent leur papier : pour la permanence, pas pour la tendance.",
+      "{title}[, à {loc}], est un projet culturel attribué à {arch}[ ({yr})]. C'est exactement le type de bâtiment où le choix de pierre doit rester juste dans cinquante ans — d'où l'intérêt d'étudier sa spécification."
+    ],
+    "religious": [
+      "{title} est un édifice religieux[ à {loc}] conçu par {arch}[, achevé en {yr}]. Dans l'architecture religieuse, la pierre porte plus que sa durabilité — on la choisit pour sa permanence et sa gravité, un cahier des charges différent de tout le reste de ces archives.",
+      "{title} de {arch}[ à {loc}][ ({yr})] est un lieu de culte. Ces projets privilégient les matériaux au long passé régional plutôt que l'importé ou le tendance, et la spécification suit ici ce schéma."
+    ],
+    "education": [
+      "{title} est un bâtiment éducatif[ à {loc}] signé {arch}[, de {yr}]. Écoles et universités sont un banc d'essai brutal pour la pierre : des décennies de passage quotidien de personnes que nul n'a formées à ménager un sol.",
+      "{arch} a conçu {title}[ à {loc}][ en {yr}], un projet du secteur éducatif. Une pierre qui survit dix ans à un couloir d'école survivra à presque tout le reste de notre liste."
+    ],
+    "healthcare": [
+      "{title} est un établissement de santé[ à {loc}] conçu par {arch}[, achevé en {yr}]. Les intérieurs cliniques imposent à la pierre le cahier des charges le plus étroit qui soit : facile à désinfecter, résistante aux taches, et pourtant apaisante pour un patient anxieux.",
+      "{title} de {arch}[ à {loc}][ ({yr})] est un projet de clinique ou d'hôpital. Les exigences d'hygiène réduisent considérablement les options réalistes, ce qui rend les choix opérés ici d'autant plus instructifs."
+    ],
+    "winery": [
+      "{title} est un domaine viticole[ à {loc}] signé {arch}[, achevé en {yr}]. Les chais s'appuient sur la pierre pour la même raison qu'ils s'appuient sur le vieux chêne : elle exprime la patience et le processus comme le verre et l'acier ne le font pas."
+    ],
+    "food": [
+      "{title} est un restaurant ou un bar[ à {loc}] conçu par {arch}[, ouvert en {yr}]. Ces intérieurs choisissent la pierre pour l'atmosphère autant que pour la durabilité — la surface doit être belle sous l'éclairage exact voulu par le designer, à 21 heures, pas à midi.",
+      "{title} de {arch}[ à {loc}][ ({yr})] est un projet de restauration. Ces intérieurs renouvellent leurs finitions plus vite que tout autre type de bâtiment ; voir ce qui a réellement été spécifié — plutôt que ce que recommandent les articles de tendance — est précieux."
+    ],
+    "industrial": [
+      "{title} est un site industriel ou administratif[ à {loc}] signé {arch}[, de {yr}]. Les entrepôts et bâtiments de gestion figurent rarement dans les publications d'architecture — raison de plus pour lire attentivement ceux qui y parviennent.",
+      "{arch} a conçu {title}[ à {loc}][ en {yr}], un bâtiment du secteur industriel. La spécification de la pierre y est pragmatique plutôt que décorative, et ce pragmatisme est en soi une donnée utile."
+    ],
+    "public": [
+      "{title} est un projet d'espace public[ à {loc}] signé {arch}[, livré en {yr}]. La pierre extérieure et civique a le cahier des charges le plus dur de tous : survivre à la fois aux intempéries, au passage et aux budgets d'entretien municipaux, sans climatisation pour l'aider.",
+      "{title} de {arch}[ à {loc}][ ({yr})] est un projet d'aménagement urbain. Places, parcs et promenades sont là où se teste la vraie résistance d'une pierre aux éléments, pas seulement son poli."
+    ],
+    "civic": [
+      "{title} est un bâtiment institutionnel[ à {loc}][, de {yr}], attribué à {arch}. Ces édifices spécifient la pierre avec prudence, privilégiant la longévité et une certaine solennité sur toute expérimentation."
+    ],
+    "general": [
+      "{title}[, à {loc}], a été conçu par {arch}[ et achevé en {yr}]. Il fait partie du vaste ensemble de projets d'architecture turcs que nous cataloguons pour ce qu'ils révèlent de la spécification réelle de la pierre.",
+      "Nous avons découvert {title}[ à {loc}] en parcourant des archives d'architecture turque compilées indépendamment. Le projet est attribué à {arch}[ et date de {yr}].",
+      "{arch} est l'auteur de {title}[ à {loc}][ ({yr})]. Ce n'est pas un projet DIJA — nous n'y avons rien fourni — mais le dossier est assez précis sur les matériaux pour mériter lecture."
+    ]
+  },
+  "stoneIntros": [
+    "Le dossier publié précise l'utilisation suivante des matériaux :",
+    "Selon la documentation du projet lui-même, la répartition de la pierre était :",
+    "Les architectes ont crédité ces applications précises :",
+    "Voici ce que liste la source, application par application :",
+    "La documentation du projet détaille la spécification ainsi :",
+    "Ce que le dossier liste réellement, surface par surface :"
+  ],
+  "noStoneIntros": [
+    "La documentation publique de ce projet ne détaille pas la spécification de la pierre pièce par pièce — c'est plus fréquent qu'on ne le croit, même pour des bâtiments bien photographiés.",
+    "Contrairement à certaines entrées mieux documentées de ces archives, le dossier source de ce projet ne nomme pas de types de pierre ni d'applications précises.",
+    "C'est l'un des projets dont la liste de matériaux publiée est maigre. L'architecture est bien documentée ; la spécification de la pierre ne l'est pas.",
+    "Les archives créditent l'architecte et la réalisation, mais s'arrêtent avant de nommer les pierres utilisées — rien d'inhabituel pour un projet de cette taille."
+  ],
+  "matchIntros": {
+    "exact": [
+      "nous proposons exactement la pierre spécifiée :",
+      "la pierre spécifiée fait partie de notre stock :",
+      "correspondance directe — nous vendons le même matériau :",
+      "aucune substitution nécessaire — elle figure dans notre gamme :"
+    ],
+    "similar": [
+      "l'équivalent le plus proche de notre catalogue est",
+      "nous n'avons pas ce bloc de carrière exact, mais un très proche parent est",
+      "l'équivalent le plus proche que nous stockons est",
+      "ce que nous vendons de plus proche est"
+    ],
+    "suggested": [
+      "le dossier public ne permet pas de vérifier le matériau exact ; comme point de repère général, nous indiquerions",
+      "en l'absence de type de pierre documenté, un équivalent régional raisonnable de notre gamme est",
+      "à titre de suggestion générale (non documentée), dans l'esprit de cette réalisation :"
+    ]
+  },
+  "closers": [
+    "La présentation originale du projet, avec ses photographies et crédits complets, est liée ci-dessous — nous ne la reproduisons pas ici, seulement les faits.",
+    "Les crédits photo complets et le texte original de l'architecte se trouvent au lien source ci-dessous.",
+    "Pour la série photo complète et le récit du projet par l'architecte, voir le lien source ci-dessous.",
+    "Le récit de l'architecte, et la photographie qui l'accompagne, sont à un clic via le lien source.",
+    "Ce n'est pas ici qu'il faut voir la photographie de ce projet — ce crédit revient au lien source ci-dessous."
+  ],
+  "forLine": "Pour {raw}, {phrase} {stone}.",
+  "forLineNoRaw": "Pour cette application, {phrase} {stone}.",
+  "allSuggested": "Sans type de pierre documenté, voici quelques suggestions générales de notre gamme qui conviendraient à un projet de ce genre : {names}.",
+  "excerpt": "{title}[, {loc}][ par {arch}] — un projet de référence documenté, confronté à notre propre catalogue."
+}

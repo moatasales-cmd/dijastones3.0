@@ -6,6 +6,7 @@ import { getT } from "@/lib/i18n-server";
 import { stoneImg } from "@/lib/img";
 import { SITE_URL } from "@/lib/site";
 import { pageMeta, breadcrumbLd } from "@/lib/seo";
+import { tf } from "@/lib/lang";
 import Gallery from "@/components/Gallery";
 import PriceSection from "@/components/PriceSection";
 import FavoriteButton from "@/components/FavoriteButton";
@@ -38,6 +39,7 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
+  const { locale } = await getT();
   const s = await getStone(id);
   if (!s) return { title: "Material" };
   const img = stoneImg(s);
@@ -48,8 +50,9 @@ export async function generateMetadata({
     .join(" — ");
   const origin = [s.ci, s.c].filter(Boolean).join(", ");
   const priceBit = s.p != null ? ` From $${s.p}/m² ex-works.` : "";
+  const d = tf(s, "d", locale);
   const description =
-    (s.d ? `${s.d} ` : "") +
+    (d ? `${d} ` : "") +
     `${s.n}${s.ty ? ` ${s.ty.toLowerCase()}` : ""}${origin ? ` from ${origin}` : ""} — wholesale slabs, tiles and cut-to-size, exported worldwide by DIJA.${priceBit}`;
   return pageMeta({
     title,
@@ -65,7 +68,7 @@ export default async function MaterialPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const { t } = await getT();
+  const { t, locale } = await getT();
   const s = await getStone(id);
   if (!s) notFound();
 
@@ -193,10 +196,10 @@ export default async function MaterialPage({
             <Gallery images={images} alt={s.n} />
 
             <div className="detail-info">
-              {s.d && <p className="detail-desc">{s.d}</p>}
-              {s.no && (
+              {tf(s, "d", locale) && <p className="detail-desc">{tf(s, "d", locale)}</p>}
+              {tf(s, "no", locale) && (
                 <div className="detail-note">
-                  <i className="fa-solid fa-quote-left" /> {s.no}
+                  <i className="fa-solid fa-quote-left" /> {tf(s, "no", locale)}
                 </div>
               )}
 

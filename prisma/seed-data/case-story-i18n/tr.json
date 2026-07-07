@@ -1,0 +1,105 @@
+{
+  "disclaimer": " Açıkça belirtelim: bu bir DIJA projesi değildir ve malzemeyi biz tedarik etmedik — burada yalnızca belgelenmiş bir referans olarak yer alıyor.",
+  "openers": {
+    "residential": [
+      "{title}[, {loc}'da] {arch} tarafından tasarlanmış[, {yr} yılında tamamlanmış] özel bir konut. Taş seçiminin en kişisel hâle geldiği yer evlerdir — biri seçtiği zeminle yaşamak zorundadır; onu yalnızca bir portfolyo için bir kez fotoğraflamak yetmez.",
+      "{arch}, {title}'ı[ {loc}'da][ {yr} yılında] inşa etti. Bizi çeken şey, bu arşivdeki çoğu konut projesinde bizi çeken şeyle aynı: taş, yerini her gün, çıplak ayakla hak etmek zorundadır; yalnızca bir görselleştirmede değil.",
+      "[{loc}'daki ]özel bir konut olan {title}, {arch} tarafından tasarlandı[ ve {yr} yılında tamamlandı]. Konutta taş şartnamesinin temkinli olmasının iyi bir nedeni var: onu temizleyecek olan müşterinin kendisidir.",
+      "{arch} imzalı bir ev olan {title}[, {loc}][ ({yr})], arşivdeki onlarca konut projesinden biri; hepsini kendi ürün gamımızla karşılaştırıyoruz."
+    ],
+    "office": [
+      "{title}, {arch} imzalı bir ofis projesi[; {loc}][, {yr} yılında tamamlandı]. Ofis şartnameleri genellikle tüm iddiayı tek bir yüzeyde toplar — bir resepsiyon bankosu ya da lobi duvarı — ve geri kalan her yerde sade kalır; burada gördüğümüz tam da bu.",
+      "{arch}, {title} projesini tasarladı[; {loc}][, {yr} yılında teslim edildi]. Bunun gibi ticari iç mekânlar değerli referanslardır; çünkü taş, özel bir konutun bakım bütçesi olmadan yıllarca yoğun kullanıma dayanmak zorundadır.",
+      "{title}[, {loc}'da], {arch}'a atfedilen[ {yr} tarihli] bir ofis projesi. Bu tür projeleri, müşterilerimizin bize sorduğu nedenle takip ediyoruz: beş yıllık günlük kullanımdan sonra neyin hâlâ iyi göründüğünü bilmek istiyorlar."
+    ],
+    "hospitality": [
+      "{title}[, {loc}'da] {arch} imzalı bir otel projesi[; {yr} yılında açıldı]. Oteller taşı neredeyse tüm diğer yapı türlerinden daha zorlu bir sınava sokar — haftada yüzlerce yabancı, temizlik kimyasalları ve sekizinci yılda hâlâ lüks görünmesi gereken bir tasarım.",
+      "{arch}'ın {title} projesi[, {loc}][ ({yr})], arşivdeki otel ve tatil köyü projelerinden biri. Bunlarda aradığımız şey: cazibeye bürünmüş dayanıklılık — fotoğrafta iyi görünen ve bin oda servisi arabasına dayanan taş.",
+      "{arch} tarafından tasarlanan[ ve {yr} yılında tamamlanan] {title}[, {loc}], bir otel yapısı. Bir otelin taş şartnamesinin dürüst sınavı açılış haftasının fotoğraf çekimi değil, iki yıl sonra yağmurlu bir salı günü lobi zemininin nasıl göründüğüdür."
+    ],
+    "culture": [
+      "{title}[, {loc}'da] {arch} imzalı[, {yr} tarihli] bir kültür yapısı. Müzeler ve kültür merkezleri taşı olumlu anlamda muhafazakâr seçer — malzeme, barındırdığı sergilerden daha uzun ömürlü olmalıdır.",
+      "{arch}, bir müze ya da kültür mekânı olan {title}'ı[ {loc}'da][ {yr} yılında] tasarladı. Bu projeler taşı, arşivlerin kâğıt seçtiği gibi seçer: trend için değil, kalıcılık için.",
+      "{title}[, {loc}'da], {arch}'a atfedilen[ ({yr})] bir kültür projesi. Elli yıl sonra da doğru görünmesi gereken taş seçimlerinin yapıldığı türden bir bina — şartnamesini incelemeye değer kılan da bu."
+    ],
+    "religious": [
+      "{title}[, {loc}'da] {arch} tarafından tasarlanan[, {yr} yılında tamamlanan] bir dini yapı. Dini mimaride taş, dayanıklılıktan fazlasını taşır — kalıcı ve acelesiz hissettirmesi için seçilir; bu, arşivdeki diğer her şeyden farklı bir brief'tir.",
+      "{arch}'ın {title} projesi[, {loc}][ ({yr})] bir ibadet mekânı. Bu projeler, ithal ya da moda olan yerine uzun bölgesel geçmişi olan malzemeleri tercih eder; buradaki şartname de bu kalıbı izliyor."
+    ],
+    "education": [
+      "{title}[, {loc}'da] {arch} imzalı[, {yr} tarihli] bir eğitim yapısı. Okullar ve üniversite binaları taş için gerçekten acımasız bir deneme sahasıdır: zemine özen göstermesi öğretilmemiş insanların onlarca yıllık günlük trafiği.",
+      "{arch}, bir eğitim projesi olan {title}'ı[ {loc}'da][ {yr} yılında] tasarladı. Bir okul koridorunda on yıl dayanan taş, listemizdeki hemen her şeye dayanır."
+    ],
+    "healthcare": [
+      "{title}[, {loc}'da] {arch} tarafından tasarlanan[, {yr} yılında tamamlanan] bir sağlık tesisi. Klinik iç mekânlar taşa en dar şartnameyi dayatır: kolay dezenfekte edilmeli, lekeye dirençli olmalı ve yine de endişeli bir hastaya sakin hissettirmelidir.",
+      "{arch}'ın {title} projesi[, {loc}][ ({yr})] bir klinik ya da hastane. Hijyen gereksinimleri gerçekçi taş seçeneklerini epey daraltır; bu da buradaki tercihleri değerli bir referans yapar."
+    ],
+    "winery": [
+      "{title}[, {loc}'da] {arch} imzalı[, {yr} yılında tamamlanan] bir şarap üretim tesisi. Şaraphaneler taşa, eski meşeye yaslandıkları nedenle yaslanır: cam ve çeliğin yapamadığı şekilde sabrı ve süreci anlatır."
+    ],
+    "food": [
+      "{title}[, {loc}'da] {arch} tarafından tasarlanan[, {yr} yılında açılan] bir restoran ya da bar. Bu iç mekânlar taşı dayanıklılık kadar atmosfer için de seçer — yüzey, tasarımcının seçtiği aydınlatma altında, öğlen değil akşam dokuzda iyi görünmek zorundadır.",
+      "{arch}'ın {title} projesi[, {loc}][ ({yr})] bir yeme-içme mekânı. Bu iç mekânlar taş kaplamaları neredeyse tüm diğer yapı türlerinden hızlı yeniler; trend yazılarının önerdiğini değil, gerçekte neyin şartnameye girdiğini görmek bu yüzden kıymetli."
+    ],
+    "industrial": [
+      "{title}[, {loc}'da] {arch} imzalı[, {yr} tarihli] bir endüstriyel ya da idari tesis. Depolar ve arka ofis binaları mimarlık yayınlarına nadiren girer — girenleri dikkatle okumak için bir neden daha.",
+      "{arch}, endüstriyel bir yapı olan {title}'ı[ {loc}'da][ {yr} yılında] tasarladı. Burada taş şartnamesi dekoratif değil pragmatiktir; bu pragmatizm başlı başına yararlı bir veridir."
+    ],
+    "public": [
+      "{title}[, {loc}'da] {arch} imzalı[, {yr} yılında teslim edilen] bir kamusal alan projesi. Dış mekân ve kent taşının brief'i hepsinden zordur: iklime, yaya trafiğine ve belediye bakım bütçelerine aynı anda, yardımına koşacak bir iklimlendirme olmadan dayanmak.",
+      "{arch}'ın {title} projesi[, {loc}][ ({yr})] bir kentsel tasarım işi. Meydanlar, parklar ve yürüyüş yolları, bir taşın cilasının değil gerçek hava koşulu direncinin sınandığı yerlerdir."
+    ],
+    "civic": [
+      "{title}[, {loc}'da][, {yr} tarihli], {arch}'a atfedilen bir kamu yapısı. Bu tür kurumsal binalar taşı temkinli seçer; deneysellik yerine uzun ömür ve belli bir resmiyet önceliklidir."
+    ],
+    "general": [
+      "{title}[, {loc}'da], {arch} tarafından tasarlandı[ ve {yr} yılında tamamlandı]. Gerçek dünyada taş şartnamesinin nasıl yapıldığını göstermeleri nedeniyle kataloglamakta olduğumuz geniş Türk mimarlık projeleri kümesinin bir parçası.",
+      "{title}'ı[ {loc}'da], bağımsız olarak derlenmiş bir Türk mimarlığı arşivini tararken bulduk. Proje {arch}'a atfediliyor[ ve {yr} tarihli].",
+      "{title}'ın[ ({loc})][ ({yr})] arkasında {arch} var. Bu bir DIJA projesi değil — hiçbir şey tedarik etmedik — ama dosya, malzemeler konusunda okumaya değecek kadar ayrıntılı."
+    ]
+  },
+  "stoneIntros": [
+    "Yayımlanan kayıt, şu malzeme kullanımını belirtiyor:",
+    "Projenin kendi dokümantasyonuna göre taş dağılımı şöyleydi:",
+    "Mimarlar şu uygulamaları özellikle belirtti:",
+    "Kaynağın uygulama uygulama listelediği şudur:",
+    "Projenin dokümantasyonu şartnameyi şöyle ayırıyor:",
+    "Kaydın yüzey yüzey gerçekte listelediği:"
+  ],
+  "noStoneIntros": [
+    "Bu projenin kamuya açık dokümantasyonu taş şartnamesini oda ya da yüzey bazında ayırmıyor — iyi fotoğraflanmış binalarda bile sanıldığından sık rastlanır.",
+    "Arşivdeki daha ayrıntılı belgelenen girişlerin aksine, bu projenin kaynak kaydı belirli taş türleri ya da uygulamalar saymıyor.",
+    "Bu, yayımlanmış malzeme listesi zayıf projelerden biri. Mimarlık iyi belgelenmiş; taş şartnamesi değil.",
+    "Arşiv mimarı ve yapıyı kaydediyor, ancak kullanılan taşları adlandırmıyor — bu ölçekte bir proje için olağan dışı değil."
+  ],
+  "matchIntros": {
+    "exact": [
+      "belirtilen taşın tam kendisini satıyoruz:",
+      "belirtilen taş doğrudan stoğumuzda:",
+      "doğrudan eşleşme — aynı malzemeyi satıyoruz:",
+      "ikameye gerek yok — kendi gamımızda mevcut:"
+    ],
+    "similar": [
+      "kataloğumuzdaki en yakın karşılığı",
+      "o ocağın taşını birebir taşımıyoruz, ama çok yakın bir akrabası",
+      "stokladığımız en yakın eşdeğeri",
+      "sattıklarımız içinde ona en yakın olanı"
+    ],
+    "suggested": [
+      "kamuya açık kayıttan malzeme birebir doğrulanamıyor; genel bir referans noktası olarak işaret edeceğimiz",
+      "belgelenmiş bir taş türü olmadığından, gamımızdan makul bir bölgesel eşdeğer",
+      "genel (belgelenmemiş) bir öneri olarak, bu yapının ruhuna uygun bir seçenek"
+    ]
+  },
+  "closers": [
+    "Projenin özgün tanıtımı, tüm fotoğrafları ve künyesiyle aşağıda bağlantılı — burada yalnızca olguları aktarıyoruz, içeriği yeniden yayımlamıyoruz.",
+    "Fotoğraf künyesinin tamamı ve mimarın özgün metni aşağıdaki kaynak bağlantısında.",
+    "Fotoğraf serisinin tamamı ve projenin mimarın ağzından anlatımı için aşağıdaki kaynak bağlantısına bakın.",
+    "Mimarın anlatımı ve ona eşlik eden fotoğraflar, kaynak bağlantısında bir tık uzağınızda.",
+    "Bu projenin fotoğraflarını görecek yer burası değil — o emek aşağıdaki kaynak bağlantısına aittir."
+  ],
+  "forLine": "{raw} için {phrase} {stone}.",
+  "forLineNoRaw": "Bu uygulama için {phrase} {stone}.",
+  "allSuggested": "Belgelenmiş bir taş türü olmadığından, bu tür bir projeye yakışacak gamımızdan birkaç genel öneri: {names}.",
+  "excerpt": "{title}[, {loc}][ — {arch}] — belgelenmiş bir referans proje; kendi kataloğumuzla karşılaştırıldı."
+}

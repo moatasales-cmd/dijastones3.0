@@ -96,7 +96,18 @@ const flagSvg: Record<Locale, React.ReactNode> = {
 
 function setLocale(code: Locale) {
   document.cookie = `lang=${code};path=/;max-age=${60 * 60 * 24 * 365}`;
-  window.location.reload();
+  // On a locale-prefixed URL (/fr/..., served for SEO by middleware.ts) the
+  // path outranks the cookie, so a plain reload would keep the old language.
+  // Navigate to the same page under the new locale's URL instead.
+  const path = window.location.pathname;
+  const seg = path.split("/")[1];
+  const isPrefixed = (locales as readonly string[]).includes(seg);
+  if (isPrefixed) {
+    const rest = path.slice(seg.length + 1) || "/";
+    window.location.href = code === "en" ? rest : `/${code}${rest === "/" ? "" : rest}`;
+  } else {
+    window.location.reload();
+  }
 }
 
 // Declared at module scope (not inside Header) so React treats them as the

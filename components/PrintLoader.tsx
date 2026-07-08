@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { locales, localeNames, type Locale } from "@/lib/i18n";
+import { flagSvg } from "@/components/flags";
 
 export interface PrintLoaderLabels {
   coverTitle: string;
@@ -92,6 +93,7 @@ export default function PrintLoader({
       <div className={`print-ui${done ? " visible" : ""}`}>
         <div className="lang-dropdown-wrap">
           <button className="lang-dropdown-btn" onClick={() => setLangOpen((v) => !v)}>
+            <span className="lang-flag">{flagSvg[locale]}</span>
             <span className="lang-name">{localeNames[locale]}</span>
             <span className="lang-arrow">▲</span>
           </button>
@@ -103,7 +105,7 @@ export default function PrintLoader({
                 onClick={(e) => (e.preventDefault(), switchLang(c))}
                 className={locale === c ? "active" : ""}
               >
-                {localeNames[c]}
+                <span className="lang-flag">{flagSvg[c]}</span> {localeNames[c]}
               </a>
             ))}
           </div>

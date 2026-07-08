@@ -4,9 +4,11 @@ import { SITE_URL } from "@/lib/site";
 import { locales, defaultLocale } from "@/lib/i18n";
 import { translatedLocales } from "@/lib/seo";
 
+// Note: /login is deliberately absent — it's noindex, and Search Console
+// flags sitemap URLs that are noindexed.
 const STATIC_PAGES = [
   "", "materials", "collections", "projects", "journal", "quarries",
-  "heritage", "sustainability", "contact", "trade", "login", "catalogue",
+  "heritage", "sustainability", "contact", "trade", "catalogue",
   "case-studies", "privacy", "terms", "cookies",
 ];
 

@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "seed": "tsx prisma/seed.ts",
+    "test:site": "tsx scripts/site-tests.ts",
+    "test:i18n-keys": "tsx scripts/i18n-key-audit.ts",
     "db:studio": "prisma studio",
     "postinstall": "prisma generate"
   },

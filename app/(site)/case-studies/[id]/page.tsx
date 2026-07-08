@@ -31,7 +31,7 @@ interface MaterialMatch {
   rawStone: string;
   stoneId: string | null;
   stoneName: string | null;
-  matchType: "exact" | "similar" | "none";
+  matchType: "exact" | "similar" | "suggested" | "none";
 }
 
 export default async function CaseStudyPage({

@@ -83,7 +83,9 @@ export default async function CataloguePage() {
       <div className="cover-badges">
         {orderedTypes.map((ty) => <span key={ty}>{ty}</span>)}
       </div>
-      <div className="footer-text">{t("catalogue.cover_footer")}</div>
+      {/* footer_brand, not the never-defined cover_footer key that rendered
+          as literal "catalogue.cover_footer" text in every language */}
+      <div className="footer-text">{t("catalogue.footer_brand")}</div>
     </div>
   );
 
@@ -354,7 +356,7 @@ export default async function CataloguePage() {
       <div className="cat-logo"><img src="/assets/images/logo-dark.png" alt={t("catalogue.cover_title")} /></div>
       <div className="back-line" />
       <div className="back-info">
-        <strong>{t("catalogue.back.company_name")}</strong><br />
+        <strong>{t("catalogue.cover_title")}</strong><br />
         10031 Sok. No: 14, AOSB, Cigli 35620 — Izmir, Türkiye<br />
         +90 232 556 12 00 · contact@dijastones.com<br /><br />
         <a href="https://www.dijastones.com" style={{ color: "#915D36" }}>www.dijastones.com</a>

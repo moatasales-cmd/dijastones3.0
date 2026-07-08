@@ -6,12 +6,13 @@
  *
  * Run with:  npx tsx prisma/seed.ts
  */
+import "dotenv/config";
 import { PrismaClient } from "../lib/generated/prisma/client";
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
+import { PrismaPg } from "@prisma/adapter-pg";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-const adapter = new PrismaBetterSqlite3({ url: "file:./dev.db" });
+const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
 const prisma = new PrismaClient({ adapter });
 
 const DATA_DIR = join(import.meta.dirname, "seed-data");
@@ -42,6 +43,8 @@ async function main() {
   await prisma.quoteRequest.deleteMany();
   await prisma.tradeApplication.deleteMany();
   await prisma.office.deleteMany();
+  await prisma.subscriber.deleteMany();
+  await prisma.verificationCode.deleteMany();
 
   // ---- Stones (152) --------------------------------------------------------
   const stones = read<Row[]>("stones");
@@ -317,6 +320,37 @@ async function main() {
     });
   }
   console.log(`Offices:     ${offices.length}`);
+
+  // ---- Subscribers (empty initially) ----------------------------------------
+  const subscribers = read<Row[]>("subscribers");
+  for (const s of subscribers) {
+    await prisma.subscriber.create({
+      data: {
+        id: s.id,
+        email: s.email,
+        createdAt: orNull(s.created_at),
+      },
+    });
+  }
+  console.log(`Subscribers: ${subscribers.length}`);
+
+  // ---- Verification codes (empty initially) ---------------------------------
+  const verificationCodes = read<Row[]>("verification_codes");
+  for (const v of verificationCodes) {
+    await prisma.verificationCode.create({
+      data: {
+        id: v.id,
+        email: v.email,
+        code: v.code,
+        expiresAt: orNull(v.expires_at),
+        pending: !!v.pending,
+        passwordHash: orNull(v.password_hash),
+        name: orNull(v.name),
+        codeOnly: !!v.code_only,
+      },
+    });
+  }
+  console.log(`Verif codes: ${verificationCodes.length}`);
 
   console.log("\n✅ Migration complete.");
 }

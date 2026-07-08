@@ -3,11 +3,12 @@
  * type, missing fields, and internal inconsistencies. Read-only report.
  * Run: npx tsx prisma/audit-stones.ts
  */
+import "dotenv/config";
 import { PrismaClient } from "../lib/generated/prisma/client";
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
+import { PrismaPg } from "@prisma/adapter-pg";
 
 const prisma = new PrismaClient({
-  adapter: new PrismaBetterSqlite3({ url: "file:./dev.db" }),
+  adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL! }),
 });
 
 // Accepted industry ranges (generous commercial bounds).

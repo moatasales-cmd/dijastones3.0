@@ -166,6 +166,11 @@ export const catalogueCss = `
   }
   @media screen {
     .catdoc { background: #333; padding: 20px 0; }
-    .catdoc .page { margin: 0 auto 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+    /* content-visibility: auto lets the browser skip layout/paint for the
+       ~150 off-screen A4 pages, so first paint and scrolling stay fluid on a
+       document this long. contain-intrinsic-size reserves each page's real A4
+       footprint so the scrollbar height and in-page anchors stay accurate.
+       Screen only — print must render every page. */
+    .catdoc .page { margin: 0 auto 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.3); content-visibility: auto; contain-intrinsic-size: 210mm 297mm; }
   }
 `;

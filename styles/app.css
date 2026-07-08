@@ -315,7 +315,9 @@ p { margin-bottom: 1rem; color: var(--text-light); line-height: 1.7; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 @media (max-width: 1024px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 768px) { .grid-4, .grid-3 { grid-template-columns: 1fr; } }
+/* Product/stone grids (.grid-4) stay 2-up on phones so users can scan and
+   compare two at a time; wider content cards (.grid-3) still stack 1-up. */
+@media (max-width: 768px) { .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 1rem; } .grid-3 { grid-template-columns: 1fr; } }
 
 /* Cards */
 .section-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3rem; gap: 1rem; }

@@ -1,0 +1,29 @@
+[
+  {
+    "stoneId": "chemtou",
+    "landmark": "The Pantheon, Rome",
+    "location": "Rome, Italy",
+    "era": "2nd century AD",
+    "image": "/assets/uploads/9fc19333281a-73ebd20a.jpg",
+    "textKey": "heritage.iconic_pantheon_text",
+    "sourceLabel": "Numidian marble (\"Giallo Antico\") — quarried at ancient Simitthus, modern Chemtou, Tunisia"
+  },
+  {
+    "stoneId": "verde-serpentino",
+    "landmark": "United Nations General Assembly Podium",
+    "location": "New York, USA",
+    "era": "1952",
+    "image": "/assets/uploads/f9df55993a59-c2aeae08.jpg",
+    "textKey": "heritage.iconic_un_text",
+    "sourceLabel": "Verde Antico — a serpentine marble from the Alps, the same family as our Verde Serpentino"
+  },
+  {
+    "stoneId": "travertine-classic-beige",
+    "landmark": "The Colosseum",
+    "location": "Rome, Italy",
+    "era": "80 AD",
+    "image": "/assets/uploads/38aedddc38a9-3c78cc51.jpg",
+    "textKey": "heritage.iconic_colosseum_text",
+    "sourceLabel": "Roman travertine — quarried at Tivoli, near Rome"
+  }
+]

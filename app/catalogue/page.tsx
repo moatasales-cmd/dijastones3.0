@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { getT } from "@/lib/i18n-server";
-import { rich } from "@/lib/lang";
+import { rich, tf } from "@/lib/lang";
+import { catType, catCountry, catColour } from "@/lib/catalogue-i18n";
 import {
   TYPE_ORDER, STANDARD_SIZES, TYPE_NAMES_MATRIX, APP_MATRIX, COUNTRY_REGIONS, svgPlaceholder,
 } from "@/lib/catalogue";
@@ -81,9 +82,11 @@ export default async function CataloguePage() {
       <div className="meta">{year}<span>{t("catalogue.cover_tagline")}</span></div>
       <div className="cover-stat">{t("catalogue.cover_stats_all", stones.length, orderedTypes.length)}</div>
       <div className="cover-badges">
-        {orderedTypes.map((ty) => <span key={ty}>{ty}</span>)}
+        {orderedTypes.map((ty) => <span key={ty}>{catType(t, ty)}</span>)}
       </div>
-      <div className="footer-text">{t("catalogue.cover_footer")}</div>
+      {/* footer_brand, not the never-defined cover_footer key that rendered
+          as literal "catalogue.cover_footer" text in every language */}
+      <div className="footer-text">{t("catalogue.footer_brand")}</div>
     </div>
   );
 
@@ -155,11 +158,11 @@ export default async function CataloguePage() {
           </div>
           {orderedTypes.map((ty, i) => (
             <div key={ty}>
-              <div className="index-section-title">{i + 1}. {ty} · page {sectionPage[ty]}</div>
+              <div className="index-section-title">{i + 1}. {catType(t, ty)} · {t("catalogue.contents_page", sectionPage[ty])}</div>
               {indexList.filter((e) => e.type === ty).map((e) => (
                 <div className="index-entry" key={e.name}>
-                  <span className="entry-name">{e.name} <span style={{ color: "#8a8a8a" }}>({e.origin})</span></span>
-                  <span className="entry-page">p. {e.page}</span>
+                  <span className="entry-name">{e.name} <span style={{ color: "#8a8a8a" }}>({catCountry(t, e.origin)})</span></span>
+                  <span className="entry-page">{t("catalogue.contents_p", e.page)}</span>
                 </div>
               ))}
             </div>
@@ -179,7 +182,7 @@ export default async function CataloguePage() {
     pages.push(
       <div className="page page-section" key={`sec-${ty}`}>
         <div className="section-num">{t("catalogue.section_label", sectionIdx)}</div>
-        <h2>{ty}</h2>
+        <h2>{catType(t, ty)}</h2>
         <div className="section-line" />
         <p {...rich(t(`catalogue.type_${ty.toLowerCase()}_desc`))} />
         <div className="section-grid">
@@ -187,9 +190,9 @@ export default async function CataloguePage() {
           <div><div className="sg-label">{t("catalogue.section_consider")}</div><div className="sg-val">{t(`catalogue.${ty.toLowerCase()}_consider`)}</div></div>
           <div><div className="sg-label" {...rich(t("catalogue.section_care"))} /><div className="sg-val">{t(`catalogue.${ty.toLowerCase()}_care`)}</div></div>
         </div>
-        <div className="count">{list.length} {ty}{list.length !== 1 ? "s" : ""}</div>
+        <div className="count">{t("catalogue.section_count", list.length, catType(t, ty))}</div>
         <div className="cat-ft" style={{ position: "absolute", bottom: "15mm", left: "18mm", right: "18mm" }}>
-          <span>{ty}</span><span><span className="page-num">{pageNum}</span> · dijastones.com</span>
+          <span>{catType(t, ty)}</span><span><span className="page-num">{pageNum}</span> · dijastones.com</span>
         </div>
       </div>
     );
@@ -209,23 +212,23 @@ export default async function CataloguePage() {
       pages.push(
         <div className="page page-product" key={s.id}>
           <div className="page-inner">
-            <div className="cat-hd"><span className="brand-name">{t("catalogue.cover_title")}</span><span className="page-label">{s.ty} · {s.c}</span></div>
+            <div className="cat-hd"><span className="brand-name">{t("catalogue.cover_title")}</span><span className="page-label">{catType(t, s.ty)} · {catCountry(t, s.c)}</span></div>
             <div className="product-grid">
-              <div className="product-image"><img src={gimg(s, 0)} alt={s.n} /></div>
+              <div className="product-image"><img src={gimg(s, 0)} alt={s.n} decoding="async" /></div>
               <div className="product-info">
                 <h2>{s.n}</h2>
                 <div className="origin">
-                  {s.ci}, {s.c}
+                  {s.ci}, {catCountry(t, s.c)}
                   {s.dm && (
                     <span style={{ display: "inline-block", fontSize: "7pt", letterSpacing: "0.12em", textTransform: "uppercase", padding: "1px 6px", background: "#4a7fa8", color: "#fff", fontWeight: 600, borderRadius: 2, verticalAlign: "middle", marginLeft: "0.3rem" }}>
                       {t("catalogue.product.dolomite")}
                     </span>
                   )}{" "}
-                  · {s.cn}
+                  · {catColour(t, s.cn)}
                 </div>
                 <div className="thickness-line">10 mm · 20 mm · 30 mm</div>
-                {s.d && <div className="desc">{s.d}</div>}
-                {s.no && <div className="note">{s.no}</div>}
+                {tf(s, "d", locale) && <div className="desc">{tf(s, "d", locale)}</div>}
+                {tf(s, "no", locale) && <div className="note">{tf(s, "no", locale)}</div>}
                 <table className="specs"><tbody>
                   {specs.map(([label, val], i) => (
                     <tr key={i}><td>{label}</td><td>{val || "—"}</td></tr>
@@ -255,8 +258,8 @@ export default async function CataloguePage() {
               </div>
             </div>
             <div className="product-thumbs">
-              <div className="product-thumb"><img src={gimg(s, 1)} alt="" /></div>
-              <div className="product-thumb"><img src={gimg(s, 2)} alt="" /></div>
+              <div className="product-thumb"><img src={gimg(s, 1)} alt="" decoding="async" /></div>
+              <div className="product-thumb"><img src={gimg(s, 2)} alt="" decoding="async" /></div>
             </div>
             {footer(<span {...rich(t("catalogue.footer_brand"))} />, s.n)}
           </div>
@@ -275,7 +278,7 @@ export default async function CataloguePage() {
         <div className="ref-line" />
         <p className="ref-lead" {...rich(t("catalogue.ref_app_lead", stones.length))} />
         <table className="ref-matrix"><tbody>
-          <tr><th style={{ width: "26%" }}>{t("catalogue.ref_app_col")}</th>{TYPE_NAMES_MATRIX.map((tn) => <th key={tn}>{tn}</th>)}</tr>
+          <tr><th style={{ width: "26%" }}>{t("catalogue.ref_app_col")}</th>{TYPE_NAMES_MATRIX.map((tn) => <th key={tn}>{catType(t, tn)}</th>)}</tr>
           {APP_MATRIX.map((r) => (
             <tr key={r.key}>
               <td>{t(r.key)}</td>
@@ -311,7 +314,7 @@ export default async function CataloguePage() {
         <div className="ref-grid-3" style={{ marginTop: "0.5rem" }}>
           {["Marble", "Onyx", "Limestone", "Travertine", "Granite", "Quartzite"].map((ct) => (
             <div className="ref-card" key={ct}>
-              <div className="ref-card-title">{ct}</div>
+              <div className="ref-card-title">{catType(t, ct)}</div>
               <div className="ref-card-text">{t(`catalogue.${ct.toLowerCase()}_care`)}</div>
             </div>
           ))}
@@ -340,7 +343,7 @@ export default async function CataloguePage() {
         <table className="ref-table"><tbody>
           <tr><th style={{ width: "35%" }}>{t("catalogue.ref_country")}</th><th style={{ width: "45%" }}>{t("catalogue.ref_regions")}</th><th style={{ width: "20%", textAlign: "center" }}>{t("catalogue.ref_stones_header")}</th></tr>
           {sortedCountries.map((co) => (
-            <tr key={co}><td><strong>{co}</strong></td><td>{COUNTRY_REGIONS[co] || ""}</td><td style={{ textAlign: "center" }}>{countryCounts[co]}</td></tr>
+            <tr key={co}><td><strong>{catCountry(t, co)}</strong></td><td>{COUNTRY_REGIONS[co] || ""}</td><td style={{ textAlign: "center" }}>{countryCounts[co]}</td></tr>
           ))}
         </tbody></table>
         {footer(<span {...rich(t("catalogue.ref_sourcing_footer"))} />)}
@@ -354,7 +357,7 @@ export default async function CataloguePage() {
       <div className="cat-logo"><img src="/assets/images/logo-dark.png" alt={t("catalogue.cover_title")} /></div>
       <div className="back-line" />
       <div className="back-info">
-        <strong>{t("catalogue.back.company_name")}</strong><br />
+        <strong>{t("catalogue.cover_title")}</strong><br />
         10031 Sok. No: 14, AOSB, Cigli 35620 — Izmir, Türkiye<br />
         +90 232 556 12 00 · contact@dijastones.com<br /><br />
         <a href="https://www.dijastones.com" style={{ color: "#915D36" }}>www.dijastones.com</a>

@@ -3,7 +3,8 @@ import { PrismaPg } from "@prisma/adapter-pg";
 
 // Single shared Prisma client. In dev, Next.js hot-reload would otherwise
 // create a new client (and DB connection) on every reload, so we cache it
-// on globalThis. Prisma 7 requires a driver adapter — PostgreSQL via pg.
+// on globalThis. Prisma 7 requires a driver adapter — PrismaPg here for
+// PostgreSQL (Neon) on Vercel.
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
 
 const globalForPrisma = globalThis as unknown as {

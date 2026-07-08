@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { getT } from "@/lib/i18n-server";
 import { SITE_URL } from "@/lib/site";
+import { organizationLd } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getT();
@@ -12,6 +14,29 @@ export async function generateMetadata(): Promise<Metadata> {
       template: `%s — ${t("title.suffix")}`,
     },
     description: t("meta.description"),
+    openGraph: {
+      siteName: "DIJA Natural Stone",
+      type: "website",
+      title: t("title.home"),
+      description: t("meta.description"),
+      url: SITE_URL,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title.home"),
+      description: t("meta.description"),
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+      },
+    },
   };
 }
 
@@ -36,7 +61,10 @@ export default async function RootLayout({
         <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css" />
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>
-      <body>{children}</body>
+      <body>
+        <JsonLd data={organizationLd()} />
+        {children}
+      </body>
     </html>
   );
 }

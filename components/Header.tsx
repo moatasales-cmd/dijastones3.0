@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { NavItem } from "@/lib/nav";
 import { locales, localeNames, type Locale } from "@/lib/i18n";
+import { flagSvg } from "@/components/flags";
 
 interface Ui {
   signIn: string;
@@ -18,85 +19,20 @@ interface Ui {
   accountHref: string;
 }
 
-const flagSvg: Record<Locale, React.ReactNode> = {
-  en: (
-    <svg viewBox="0 0 60 30" width="18" height="9" style={{ verticalAlign: "middle" }}>
-      <rect width="60" height="30" fill="#012169" />
-      <path d="M30 0v30M0 15h60" stroke="#fff" strokeWidth="10" />
-      <path d="M30 0v30M0 15h60" stroke="#c8102e" strokeWidth="4" />
-      <path d="M0 0l60 30M60 0L0 30" stroke="#fff" strokeWidth="6" />
-      <path d="M0 0l60 30M60 0L0 30" stroke="#c8102e" strokeWidth="2" />
-    </svg>
-  ),
-  fr: (
-    <svg viewBox="0 0 60 30" width="18" height="9" style={{ verticalAlign: "middle" }}>
-      <rect width="60" height="30" fill="#fff" />
-      <rect width="20" height="30" fill="#002395" />
-      <rect x="40" width="20" height="30" fill="#ed2939" />
-    </svg>
-  ),
-  es: (
-    <svg viewBox="0 0 60 30" width="18" height="9" style={{ verticalAlign: "middle" }}>
-      <rect width="60" height="30" fill="#AA151B" />
-      <rect y="7.5" width="60" height="15" fill="#F1BF00" />
-    </svg>
-  ),
-  pt: (
-    <svg viewBox="0 0 60 30" width="18" height="9" style={{ verticalAlign: "middle" }}>
-      <rect width="60" height="30" fill="#FF0000" />
-      <rect width="24" height="30" fill="#046A38" />
-      <circle cx="24" cy="15" r="6" fill="#FFCC29" />
-    </svg>
-  ),
-  ru: (
-    <svg viewBox="0 0 60 30" width="18" height="9" style={{ verticalAlign: "middle" }}>
-      <rect width="60" height="10" fill="#fff" />
-      <rect y="10" width="60" height="10" fill="#0039A6" />
-      <rect y="20" width="60" height="10" fill="#D52B1E" />
-    </svg>
-  ),
-  el: (
-    <svg viewBox="0 0 60 30" width="18" height="9" style={{ verticalAlign: "middle" }}>
-      <rect width="60" height="30" fill="#0D5EAF" />
-      {[0, 1, 2, 3].map((i) => (
-        <rect key={i} y={i * 6.67} width="60" height="3.33" fill="#fff" />
-      ))}
-      <rect width="22" height="16.67" fill="#0D5EAF" />
-      <rect x="8.5" width="5" height="16.67" fill="#fff" />
-      <rect y="6" width="22" height="5" fill="#fff" />
-    </svg>
-  ),
-  ar: (
-    <svg viewBox="0 0 60 30" width="18" height="9" style={{ verticalAlign: "middle" }}>
-      <rect width="60" height="30" rx="3" fill="var(--accent, #915D36)" />
-      <text x="30" y="21" textAnchor="middle" fontSize="17" fontFamily="serif" fill="#fff">ع</text>
-    </svg>
-  ),
-  zh: (
-    <svg viewBox="0 0 60 30" width="18" height="9" style={{ verticalAlign: "middle" }}>
-      <rect width="60" height="30" fill="#DE2910" />
-      <polygon points="9,5 11,11 17,11 12,14.5 14,20 9,16.5 4,20 6,14.5 1,11 7,11" fill="#FFDE00" />
-    </svg>
-  ),
-  ja: (
-    <svg viewBox="0 0 60 30" width="18" height="9" style={{ verticalAlign: "middle" }}>
-      <rect width="60" height="30" fill="#fff" />
-      <circle cx="30" cy="15" r="9" fill="#BC002D" />
-    </svg>
-  ),
-  tr: (
-    <svg viewBox="0 0 60 30" width="18" height="9" style={{ verticalAlign: "middle" }}>
-      <rect width="60" height="30" fill="#E30A17" />
-      <circle cx="24" cy="15" r="7.5" fill="#fff" />
-      <circle cx="26" cy="15" r="6" fill="#E30A17" />
-      <polygon points="34,15 39.5,16.8 36.3,12 36.3,18 39.5,13.2" fill="#fff" />
-    </svg>
-  ),
-};
-
 function setLocale(code: Locale) {
   document.cookie = `lang=${code};path=/;max-age=${60 * 60 * 24 * 365}`;
-  window.location.reload();
+  // On a locale-prefixed URL (/fr/..., served for SEO by middleware.ts) the
+  // path outranks the cookie, so a plain reload would keep the old language.
+  // Navigate to the same page under the new locale's URL instead.
+  const path = window.location.pathname;
+  const seg = path.split("/")[1];
+  const isPrefixed = (locales as readonly string[]).includes(seg);
+  if (isPrefixed) {
+    const rest = path.slice(seg.length + 1) || "/";
+    window.location.href = code === "en" ? rest : `/${code}${rest === "/" ? "" : rest}`;
+  } else {
+    window.location.reload();
+  }
 }
 
 // Declared at module scope (not inside Header) so React treats them as the

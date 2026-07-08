@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { getT } from "@/lib/i18n-server";
+import { pageMeta } from "@/lib/seo";
 import { rich } from "@/lib/lang";
 import ContactForm from "@/components/ContactForm";
 import ContactMap, { type MapMarker } from "@/components/ContactMap";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getT();
-  return { title: t("title.contact") };
+  return pageMeta({ title: t("title.contact"), description: t("contact.hero_text"), path: "/contact" });
 }
 
 const FLAGS: Record<string, string> = {

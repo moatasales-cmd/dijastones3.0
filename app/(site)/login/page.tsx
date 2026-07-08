@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { getT } from "@/lib/i18n-server";
+import { pageMeta } from "@/lib/seo";
 import { getCurrentClient } from "@/lib/auth";
 import AuthForm, { type AuthStrings } from "@/components/AuthForm";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getT();
-  return { title: t("title.login") };
+  return pageMeta({ title: t("title.login"), path: "/login", noIndex: true });
 }
 
 export default async function LoginPage() {

@@ -24,6 +24,7 @@ export const navConfig: NavItemCfg[] = [
       { key: "nav.stone.materials", href: "/materials", seg: "materials" },
       { key: "nav.stone.collections", href: "/collections", seg: "collections" },
       { key: "nav.stone.quarries", href: "/quarries", seg: "quarries" },
+      { key: "nav.stone.case_studies", href: "/case-studies", seg: "case-studies" },
     ],
   },
   {

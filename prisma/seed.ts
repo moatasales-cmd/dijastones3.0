@@ -43,6 +43,8 @@ async function main() {
   await prisma.quoteRequest.deleteMany();
   await prisma.tradeApplication.deleteMany();
   await prisma.office.deleteMany();
+  await prisma.subscriber.deleteMany();
+  await prisma.verificationCode.deleteMany();
 
   // ---- Stones (152) --------------------------------------------------------
   const stones = read<Row[]>("stones");
@@ -318,6 +320,37 @@ async function main() {
     });
   }
   console.log(`Offices:     ${offices.length}`);
+
+  // ---- Subscribers (empty initially) ----------------------------------------
+  const subscribers = read<Row[]>("subscribers");
+  for (const s of subscribers) {
+    await prisma.subscriber.create({
+      data: {
+        id: s.id,
+        email: s.email,
+        createdAt: orNull(s.created_at),
+      },
+    });
+  }
+  console.log(`Subscribers: ${subscribers.length}`);
+
+  // ---- Verification codes (empty initially) ---------------------------------
+  const verificationCodes = read<Row[]>("verification_codes");
+  for (const v of verificationCodes) {
+    await prisma.verificationCode.create({
+      data: {
+        id: v.id,
+        email: v.email,
+        code: v.code,
+        expiresAt: orNull(v.expires_at),
+        pending: !!v.pending,
+        passwordHash: orNull(v.password_hash),
+        name: orNull(v.name),
+        codeOnly: !!v.code_only,
+      },
+    });
+  }
+  console.log(`Verif codes: ${verificationCodes.length}`);
 
   console.log("\n✅ Migration complete.");
 }

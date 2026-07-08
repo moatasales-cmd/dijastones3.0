@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { getT } from "@/lib/i18n-server";
+import { pageMeta } from "@/lib/seo";
 import { rich } from "@/lib/lang";
 import QuarryAccordion, {
   type QuarryCountry,
@@ -9,7 +10,7 @@ import QuarryAccordion, {
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getT();
-  return { title: t("title.quarries") };
+  return pageMeta({ title: t("title.quarries"), description: t("quarries.hero_text"), path: "/quarries" });
 }
 
 // Country name (matches stone.c) + stone types + districts. The narrative

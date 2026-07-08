@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getT } from "@/lib/i18n-server";
+import { pageMeta } from "@/lib/seo";
 
 // Legal pages (/privacy, /terms, /cookies) — one route, three slugs,
 // mirroring the old pages/privacy.php. Only these slugs build; anything
@@ -36,7 +37,7 @@ export async function generateMetadata({
   const cfg = LEGAL[legal];
   if (!cfg) return {};
   const { t } = await getT();
-  return { title: t(cfg.titleKey) };
+  return pageMeta({ title: t(cfg.titleKey), path: `/${legal}` });
 }
 
 export default async function LegalPage({

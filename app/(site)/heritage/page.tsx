@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { getT } from "@/lib/i18n-server";
+import { pageMeta } from "@/lib/seo";
 import { FALLBACK_BG, rich } from "@/lib/lang";
+import IconicUses from "@/components/IconicUses";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getT();
-  return { title: t("title.heritage") };
+  return pageMeta({ title: t("title.heritage"), description: t("heritage.hero_text"), path: "/heritage" });
 }
 
 const sections: { title: string; texts: string[]; img: string | null }[] = [
@@ -63,6 +65,8 @@ export default async function HeritagePage() {
           </div>
         </section>
       ))}
+
+      <IconicUses t={t} />
     </>
   );
 }

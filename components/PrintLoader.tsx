@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { Locale } from "@/lib/i18n";
+import { locales, localeNames, type Locale } from "@/lib/i18n";
+import { flagSvg } from "@/components/flags";
 
 export interface PrintLoaderLabels {
   coverTitle: string;
@@ -12,23 +13,6 @@ export interface PrintLoaderLabels {
   close: string;
   ready: string;
 }
-
-const flagUk = (
-  <svg viewBox="0 0 60 30" width="24" height="12" style={{ verticalAlign: "middle" }}>
-    <rect width="60" height="30" fill="#012169" />
-    <path d="M30 0v30M0 15h60" stroke="#fff" strokeWidth="10" />
-    <path d="M30 0v30M0 15h60" stroke="#c8102e" strokeWidth="4" />
-    <path d="M0 0l60 30M60 0L0 30" stroke="#fff" strokeWidth="6" />
-    <path d="M0 0l60 30M60 0L0 30" stroke="#c8102e" strokeWidth="2" />
-  </svg>
-);
-const flagFr = (
-  <svg viewBox="0 0 60 30" width="24" height="12" style={{ verticalAlign: "middle" }}>
-    <rect width="60" height="30" fill="#fff" />
-    <rect width="20" height="30" fill="#002395" />
-    <rect x="40" width="20" height="30" fill="#ed2939" />
-  </svg>
-);
 
 export default function PrintLoader({
   labels: L,
@@ -109,16 +93,21 @@ export default function PrintLoader({
       <div className={`print-ui${done ? " visible" : ""}`}>
         <div className="lang-dropdown-wrap">
           <button className="lang-dropdown-btn" onClick={() => setLangOpen((v) => !v)}>
-            <span className="lang-flag">{locale === "en" ? flagUk : flagFr}</span>
+            <span className="lang-flag">{flagSvg[locale]}</span>
+            <span className="lang-name">{localeNames[locale]}</span>
             <span className="lang-arrow">▲</span>
           </button>
           <div className={`lang-dropdown-menu${langOpen ? " open" : ""}`}>
-            <a href="#" onClick={(e) => (e.preventDefault(), switchLang("en"))} className={locale === "en" ? "active" : ""}>
-              <span className="lang-flag">{flagUk}</span> English
-            </a>
-            <a href="#" onClick={(e) => (e.preventDefault(), switchLang("fr"))} className={locale === "fr" ? "active" : ""}>
-              <span className="lang-flag">{flagFr}</span> Français
-            </a>
+            {locales.map((c) => (
+              <a
+                key={c}
+                href="#"
+                onClick={(e) => (e.preventDefault(), switchLang(c))}
+                className={locale === c ? "active" : ""}
+              >
+                <span className="lang-flag">{flagSvg[c]}</span> {localeNames[c]}
+              </a>
+            ))}
           </div>
         </div>
         <span className="lang-sep">|</span>

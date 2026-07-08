@@ -23,7 +23,9 @@ model Stone {
   to           String? // tone
   cn           String? // colour name e.g. "White / Gold"
   d            String? // description
+  dFr          String? @map("d_fr")
   no           String? // pull-quote / note
+  noFr         String? @map("no_fr")
   p            Int? // base price
   pPremium     Int?    @map("p_premium") // premium price
   sizes        String?
@@ -38,6 +40,10 @@ model Stone {
   dm           Boolean @default(false) // dolomitic marble (badge on site + PDFs)
   g            Json? // gallery image paths (array)
   col          Json? // collection ids this stone belongs to (array)
+  /// Translations for the other 8 site locales, keyed by locale code:
+  /// { [locale]: { d?, no? } }. EN/FR use the columns above; falls back
+  /// field-by-field to EN when missing — see lib/lang.ts.
+  i18n Json?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -74,6 +80,10 @@ model Project {
   qb   String?
   qbFr String? @map("qb_fr")
   g    Json? // gallery (array)
+  /// Optional Journal post that tells this project's story in detail (id of
+  /// a Post row). Not a DB foreign key — Post rows are seeded/managed
+  /// separately — just an id reference resolved at read time.
+  articleId String? @map("article_id")
   /// Translations for the other 8 site locales (es, pt, ru, el, ar, zh, ja, tr),
   /// keyed by locale code: { [locale]: { t?, c?, b?, bo?, q?, qb? } }.
   /// EN/FR keep their own columns above for backward compatibility; every
@@ -260,4 +270,29 @@ model Office {
   lng            Float?
   image          String?
   whatsapp       String?
+}
+
+/// Independently-documented real-world buildings/projects (NOT DIJA's own
+/// work — these are third-party architecture projects, researched from a
+/// public industry reference site, kept here for the honest "materials in
+/// the wild" cross-reference feature). Every row must credit its real
+/// architect/source and link back to sourceUrl. Descriptions are generated
+/// from plain facts (title/architect/location/year), never copied creative
+/// text, to stay clear of the original site's copyright.
+model CaseStudy {
+  id          String  @id // slug
+  title       String
+  architect   String?
+  location    String?
+  year        String?
+  area        String?
+  sourceUrl   String // attribution link back to the original source
+  /// Matched DIJA products: array of { application, rawStone, stoneId,
+  /// stoneName, matchType: "exact" | "similar" | "suggested" | "none" }
+  materials   Json?
+  /// Uploaded project photos (own DIJA-hosted uploads, not re-hosted
+  /// third-party photography). Array of image paths; first is the cover.
+  g           Json?
+  articleId   String? @map("article_id")
+  createdAt   DateTime @default(now())
 }

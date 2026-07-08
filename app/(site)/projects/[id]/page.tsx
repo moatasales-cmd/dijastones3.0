@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { getT } from "@/lib/i18n-server";
+import { pageMeta, translatedLocales } from "@/lib/seo";
 import { tf, tfArr, FALLBACK_BG } from "@/lib/lang";
 
 export async function generateMetadata({
@@ -13,7 +14,15 @@ export async function generateMetadata({
   const { id } = await params;
   const { locale } = await getT();
   const p = await prisma.project.findUnique({ where: { id } });
-  return { title: p ? tf(p, "t", locale) : "Project" };
+  if (!p) return { title: "Project" };
+  const g = Array.isArray(p.g) ? (p.g as string[]) : [];
+  return pageMeta({
+    title: tf(p, "t", locale),
+    description: tf(p, "b", locale) || undefined,
+    path: `/projects/${p.id}`,
+    ogImage: g[0],
+    langAlternates: translatedLocales(p, ["t", "b", "bo"]),
+  });
 }
 
 export default async function ProjectPage({
@@ -25,6 +34,10 @@ export default async function ProjectPage({
   const { t, locale } = await getT();
   const p = await prisma.project.findUnique({ where: { id } });
   if (!p) notFound();
+
+  const article = p.articleId
+    ? await prisma.post.findUnique({ where: { id: p.articleId } })
+    : null;
 
   const g = Array.isArray(p.g) ? (p.g as string[]) : [];
   const cover = g[0] ?? null;
@@ -96,6 +109,11 @@ export default async function ProjectPage({
                   <p>{quote}</p>
                   <span>— {tf(p, "qb", locale)}</span>
                 </div>
+              )}
+              {article && (
+                <Link href={`/journal/${article.id}`} className="pf-btn pf-btn-ghost" style={{ marginTop: "1.5rem" }}>
+                  <i className="fa-solid fa-book-open" /> {t("project.read_article")}: {tf(article, "t", locale)}
+                </Link>
               )}
             </div>
           </div>
